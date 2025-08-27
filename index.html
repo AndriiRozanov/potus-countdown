@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Condensed:wght@700;800&display=swap" rel="stylesheet">
 
-  <!-- Canonical & Social -->
+  <!-- Canonical & Social (OG image має існувати як /og.jpg) -->
   <link rel="canonical" href="https://presidencyclock.com/">
   <meta property="og:url"         content="https://presidencyclock.com/">
   <meta property="og:type"        content="website">
@@ -28,11 +28,7 @@
   <meta name="twitter:title" content="СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?">
   <meta name="twitter:description" content="Живий лічильник до 20 січня 2029, 12:00 (Вашингтон).">
 
-  <!-- Favicon (заміни своїми за потреби) -->
-  <link rel="icon" href="/favicon.ico">
-
   <style>
-    /* ===== ТЕМИ ===== */
     :root{
       /* Light */
       --bg:#f6f8fd;
@@ -138,16 +134,16 @@
     <div class="subtitle" id="subtitle" data-i18n="subtitle">Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.</div>
 
     <!-- Контроли -->
-    <div class="controls" role="group" aria-label="Controls">
+    <div class="controls" role="group" aria-label="Controls" id="controls">
       <button id="btnTheme" class="ctrl" type="button"><small id="lblTheme" data-i18n="theme">Тема:</small> <span id="valTheme">Auto</span></button>
       <button id="btnSound" class="ctrl" type="button"><small id="lblSound" data-i18n="sound">Звук:</small> <span id="valSound" data-i18n="soundOff">Вимкнено</span></button>
       <button id="btnLang"  class="ctrl" type="button"><small id="lblLang" data-i18n="lang">Мова:</small> <span id="valLang">UA</span></button>
     </div>
 
     <!-- Реклама зверху -->
-    <div class="ad ad--top">
-      <!-- AdSense: підстав свій client і slot, і РОЗКОМЕНТУЙ -->
-      <!--
+    <div class="ad ad--top" id="adTop">
+      <!-- AdSense: розкоментуй і підстав свій client/slot
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-XXXXXXXXXXXXXXX"
@@ -169,21 +165,20 @@
       </div>
 
       <!-- Share -->
-      <div class="share" aria-label="Share">
+      <div class="share" aria-label="Share" id="share">
         <span class="share__label" id="shareLabel" data-i18n="share">Поширити:</span>
         <a id="share-x" class="share__btn" href="#" rel="noopener" title="X" target="_blank" aria-label="Share on X">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg> X
         </a>
         <a id="share-fb" class="share__btn" href="#" rel="noopener" title="Facebook" target="_blank" aria-label="Share on Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1C16.5 5 15.4 5 14.1 5 11.5 5 9.7 6.6 9.7 9.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
         </a>
       </div>
     </div>
 
     <!-- Реклама середина -->
-    <div class="ad ad--mid">
-      <!-- AdSense: другий блок -->
-      <!--
+    <div class="ad ad--mid" id="adMid">
+      <!-- AdSense: другий блок
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-XXXXXXXXXXXXXXX"
@@ -205,9 +200,8 @@
     </details>
 
     <!-- Реклама низ -->
-    <div class="ad ad--bottom">
-      <!-- AdSense: третій блок -->
-      <!--
+    <div class="ad ad--bottom" id="adBottom">
+      <!-- AdSense: третій блок
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-XXXXXXXXXXXXXXX"
@@ -220,7 +214,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer" id="footer">
       <a id="consent" href="#" data-i18n="manageConsent">Налаштування cookies</a> •
       <a href="/privacy" data-i18n="privacy">Політика конфіденційності</a> •
       <a href="/about" data-i18n="about">Про сайт</a> •
@@ -228,130 +222,98 @@
     </div>
   </div>
 
-  <!-- Аудіо: заміни файли на свої при потребі -->
-  <audio id="snd-electronic" preload="auto">
-    <source src="/sounds/beep.mp3" type="audio/mpeg">
-    <source src="/sounds/beep.ogg" type="audio/ogg">
-  </audio>
-  <audio id="snd-classic" preload="auto">
-    <source src="/sounds/tick.mp3" type="audio/mpeg">
-    <source src="/sounds/tick.ogg" type="audio/ogg">
-  </audio>
-
-  <!-- (Опціонально) Підключення AdSense один раз на сторінку — розкоментуй і підстав свій data-ad-client
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-  -->
-
   <script>
-  ;(() => {
-    // ===== КОНФІГ =====
-    const INAUG_UTC = Date.UTC(2029, 0, 20, 17, 0, 0); // 20 Jan 2029, 17:00 UTC (12:00 Washington)
-    const qs = new URLSearchParams(location.search);
+  (function(){
+    "use strict";
 
-    // ===== I18N =====
+    /* ========= КОНФІГ ========= */
+    // 20 Jan 2029, 12:00 Washington (EST = UTC-5) => 17:00 UTC
+    const INAUG_UTC = Date.UTC(2029, 0, 20, 17, 0, 0);
+    const qs = new URLSearchParams(location.search);
+    const $ = (sel)=>document.querySelector(sel);
+
+    /* ========= МОВИ ========= */
     const I18N = {
       uk: {
         title: "СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
         h1: "СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
         subtitle: "Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.",
-        theme: "Тема:",
-        sound: "Звук:",
-        lang: "Мова:",
-        soundOff: "Вимкнено",
-        soundElectronic: "Електронний",
-        soundClassic: "Класичний",
+        theme: "Тема:", sound: "Звук:", lang: "Мова:",
+        soundOff: "Вимкнено", soundElectronic: "Електронний", soundClassic: "Класичний",
         days: "Днів", hours: "Годин", minutes: "Хвилин", seconds: "Секунд",
-        share: "Поширити:",
-        faqQ: "Як рахується час?",
+        share: "Поширити:", faqQ: "Як рахується час?",
         faqA: "Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST), що відповідає <b>17:00 UTC</b>. Рахуємо різницю між вашою локальною датою та цією фіксованою міткою.",
-        manageConsent: "Налаштування cookies",
-        privacy: "Політика конфіденційності",
-        about: "Про сайт",
-        donate: "Підтримати"
+        manageConsent: "Налаштування cookies", privacy: "Політика конфіденційності", about: "Про сайт", donate: "Підтримати"
       },
       en: {
         title: "HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?",
         h1: "HOW LONG DOES DONALD TRUMP<br>HAVE LEFT AS PRESIDENT?",
         subtitle: "Countdown to <b>January 20, 2029, 12:00 (Washington)</b>.",
-        theme: "Theme:",
-        sound: "Sound:",
-        lang: "Language:",
-        soundOff: "Off",
-        soundElectronic: "Electronic",
-        soundClassic: "Classic",
+        theme: "Theme:", sound: "Sound:", lang: "Language:",
+        soundOff: "Off", soundElectronic: "Electronic", soundClassic: "Classic",
         days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds",
-        share: "Share:",
-        faqQ: "How is the time calculated?",
+        share: "Share:", faqQ: "How is the time calculated?",
         faqA: "We count down to <b>January 20, 2029, 12:00</b> Washington time (EST), which equals <b>17:00 UTC</b>. We compute the difference between your local time and this fixed timestamp.",
-        manageConsent: "Cookie settings",
-        privacy: "Privacy policy",
-        about: "About",
-        donate: "Support"
+        manageConsent: "Cookie settings", privacy: "Privacy policy", about: "About", donate: "Support"
       }
     };
 
-    // ===== ЗБЕРЕЖЕННЯ НАЛАШТУВАНЬ =====
+    /* ========= СХОВИЩЕ ========= */
     const storage = {
-      get(k, def){ try{ return localStorage.getItem(k) ?? def }catch{ return def } },
-      set(k,v){ try{ localStorage.setItem(k,v) }catch{} }
+      get(k, def){ try{ const v = localStorage.getItem(k); return v===null?def:v } catch { return def } },
+      set(k,v){ try{ localStorage.setItem(k,v) } catch{} }
     };
 
-    // ===== СТАН =====
-    let lang = (qs.get('lang') || storage.get('lang', navigator.language.startsWith('uk') ? 'uk' : 'en')).toLowerCase();
+    /* ========= СТАН ========= */
+    let lang  = (qs.get('lang')  || storage.get('lang', navigator.language.startsWith('uk')?'uk':'en')).toLowerCase();
     if(!['uk','en'].includes(lang)) lang = 'uk';
 
     let theme = (qs.get('theme') || storage.get('theme', 'auto')).toLowerCase();
     if(!['auto','light','dark'].includes(theme)) theme = 'auto';
 
-    // sound: off|electronic|classic
-    let sound = (qs.get('sound') || storage.get('sound', 'off')).toLowerCase();
+    let sound = (qs.get('sound') || storage.get('sound', 'off')).toLowerCase(); // off|electronic|classic
     if(!['off','electronic','classic'].includes(sound)) sound = 'off';
 
-    // Якщо віджет: спрощуємо інтерфейс
     const isEmbed = qs.get('embed') === '1';
 
-    // ===== ЗАСТОСУВАТИ ТЕМУ =====
+    /* ========= ТЕМА ========= */
     function applyTheme(){
-      document.documentElement.setAttribute('data-theme', theme === 'auto'
+      const actual = theme==='auto'
         ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-        : theme
-      );
-      document.getElementById('valTheme').textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
+        : theme;
+      document.documentElement.setAttribute('data-theme', actual);
+      $('#valTheme').textContent = theme[0].toUpperCase()+theme.slice(1);
     }
     applyTheme();
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if(theme==='auto') applyTheme();
-    });
+    try{
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ()=>{
+        if(theme==='auto') applyTheme();
+      });
+    }catch{}
 
-    // ===== I18N РЕНДЕР =====
+    /* ========= I18N РЕНДЕР ========= */
     function t(key){ return I18N[lang][key]; }
     function applyI18n(){
-      document.documentElement.lang = (lang === 'uk' ? 'uk' : 'en');
+      document.documentElement.lang = (lang==='uk'?'uk':'en');
+      document.title = t('title');
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key = el.getAttribute('data-i18n');
-        if(key==='h1' || key==='subtitle'){
+        if(key==='h1' || key==='subtitle' || key==='faqA'){
           el.innerHTML = t(key);
         }else{
           el.textContent = t(key);
         }
       });
-      document.title = t('title');
-      document.getElementById('valLang').textContent = (lang==='uk'?'UA':'EN');
-      // Оновити OG локаль (не критично, але приємно)
+      $('#valLang').textContent = (lang==='uk'?'UA':'EN');
+      $('#valSound').textContent = sound==='off' ? t('soundOff') : (sound==='electronic' ? t('soundElectronic') : t('soundClassic'));
       const ogLoc = document.querySelector('meta[property="og:locale"]');
       if(ogLoc) ogLoc.setAttribute('content', lang==='uk'?'uk_UA':'en_US');
-      // Share лінки оновимо теж:
       buildShareLinks();
     }
     applyI18n();
 
-    // ===== ТАЙМЕР =====
-    const elD = document.getElementById('d');
-    const elH = document.getElementById('h');
-    const elM = document.getElementById('m');
-    const elS = document.getElementById('s');
-
-    function leftPad(n){ return n.toString(); }
+    /* ========= ТАЙМЕР ========= */
+    const elD = $('#d'), elH = $('#h'), elM = $('#m'), elS = $('#s');
 
     function update(){
       const now = Date.now();
@@ -361,20 +323,19 @@
       const minutes = Math.floor(diff / 60000); diff -= minutes*60000;
       const seconds = Math.floor(diff / 1000);
 
-      flip(elD, leftPad(days));
+      flip(elD, String(days));
       flip(elH, String(hours).padStart(2,'0'));
       flip(elM, String(minutes).padStart(2,'0'));
       flip(elS, String(seconds).padStart(2,'0'));
 
-      // Звук щосекунди (якщо увімкнено)
       tickSound();
     }
 
     function flip(el, val){
       if(el.textContent !== val){
         el.textContent = val;
-        el.classList.remove('flip');
-        void el.offsetWidth; // рефлоу
+        el.classList.remove('flip'); // перезапуск анімації
+        void el.offsetWidth;
         el.classList.add('flip');
       }
     }
@@ -382,78 +343,112 @@
     let timerId = setInterval(update, 1000);
     update();
 
-    // ===== ЗВУК =====
-    const sndElectronic = document.getElementById('snd-electronic');
-    const sndClassic    = document.getElementById('snd-classic');
-    let userInteracted = false;
+    /* ========= ЗВУК (Web Audio, 2 режими) ========= */
+    let audioCtx = null;
+    let audioReady = false;
+    const VOL = 0.25;
 
-    function primeAudio(){
-      if(userInteracted) return;
-      userInteracted = true;
-      // Дружній старт: один беззвучний play-catch для розблокування на iOS
-      [sndElectronic, sndClassic].forEach(a=>{
-        if(!a) return;
-        a.volume = 0; a.play().then(()=>{ a.pause(); a.currentTime=0; a.volume=1; }).catch(()=>{});
-      });
+    function ensureAudio(){
+      if(audioReady) return;
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if(!Ctx) return; // немає підтримки — просто мовчимо
+      audioCtx = audioCtx || new Ctx();
+      audioCtx.resume && audioCtx.resume();
+      audioReady = true;
     }
-    document.addEventListener('click', primeAudio, {once:true});
-    document.addEventListener('keydown', primeAudio, {once:true});
-    document.addEventListener('touchstart', primeAudio, {once:true});
+    function primeByGesture(){
+      ensureAudio();
+      document.removeEventListener('click', primeByGesture);
+      document.removeEventListener('keydown', primeByGesture);
+      document.removeEventListener('touchstart', primeByGesture);
+    }
+    document.addEventListener('click', primeByGesture, {passive:true});
+    document.addEventListener('keydown', primeByGesture);
+    document.addEventListener('touchstart', primeByGesture, {passive:true});
+
+    function beepElectronic(){
+      if(!audioCtx) return;
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'square';
+      o.frequency.value = 880; // яскравий "біп"
+      o.connect(g); g.connect(audioCtx.destination);
+      const now = audioCtx.currentTime;
+      g.gain.setValueAtTime(0.0001, now);
+      g.gain.exponentialRampToValueAtTime(VOL, now+0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, now+0.06);
+      o.start(now);
+      o.stop(now+0.08);
+    }
+
+    function beepClassic(){
+      if(!audioCtx) return;
+      // короткий "тік": високочастотний імпульс з дуже швидким спадом
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'triangle';
+      o.frequency.value = 3000;
+      o.connect(g); g.connect(audioCtx.destination);
+      const now = audioCtx.currentTime;
+      g.gain.setValueAtTime(0.0001, now);
+      g.gain.exponentialRampToValueAtTime(VOL*0.7, now+0.002);
+      g.gain.exponentialRampToValueAtTime(0.0001, now+0.03);
+      o.start(now);
+      o.stop(now+0.04);
+    }
 
     function tickSound(){
       if(sound==='off') return;
-      const src = sound==='electronic' ? sndElectronic : sndClassic;
-      if(!src) return;
-      try{
-        // дуже короткий клік — відтворюємо з початку
-        src.currentTime = 0;
-        // тихіше за замовчуванням
-        src.volume = 0.35;
-        src.play().catch(()=>{});
-      }catch(e){}
+      if(!audioCtx) return; // ще не праймнули
+      try {
+        (sound==='electronic'?beepElectronic:beepClassic)();
+      } catch(e){}
     }
 
-    // ===== КНОПКИ =====
-    const btnTheme = document.getElementById('btnTheme');
-    const btnSound = document.getElementById('btnSound');
-    const btnLang  = document.getElementById('btnLang');
-    const valSound = document.getElementById('valSound');
-
-    btnTheme.addEventListener('click', ()=>{
+    /* ========= КНОПКИ ========= */
+    $('#btnTheme').addEventListener('click', ()=>{
       theme = theme==='auto' ? 'light' : theme==='light' ? 'dark' : 'auto';
       storage.set('theme', theme);
       applyTheme();
     });
 
-    btnSound.addEventListener('click', ()=>{
+    $('#btnSound').addEventListener('click', ()=>{
       sound = sound==='off' ? 'electronic' : sound==='electronic' ? 'classic' : 'off';
       storage.set('sound', sound);
-      document.getElementById('valSound').textContent =
-        sound==='off' ? t('soundOff') : (sound==='electronic' ? t('soundElectronic') : t('soundClassic'));
-      primeAudio();
+      ensureAudio();
+      applyI18n(); // оновить ярлик
     });
-    // відобразити початковий ярлик звуку
-    valSound.textContent = sound==='off' ? t('soundOff') : (sound==='electronic' ? t('soundElectronic') : t('soundClassic'));
 
-    btnLang.addEventListener('click', ()=>{
+    $('#btnLang').addEventListener('click', ()=>{
       lang = (lang==='uk') ? 'en' : 'uk';
       storage.set('lang', lang);
       applyI18n();
     });
 
-    // ===== SHARE =====
-    const shareX = document.getElementById('share-x');
-    const shareFB = document.getElementById('share-fb');
+    /* ========= SHARE ========= */
+    const shareX = $('#share-x');
+    const shareFB = $('#share-fb');
 
     function buildShareLinks(){
       const url = new URL(location.href);
-      url.searchParams.delete('embed'); // віджет не ділимося
+      url.searchParams.delete('embed'); // у шерінг — без режиму віджета
       const shareUrl = url.toString();
       const text = (lang==='uk'
         ? 'СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?'
         : 'HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?');
 
-      // X (twitter)
+      // Web Share API (мобайли)
+      if(navigator.share){
+        [shareX, shareFB].forEach(a=>{
+          a.addEventListener('click', async (e)=>{
+            e.preventDefault();
+            try{ await navigator.share({title: text, text, url: shareUrl}); }catch{}
+          });
+        });
+        return;
+      }
+
+      // X
       const xUrl = new URL('https://twitter.com/intent/tweet');
       xUrl.searchParams.set('text', text);
       xUrl.searchParams.set('url', shareUrl);
@@ -463,43 +458,45 @@
       const fbUrl = new URL('https://www.facebook.com/sharer/sharer.php');
       fbUrl.searchParams.set('u', shareUrl);
       shareFB.href = fbUrl.toString();
+
+      // вспливаюче вікно
+      function popup(e){
+        const a = e.currentTarget;
+        const w = 580, h = 420;
+        const y = (screen.height - h) / 2, x = (screen.width - w) / 2;
+        window.open(a.href, 'share', `width=${w},height=${h},left=${x},top=${y},noopener`);
+        e.preventDefault();
+      }
+      [shareX, shareFB].forEach(a=>{
+        a.removeEventListener('click', popup);
+        a.addEventListener('click', popup);
+      });
     }
     buildShareLinks();
 
-    // відкривати у невеликому вікні
-    function popup(e){
-      const a = e.currentTarget;
-      const w = 580, h = 420;
-      const y = (screen.height - h) / 2, x = (screen.width - w) / 2;
-      window.open(a.href, 'share', `width=${w},height=${h},left=${x},top=${y},noopener`);
-      e.preventDefault();
-    }
-    [shareX, shareFB].forEach(a=>a.addEventListener('click', popup));
-
-    // ===== EMBED MODE =====
+    /* ========= EMBED MODE ========= */
     if(isEmbed){
-      // мінімізуємо все зайве
-      document.querySelector('.controls')?.remove();
-      document.querySelector('.ad--top')?.remove();
-      document.querySelector('.ad--mid')?.remove();
-      document.querySelector('.ad--bottom')?.remove();
-      document.querySelector('.share')?.remove();
-      document.querySelector('.faq')?.remove();
-      document.querySelector('.footer')?.remove();
-      document.getElementById('title').style.display = 'none';
-      document.getElementById('subtitle').style.display = 'none';
-      document.getElementById('card').style.background = 'transparent';
-      document.getElementById('card').style.boxShadow = 'none';
-      document.body.style.backgroundImage = 'none'; // чистий фон для прозорого iframe
-      // дозволимо батьківському сайту задавати ширину/висоту iframe
-      document.getElementById('card').style.border = '0';
+      // Прибрати усе зайве для віджета
+      $('#controls')?.remove();
+      $('#adTop')?.remove();
+      $('#adMid')?.remove();
+      $('#adBottom')?.remove();
+      $('#share')?.remove();
+      $('#faq')?.remove();
+      $('#footer')?.remove();
+      $('#title').style.display='none';
+      $('#subtitle').style.display='none';
+      $('#card').style.background='transparent';
+      $('#card').style.boxShadow='none';
+      document.body.style.backgroundImage='none';
+      $('#card').style.border='0';
     }
 
-    // ===== CONSENT PLACEHOLDER =====
-    document.getElementById('consent')?.addEventListener('click', (e)=>{
+    /* ========= CONSENT PLACEHOLDER ========= */
+    $('#consent')?.addEventListener('click', (e)=>{
       e.preventDefault();
       alert(lang==='uk'
-        ? 'Тут буде відкриватися вікно/панель керування згодою на cookies (CMP).'
+        ? 'Тут відкриватиметься панель керування cookie (CMP).'
         : 'A cookie consent (CMP) panel will open here.');
     });
 
