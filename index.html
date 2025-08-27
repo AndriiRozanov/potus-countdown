@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</title>
 
-  <!-- Fonts -->
+  <!-- Fonts: Roboto Condensed (з кирилицею) для заголовків, Inter для тексту -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Condensed:wght@700;800&display=swap" rel="stylesheet">
 
   <!-- Canonical & Social -->
   <link rel="canonical" href="https://presidencyclock.com/">
@@ -44,23 +44,23 @@
       --glow2:rgba(255,160,62,.16);
     }
     [data-theme="dark"]{
-      --bg:#020408;
-      --stripe:rgba(255,255,255,.08);
+      --bg:#000000;                              /* справді чорна */
+      --stripe:rgba(255,255,255,.09);
       --surface:rgba(255,255,255,.06);
       --tile-bg:rgba(255,255,255,.05);
       --btn-bg:rgba(255,255,255,.06);
-      --line:rgba(255,255,255,.14);
-      --text:#e8eefc;
-      --num:#f4f7ff;
-      --accent:#6aa8ff;
+      --line:rgba(255,255,255,.16);
+      --text:#f2f5ff;
+      --num:#ffffff;
+      --accent:#7db2ff;
       --glow1:rgba(78,128,255,.22);
-      --glow2:rgba(255,120,0,.12);
+      --glow2:rgba(255,120,0,.10);
     }
 
     html,body{height:100%}
     body{
       margin:0;
-      font-family:"Barlow",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       color:var(--text);
       background:var(--bg);
       /* стабільний фон: тільки горизонтальні смужки + м’які glows */
@@ -73,8 +73,9 @@
 
     .wrap{max-width:1100px;margin:36px auto;padding:0 16px}
     h1{
-      font-family:"Barlow Condensed","Barlow",system-ui,sans-serif;
+      font-family:"Roboto Condensed","Inter",system-ui,sans-serif; /* однаково для UA/EN */
       text-transform:uppercase; letter-spacing:.02em;
+      font-weight:800;
       font-size:clamp(28px,3.2vw,42px); line-height:1.12; text-align:center; margin:12px 0 8px;
     }
     .subtitle{ text-align:center; opacity:.9; margin-bottom:12px; font-weight:600 }
@@ -83,7 +84,7 @@
     .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
     .ctrl{
       appearance:none; border:1px solid var(--line); background:var(--btn-bg);
-      border-radius:999px; padding:8px 12px; font:700 14px/1 "Barlow",system-ui;
+      border-radius:999px; padding:8px 12px; font:700 14px/1 "Inter",system-ui;
       cursor:pointer; display:inline-flex; align-items:center; gap:.5rem;
     }
     .ctrl:focus{outline:2px solid var(--accent); outline-offset:2px; border-color:transparent}
@@ -94,7 +95,7 @@
     .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;width:min(980px,98vw);margin:0 auto 10px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
     .timer{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
     .tile{min-width:170px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--tile-bg);text-align:center}
-    .num{font-family:"Barlow Condensed","Barlow",system-ui,sans-serif;font-size:clamp(40px,6vw,52px);font-weight:800;letter-spacing:.02em;color:var(--num);transition:transform .18s ease,filter .18s ease}
+    .num{font-family:"Roboto Condensed","Inter",system-ui,sans-serif;font-size:clamp(40px,6vw,52px);font-weight:800;letter-spacing:.02em;color:var(--num);transition:transform .18s ease,filter .18s ease}
     .num.flip{transform:translateY(-4px);filter:brightness(1.05)}
     .label{font-size:13px;opacity:.82;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
 
@@ -145,7 +146,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg> X
         </a>
         <a id="share-fb" class="share__btn" href="#" rel="noopener" title="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1C16.5 5 15.4 5 14.1 5 11.5 5 9.7 6.6 9.7 9.3V11H7v3h2.7v8h3.8z"/></svg> Facebook
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1C16.5 5 15.4 5 14.1 5 11.5 5 9.7 6.6 9.7 9.3V11H7v3h2.7в8h3.8z"/></svg> Facebook
         </a>
       </div>
     </div>
@@ -160,153 +161,4 @@
     </details>
 
     <div class="footer">
-      <a id="consent" href="#">Налаштування згоди</a> ·
-      <a id="privacy" href="/privacy.html">Політика конфіденційності</a>
-    </div>
-  </div>
-
-  <script>
-  ;(()=>{
-    /* ========= i18n ========= */
-    const I18N = {
-      uk: {
-        title: 'СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?',
-        subtitle: 'Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.',
-        labels: { d:'Днів', h:'Годин', m:'Хвилин', s:'Секунд' },
-        share: 'Поширити:',
-        faqQ: 'Як рахується час?',
-        faqA: 'Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST), що відповідає <b>17:00 UTC</b>. Рахуємо різницю між вашою локальною датою та цією фіксованою міткою.',
-        consent: 'Налаштування згоди',
-        privacy: 'Політика конфіденційності',
-        ui: { theme:'Тема:', sound:'Звук:', lang:'Мова:', auto:'Auto', light:'Light', dark:'Dark', off:'Off', tick:'Tick', flip:'Flip', UA:'UA', EN:'EN' },
-        shareText: 'Скільки Трампу залишилось бути президентом? Живий лічильник до 20 січня 2029.'
-      },
-      en: {
-        title: 'HOW MUCH TIME DOES DONALD TRUMP<br>HAVE LEFT AS PRESIDENT?',
-        subtitle: 'Countdown to <b>January 20, 2029, 12:00 (Washington)</b>.',
-        labels: { d:'Days', h:'Hours', m:'Minutes', s:'Seconds' },
-        share: 'Share:',
-        faqQ: 'How do we calculate time?',
-        faqA: 'The countdown targets <b>Jan 20, 2029, 12:00</b> Washington time (EST), which equals <b>17:00 UTC</b>. We compute the difference between your local time and this fixed timestamp.',
-        consent: 'Consent settings',
-        privacy: 'Privacy Policy',
-        ui: { theme:'Theme:', sound:'Sound:', lang:'Language:', auto:'Auto', light:'Light', dark:'Dark', off:'Off', tick:'Tick', flip:'Flip', UA:'UA', EN:'EN' },
-        shareText: 'How long does Trump have left as President? Live countdown to Jan 20, 2029.'
-      }
-    };
-
-    const LANG_KEY='pc:lang';
-    let lang = localStorage.getItem(LANG_KEY) || (navigator.language||'uk').startsWith('uk')?'uk':'en';
-
-    function applyLang(l){
-      lang=l; localStorage.setItem(LANG_KEY,l);
-      const t=I18N[l];
-      document.getElementById('title').innerHTML=t.title;
-      document.getElementById('subtitle').innerHTML=t.subtitle;
-      document.getElementById('labD').textContent=t.labels.d;
-      document.getElementById('labH').textContent=t.labels.h;
-      document.getElementById('labM').textContent=t.labels.m;
-      document.getElementById('labS').textContent=t.labels.s;
-      document.getElementById('shareLabel').textContent=t.share;
-      document.getElementById('faqQ').textContent=t.faqQ;
-      document.getElementById('faqA').innerHTML=t.faqA;
-      document.getElementById('consent').textContent=t.consent;
-      document.getElementById('privacy').textContent=t.privacy;
-      // labels on controls
-      document.getElementById('lblTheme').textContent=t.ui.theme;
-      document.getElementById('lblSound').textContent=t.ui.sound;
-      document.getElementById('lblLang').textContent=t.ui.lang;
-      // update document title too
-      const tmp=document.createElement('div'); tmp.innerHTML=t.title;
-      document.title = tmp.textContent;
-      // update current values captions
-      document.getElementById('valTheme').textContent = t.ui[currentTheme().toUpperCase()];
-      document.getElementById('valSound').textContent = t.ui[currentSound().toUpperCase()];
-      document.getElementById('valLang').textContent  = l.toUpperCase();
-    }
-
-    /* ========= Theme: one button cycles Auto→Light→Dark ========= */
-    const html = document.documentElement;
-    const THEME_KEY='pc:theme';
-    const THEME_CYCLE=['auto','light','dark'];
-    function currentTheme(){ return localStorage.getItem(THEME_KEY) || 'auto'; }
-    function applyTheme(mode){
-      if(mode==='auto'){
-        html.setAttribute('data-theme', matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
-      } else html.setAttribute('data-theme', mode);
-      localStorage.setItem(THEME_KEY, mode);
-      document.getElementById('valTheme').textContent = I18N[lang].ui[mode.toUpperCase()];
-    }
-    applyTheme(currentTheme());
-    matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', ()=> {
-      if(currentTheme()==='auto') applyTheme('auto');
-    });
-    document.getElementById('btnTheme').addEventListener('click', ()=>{
-      const i = THEME_CYCLE.indexOf(currentTheme());
-      applyTheme(THEME_CYCLE[(i+1)%THEME_CYCLE.length]);
-    });
-
-    /* ========= Sound: one button cycles Off→Tick→Flip ========= */
-    const SOUND_KEY='pc:sound';
-    const SOUND_CYCLE=['off','tick','flip'];
-    let ac, now;
-    function ensureAudio(){ if(!ac){ ac=new (window.AudioContext||window.webkitAudioContext)(); now=()=>ac.currentTime; } }
-    function currentSound(){ return localStorage.getItem(SOUND_KEY) || 'off'; }
-    function setSound(m){ localStorage.setItem(SOUND_KEY,m); document.getElementById('valSound').textContent=I18N[lang].ui[m.toUpperCase()]; }
-    function playTick(){ ensureAudio(); const o=ac.createOscillator(),g=ac.createGain(); o.type='square'; o.frequency.value=2000; g.gain.setValueAtTime(0.0001,now()); g.gain.exponentialRampToValueAtTime(0.08,now()+0.004); g.gain.exponentialRampToValueAtTime(0.0001,now()+0.07); o.connect(g).connect(ac.destination); o.start(); o.stop(now()+0.08); }
-    function playFlip(){ ensureAudio(); const o=ac.createOscillator(),g=ac.createGain(); o.type='triangle'; o.frequency.setValueAtTime(600,now()); o.frequency.exponentialRampToValueAtTime(180,now()+0.09); g.gain.setValueAtTime(0.0001,now()); g.gain.exponentialRampToValueAtTime(0.09,now()+0.01); g.gain.exponentialRampToValueAtTime(0.0001,now()+0.11); o.connect(g).connect(ac.destination); o.start(); o.stop(now()+0.12); }
-    function ping(){ const m=currentSound(); if(m==='tick') playTick(); else if(m==='flip') playFlip(); }
-    setSound(currentSound());
-    document.getElementById('btnSound').addEventListener('click', ()=>{
-      const i = SOUND_CYCLE.indexOf(currentSound());
-      setSound(SOUND_CYCLE[(i+1)%SOUND_CYCLE.length]);
-    });
-
-    /* ========= Language: UA↔EN (one button) ========= */
-    const LANG_CYCLE=['uk','en'];
-    document.getElementById('btnLang').addEventListener('click', ()=>{
-      const i = LANG_CYCLE.indexOf(lang);
-      applyLang(LANG_CYCLE[(i+1)%LANG_CYCLE.length]);
-    });
-    applyLang(lang);
-
-    /* ========= Countdown ========= */
-    const els = { d:document.getElementById('d'), h:document.getElementById('h'), m:document.getElementById('m'), s:document.getElementById('s') };
-    const targetUTC = Date.UTC(2029,0,20,17,0,0); // 20 Jan 2029 12:00 EST = 17:00 UTC
-    let prev={d:null,h:null,m:null,s:null}, lastSec=null;
-    const pad=n=>n.toString().padStart(2,'0');
-    function setNum(el,val,key){ if(prev[key]!==val){ el.classList.add('flip'); el.textContent=val; setTimeout(()=>el.classList.remove('flip'),180); prev[key]=val; } }
-    function tick(){
-      let diff=Math.max(0,targetUTC-Date.now());
-      const sec=Math.floor(diff/1000)%60, min=Math.floor(diff/60000)%60, hr=Math.floor(diff/3600000)%24, day=Math.floor(diff/86400000);
-      setNum(els.d, String(day), 'd'); setNum(els.h, pad(hr), 'h'); setNum(els.m, pad(min), 'm'); setNum(els.s, pad(sec), 's');
-      if(lastSec!==sec){ lastSec=sec; if(currentSound()!=='off') ping(); }
-    }
-    tick(); setInterval(tick,1000);
-
-    /* ========= Share (X / Facebook) ========= */
-    const SHARE_URL='https://presidencyclock.com/';
-    function popup(u){ window.open(u,'share','width=600,height=520,noopener'); }
-    function shareText(){ return I18N[lang].shareText; }
-
-    document.getElementById('share-x').addEventListener('click',e=>{
-      e.preventDefault();
-      const u='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText())+'&url='+encodeURIComponent(SHARE_URL);
-      popup(u);
-    });
-    document.getElementById('share-fb').addEventListener('click',e=>{
-      e.preventDefault();
-      const u='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(SHARE_URL);
-      popup(u);
-    });
-
-    /* ========= Consent placeholder ========= */
-    document.getElementById('consent')?.addEventListener('click', (e)=>{
-      e.preventDefault();
-      if(typeof __tcfapi==='function'){ __tcfapi('displayConsentUi',2,()=>{}); }
-      else alert(lang==='uk'?'Налаштування згоди з’являться після підключення CMP.':'Consent settings will be available after CMP is connected.');
-    });
-  })();
-  </script>
-</body>
-</html>
+      <a id="consent"
