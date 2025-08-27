@@ -27,125 +27,114 @@
   <meta name="twitter:title" content="СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?">
   <meta name="twitter:description" content="Живий лічильник до 20 січня 2029, 12:00 (Вашингтон).">
 
-  <!-- GA4 (за бажанням — підстав свій ID і розкоментуй)
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer=window.dataLayer||[];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config','G-XXXXXXXXXX',{transport_type:'beacon'});
-  </script> -->
-
   <style>
+    /* ======== ТЕМИ: світла за замовчуванням, темна в [data-theme="dark"] ======== */
     :root{
-      --bg: #0b0f14;           /* dark backdrop */
-      --ink: #0d1117;          /* cards in dark */
-      --text: #0b1321;
-      --line: rgba(0,0,0,.12);
-      --accent:#3d77ff;
-      --tile:#fff;
-      --num:#0f1720;
-      --sub:#586274;
-      --chip:#f4f6fa;
-      --glow1: rgba(68,118,255,.35);
-      --glow2: rgba(255,160,62,.22);
+      /* Light */
+      --bg:        #f6f8fd;
+      --stripe:    rgba(13,17,23,.06);
+      --surface:   #ffffff;                 /* картки */
+      --tile-bg:   #f3f5fa;                 /* плитки лічильника */
+      --btn-bg:    #ffffff;                 /* кнопки / сегменти */
+      --line:      rgba(13,17,23,.12);
+      --text:      #0c1220;
+      --num:       #0f1720;
+      --accent:    #3d77ff;
+      --glow1:     rgba(68,118,255,.28);
+      --glow2:     rgba(255,160,62,.16);
     }
     [data-theme="dark"]{
-      --bg:#020408; 
-      --tile:rgba(255,255,255,.06);
-      --ink:rgba(255,255,255,.04);
-      --text:#e8eefc;
-      --num:#f4f7ff;
-      --line: rgba(255,255,255,.14);
-      --chip:rgba(255,255,255,.06);
-      --glow1: rgba(78,128,255,.25);
-      --glow2: rgba(255,120,0,.16);
+      --bg:        #020408;
+      --stripe:    rgba(255,255,255,.08);
+      --surface:   rgba(255,255,255,.06);
+      --tile-bg:   rgba(255,255,255,.05);
+      --btn-bg:    rgba(255,255,255,.06);
+      --line:      rgba(255,255,255,.14);
+      --text:      #e8eefc;
+      --num:       #f4f7ff;
+      --accent:    #6aa8ff;
+      --glow1:     rgba(78,128,255,.22);
+      --glow2:     rgba(255,120,0,.12);
     }
+
     html,body{height:100%}
     body{
       margin:0;
-      font-family: "Barlow", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-family:"Barlow",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       color:var(--text);
       background: var(--bg);
-      /* Background layers: smudged glows + fixed horizontal stripes + subtle vertical grid */
+      /* Стабільний фон: лише горизонтальні смужки + м’які glows */
       background-image:
         radial-gradient(900px 480px at 78% 18%, var(--glow1), transparent 60%),
         radial-gradient(700px 420px at 20% 90%, var(--glow2), transparent 65%),
-        repeating-linear-gradient(to bottom, rgba(255,255,255,.07), rgba(255,255,255,.07) 1px, transparent 1px, transparent 24px),
-        repeating-linear-gradient(to right, rgba(255,255,255,.04), rgba(255,255,255,.04) 1px, transparent 1px, transparent 32px);
-      background-attachment: fixed,fixed,fixed,fixed; /* смужки не «пливуть» */
+        repeating-linear-gradient(to bottom,
+          var(--stripe) 0, var(--stripe) 1px, transparent 1px, transparent 24px);
+      background-attachment: fixed,fixed,fixed; /* смужки не «пливуть» */
     }
+
     .wrap{max-width:1100px;margin:36px auto;padding:0 16px}
     h1{
-      font-family:"Barlow Condensed", "Barlow", system-ui, sans-serif;
-      letter-spacing:.02em;
-      text-transform:uppercase;
-      font-size:clamp(28px,3.2vw,42px);
-      line-height:1.12; text-align:center; margin:12px 0 8px;
+      font-family:"Barlow Condensed","Barlow",system-ui,sans-serif;
+      letter-spacing:.02em; text-transform:uppercase;
+      font-size:clamp(28px,3.2vw,42px); line-height:1.12; text-align:center; margin:12px 0 8px;
     }
     .subtitle{ text-align:center; opacity:.9; margin-bottom:12px; font-weight:600 }
+
+    /* Панелі налаштувань */
     .settings{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:16px }
     .seg{
       display:inline-flex; gap:6px; align-items:center;
-      padding:6px 8px; border:1px solid var(--line); border-radius:14px; background:var(--ink)
+      padding:6px 8px; border:1px solid var(--line); border-radius:14px; background:var(--surface)
     }
     .seg span{ font-weight:700; opacity:.8; margin-right:6px }
     .seg button{
-      font:600 14px/1 "Barlow",system-ui; padding:6px 10px; border-radius:999px; border:1px solid var(--line);
-      background:var(--tile); color:inherit; cursor:pointer;
+      font:600 14px/1 "Barlow",system-ui; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--line); background:var(--btn-bg); color:inherit; cursor:pointer;
     }
     .seg button[aria-pressed="true"]{ outline:2px solid var(--accent); outline-offset:2px; border-color:transparent }
-    .card{
-      background:var(--tile); border:1px solid var(--line);
-      border-radius:18px; padding:16px; width:min(980px,98vw); margin:0 auto 10px;
-      box-shadow: 0 8px 32px rgba(0,0,0,.05);
-    }
 
+    /* Карта та лічильник */
+    .card{
+      background:var(--surface); border:1px solid var(--line);
+      border-radius:18px; padding:16px; width:min(980px,98vw); margin:0 auto 10px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.06);
+    }
     .timer{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap }
     .tile{
       min-width:170px; padding:14px 16px; border:1px solid var(--line); border-radius:14px;
-      background:var(--chip); text-align:center;
+      background:var(--tile-bg); text-align:center;
     }
-    [data-theme="dark"] .tile{ background:rgba(255,255,255,.04) }
     .num{
-      font-family:"Barlow Condensed", "Barlow", system-ui, sans-serif;
+      font-family:"Barlow Condensed","Barlow",system-ui,sans-serif;
       font-size:clamp(40px,6vw,52px); font-weight:800; letter-spacing:.02em; color:var(--num);
       transition: transform .18s ease, filter .18s ease;
     }
-    .label{ font-size:13px; opacity:.8; font-weight:700; text-transform:uppercase; letter-spacing:.06em }
+    .label{ font-size:13px; opacity:.82; font-weight:700; text-transform:uppercase; letter-spacing:.06em }
+    .num.flip{ transform:translateY(-4px); filter:brightness(1.05) }
 
-    /* gentle flip/fade on change */
-    .num.flip{ transform: translateY(-4px); filter: brightness(1.05) }
-
-    /* Share — мінімалістично */
+    /* Share — мінімалізм, теж з темами */
     .share{
       display:flex; gap:.5rem; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:10px
     }
     .share__label{ opacity:.8; font-weight:700 }
     .share__btn{
       display:inline-flex; align-items:center; gap:.35rem; padding:.45rem .75rem;
-      border:1px solid var(--line); border-radius:999px; background:var(--tile); text-decoration:none;
+      border:1px solid var(--line); border-radius:999px; background:var(--btn-bg); text-decoration:none;
       color:inherit; font-weight:700; cursor:pointer
     }
     .share__btn svg{ width:18px; height:18px; fill:currentColor; display:block }
     .share__btn:focus{ outline:2px solid var(--accent); outline-offset:2px; border-color:transparent }
     .share__btn:hover{ transform:translateY(-1px) }
 
-    .faq{ background:var(--tile); border:1px solid var(--line); border-radius:14px; padding:14px 16px; width:min(980px,98vw); margin:10px auto }
+    /* FAQ & footer */
+    .faq{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; width:min(980px,98vw); margin:10px auto }
     .faq summary{ cursor:pointer; font-weight:700 }
     .footer{ opacity:.75; font-size:13px; text-align:center; margin:16px 0 }
-    .footer a{ color:var(--accent); text-decoration:none }
-    .footer a:hover{ text-decoration:underline }
+    .footer a{ color:var(--accent); text-decoration:none } .footer a:hover{ text-decoration:underline }
 
-    /* mobile tweak */
-    @media (max-width:540px){
-      .tile{ min-width:46% }
-    }
-
-    /* prefers reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      .num{ transition:none }
-    }
+    /* Мобільна підгонка */
+    @media (max-width:540px){ .tile{min-width:46%} }
+    @media (prefers-reduced-motion: reduce){ .num{transition:none} }
   </style>
 </head>
 <body>
@@ -153,13 +142,13 @@
     <h1>СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</h1>
     <div class="subtitle">Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.</div>
 
-    <!-- Settings -->
+    <!-- Налаштування -->
     <div class="settings" role="group" aria-label="Налаштування">
       <div class="seg" aria-label="Тема">
         <span>Тема:</span>
         <button data-theme="auto" aria-pressed="true">Auto</button>
         <button data-theme="light" aria-pressed="false">Light</button>
-        <button data-theme="dark" aria-pressed="false">Dark</button>
+        <button data-theme="dark"  aria-pressed="false">Dark</button>
       </div>
       <div class="seg" aria-label="Звук">
         <span>Звук:</span>
@@ -169,39 +158,23 @@
       </div>
     </div>
 
-    <!-- Timer -->
+    <!-- Лічильник -->
     <div class="card">
       <div id="timer" class="timer" aria-live="polite">
-        <div class="tile">
-          <div class="num" id="d">—</div>
-          <div class="label">Днів</div>
-        </div>
-        <div class="tile">
-          <div class="num" id="h">—</div>
-          <div class="label">Годин</div>
-        </div>
-        <div class="tile">
-          <div class="num" id="m">—</div>
-          <div class="label">Хвилин</div>
-        </div>
-        <div class="tile">
-          <div class="num" id="s">—</div>
-          <div class="label">Секунд</div>
-        </div>
+        <div class="tile"><div class="num" id="d">—</div><div class="label">Днів</div></div>
+        <div class="tile"><div class="num" id="h">—</div><div class="label">Годин</div></div>
+        <div class="tile"><div class="num" id="m">—</div><div class="label">Хвилин</div></div>
+        <div class="tile"><div class="num" id="s">—</div><div class="label">Секунд</div></div>
       </div>
 
-      <!-- Share (мінімалістично) -->
+      <!-- Share -->
       <div class="share" aria-label="Поширити">
         <span class="share__label">Поширити:</span>
-
         <a id="share-x" class="share__btn" href="#" rel="noopener" title="Поділитись у Х">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg>
-          Х
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg> Х
         </a>
-
         <a id="share-fb" class="share__btn" href="#" rel="noopener" title="Поділитись у Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1C16.5 5 15.4 5 14.1 5 11.5 5 9.7 6.6 9.7 9.3V11H7v3h2.7v8h3.8z"/></svg>
-          Facebook
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1C16.5 5 15.4 5 14.1 5 11.5 5 9.7 6.6 9.7 9.3V11H7v3h2.7v8h3.8z"/></svg> Facebook
         </a>
       </div>
     </div>
@@ -210,8 +183,8 @@
     <details class="faq">
       <summary>Як рахується час?</summary>
       <div>
-        Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST). 
-        Це відповідає <b>17:00 UTC</b>. Якщо у вашій системі інший часовий пояс, ми рахуємо залишок часу від вашої локальної дати до цієї фіксованої мітки.
+        Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST), що відповідає <b>17:00 UTC</b>.
+        Рахуємо різницю між вашою локальною датою та цією фіксованою міткою.
       </div>
     </details>
 
@@ -223,10 +196,7 @@
 
   <script>
   ;(()=>{
-
-    /* =======================
-       Theme (auto/light/dark)
-       ======================= */
+    /* ===== Тема: auto/light/dark ===== */
     const html = document.documentElement;
     const THEME_KEY = 'pc:theme';
     const themeBtns = document.querySelectorAll('[data-theme]');
@@ -236,135 +206,81 @@
       }else{
         html.setAttribute('data-theme', mode);
       }
-      // sync pressed states
       themeBtns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.theme===mode)));
       localStorage.setItem(THEME_KEY, mode);
     }
-    // init
     applyTheme(localStorage.getItem(THEME_KEY) || 'auto');
     matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', ()=> {
-      if((localStorage.getItem(THEME_KEY) || 'auto')==='auto') applyTheme('auto');
+      if((localStorage.getItem(THEME_KEY)||'auto')==='auto') applyTheme('auto');
     });
     themeBtns.forEach(b=> b.addEventListener('click', ()=> applyTheme(b.dataset.theme)));
 
-    /* =======================
-       Sound (off/tick/flip)
-       ======================= */
+    /* ===== Звук: off/tick/flip ===== */
     const SOUND_KEY = 'pc:sound';
     const soundBtns = document.querySelectorAll('[data-sound]');
     let soundMode = localStorage.getItem(SOUND_KEY) || 'off';
     soundBtns.forEach(b=> b.setAttribute('aria-pressed', String(b.dataset.sound===soundMode)));
     let ac, now;
-    function ensureAudio(){
-      if(!ac){ ac = new (window.AudioContext||window.webkitAudioContext)(); now=()=>ac.currentTime; }
-    }
-    function playTick(){
-      ensureAudio();
-      const o = ac.createOscillator(), g = ac.createGain();
+    function ensureAudio(){ if(!ac){ ac=new (window.AudioContext||window.webkitAudioContext)(); now=()=>ac.currentTime; } }
+    function playTick(){ ensureAudio(); const o=ac.createOscillator(),g=ac.createGain();
       o.type='square'; o.frequency.value=2000;
-      g.gain.setValueAtTime(0.0001, now());
-      g.gain.exponentialRampToValueAtTime(0.08, now()+0.004);
+      g.gain.setValueAtTime(0.0001, now()); g.gain.exponentialRampToValueAtTime(0.08, now()+0.004);
       g.gain.exponentialRampToValueAtTime(0.0001, now()+0.07);
       o.connect(g).connect(ac.destination); o.start(); o.stop(now()+0.08);
     }
-    function playFlip(){
-      ensureAudio();
-      const o1 = ac.createOscillator(), g1 = ac.createGain();
-      o1.type='triangle'; o1.frequency.setValueAtTime(600, now());
-      o1.frequency.exponentialRampToValueAtTime(180, now()+0.09);
-      g1.gain.setValueAtTime(0.0001, now());
-      g1.gain.exponentialRampToValueAtTime(0.09, now()+0.01);
-      g1.gain.exponentialRampToValueAtTime(0.0001, now()+0.11);
-      o1.connect(g1).connect(ac.destination); o1.start(); o1.stop(now()+0.12);
+    function playFlip(){ ensureAudio(); const o=ac.createOscillator(),g=ac.createGain();
+      o.type='triangle'; o.frequency.setValueAtTime(600, now());
+      o.frequency.exponentialRampToValueAtTime(180, now()+0.09);
+      g.gain.setValueAtTime(0.0001, now()); g.gain.exponentialRampToValueAtTime(0.09, now()+0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, now()+0.11);
+      o.connect(g).connect(ac.destination); o.start(); o.stop(now()+0.12);
     }
-    function ping(){
-      if(soundMode==='tick') playTick();
-      else if(soundMode==='flip') playFlip();
-    }
-    soundBtns.forEach(b=>{
-      b.addEventListener('click', ()=>{
-        soundMode = b.dataset.sound;
-        soundBtns.forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
-        localStorage.setItem(SOUND_KEY, soundMode);
-      });
-    });
+    function ping(){ if(soundMode==='tick') playTick(); else if(soundMode==='flip') playFlip(); }
+    soundBtns.forEach(b=> b.addEventListener('click', ()=>{ soundMode=b.dataset.sound;
+      soundBtns.forEach(x=>x.setAttribute('aria-pressed', String(x===b))); localStorage.setItem(SOUND_KEY, soundMode);
+    }));
 
-    /* =======================
-       Countdown
-       ======================= */
+    /* ===== Лічильник ===== */
     const els = { d:document.getElementById('d'), h:document.getElementById('h'),
                   m:document.getElementById('m'), s:document.getElementById('s') };
-
-    // 20 Jan 2029 12:00 Washington (EST, UTC-5) = 17:00 UTC
+    // 20 Jan 2029 12:00 EST = 17:00 UTC
     const targetUTC = Date.UTC(2029,0,20,17,0,0);
-
-    let prev = {d:null,h:null,m:null,s:null}, lastSec = null;
-
-    function pad(n){ return n.toString().padStart(2,'0'); }
-
-    function setNum(el, value, key){
-      if(prev[key] !== value){
-        // gentle flip
-        el.classList.add('flip');
-        el.textContent = value;
-        setTimeout(()=>el.classList.remove('flip'), 180);
-        prev[key] = value;
-      }
-    }
-
+    let prev = {d:null,h:null,m:null,s:null}, lastSec=null;
+    const pad=n=>n.toString().padStart(2,'0');
+    function setNum(el,val,key){ if(prev[key]!==val){ el.classList.add('flip'); el.textContent=val; setTimeout(()=>el.classList.remove('flip'),180); prev[key]=val; } }
     function tick(){
-      const nowUTC = Date.now();
-      let diff = Math.max(0, targetUTC - nowUTC);
-      const sec  = Math.floor(diff/1000)%60;
-      const min  = Math.floor(diff/60000)%60;
-      const hour = Math.floor(diff/3600000)%24;
-      const days = Math.floor(diff/86400000);
-
-      setNum(els.d, String(days), 'd');
-      setNum(els.h, pad(hour), 'h');
-      setNum(els.m, pad(min),  'm');
-      setNum(els.s, pad(sec),  's');
-
-      if(lastSec !== sec){
-        lastSec = sec;
-        if(soundMode!=='off') ping();
-      }
+      let diff = Math.max(0, targetUTC - Date.now());
+      const sec = Math.floor(diff/1000)%60;
+      const min = Math.floor(diff/60000)%60;
+      const hr  = Math.floor(diff/3600000)%24;
+      const day = Math.floor(diff/86400000);
+      setNum(els.d, String(day), 'd');
+      setNum(els.h, pad(hr), 'h'); setNum(els.m, pad(min), 'm'); setNum(els.s, pad(sec), 's');
+      if(lastSec!==sec){ lastSec=sec; if(soundMode!=='off') ping(); }
     }
+    tick(); setInterval(tick, 1000);
 
-    tick();
-    setInterval(tick, 1000);
-
-    /* =======================
-       Share buttons (X / FB)
-       ======================= */
-    const SHARE_URL  = 'https://presidencyclock.com/';
-    const SHARE_TEXT = 'Скільки Трампу залишилось бути президентом? Живий лічильник до 20 січня 2029.';
-
-    function popup(u){ window.open(u, 'share', 'width=600,height=520,noopener'); }
-
-    document.getElementById('share-x')?.addEventListener('click', (e)=>{
+    /* ===== Share (X / Facebook) ===== */
+    const SHARE_URL='https://presidencyclock.com/';
+    const SHARE_TEXT='Скільки Трампу залишилось бути президентом? Живий лічильник до 20 січня 2029.';
+    const popup=u=>window.open(u,'share','width=600,height=520,noopener');
+    document.getElementById('share-x')?.addEventListener('click',e=>{
       e.preventDefault();
-      const u = 'https://twitter.com/intent/tweet?text='+
-                encodeURIComponent(SHARE_TEXT)+'&url='+encodeURIComponent(SHARE_URL);
+      const u='https://twitter.com/intent/tweet?text='+encodeURIComponent(SHARE_TEXT)+'&url='+encodeURIComponent(SHARE_URL);
+      popup(u);
+    });
+    document.getElementById('share-fb')?.addEventListener('click',e=>{
+      e.preventDefault();
+      const u='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(SHARE_URL);
       popup(u);
     });
 
-    document.getElementById('share-fb')?.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const u = 'https://www.facebook.com/sharer/sharer.php?u='+
-                encodeURIComponent(SHARE_URL);
-      popup(u);
-    });
-
-    /* =======================
-       Consent placeholder (якщо додаси CMP)
-       ======================= */
+    /* ===== Заглушка для consent ===== */
     document.getElementById('consent')?.addEventListener('click', (e)=>{
       e.preventDefault();
-      if(typeof __tcfapi === 'function'){ __tcfapi('displayConsentUi', 2, ()=>{}); }
+      if(typeof __tcfapi==='function'){ __tcfapi('displayConsentUi',2,()=>{}); }
       else alert('Налаштування згоди з’являться після підключення CMP.');
     });
-
   })();
   </script>
 </body>
