@@ -1,379 +1,371 @@
 <!doctype html>
 <html lang="uk" data-theme="auto">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</title>
-  <meta name="description" content="Живий лічильник до завершення чинного президентського строку Дональда Трампа. Світла/темна тема, авто, опціональні звуки, делікатна анімація цифр." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    /* ---------- ТЕМИ ---------- */
-    :root{
-      --bg:#000; --fg:#fff; --muted:rgba(255,255,255,.86);
-      --panel:#101010; --line:#323232; --accent:#8ab4ff; --tile:#141414;
-      --shadow:0 12px 32px rgba(0,0,0,.45);        /* базова тінь */
-      --glow: 0 0 0 0 rgba(0,0,0,0);              /* у світлій темі не світимо */
-      --texture-alpha:.26;                         /* помітність текстури */
-      --state-pill: rgba(255,255,255,.06);
-    }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f6f7fb; --fg:#0c1325; --muted:rgba(12,19,37,.74);
-        --panel:#ffffff; --line:#e6e8f0; --accent:#2b5cff; --tile:#ffffff;
-        --shadow:0 12px 30px rgba(12,19,37,.12);
-        --glow: 0 0 0 0 rgba(0,0,0,0);
-        --texture-alpha:.20;                        /* менш помітно, ніж у темній */
-        --state-pill: rgba(12,19,37,.06);
-      }
-    }
-    html[data-theme="light"]{
-      --bg:#f6f7fb; --fg:#0c1325; --muted:rgba(12,19,37,.74);
-      --panel:#ffffff; --line:#e6e8f0; --accent:#2b5cff; --tile:#ffffff;
-      --shadow:0 12px 30px rgba(12,19,37,.12);
-      --glow: 0 0 0 0 rgba(0,0,0,0);
-      --texture-alpha:.20; --state-pill: rgba(12,19,37,.06);
-    }
-    html[data-theme="dark"]{
-      --bg:#000; --fg:#fff; --muted:rgba(255,255,255,.86);
-      --panel:#101010; --line:#323232; --accent:#8ab4ff; --tile:#141414;
-      --shadow:0 12px 32px rgba(0,0,0,.55);
-      --glow: 0 0 0 1px rgba(255,255,255,.07), 0 0 24px rgba(255,255,255,.05); /* легка підсвітка */
-      --texture-alpha:.26; --state-pill: rgba(255,255,255,.06);
-    }
 
-    /* ---------- БАЗА ---------- */
-    *{box-sizing:border-box}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Canonical & Social -->
+  <link rel="canonical" href="https://presidencyclock.com/">
+  <meta property="og:url"         content="https://presidencyclock.com/">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?">
+  <meta property="og:description" content="Живий лічильник до 20 січня 2029, 12:00 (Вашингтон).">
+  <meta property="og:image"       content="https://presidencyclock.com/og.jpg">
+  <meta property="og:image:secure_url" content="https://presidencyclock.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:site_name" content="Presidency Clock">
+  <meta property="og:locale" content="uk_UA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://presidencyclock.com/og.jpg">
+  <meta name="twitter:title" content="СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?">
+  <meta name="twitter:description" content="Живий лічильник до 20 січня 2029, 12:00 (Вашингтон).">
+
+  <!-- GA4 (за бажанням — підстав свій ID і розкоментуй)
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config','G-XXXXXXXXXX',{transport_type:'beacon'});
+  </script> -->
+
+  <style>
+    :root{
+      --bg: #0b0f14;           /* dark backdrop */
+      --ink: #0d1117;          /* cards in dark */
+      --text: #0b1321;
+      --line: rgba(0,0,0,.12);
+      --accent:#3d77ff;
+      --tile:#fff;
+      --num:#0f1720;
+      --sub:#586274;
+      --chip:#f4f6fa;
+      --glow1: rgba(68,118,255,.35);
+      --glow2: rgba(255,160,62,.22);
+    }
+    [data-theme="dark"]{
+      --bg:#020408; 
+      --tile:rgba(255,255,255,.06);
+      --ink:rgba(255,255,255,.04);
+      --text:#e8eefc;
+      --num:#f4f7ff;
+      --line: rgba(255,255,255,.14);
+      --chip:rgba(255,255,255,.06);
+      --glow1: rgba(78,128,255,.25);
+      --glow2: rgba(255,120,0,.16);
+    }
     html,body{height:100%}
     body{
       margin:0;
-      font-family:"Barlow",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
-      background:var(--bg); color:var(--fg);
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      font-family: "Barlow", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      /* Background layers: smudged glows + fixed horizontal stripes + subtle vertical grid */
+      background-image:
+        radial-gradient(900px 480px at 78% 18%, var(--glow1), transparent 60%),
+        radial-gradient(700px 420px at 20% 90%, var(--glow2), transparent 65%),
+        repeating-linear-gradient(to bottom, rgba(255,255,255,.07), rgba(255,255,255,.07) 1px, transparent 1px, transparent 24px),
+        repeating-linear-gradient(to right, rgba(255,255,255,.04), rgba(255,255,255,.04) 1px, transparent 1px, transparent 32px);
+      background-attachment: fixed,fixed,fixed,fixed; /* смужки не «пливуть» */
     }
-
-    /* ФОН: горизонтальні лінії + вертикальна тонка сітка + точки + м’які плями
-       (позиції стабільні; у цій версії трохи менш помітно) */
-    body::before, body::after{content:""; position:fixed; inset:0; z-index:-2; pointer-events:none}
-    body::before{
-      background:
-        /* горизонтальні лінії */
-        repeating-linear-gradient(0deg, rgba(255,255,255, calc(var(--texture-alpha)*.12)) 0 1px, transparent 1px 24px),
-        /* вертикальна тонка сітка */
-        repeating-linear-gradient(90deg, rgba(255,255,255, calc(var(--texture-alpha)*.06)) 0 1px, transparent 1px 32px),
-        /* дрібні точки */
-        radial-gradient(2px 2px at 25% 25%, rgba(255,255,255, calc(var(--texture-alpha)*.08)) 50%, transparent 51%),
-        radial-gradient(2px 2px at 75% 75%, rgba(0,0,0, calc(var(--texture-alpha)*.10)) 50%, transparent 51%);
-      background-size: auto, auto, 60px 60px, 60px 60px;
-      opacity: .9;
-    }
-    body::after{
-      z-index:-1;
-      background:
-        radial-gradient(900px 700px at 70% 20%, rgba(43,92,255,.12), transparent 60%),
-        radial-gradient(700px 500px at 20% 78%, rgba(255,120,0,.06), transparent 60%);
-      opacity:.7;
-    }
-
-    .wrap{min-height:100dvh; display:grid; place-items:center; padding:24px}
-    .center{width:min(980px,92vw); display:flex; flex-direction:column; align-items:center; gap:18px}
-
+    .wrap{max-width:1100px;margin:36px auto;padding:0 16px}
     h1{
-      font-family:"Barlow Condensed","Barlow",system-ui,-apple-system,sans-serif;
-      text-align:center; margin:0; font-weight:800; letter-spacing:.4px; line-height:1.05;
-      font-size:clamp(22px,3.6vw,38px); text-transform:uppercase;
+      font-family:"Barlow Condensed", "Barlow", system-ui, sans-serif;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      font-size:clamp(28px,3.2vw,42px);
+      line-height:1.12; text-align:center; margin:12px 0 8px;
     }
-    .sub{color:var(--muted); margin:2px 0 8px; text-align:center}
-
-    /* Контроли — краще видно у темній темі */
-    .controls{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
-    .chip{
-      display:inline-flex; align-items:center; gap:10px;
-      background:var(--tile);
-      border:1px solid var(--line);
-      border-radius:999px; padding:9px 14px; cursor:pointer;
-      box-shadow: var(--shadow), inset 0 0 0 1px rgba(255,255,255,.03), var(--glow);
-      user-select:none; font-weight:700; font-size:14px; color:var(--fg);
-      transition: transform .05s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    .subtitle{ text-align:center; opacity:.9; margin-bottom:12px; font-weight:600 }
+    .settings{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:16px }
+    .seg{
+      display:inline-flex; gap:6px; align-items:center;
+      padding:6px 8px; border:1px solid var(--line); border-radius:14px; background:var(--ink)
     }
-    .chip:hover{ transform: translateY(-1px) }
-    .chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px }
-    .chip[aria-pressed="true"]{ box-shadow: 0 0 0 2px var(--accent), inset 0 0 0 1px rgba(255,255,255,.05), var(--glow) }
-    .chip .state{
-      font-size:12px; opacity:.92; padding:3px 9px; border-radius:8px;
-      border:1px solid var(--line); background: var(--state-pill);
+    .seg span{ font-weight:700; opacity:.8; margin-right:6px }
+    .seg button{
+      font:600 14px/1 "Barlow",system-ui; padding:6px 10px; border-radius:999px; border:1px solid var(--line);
+      background:var(--tile); color:inherit; cursor:pointer;
+    }
+    .seg button[aria-pressed="true"]{ outline:2px solid var(--accent); outline-offset:2px; border-color:transparent }
+    .card{
+      background:var(--tile); border:1px solid var(--line);
+      border-radius:18px; padding:16px; width:min(980px,98vw); margin:0 auto 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.05);
     }
 
-    /* Карта таймера */
-    .card{background:var(--tile); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow), var(--glow); padding:22px 18px; width:min(980px,98vw)}
-    .timer{display:flex; flex-wrap:wrap; justify-content:center; gap:12px; font-variant-numeric:tabular-nums}
-<!-- Share bar -->
-<div class="share" aria-label="Поширити">
-  <span class="share__label">Поширити:</span>
-
-  <a id="share-x" class="share__btn" href="#" rel="noopener" title="Поділитись у Х">
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/>
-    </svg>
-    Х
-  </a>
-
-  <a id="share-fb" class="share__btn" href="#" rel="noopener" title="Поділитись у Facebook">
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1C16.5 5 15.4 5 14.1 5 11.5 5 9.7 6.6 9.7 9.3V11H7v3h2.7v8h3.8z"/>
-    </svg>
-    Facebook
-  </a>
-
-  <button id="share-native" class="share__btn" type="button" title="Поділитися…">
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 3l4 4h-3v5h-2V7H8l4-4zM6 13h12v6H6v-6z"/>
-    </svg>
-    Поділитися…
-  </button>
-
-  <button id="share-copy" class="share__btn" type="button" title="Скопіювати посилання">
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M3.9 12a4.6 4.6 0 014.6-4.6h3v2.2h-3a2.4 2.4 0 100 4.8h3v2.2h-3A4.6 4.6 0 013.9 12zm7.6-2.4h3a2.4 2.4 0 110 4.8h-3v2.2h3a4.6 4.6 0 000-9.2h-3v2.2z"/>
-    </svg>
-    Копіювати
-  </button>
-
-  <span id="share-toast" class="share__toast" role="status" aria-live="polite"></span>
-</div>
+    .timer{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap }
     .tile{
-      min-width:120px; background:var(--panel); border:1px solid var(--line);
-      border-radius:14px; padding:16px 14px; text-align:center;
-      box-shadow: var(--shadow), var(--glow);
+      min-width:170px; padding:14px 16px; border:1px solid var(--line); border-radius:14px;
+      background:var(--chip); text-align:center;
     }
-    .num{font-weight:800; font-size:clamp(36px,7.2vw,60px); line-height:1}
-    .lbl{margin-top:6px; font-size:13px; opacity:.78; letter-spacing:.3px}
+    [data-theme="dark"] .tile{ background:rgba(255,255,255,.04) }
+    .num{
+      font-family:"Barlow Condensed", "Barlow", system-ui, sans-serif;
+      font-size:clamp(40px,6vw,52px); font-weight:800; letter-spacing:.02em; color:var(--num);
+      transition: transform .18s ease, filter .18s ease;
+    }
+    .label{ font-size:13px; opacity:.8; font-weight:700; text-transform:uppercase; letter-spacing:.06em }
 
-    /* Делікатна анімація заміни цифри */
-    .num.bump{ animation: bump .18s ease-out }
-    @keyframes bump{ 0%{ transform: scale(.985); opacity:.74 } 100%{ transform: scale(1); opacity:1 } }
+    /* gentle flip/fade on change */
+    .num.flip{ transform: translateY(-4px); filter: brightness(1.05) }
 
-    .faq{background:var(--tile); border:1px solid var(--line); border-radius:14px; padding:14px 16px; width:min(980px,98vw); margin-top:10px; box-shadow:var(--shadow), var(--glow)}
-    .faq summary{cursor:pointer; font-weight:600}
-    .footer{opacity:.75; font-size:13px; text-align:center; margin-top:8px}
-    a{color:var(--accent); text-decoration:none} a:hover{text-decoration:underline}
+    /* Share — мінімалістично */
+    .share{
+      display:flex; gap:.5rem; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:10px
+    }
+    .share__label{ opacity:.8; font-weight:700 }
+    .share__btn{
+      display:inline-flex; align-items:center; gap:.35rem; padding:.45rem .75rem;
+      border:1px solid var(--line); border-radius:999px; background:var(--tile); text-decoration:none;
+      color:inherit; font-weight:700; cursor:pointer
+    }
+    .share__btn svg{ width:18px; height:18px; fill:currentColor; display:block }
+    .share__btn:focus{ outline:2px solid var(--accent); outline-offset:2px; border-color:transparent }
+    .share__btn:hover{ transform:translateY(-1px) }
 
-    /* Мобільні підлаштування */
+    .faq{ background:var(--tile); border:1px solid var(--line); border-radius:14px; padding:14px 16px; width:min(980px,98vw); margin:10px auto }
+    .faq summary{ cursor:pointer; font-weight:700 }
+    .footer{ opacity:.75; font-size:13px; text-align:center; margin:16px 0 }
+    .footer a{ color:var(--accent); text-decoration:none }
+    .footer a:hover{ text-decoration:underline }
+
+    /* mobile tweak */
     @media (max-width:540px){
-      .tile{min-width:46%}
-      .num{font-size:clamp(34px,12vw,52px)}
-      .chip{padding:8px 12px}
+      .tile{ min-width:46% }
     }
 
-    /* Зменшення руху */
+    /* prefers reduced motion */
     @media (prefers-reduced-motion: reduce){
-      *{animation:none !important; transition:none !important}
+      .num{ transition:none }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="center">
-      <h1>СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</h1>
-      <p class="sub">Відлік до <strong>20 січня 2029, 12:00 (Вашингтон)</strong>.</p>
+    <h1>СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</h1>
+    <div class="subtitle">Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.</div>
 
-      <div class="controls">
-        <button id="themeBtn" class="chip" type="button" aria-pressed="false" title="Змінити тему (Auto/Light/Dark)">
-          <span>Тема</span><span id="themeState" class="state">Auto</span>
-        </button>
-        <button id="soundBtn" class="chip" type="button" aria-pressed="false" title="Звук: Off → Classic → Flap">
-          <span>Звук</span><span id="soundState" class="state">Off</span>
-        </button>
+    <!-- Settings -->
+    <div class="settings" role="group" aria-label="Налаштування">
+      <div class="seg" aria-label="Тема">
+        <span>Тема:</span>
+        <button data-theme="auto" aria-pressed="true">Auto</button>
+        <button data-theme="light" aria-pressed="false">Light</button>
+        <button data-theme="dark" aria-pressed="false">Dark</button>
+      </div>
+      <div class="seg" aria-label="Звук">
+        <span>Звук:</span>
+        <button data-sound="off"  aria-pressed="true">Off</button>
+        <button data-sound="tick" aria-pressed="false">Tick</button>
+        <button data-sound="flip" aria-pressed="false">Flip</button>
+      </div>
+    </div>
+
+    <!-- Timer -->
+    <div class="card">
+      <div id="timer" class="timer" aria-live="polite">
+        <div class="tile">
+          <div class="num" id="d">—</div>
+          <div class="label">Днів</div>
+        </div>
+        <div class="tile">
+          <div class="num" id="h">—</div>
+          <div class="label">Годин</div>
+        </div>
+        <div class="tile">
+          <div class="num" id="m">—</div>
+          <div class="label">Хвилин</div>
+        </div>
+        <div class="tile">
+          <div class="num" id="s">—</div>
+          <div class="label">Секунд</div>
+        </div>
       </div>
 
-      <section class="card" aria-live="polite">
-        <div id="timer" class="timer" role="timer" aria-label="Лічильник до завершення строку"></div>
-      </section>
+      <!-- Share (мінімалістично) -->
+      <div class="share" aria-label="Поширити">
+        <span class="share__label">Поширити:</span>
 
-      <details class="faq">
-        <summary>Як рахується час?</summary>
-        <p>Президентські строки в США закінчуються о 12:00 20 січня. Ми рахуємо до цієї дати у часовому поясі Вашингтона (America/New_York), що відповідає <code>2029-01-20T17:00:00Z</code> (UTC).</p>
-      </details>
+        <a id="share-x" class="share__btn" href="#" rel="noopener" title="Поділитись у Х">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg>
+          Х
+        </a>
 
-      <p class="footer">
-        <a href="#" id="privacy">Політика конфіденційності</a> ·
-        <a href="#" id="consent">Налаштування згоди</a>
-      </p>
+        <a id="share-fb" class="share__btn" href="#" rel="noopener" title="Поділитись у Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1C16.5 5 15.4 5 14.1 5 11.5 5 9.7 6.6 9.7 9.3V11H7v3h2.7v8h3.8z"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <details class="faq">
+      <summary>Як рахується час?</summary>
+      <div>
+        Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST). 
+        Це відповідає <b>17:00 UTC</b>. Якщо у вашій системі інший часовий пояс, ми рахуємо залишок часу від вашої локальної дати до цієї фіксованої мітки.
+      </div>
+    </details>
+
+    <div class="footer">
+      <a id="consent" href="#">Налаштування згоди</a> ·
+      <a href="/privacy.html">Політика конфіденційності</a>
     </div>
   </div>
 
   <script>
-    /* --------- ТЕМА (Auto / Light / Dark) --------- */
-    const themeBtn = document.getElementById('themeBtn');
-    const themeStateEl = document.getElementById('themeState');
-    const THEMES = ['auto','light','dark'];
-    function setTheme(mode){
-      document.documentElement.setAttribute('data-theme', mode);
-      themeStateEl.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
-      localStorage.setItem('themeMode', mode);
-      themeBtn.setAttribute('aria-pressed', mode!=='auto');
-    }
-    themeBtn.addEventListener('click', ()=>{
-      const curr = document.documentElement.getAttribute('data-theme') || 'auto';
-      const next = THEMES[(THEMES.indexOf(curr)+1)%THEMES.length];
-      setTheme(next);
-    });
-    setTheme(localStorage.getItem('themeMode') || 'auto');
+  ;(()=>{
 
-    /* --------- ЗВУКИ (Off → Classic → Flap) --------- */
-    const soundBtn = document.getElementById('soundBtn');
-    const soundStateEl = document.getElementById('soundState');
-    const SOUND_MODES = ['off','classic','flap'];
-    let soundMode = localStorage.getItem('soundMode') || 'off';
-    let audioCtx = null, noiseBuffer = null, tickOdd = false;
-
-    function setSoundMode(mode){
-      soundMode = mode;
-      soundBtn.setAttribute('aria-pressed', mode!=='off');
-      soundStateEl.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
-      localStorage.setItem('soundMode', mode);
-      if(mode!=='off' && !audioCtx){
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    /* =======================
+       Theme (auto/light/dark)
+       ======================= */
+    const html = document.documentElement;
+    const THEME_KEY = 'pc:theme';
+    const themeBtns = document.querySelectorAll('[data-theme]');
+    function applyTheme(mode){
+      if(mode==='auto'){
+        html.setAttribute('data-theme', matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+      }else{
+        html.setAttribute('data-theme', mode);
       }
+      // sync pressed states
+      themeBtns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.theme===mode)));
+      localStorage.setItem(THEME_KEY, mode);
     }
-    soundBtn.addEventListener('click', ()=>{
-      const next = SOUND_MODES[(SOUND_MODES.indexOf(soundMode)+1) % SOUND_MODES.length];
-      setSoundMode(next);
-      if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    // init
+    applyTheme(localStorage.getItem(THEME_KEY) || 'auto');
+    matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', ()=> {
+      if((localStorage.getItem(THEME_KEY) || 'auto')==='auto') applyTheme('auto');
     });
-    setSoundMode(soundMode);
+    themeBtns.forEach(b=> b.addEventListener('click', ()=> applyTheme(b.dataset.theme)));
 
-    function ensureNoise(){
-      if(!audioCtx || noiseBuffer) return;
-      const length = Math.floor(audioCtx.sampleRate * 0.1); // ~100мс
-      noiseBuffer = audioCtx.createBuffer(1, length, audioCtx.sampleRate);
-      const data = noiseBuffer.getChannelData(0);
-      for(let i=0;i<length;i++) data[i] = Math.random()*2 - 1;
+    /* =======================
+       Sound (off/tick/flip)
+       ======================= */
+    const SOUND_KEY = 'pc:sound';
+    const soundBtns = document.querySelectorAll('[data-sound]');
+    let soundMode = localStorage.getItem(SOUND_KEY) || 'off';
+    soundBtns.forEach(b=> b.setAttribute('aria-pressed', String(b.dataset.sound===soundMode)));
+    let ac, now;
+    function ensureAudio(){
+      if(!ac){ ac = new (window.AudioContext||window.webkitAudioContext)(); now=()=>ac.currentTime; }
     }
-
-    // Класичний «тік-так»
-    function playClassic(){
-      if(!audioCtx) return;
-      ensureNoise();
-      const t = audioCtx.currentTime;
-
-      // шум через смуговий фільтр для "клацання"
-      const noise = audioCtx.createBufferSource();
-      noise.buffer = noiseBuffer;
-      const bp = audioCtx.createBiquadFilter();
-      bp.type = 'bandpass';
-      bp.frequency.value = 3500; // клік у верхніх середніх
-      bp.Q.value = 8;
-
-      const g1 = audioCtx.createGain();
-      g1.gain.setValueAtTime(0.0001, t);
-      g1.gain.exponentialRampToValueAtTime(0.12, t + 0.004);
-      g1.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
-
-      noise.connect(bp); bp.connect(g1); g1.connect(audioCtx.destination);
-      noise.start(t); noise.stop(t + 0.07);
-
-      // коротке "тіло" удару (легкий тон, що спадає)
-      const o = audioCtx.createOscillator();
-      const g2 = audioCtx.createGain();
-      o.type = 'sine';
-      o.frequency.setValueAtTime(1200, t);
-      o.frequency.exponentialRampToValueAtTime(700, t + 0.06);
-      g2.gain.setValueAtTime(0.0001, t);
-      g2.gain.exponentialRampToValueAtTime(0.03, t + 0.004);
-      g2.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
-      o.connect(g2); g2.connect(audioCtx.destination);
-      o.start(t); o.stop(t + 0.08);
-
-      // «так» трохи нижчим тоном (чергуємо кожну другу секунду)
-      tickOdd = !tickOdd;
-      if(tickOdd){
-        const o2 = audioCtx.createOscillator();
-        const g3 = audioCtx.createGain();
-        o2.type = 'sine'; o2.frequency.setValueAtTime(600, t);
-        g3.gain.setValueAtTime(0.0001, t);
-        g3.gain.exponentialRampToValueAtTime(0.02, t + 0.004);
-        g3.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
-        o2.connect(g3); g3.connect(audioCtx.destination);
-        o2.start(t); o2.stop(t + 0.06);
-      }
-    }
-
-    // Подвійний клац як у «flap»-табло
-    function playFlap(){
-      if(!audioCtx) return;
-      const click = (t, f) => {
-        const o = audioCtx.createOscillator();
-        const g = audioCtx.createGain();
-        o.type = 'square'; o.frequency.setValueAtTime(f, t);
-        g.gain.setValueAtTime(0.0001, t);
-        g.gain.exponentialRampToValueAtTime(0.09, t + 0.004);
-        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
-        o.connect(g); g.connect(audioCtx.destination);
-        o.start(t); o.stop(t + 0.06);
-      };
-      const t0 = audioCtx.currentTime;
-      click(t0, 1200);
-      click(t0 + 0.06, 900);
-    }
-
     function playTick(){
-      if(soundMode==='off' || !audioCtx) return;
-      if(soundMode==='classic') playClassic();
-      else playFlap();
+      ensureAudio();
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type='square'; o.frequency.value=2000;
+      g.gain.setValueAtTime(0.0001, now());
+      g.gain.exponentialRampToValueAtTime(0.08, now()+0.004);
+      g.gain.exponentialRampToValueAtTime(0.0001, now()+0.07);
+      o.connect(g).connect(ac.destination); o.start(); o.stop(now()+0.08);
+    }
+    function playFlip(){
+      ensureAudio();
+      const o1 = ac.createOscillator(), g1 = ac.createGain();
+      o1.type='triangle'; o1.frequency.setValueAtTime(600, now());
+      o1.frequency.exponentialRampToValueAtTime(180, now()+0.09);
+      g1.gain.setValueAtTime(0.0001, now());
+      g1.gain.exponentialRampToValueAtTime(0.09, now()+0.01);
+      g1.gain.exponentialRampToValueAtTime(0.0001, now()+0.11);
+      o1.connect(g1).connect(ac.destination); o1.start(); o1.stop(now()+0.12);
+    }
+    function ping(){
+      if(soundMode==='tick') playTick();
+      else if(soundMode==='flip') playFlip();
+    }
+    soundBtns.forEach(b=>{
+      b.addEventListener('click', ()=>{
+        soundMode = b.dataset.sound;
+        soundBtns.forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+        localStorage.setItem(SOUND_KEY, soundMode);
+      });
+    });
+
+    /* =======================
+       Countdown
+       ======================= */
+    const els = { d:document.getElementById('d'), h:document.getElementById('h'),
+                  m:document.getElementById('m'), s:document.getElementById('s') };
+
+    // 20 Jan 2029 12:00 Washington (EST, UTC-5) = 17:00 UTC
+    const targetUTC = Date.UTC(2029,0,20,17,0,0);
+
+    let prev = {d:null,h:null,m:null,s:null}, lastSec = null;
+
+    function pad(n){ return n.toString().padStart(2,'0'); }
+
+    function setNum(el, value, key){
+      if(prev[key] !== value){
+        // gentle flip
+        el.classList.add('flip');
+        el.textContent = value;
+        setTimeout(()=>el.classList.remove('flip'), 180);
+        prev[key] = value;
+      }
     }
 
-    /* --------- ЛІЧИЛЬНИК + делікатна анімація --------- */
-    const TARGET = Date.parse('2029-01-20T17:00:00Z'); // 12:00 у Вашингтоні (зима) = 17:00 UTC
-    const timerEl = document.getElementById('timer');
-    const prev = {days:null, hours:null, minutes:null, seconds:null};
-    const fmt2 = n => n.toString().padStart(2,'0');
+    function tick(){
+      const nowUTC = Date.now();
+      let diff = Math.max(0, targetUTC - nowUTC);
+      const sec  = Math.floor(diff/1000)%60;
+      const min  = Math.floor(diff/60000)%60;
+      const hour = Math.floor(diff/3600000)%24;
+      const days = Math.floor(diff/86400000);
 
-    function tile(label, val, key){
-      const bumpClass = (prev[key] !== null && prev[key] !== val) ? ' bump' : '';
-      return `
-        <div class="tile">
-          <div class="num${bumpClass}" data-key="${key}">${val}</div>
-          <div class="lbl">${label}</div>
-        </div>`;
+      setNum(els.d, String(days), 'd');
+      setNum(els.h, pad(hour), 'h');
+      setNum(els.m, pad(min),  'm');
+      setNum(els.s, pad(sec),  's');
+
+      if(lastSec !== sec){
+        lastSec = sec;
+        if(soundMode!=='off') ping();
+      }
     }
 
-    function render(){
-      const now = Date.now();
-      const delta = Math.max(0, TARGET - now);
-      const sec = Math.floor(delta / 1000);
-      const days = Math.floor(sec / 86400);
-      const hours = Math.floor((sec % 86400) / 3600);
-      const minutes = Math.floor((sec % 3600) / 60);
-      const seconds = sec % 60;
+    tick();
+    setInterval(tick, 1000);
 
-      const v = {
-        days,
-        hours: fmt2(hours),
-        minutes: fmt2(minutes),
-        seconds: fmt2(seconds)
-      };
+    /* =======================
+       Share buttons (X / FB)
+       ======================= */
+    const SHARE_URL  = 'https://presidencyclock.com/';
+    const SHARE_TEXT = 'Скільки Трампу залишилось бути президентом? Живий лічильник до 20 січня 2029.';
 
-      timerEl.innerHTML =
-        tile('Днів', v.days, 'days') +
-        tile('Годин', v.hours, 'hours') +
-        tile('Хвилин', v.minutes, 'minutes') +
-        tile('Секунд', v.seconds, 'seconds');
+    function popup(u){ window.open(u, 'share', 'width=600,height=520,noopener'); }
 
-      prev.days = v.days; prev.hours = v.hours; prev.minutes = v.minutes; prev.seconds = v.seconds;
-    }
+    document.getElementById('share-x')?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const u = 'https://twitter.com/intent/tweet?text='+
+                encodeURIComponent(SHARE_TEXT)+'&url='+encodeURIComponent(SHARE_URL);
+      popup(u);
+    });
 
-    // старт із синхронізацією під секунду
-    function startTicker(){
-      render();
-      const drift = 1000 - (Date.now() % 1000);
-      setTimeout(()=>{
-        render(); playTick();
-        setInterval(()=>{ render(); playTick(); }, 1000);
-      }, drift);
-    }
-    startTicker();
+    document.getElementById('share-fb')?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const u = 'https://www.facebook.com/sharer/sharer.php?u='+
+                encodeURIComponent(SHARE_URL);
+      popup(u);
+    });
+
+    /* =======================
+       Consent placeholder (якщо додаси CMP)
+       ======================= */
+    document.getElementById('consent')?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      if(typeof __tcfapi === 'function'){ __tcfapi('displayConsentUi', 2, ()=>{}); }
+      else alert('Налаштування згоди з’являться після підключення CMP.');
+    });
+
+  })();
   </script>
 </body>
 </html>
