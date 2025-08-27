@@ -2,7 +2,7 @@
 <html lang="uk" data-theme="auto">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title data-i18n="title">СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</title>
 
   <!-- Canonical + OG/Twitter (абсолютні URL) -->
@@ -35,6 +35,10 @@
       --btn-bg:#fff; --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720;
       --accent:#3d77ff; --glow1:rgba(68,118,255,.28); --glow2:rgba(255,160,62,.16);
       --muted:#6b7280;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
     [data-theme="dark"]{
       --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06);
@@ -53,68 +57,85 @@
         radial-gradient(700px 420px at 20% 90%, var(--glow2), transparent 65%),
         repeating-linear-gradient(to bottom, var(--stripe) 0, var(--stripe) 1px, transparent 1px, transparent 24px);
       background-attachment:fixed,fixed,fixed;
+      padding-bottom:var(--safe-bottom);
     }
 
     /* Логотип */
-    .brand{position:fixed;left:14px;top:14px;z-index:20;display:flex;align-items:center;gap:.5rem}
+    .brand{
+      position:fixed;left:calc(14px + var(--safe-left));top:calc(10px + var(--safe-top));
+      z-index:20;display:flex;align-items:center;gap:.5rem
+    }
     .brand__link{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--text);box-shadow:0 2px 10px rgba(0,0,0,.06)}
     .brand__icon{width:22px;height:22px;display:block;color:var(--text)}
-    .brand__text{font-weight:800;letter-spacing:.01em;user-select:none}
+    .brand__text{font-weight:800;letter-spacing:.01em;user-select:none;font-size:14px}
 
-    .wrap{max-width:1100px;margin:36px auto;padding:0 16px}
+    .wrap{max-width:1100px;margin:calc(32px + var(--safe-top)) auto 36px;padding:0 16px}
     h1{
-      font-weight:800; text-transform:uppercase; letter-spacing:.02em;
-      text-align:center; margin:12px 0 8px;
-      font-size:clamp(28px,3.2vw,42px); line-height:1.12;
+      font-weight:800; text-transform:uppercase; letter-spacing:.01em;
+      text-align:center; margin:8px 0 6px;
+      /* компактніше на мобільному */
+      font-size:clamp(22px,5vw,42px); line-height:1.08;
+      word-break:break-word;
     }
-    .subtitle{ text-align:center; opacity:.9; margin-bottom:12px; font-weight:600 }
+    .subtitle{ text-align:center; opacity:.9; margin-bottom:10px; font-weight:600; font-size:clamp(13px,2.9vw,16px) }
 
-    .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+    .controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
     .ctrl{
-      appearance:none;border:1px solid var(--line);background:var(--btn-bg);border-radius:999px;padding:8px 12px;
-      font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;color:inherit;
+      appearance:none;border:1px solid var(--line);background:var(--btn-bg);border-radius:999px;padding:7px 10px;
+      font-weight:700;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;color:inherit;
     }
     .ctrl:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:transparent}
     .ctrl:hover{transform:translateY(-1px)}
     .ctrl small{opacity:.7;font-weight:600}
 
     .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;width:min(980px,98vw);margin:0 auto 10px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
-    .timer{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-    .tile{min-width:170px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--tile-bg);text-align:center}
-    .num{font-weight:800;letter-spacing:.02em;color:var(--num);transition:transform .18s ease,filter .18s ease;
-         font-size:clamp(40px,6vw,52px)}
+    .timer{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .tile{min-width:220px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--tile-bg);text-align:center}
+    .num{font-weight:800;letter-spacing:.01em;color:var(--num);transition:transform .18s ease,filter .18s ease;
+         font-size:clamp(28px,9vw,52px)}
     .num.flip{transform:translateY(-4px);filter:brightness(1.05)}
-    .label{font-size:13px;opacity:.82;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+    .label{font-size:12px;opacity:.82;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
 
-    .ad{display:flex;justify-content:center;align-items:center;margin:14px auto;width:100%}
+    .ad{display:flex;justify-content:center;align-items:center;margin:12px auto;width:100%}
     .ad--top{min-height:90px}.ad--mid{min-height:250px}.ad--bottom{min-height:90px}
 
     .share{display:flex;gap:.5rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px}
     .share__label{opacity:.8;font-weight:700}
-    .share__btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .75rem;border:1px solid var(--line);border-radius:999px;background:var(--btn-bg);text-decoration:none;color:inherit;font-weight:700;cursor:pointer}
+    .share__btn{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .7rem;border:1px solid var(--line);border-radius:999px;background:var(--btn-bg);text-decoration:none;color:inherit;font-weight:700;cursor:pointer}
     .share__btn svg{width:18px;height:18px;fill:currentColor;display:block}
     .share__btn:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:transparent}
     .share__btn:hover{transform:translateY(-1px)}
 
     .faq{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;width:min(980px,98vw);margin:10px auto}
     .faq summary{cursor:pointer;font-weight:700}
-    .footer{opacity:.75;font-size:13px;text-align:center;margin:16px 0}
+    .footer{opacity:.75;font-size:13px;text-align:center;margin:16px 0;padding-bottom:var(--safe-bottom)}
     .footer a{color:var(--accent);text-decoration:none}.footer a:hover{text-decoration:underline}
 
-    /* Модальне вікно для About/Privacy */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:saturate(120%) blur(2px);display:flex;align-items:center;justify-content:center;z-index:50}
+    /* Мобільні покращення */
+    @media (max-width:720px){
+      .tile{min-width:47%; padding:12px 12px}
+      .card{padding:12px}
+      .timer{gap:8px}
+      .wrap{margin:calc(26px + var(--safe-top)) auto 22px}
+      .brand__text{display:none} /* залишимо лише іконку для економії місця */
+    }
+    @media (max-width:360px){
+      .tile{min-width:100%}
+      .ctrl{font-size:12px;padding:6px 9px}
+      .share__btn{font-size:13px}
+    }
+
+    /* Модалка */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:saturate(120%) blur(2px);display:flex;align-items:center;justify-content:center;z-index:50;padding:10px 10px calc(10px + var(--safe-bottom))}
     .modal[hidden]{display:none}
-    .modal__card{background:var(--surface);border:1px solid var(--line);border-radius:16px;max-width:920px;width:min(92vw,920px);max-height:88vh;overflow:auto;padding:18px 18px 22px;box-shadow:0 18px 50px rgba(0,0,0,.18)}
-    .modal h1{font-size:26px;margin:4px 0 10px;text-transform:none;letter-spacing:0;text-align:left}
+    .modal__card{background:var(--surface);border:1px solid var(--line);border-radius:16px;max-width:920px;width:min(92vw,920px);max-height:88vh;overflow:auto;padding:16px 16px 20px;box-shadow:0 18px 50px rgba(0,0,0,.18)}
+    .modal h1{font-size:24px;margin:4px 0 8px;text-transform:none;letter-spacing:0;text-align:left}
     .modal h2{font-size:18px;margin:16px 0 6px}
     .modal p{line-height:1.55}
     .modal .muted{opacity:.7}
     .modal .close{position:sticky;top:-6px;float:right;border:1px solid var(--line);background:var(--btn-bg);border-radius:10px;padding:6px 10px;font-weight:700;cursor:pointer}
     .modal a{color:var(--accent);text-decoration:none}
     .modal a:hover{text-decoration:underline}
-
-    @media (max-width:540px){.tile{min-width:46%}}
-    @media (prefers-reduced-motion:reduce){.num{transition:none}}
   </style>
 </head>
 <body>
@@ -162,10 +183,10 @@
       <div class="share" id="share" aria-label="Share">
         <span class="share__label" data-i18n="share">Поширити:</span>
         <a id="share-x" class="share__btn" href="#" rel="noopener" aria-label="Share on X">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8л4.6 6 6.3-6Z"/></svg> X
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg> X
         </a>
         <a id="share-fb" class="share__btn" href="#" rel="noopener" aria-label="Share on Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6л.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
         </a>
       </div>
     </div>
@@ -229,8 +250,7 @@
 
     /* ===== I18N ===== */
     const I18N = {
-      uk:{
-        title:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
+      uk:{title:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
         h1:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
         subtitle:"Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.",
         theme:"Тема:",sound:"Звук:",lang:"Мова:",
@@ -239,54 +259,12 @@
         share:"Поширити:",faqQ:"Як рахується час?",
         faqA:"Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST), що відповідає <b>17:00 UTC</b>. Рахуємо різницю між вашою локальною датою та цією фіксованою міткою.",
         manageConsent:"Налаштування cookies",privacy:"Політика конфіденційності",about:"Про сайт",donate:"Підтримати",
-
         aboutTitle:"Про сайт",
-        aboutHtml: `
-          <p><strong>Presidency Clock</strong> — інформативний лічильник у межах чинного законодавства США. 
-          Сайт не несе жодного негативного підтексту і має на меті лише інформування. 
-          Це також нагадування, що час для правильних історичних справ спливає все швидше.</p>
-          <p>Для зв'язку: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p>
-          <h2>Як вбудувати на свій сайт</h2>
-          <p>Скопіюйте фрагмент коду:</p>
-          <pre style="white-space:pre-wrap;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;overflow:auto">&lt;iframe
-  src="https://presidencyclock.com/?embed=1&amp;lang=uk&amp;theme=auto&amp;sound=off"
-  width="320" height="140" style="border:0;overflow:hidden" loading="lazy"
-  title="Presidency Clock"&gt;&lt;/iframe&gt;</pre>
-        `,
-
+        aboutHtml:`<p><strong>Presidency Clock</strong> — інформативний лічильник у межах чинного законодавства США. Сайт не несе жодного негативного підтексту і має на меті лише інформування. Це також нагадування, що час для правильних історичних справ спливає все швидше.</p><p>Для зв'язку: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Як вбудувати на свій сайт</h2><p>Скопіюйте фрагмент коду:</p><pre style="white-space:pre-wrap;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;overflow:auto">&lt;iframe src="https://presidencyclock.com/?embed=1&amp;lang=uk&amp;theme=auto&amp;sound=off" width="320" height="140" style="border:0;overflow:hidden" loading="lazy" title="Presidency Clock"&gt;&lt;/iframe&gt;</pre>`,
         privacyTitle:"Політика конфіденційності",
-        privacyHtml: `
-          <h2>Хто ми</h2>
-          <p>Presidency Clock (<a href="https://presidencyclock.com" target="_blank" rel="noopener">presidencyclock.com</a>) — простий сайт-лічильник.</p>
+        privacyHtml:`<h2>Хто ми</h2><p>Presidency Clock (<a href="https://presidencyclock.com" target="_blank" rel="noopener">presidencyclock.com</a>) — простий сайт-лічильник.</p><h2>Які дані ми обробляємо</h2><ul><li><b>Налаштування</b> (мова, тема, звук) — зберігаються у вашому браузері через <code>localStorage</code>.</li><li><b>Файли cookie</b> можуть встановлюватися службою реклами Google AdSense для показу персоналізованої/неперсоналізованої реклами.</li></ul><h2>Реклама (Google AdSense)</h2><p>Сторонні постачальники, зокрема Google, показують оголошення на цьому сайті. Керуйте персоналізацією та дізнайтесь більше:</p><ul><li><a href="https://adssettings.google.com/" target="_blank" rel="noopener">Налаштування реклами Google</a></li><li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Як Google використовує дані та cookie</a></li></ul><p>Для користувачів ЄЕА/ВБ ми можемо показувати панель згоди (CMP) для вибору цілей обробки.</p><h2>Права користувачів</h2><p>Залежно від вашої юрисдикції ви можете мати права на доступ, виправлення, видалення або обмеження обробки персональних даних. Надішліть запит нам.</p><h2>Контакти</h2><p>Email: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Зміни</h2><p>Ми можемо періодично оновлювати цю сторінку. Актуальна версія завжди доступна за цією адресою.</p>`},
 
-          <h2>Які дані ми обробляємо</h2>
-          <ul>
-            <li><b>Налаштування</b> (мова, тема, звук) — зберігаються у вашому браузері через <code>localStorage</code>.</li>
-            <li><b>Файли cookie</b> можуть встановлюватися службою реклами Google AdSense для показу персоналізованої/неперсоналізованої реклами.</li>
-          </ul>
-
-          <h2>Реклама (Google AdSense)</h2>
-          <p>Сторонні постачальники, зокрема Google, показують оголошення на цьому сайті. 
-          Ви можете керувати персоналізацією реклами або дізнатися більше:</p>
-          <ul>
-            <li><a href="https://adssettings.google.com/" target="_blank" rel="noopener">Налаштування реклами Google</a></li>
-            <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Як Google використовує дані та cookie</a></li>
-          </ul>
-          <p>Для користувачів ЄЕА/ВБ ми можемо показувати панель згоди (CMP) для вибору цілей обробки.</p>
-
-          <h2>Права користувачів</h2>
-          <p>Залежно від вашої юрисдикції ви можете мати права на доступ, виправлення, видалення або обмеження обробки персональних даних. Надішліть запит нам.</p>
-
-          <h2>Контакти</h2>
-          <p>Email: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p>
-
-          <h2>Зміни цієї політики</h2>
-          <p>Ми можемо періодично оновлювати цю сторінку. Актуальна версія завжди доступна за цією адресою.</p>
-        `
-      },
-
-      en:{
-        title:"HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?",
+      en:{title:"HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?",
         h1:"HOW LONG DOES DONALD TRUMP<br>HAVE LEFT AS PRESIDENT?",
         subtitle:"Countdown to <b>January 20, 2029, 12:00 (Washington)</b>.",
         theme:"Theme:", sound:"Sound:", lang:"Language:",
@@ -295,58 +273,60 @@
         share:"Share:", faqQ:"How is the time calculated?",
         faqA:"We count down to <b>January 20, 2029, 12:00</b> Washington time (EST), which equals <b>17:00 UTC</b>. We compute the difference between your local time and this fixed timestamp.",
         manageConsent:"Cookie settings", privacy:"Privacy policy", about:"About", donate:"Support",
-
         aboutTitle:"About",
-        aboutHtml: `
-          <p><strong>Presidency Clock</strong> is an informational countdown within the laws of the United States.
-          The site carries no negative connotations — it exists purely to inform.
-          It's also a reminder that time for the right historical deeds is running out.</p>
-          <p>Contact: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p>
-          <h2>Embed on your site</h2>
-          <p>Copy this snippet:</p>
-          <pre style="white-space:pre-wrap;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;overflow:auto">&lt;iframe
-  src="https://presidencyclock.com/?embed=1&amp;lang=en&amp;theme=auto&amp;sound=off"
-  width="320" height="140" style="border:0;overflow:hidden" loading="lazy"
-  title="Presidency Clock"&gt;&lt;/iframe&gt;</pre>
-        `,
-
+        aboutHtml:`<p><strong>Presidency Clock</strong> is an informational countdown within the laws of the United States. The site carries no negative connotations — it exists purely to inform. It's also a reminder that time for the right historical deeds is running out.</p><p>Contact: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Embed on your site</h2><p>Copy this snippet:</p><pre style="white-space:pre-wrap;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;overflow:auto">&lt;iframe src="https://presidencyclock.com/?embed=1&amp;lang=en&amp;theme=auto&amp;sound=off" width="320" height="140" style="border:0;overflow:hidden" loading="lazy" title="Presidency Clock"&gt;&lt;/iframe&gt;</pre>`,
         privacyTitle:"Privacy policy",
-        privacyHtml: `
-          <h2>Who we are</h2>
-          <p>Presidency Clock (<a href="https://presidencyclock.com" target="_blank" rel="noopener">presidencyclock.com</a>) is a simple countdown site.</p>
+        privacyHtml:`<h2>Who we are</h2><p>Presidency Clock (<a href="https://presidencyclock.com" target="_blank" rel="noopener">presidencyclock.com</a>) is a simple countdown site.</p><h2>What data we process</h2><ul><li><b>Preferences</b> (language, theme, sound) stored locally in your browser via <code>localStorage</code>.</li><li><b>Cookies</b> may be set by Google AdSense to serve personalized/non-personalized ads.</li></ul><h2>Advertising (Google AdSense)</h2><p>Third-party vendors, including Google, serve ads on this site. Manage ad personalization and learn more:</p><ul><li><a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a></li><li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">How Google uses data & cookies</a></li></ul><p>For users in the EEA/UK we may display a consent dialog (CMP) to select purposes.</p><h2>Your rights</h2><p>Depending on your jurisdiction you may have rights to access, rectify, delete or restrict processing. Send your request to us.</p><h2>Contact</h2><p>Email: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Changes</h2><p>We may update this page from time to time. The current version is always available at this address.</p>`},
 
-          <h2>What data we process</h2>
-          <ul>
-            <li><b>Preferences</b> (language, theme, sound) stored locally in your browser via <code>localStorage</code>.</li>
-            <li><b>Cookies</b> may be set by Google AdSense to serve personalized/non-personalized ads.</li>
-          </ul>
+      de:{title:"WIE LANGE IST DONALD TRUMP NOCH PRÄSIDENT?",
+        h1:"WIE LANGE IST DONALD TRUMP<br>NOCH PRÄSIDENT?",
+        subtitle:"Countdown bis <b>20. Januar 2029, 12:00 (Washington)</b>.",
+        theme:"Thema:", sound:"Ton:", lang:"Sprache:",
+        soundOff:"Aus", soundElectronic:"Elektronisch", soundClassic:"Klassisch",
+        days:"Tage", hours:"Stunden", minutes:"Minuten", seconds:"Sekunden",
+        share:"Teilen:", faqQ:"Wie wird die Zeit berechnet?",
+        faqA:"Wir zählen bis zum <b>20. Januar 2029, 12:00</b> Washington-Zeit (EST), entsprechend <b>17:00 UTC</b>. Wir berechnen die Differenz zwischen Ihrer lokalen Zeit und diesem festen Zeitpunkt.",
+        manageConsent:"Cookie-Einstellungen", privacy:"Datenschutzerklärung", about:"Über die Seite", donate:"Unterstützen",
+        aboutTitle:"Über die Seite",
+        aboutHtml:`<p><strong>Presidency Clock</strong> ist ein rein informativer Countdown im Rahmen der US-Gesetze. Die Seite hat keinerlei negative Konnotation – sie dient ausschließlich der Information. Zugleich erinnert sie daran, dass die Zeit für richtige historische Taten verrinnt.</p><p>Kontakt: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Einbindung auf Ihrer Website</h2><p>Kopieren Sie dieses Snippet:</p><pre style="white-space:pre-wrap;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;overflow:auto">&lt;iframe src="https://presidencyclock.com/?embed=1&amp;lang=de&amp;theme=auto&amp;sound=off" width="320" height="140" style="border:0;overflow:hidden" loading="lazy" title="Presidency Clock"&gt;&lt;/iframe&gt;</pre>`,
+        privacyTitle:"Datenschutzerklärung",
+        privacyHtml:`<h2>Wer wir sind</h2><p>Presidency Clock (<a href="https://presidencyclock.com" target="_blank" rel="noopener">presidencyclock.com</a>) ist eine einfache Countdown-Seite.</p><h2>Welche Daten wir verarbeiten</h2><ul><li><b>Einstellungen</b> (Sprache, Thema, Ton) werden lokal im Browser via <code>localStorage</code> gespeichert.</li><li><b>Cookies</b> können von Google AdSense gesetzt werden, um personalisierte/nicht-personalisierte Werbung auszuliefern.</li></ul><h2>Werbung (Google AdSense)</h2><p>Drittanbieter, einschließlich Google, zeigen Anzeigen auf dieser Seite. Verwalten Sie die Personalisierung und erfahren Sie mehr:</p><ul><li><a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google-Anzeigen­einstellungen</a></li><li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Wie Google Daten & Cookies nutzt</a></li></ul><p>Für Nutzer im EWR/VK können wir einen Einwilligungsdialog (CMP) anzeigen.</p><h2>Ihre Rechte</h2><p>Je nach Rechtsraum haben Sie Rechte auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung. Senden Sie uns Ihre Anfrage.</p><h2>Kontakt</h2><p>E-Mail: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Änderungen</h2><p>Diese Seite kann gelegentlich aktualisiert werden. Die aktuelle Version ist stets hier verfügbar.</p>`},
 
-          <h2>Advertising (Google AdSense)</h2>
-          <p>Third-party vendors, including Google, serve ads on this site. Manage ad personalization and learn more:</p>
-          <ul>
-            <li><a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a></li>
-            <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">How Google uses data & cookies</a></li>
-          </ul>
-          <p>For users in the EEA/UK we may display a consent dialog (CMP) to select purposes.</p>
+      es:{title:"¿CUÁNTO TIEMPO LE QUEDA A DONALD TRUMP COMO PRESIDENTE?",
+        h1:"¿CUÁNTO TIEMPO LE QUEDA A DONALD TRUMP<br>COMO PRESIDENTE?",
+        subtitle:"Cuenta regresiva hasta el <b>20 de enero de 2029, 12:00 (Washington)</b>.",
+        theme:"Tema:", sound:"Sonido:", lang:"Idioma:",
+        soundOff:"Desactivado", soundElectronic:"Electrónico", soundClassic:"Clásico",
+        days:"Días", hours:"Horas", minutes:"Minutos", seconds:"Segundos",
+        share:"Compartir:", faqQ:"¿Cómo se calcula el tiempo?",
+        faqA:"Contamos hasta el <b>20 de enero de 2029, 12:00</b> hora de Washington (EST), que equivale a <b>17:00 UTC</b>. Calculamos la diferencia entre tu hora local y esta marca fija.",
+        manageConsent:"Configuración de cookies", privacy:"Política de privacidad", about:"Acerca del sitio", donate:"Apoyar",
+        aboutTitle:"Acerca del sitio",
+        aboutHtml:`<p><strong>Presidency Clock</strong> es un contador informativo dentro de las leyes de EE. UU. El sitio no tiene connotaciones negativas; existe solo para informar. También recuerda que el tiempo para las acciones históricas correctas se agota.</p><p>Contacto: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Incrustar en tu sitio</h2><p>Copia este fragmento:</p><pre style="white-space:pre-wrap;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;overflow:auto">&lt;iframe src="https://presidencyclock.com/?embed=1&amp;lang=es&amp;theme=auto&amp;sound=off" width="320" height="140" style="border:0;overflow:hidden" loading="lazy" title="Presidency Clock"&gt;&lt;/iframe&gt;</pre>`,
+        privacyTitle:"Política de privacidad",
+        privacyHtml:`<h2>Quiénes somos</h2><p>Presidency Clock (<a href="https://presidencyclock.com" target="_blank" rel="noopener">presidencyclock.com</a>) es un sitio de cuenta regresiva.</p><h2>Qué datos procesamos</h2><ul><li><b>Preferencias</b> (idioma, tema, sonido) guardadas localmente en tu navegador mediante <code>localStorage</code>.</li><li><b>Cookies</b> que puede establecer Google AdSense para mostrar anuncios personalizados/no personalizados.</li></ul><h2>Publicidad (Google AdSense)</h2><p>Proveedores externos, incluido Google, muestran anuncios en este sitio. Gestiona la personalización y obtén más información:</p><ul><li><a href="https://adssettings.google.com/" target="_blank" rel="noopener">Configuración de anuncios de Google</a></li><li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Cómo usa Google los datos y las cookies</a></li></ul><p>Para usuarios del EEE/Reino Unido podemos mostrar un diálogo de consentimiento (CMP).</p><h2>Tus derechos</h2><p>Según tu jurisdicción, puedes tener derechos de acceso, rectificación, supresión o restricción del tratamiento. Envíanos tu solicitud.</p><h2>Contacto</h2><p>Email: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Cambios</h2><p>Podemos actualizar esta página ocasionalmente. La versión vigente siempre estará disponible aquí.</p>`},
 
-          <h2>Your rights</h2>
-          <p>Depending on your jurisdiction you may have rights to access, rectify, delete or restrict processing. Send your request to us.</p>
-
-          <h2>Contact</h2>
-          <p>Email: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p>
-
-          <h2>Changes</h2>
-          <p>We may update this page from time to time. The current version is always available at this address.</p>
-        `
-      }
+      fr:{title:"COMBIEN DE TEMPS RESTE-T-IL À DONALD TRUMP COMME PRÉSIDENT ?",
+        h1:"COMBIEN DE TEMPS RESTE-T-IL À DONALD TRUMP<br>COMME PRÉSIDENT ?",
+        subtitle:"Compte à rebours jusqu’au <b>20 janvier 2029, 12:00 (Washington)</b>.",
+        theme:"Thème :", sound:"Son :", lang:"Langue :",
+        soundOff:"Désactivé", soundElectronic:"Électronique", soundClassic:"Classique",
+        days:"Jours", hours:"Heures", minutes:"Minutes", seconds:"Secondes",
+        share:"Partager :", faqQ:"Comment le temps est-il calculé ?",
+        faqA:"Nous comptons jusqu’au <b>20 janvier 2029, 12:00</b> heure de Washington (EST), soit <b>17:00 UTC</b>. Nous calculons la différence entre votre heure locale et cet instant fixé.",
+        manageConsent:"Paramètres des cookies", privacy:"Politique de confidentialité", about:"À propos", donate:"Soutenir",
+        aboutTitle:"À propos",
+        aboutHtml:`<p><strong>Presidency Clock</strong> est un compte à rebours informatif conforme aux lois des États-Unis. Le site n’a aucune connotation négative ; il vise uniquement à informer. C’est aussi un rappel que le temps pour les bonnes actions historiques s’écoule.</p><p>Contact : <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Intégrer sur votre site</h2><p>Copiez ce code :</p><pre style="white-space:pre-wrap;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;overflow:auto">&lt;iframe src="https://presidencyclock.com/?embed=1&amp;lang=fr&amp;theme=auto&amp;sound=off" width="320" height="140" style="border:0;overflow:hidden" loading="lazy" title="Presidency Clock"&gt;&lt;/iframe&gt;</pre>`,
+        privacyTitle:"Politique de confidentialité",
+        privacyHtml:`<h2>Qui sommes-nous</h2><p>Presidency Clock (<a href="https://presidencyclock.com" target="_blank" rel="noopener">presidencyclock.com</a>) est un simple site de compte à rebours.</p><h2>Données traitées</h2><ul><li><b>Préférences</b> (langue, thème, son) stockées localement dans votre navigateur via <code>localStorage</code>.</li><li><b>Cookies</b> susceptibles d’être définis par Google AdSense pour diffuser des annonces personnalisées ou non.</li></ul><h2>Publicité (Google AdSense)</h2><p>Des fournisseurs tiers, dont Google, diffusent des annonces sur ce site. Gérez la personnalisation et en savoir plus :</p><ul><li><a href="https://adssettings.google.com/" target="_blank" rel="noopener">Paramètres des annonces Google</a></li><li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Comment Google utilise les données et les cookies</a></li></ul><p>Pour les utilisateurs de l’EEE/R.-U., nous pouvons afficher une fenêtre de consentement (CMP).</p><h2>Vos droits</h2><p>Selon votre juridiction, vous pouvez disposer de droits d’accès, de rectification, d’effacement ou de limitation du traitement. Envoyez-nous votre demande.</p><h2>Contact</h2><p>Email : <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p><h2>Modifications</h2><p>Nous pouvons mettre à jour cette page périodiquement. La version en vigueur est toujours disponible ici.</p>`}
     };
 
     /* ===== Storage ===== */
     const storage={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch{return d}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
 
     /* ===== State ===== */
-    let lang=(qs.get('lang')||storage.get('lang',navigator.language?.toLowerCase().startsWith('uk')?'uk':'en')).toLowerCase();
-    if(!['uk','en'].includes(lang)) lang='uk';
+    let lang=(qs.get('lang')||storage.get('lang',navigator.language?.slice(0,2).toLowerCase())).toLowerCase();
+    if(!['uk','en','de','es','fr'].includes(lang)) lang='uk';
     let theme=(qs.get('theme')||storage.get('theme','auto')).toLowerCase();
     if(!['auto','light','dark'].includes(theme)) theme='auto';
     let sound=(qs.get('sound')||storage.get('sound','off')).toLowerCase();
@@ -361,28 +341,30 @@
     function applyTheme(){
       const actual=theme==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):theme;
       document.documentElement.setAttribute('data-theme',actual);
-      const v=$('#valTheme'); if(v) v.textContent=theme[0].toUpperCase()+theme.slice(1);
+      $('#valTheme') && ($('#valTheme').textContent=theme[0].toUpperCase()+theme.slice(1));
       const tc=document.querySelector('meta[name="theme-color"]'); if(tc) tc.setAttribute('content',actual==='dark'?'#000000':'#f6f8fd');
       const textColor=getComputedStyle(document.documentElement).getPropertyValue('--text').trim()||(actual==='dark'?'#f2f5ff':'#0c1220');
       setFaviconFromColor(textColor);
     }
-    applyTheme();
-    try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(theme==='auto')applyTheme();});}catch{}
+    applyTheme(); try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(theme==='auto')applyTheme();});}catch{}
 
     /* ===== I18N render ===== */
     function t(k){return I18N[lang][k]}
     function applyI18n(){
-      document.documentElement.lang=(lang==='uk'?'uk':'en');
+      document.documentElement.lang=(lang==='uk'?'uk':lang);
       document.title=t('title');
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key=el.getAttribute('data-i18n');
         if(key==='h1'||key==='subtitle'||key==='faqA') el.innerHTML=t(key); else el.textContent=t(key);
       });
-      $('#valLang') && ($('#valLang').textContent=(lang==='uk'?'UA':'EN'));
+      $('#valLang') && ($('#valLang').textContent=(lang==='uk'?'UA':lang.toUpperCase()));
       $('#valSound') && ($('#valSound').textContent=(sound==='off'?t('soundOff'):(sound==='electronic'?t('soundElectronic'):t('soundClassic'))));
-      const og=document.querySelector('meta[property="og:locale"]'); if(og) og.setAttribute('content',lang==='uk'?'uk_UA':'en_US');
+      const og=document.querySelector('meta[property="og:locale"]');
+      if(og){
+        const map={uk:'uk_UA',en:'en_US',de:'de_DE',es:'es_ES',fr:'fr_FR'};
+        og.setAttribute('content',map[lang]||'en_US');
+      }
       buildShare();
-      // якщо відкрите модальне — перерендеримо
       if(!$('#pageModal').hidden){ renderModal(currentPage); }
     }
     applyI18n();
@@ -407,13 +389,13 @@
     function prime(){ ensureAudio(); document.removeEventListener('click',prime); document.removeEventListener('keydown',prime); document.removeEventListener('touchstart',prime); }
     document.addEventListener('click',prime,{passive:true}); document.addEventListener('keydown',prime); document.addEventListener('touchstart',prime,{passive:true});
     function beepElectronic(){ if(!audioCtx) return; const o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type='square'; o.frequency.value=880; o.connect(g); g.connect(audioCtx.destination); const n=audioCtx.currentTime; g.gain.setValueAtTime(0.0001,n); g.gain.exponentialRampToValueAtTime(VOL,n+0.005); g.gain.exponentialRampToValueAtTime(0.0001,n+0.06); o.start(n); o.stop(n+0.08); }
-    function beepClassic(){ if(!audioCtx) return; const o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type='triangle'; o.frequency.value=3000; о.connect(g); g.connect(audioCtx.destination); const n=audioCtx.currentTime; g.gain.setValueAtTime(0.0001,n); g.gain.exponentialRampToValueAtTime(VOL*0.7,n+0.002); g.gain.exponentialRampToValueAtTime(0.0001,n+0.03); o.start(n); o.stop(n+0.04); }
+    function beepClassic(){ if(!audioCtx) return; const o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type='triangle'; o.frequency.value=3000; o.connect(g); g.connect(audioCtx.destination); const n=audioCtx.currentTime; g.gain.setValueAtTime(0.0001,n); g.gain.exponentialRampToValueAtTime(VOL*0.7,n+0.002); г.gain.exponentialRampToValueAtTime(0.0001,n+0.03); o.start(n); o.stop(n+0.04); }
     function tickSound(){ if(sound==='off'||!audioCtx) return; try{ (sound==='electronic'?beepElectronic:beepClassic)(); }catch{} }
 
     /* ===== Кнопки ===== */
     $('#btnTheme')?.addEventListener('click',()=>{ theme=theme==='auto'?'light':theme==='light'?'dark':'auto'; storage.set('theme',theme); applyTheme(); });
     $('#btnSound')?.addEventListener('click',()=>{ sound=sound==='off'?'electronic':sound==='electronic'?'classic':'off'; storage.set('sound',sound); ensureAudio(); applyI18n(); });
-    $('#btnLang')?.addEventListener('click',()=>{ lang=(lang==='uk')?'en':'uk'; storage.set('lang',lang); applyI18n(); });
+    $('#btnLang')?.addEventListener('click',()=>{ const order=['uk','en','de','es','fr']; const i=order.indexOf(lang); lang=order[(i+1)%order.length]; storage.set('lang',lang); applyI18n(); });
 
     /* ===== Share (поп-ап/вкладка) ===== */
     function buildShare(){
@@ -422,11 +404,13 @@
       if(!shareX && !shareFB) return;
 
       const u = new URL(location.href);
-      u.searchParams.delete('embed'); u.searchParams.delete('adtest'); u.searchParams.delete('page');
+      ['embed','adtest','page'].forEach(p=>u.searchParams.delete(p));
       const shareUrl = u.toString();
       const text = (lang==='uk'
         ? 'СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?'
-        : 'HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?');
+        : (lang==='de'?'WIE LANGE IST DONALD TRUMP NOCH PRÄSIDENT?'
+        : (lang==='es'?'¿CUÁNTO TIEMPO LE QUEDA A DONALD TRUMP COMO PRESIDENTE?'
+        : (lang==='fr'?'COMBIEN DE TEMPS RESTE-T-IL À DONALD TRUMP COMME PRÉSIDENT ?':'HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?'))));
 
       function popup(e){
         const a=e.currentTarget; const w=580,h=420,y=Math.max(0,(screen.height-h)/2),x=Math.max(0,(screen.width-w)/2);
@@ -458,7 +442,11 @@
       $('#modalTitle').innerHTML = title;
       $('#modalBody').innerHTML  = body;
       const d = new Date(); const iso = d.toISOString().slice(0,10);
-      $('#modalUpdated').textContent = (lang==='uk' ? ('Останнє оновлення: '+iso) : ('Last updated: '+iso));
+      $('#modalUpdated').textContent = (lang==='uk' ? ('Останнє оновлення: '+iso)
+        : lang==='de' ? ('Letzte Aktualisierung: '+iso)
+        : lang==='es' ? ('Última actualización: '+iso)
+        : lang==='fr' ? ('Dernière mise à jour : '+iso)
+        : ('Last updated: '+iso));
       modal.hidden = false;
     }
     function closeModal(){
@@ -466,7 +454,6 @@
       currentPage = null;
       const url = new URL(location.href); url.searchParams.delete('page'); history.replaceState(null,'',url);
     }
-    // відкриття по кліку у футері
     $('#linkAbout')?.addEventListener('click', (e)=>{ e.preventDefault(); const u=new URL(location.href); u.searchParams.set('page','about'); history.replaceState(null,'',u); renderModal('about'); });
     $('#linkPrivacy')?.addEventListener('click', (e)=>{ e.preventDefault(); const u=new URL(location.href); u.searchParams.set('page','privacy'); history.replaceState(null,'',u); renderModal('privacy'); });
     $('#closeModal')?.addEventListener('click', closeModal);
@@ -499,9 +486,15 @@
     }
 
     /* ===== Cookie-заглушка ===== */
-    $('#consent')?.addEventListener('click',(e)=>{e.preventDefault(); alert(lang==='uk'?'Тут відкриватиметься панель керування cookie (CMP).':'A cookie consent (CMP) panel will open here.');});
+    $('#consent')?.addEventListener('click',(e)=>{e.preventDefault(); alert(
+      lang==='uk'?'Тут відкриватиметься панель керування cookie (CMP).':
+      lang==='de'?'Hier wird ein Cookie-Zustimmungsdialog (CMP) geöffnet.':
+      lang==='es'?'Aquí aparecerá un panel de consentimiento de cookies (CMP).':
+      lang==='fr'?'Ici s’ouvrira une fenêtre de consentement (CMP) pour les cookies.':
+      'A cookie consent (CMP) panel will open here.'
+    );});
 
-    console.log('PresidencyClock ready ✓',{embed:isEmbed,adtest:adTest});
+    console.log('PresidencyClock ready ✓',{embed:isEmbed,adtest:adTest,lang});
   })();
   </script>
 
