@@ -22,11 +22,15 @@
   <meta name="twitter:title" content="СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?">
   <meta name="twitter:description" content="Живий лічильник до 20 січня 2029, 12:00 (Вашингтон).">
 
-  <!-- Фавікон (оновлюється JS під тему) -->
+  <!-- AdSense account meta -->
+  <meta name="google-adsense-account" content="ca-pub-5023415479696725">
+
+  <!-- Фавікон в SVG (оновлюється під тему) -->
   <link id="favicon" rel="icon" type="image/svg+xml" href="">
   <meta name="theme-color" content="#f6f8fd">
 
   <style>
+    /* ===== ТЕМИ ===== */
     :root{
       --bg:#f6f8fd; --stripe:rgba(13,17,23,.06); --surface:#fff; --tile-bg:#f3f5fa;
       --btn-bg:#fff; --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720;
@@ -52,7 +56,7 @@
       background-attachment:fixed,fixed,fixed;
     }
 
-    /* ЛОГО ліворуч зверху */
+    /* ===== ЛОГО зверху зліва ===== */
     .brand{position:fixed;left:14px;top:14px;z-index:20;display:flex;align-items:center;gap:.5rem}
     .brand__link{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--text);box-shadow:0 2px 10px rgba(0,0,0,.06)}
     .brand__icon{width:22px;height:22px;display:block;color:var(--text)}
@@ -85,7 +89,6 @@
 
     .ad{display:flex;justify-content:center;align-items:center;margin:14px auto;width:100%}
     .ad--top{min-height:90px}.ad--mid{min-height:250px}.ad--bottom{min-height:90px}
-    .ad__ph{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--muted)}
 
     .share{display:flex;gap:.5rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px}
     .share__label{opacity:.8;font-weight:700}
@@ -130,7 +133,12 @@
 
     <!-- Реклама зверху -->
     <div class="ad ad--top" id="adTop">
-      <div class="ad__ph">Рекламний блок (responsive)</div>
+      <ins class="adsbygoogle"
+           style="display:block;min-height:90px"
+           data-ad-client="ca-pub-5023415479696725"
+           data-ad-slot="9877072514"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
     </div>
 
     <div class="card" id="card">
@@ -153,7 +161,14 @@
     </div>
 
     <!-- Реклама середина -->
-    <div class="ad ad--mid" id="adMid"><div class="ad__ph">Рекламний блок (rectangle)</div></div>
+    <div class="ad ad--mid" id="adMid">
+      <ins class="adsbygoogle"
+           style="display:block;min-height:250px"
+           data-ad-client="ca-pub-5023415479696725"
+           data-ad-slot="6745326926"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
 
     <details class="faq" id="faq">
       <summary data-i18n="faqQ">Як рахується час?</summary>
@@ -164,7 +179,14 @@
     </details>
 
     <!-- Реклама низ -->
-    <div class="ad ad--bottom" id="adBottom"><div class="ad__ph">Рекламний блок (responsive)</div></div>
+    <div class="ad ad--bottom" id="adBottom">
+      <ins class="adsbygoogle"
+           style="display:block;min-height:90px"
+           data-ad-client="ca-pub-5023415479696725"
+           data-ad-slot="5432245255"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
 
     <div class="footer" id="footer">
       <a id="consent" href="#" data-i18n="manageConsent">Налаштування cookies</a> •
@@ -178,11 +200,10 @@
   (function(){
     "use strict";
     try {
-
       /* ===== Конфіг ===== */
-      const INAUG_UTC = Date.UTC(2029,0,20,17,0,0); // 20 Jan 2029 17:00 UTC
+      const INAUG_UTC = Date.UTC(2029,0,20,17,0,0);
       const qs = new URLSearchParams(location.search);
-      const $ = (s)=>document.querySelector(s);
+      const $  = (s)=>document.querySelector(s);
       const isEmbed = qs.get('embed')==='1';
 
       /* ===== I18N ===== */
@@ -211,34 +232,29 @@
       const storage={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch{return d}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
 
       /* ===== State ===== */
-      let lang=(qs.get('lang')||storage.get('lang',navigator.language?.toLowerCase().startsWith('uk')?'uk':'en')).toLowerCase();
+      let lang =(qs.get('lang')||storage.get('lang',navigator.language?.toLowerCase().startsWith('uk')?'uk':'en')).toLowerCase();
       if(!['uk','en'].includes(lang)) lang='uk';
       let theme=(qs.get('theme')||storage.get('theme','auto')).toLowerCase();
       if(!['auto','light','dark'].includes(theme)) theme='auto';
-      let sound=(qs.get('sound')||storage.get('sound','off')).toLowerCase(); // off|electronic|classic
+      let sound=(qs.get('sound')||storage.get('sound','off')).toLowerCase();
       if(!['off','electronic','classic'].includes(sound)) sound='off';
 
       /* ===== Тема + фавікон ===== */
       function setFaviconFromColor(hex){
         const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='${hex}' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'><circle cx='32' cy='32' r='24'/><path d='M32 14v18l12 8'/></svg>`;
         const url = 'data:image/svg+xml,' + encodeURIComponent(svg);
-        const link = document.getElementById('favicon');
-        if(link) link.setAttribute('href', url);
+        const link = document.getElementById('favicon'); if(link) link.setAttribute('href', url);
       }
       function applyTheme(){
-        const actual = theme==='auto' ? (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light') : theme;
-        document.documentElement.setAttribute('data-theme', actual);
+        const actual=theme==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):theme;
+        document.documentElement.setAttribute('data-theme',actual);
         const v=$('#valTheme'); if(v) v.textContent=theme[0].toUpperCase()+theme.slice(1);
-        // оновити theme-color і фавікон під колір тексту
-        const tc = document.querySelector('meta[name="theme-color"]');
-        if(tc) tc.setAttribute('content', actual==='dark' ? '#000000' : '#f6f8fd');
+        const tc=document.querySelector('meta[name="theme-color"]'); if(tc) tc.setAttribute('content', actual==='dark' ? '#000000' : '#f6f8fd');
         const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text').trim() || (actual==='dark'?'#f2f5ff':'#0c1220');
         setFaviconFromColor(textColor);
       }
       applyTheme();
-      try{
-        matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(theme==='auto') applyTheme();});
-      }catch{}
+      try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(theme==='auto')applyTheme();});}catch{}
 
       /* ===== I18N render ===== */
       function t(k){return I18N[lang][k]}
@@ -268,9 +284,7 @@
         flip(elD,String(d)); flip(elH,String(h).padStart(2,'0')); flip(elM,String(m).padStart(2,'0')); flip(elS,String(s).padStart(2,'0'));
         tickSound();
       }
-      // стартуємо відразу
-      update();
-      setInterval(update,1000);
+      update(); setInterval(update,1000);
 
       /* ===== Sound ===== */
       let audioCtx=null, audioReady=false; const VOL=0.25;
@@ -304,11 +318,28 @@
       }
       buildShare();
 
+      /* ===== AdSense (не у віджеті) ===== */
+      function initAdSense(){
+        document.querySelectorAll('ins.adsbygoogle').forEach(()=>{
+          try{ (window.adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+        });
+      }
+      if(!isEmbed){
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725';
+        s.crossOrigin = 'anonymous';
+        s.onload = initAdSense;
+        document.head.appendChild(s);
+      }else{
+        // у віджеті рекламу не показуємо
+        $('#adTop')?.remove(); $('#adMid')?.remove(); $('#adBottom')?.remove();
+      }
+
       /* ===== Embed режим ===== */
       if(isEmbed){
         $('#brand')?.remove();
-        $('#controls')?.remove(); $('#adTop')?.remove(); $('#adMid')?.remove(); $('#adBottom')?.remove();
-        $('#share')?.remove(); $('#faq')?.remove(); $('#footer')?.remove();
+        $('#controls')?.remove(); $('#share')?.remove(); $('#faq')?.remove(); $('#footer')?.remove();
         const titleEl=$('#title'); if(titleEl) titleEl.style.display='none';
         const subtitleEl=$('#subtitle'); if(subtitleEl) subtitleEl.style.display='none';
         const card=$('#card'); if(card){ card.style.background='transparent'; card.style.boxShadow='none'; card.style.border='0'; }
@@ -320,7 +351,7 @@
       /* ===== Cookie (заглушка) ===== */
       $('#consent')?.addEventListener('click',(e)=>{e.preventDefault(); alert(lang==='uk'?'Тут відкриватиметься панель керування cookie (CMP).':'A cookie consent (CMP) panel will open here.');});
 
-      console.log('PresidencyClock: single-file ready ✓');
+      console.log('PresidencyClock ready. Ads:', !isEmbed);
 
     } catch(err){
       console.error('Init error:', err);
