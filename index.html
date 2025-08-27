@@ -5,28 +5,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title data-i18n="title">СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</title>
 
-  <!-- Fonts (можеш забрати, якщо твій CSP не любить зовнішні стилі) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Condensed:wght@700;800&display=swap" rel="stylesheet">
-
-  <!-- Canonical & Social -->
-  <link rel="canonical" href="https://presidencyclock.com/">
-  <meta property="og:url" content="https://presidencyclock.com/">
+  <!-- OG / Twitter (og.jpg має лежати поруч у корені сайту) -->
+  <link rel="canonical" href="./">
+  <meta property="og:url" content="./">
   <meta property="og:type" content="website">
   <meta property="og:title" content="СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?">
   <meta property="og:description" content="Живий лічильник до 20 січня 2029, 12:00 (Вашингтон).">
-  <meta property="og:image" content="https://presidencyclock.com/og.jpg">
+  <meta property="og:image" content="./og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Presidency Clock">
   <meta property="og:locale" content="uk_UA">
   <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://presidencyclock.com/og.jpg">
+  <meta name="twitter:image" content="./og.jpg">
   <meta name="twitter:title" content="СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?">
   <meta name="twitter:description" content="Живий лічильник до 20 січня 2029, 12:00 (Вашингтон).">
 
   <style>
+    /* ===== ТЕМИ ===== */
     :root{
       --bg:#f6f8fd; --stripe:rgba(13,17,23,.06); --surface:#fff; --tile-bg:#f3f5fa;
       --btn-bg:#fff; --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720;
@@ -36,29 +33,34 @@
     [data-theme="dark"]{
       --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06);
       --tile-bg:rgba(255,255,255,.05); --btn-bg:rgba(255,255,255,.06); --line:rgba(255,255,255,.16);
-      --text:#f2f5ff; --num:#fff; --accent:#8ab8ff; --glow1:rgba(78,128,255,.20);
-      --glow2:rgba(255,120,0,.08); --muted:#a1a1aa;
+      --text:#f2f5ff; --num:#fff; --accent:#8ab8ff; --glow1:rgba(78,128,255,.20); --glow2:rgba(255,120,0,.08);
+      --muted:#a1a1aa;
     }
+
     html,body{height:100%}
     body{
-      margin:0; font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--text); background:var(--bg);
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text); background:var(--bg);
       background-image:
         radial-gradient(900px 480px at 78% 18%, var(--glow1), transparent 60%),
         radial-gradient(700px 420px at 20% 90%, var(--glow2), transparent 65%),
         repeating-linear-gradient(to bottom, var(--stripe) 0, var(--stripe) 1px, transparent 1px, transparent 24px);
       background-attachment: fixed,fixed,fixed;
     }
+
     .wrap{max-width:1100px;margin:36px auto;padding:0 16px}
     h1{
-      font-family:"Roboto Condensed","Inter",system-ui,sans-serif;
-      text-transform:uppercase; letter-spacing:.02em; font-weight:800;
-      font-size:clamp(28px,3.2vw,42px); line-height:1.12; text-align:center; margin:12px 0 8px;
+      font-weight:800; text-transform:uppercase; letter-spacing:.02em;
+      text-align:center; margin:12px 0 8px;
+      font-size:clamp(28px,3.2vw,42px); line-height:1.12;
     }
-    .subtitle{text-align:center;opacity:.9;margin-bottom:12px;font-weight:600}
+    .subtitle{ text-align:center; opacity:.9; margin-bottom:12px; font-weight:600 }
+
     .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
     .ctrl{
       appearance:none;border:1px solid var(--line);background:var(--btn-bg);border-radius:999px;padding:8px 12px;
-      font:700 14px/1 "Inter",system-ui;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;color:inherit;
+      font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;color:inherit;
     }
     .ctrl:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:transparent}
     .ctrl:hover{transform:translateY(-1px)}
@@ -67,7 +69,8 @@
     .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;width:min(980px,98vw);margin:0 auto 10px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
     .timer{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
     .tile{min-width:170px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--tile-bg);text-align:center}
-    .num{font-family:"Roboto Condensed","Inter",system-ui,sans-serif;font-size:clamp(40px,6vw,52px);font-weight:800;letter-spacing:.02em;color:var(--num);transition:transform .18s ease,filter .18s ease}
+    .num{font-weight:800;letter-spacing:.02em;color:var(--num);transition:transform .18s ease,filter .18s ease;
+         font-size:clamp(40px,6vw,52px)}
     .num.flip{transform:translateY(-4px);filter:brightness(1.05)}
     .label{font-size:13px;opacity:.82;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
 
@@ -96,57 +99,45 @@
     <h1 id="title" data-i18n="h1">СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</h1>
     <div class="subtitle" id="subtitle" data-i18n="subtitle">Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.</div>
 
-    <!-- Контроли -->
-    <div class="controls" role="group" aria-label="Controls" id="controls">
-      <button id="btnTheme" class="ctrl" type="button"><small id="lblTheme" data-i18n="theme">Тема:</small> <span id="valTheme">Auto</span></button>
-      <button id="btnSound" class="ctrl" type="button"><small id="lblSound" data-i18n="sound">Звук:</small> <span id="valSound" data-i18n="soundOff">Вимкнено</span></button>
-      <button id="btnLang"  class="ctrl" type="button"><small id="lblLang" data-i18n="lang">Мова:</small> <span id="valLang">UA</span></button>
+    <div class="controls" id="controls" role="group" aria-label="Controls">
+      <button id="btnTheme" class="ctrl" type="button"><small data-i18n="theme">Тема:</small> <span id="valTheme">Auto</span></button>
+      <button id="btnSound" class="ctrl" type="button"><small data-i18n="sound">Звук:</small> <span id="valSound" data-i18n="soundOff">Вимкнено</span></button>
+      <button id="btnLang"  class="ctrl" type="button"><small data-i18n="lang">Мова:</small> <span id="valLang">UA</span></button>
     </div>
 
     <!-- Реклама зверху -->
     <div class="ad ad--top" id="adTop">
-      <!-- AdSense (розкоментуй і підстав свої дані)
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-      -->
-      <div class="ad__ph" aria-hidden="true">Рекламний блок (responsive)</div>
+      <!-- Тут вставиш AdSense (коли буде схвалення) -->
+      <div class="ad__ph">Рекламний блок (responsive)</div>
     </div>
 
-    <!-- Лічильник -->
     <div class="card" id="card">
       <div id="timer" class="timer" aria-live="polite">
-        <div class="tile"><div class="num" id="d">—</div><div class="label" id="labD" data-i18n="days">Днів</div></div>
-        <div class="tile"><div class="num" id="h">—</div><div class="label" id="labH" data-i18n="hours">Годин</div></div>
-        <div class="tile"><div class="num" id="m">—</div><div class="label" id="labM" data-i18n="minutes">Хвилин</div></div>
-        <div class="tile"><div class="num" id="s">—</div><div class="label" id="labS" data-i18n="seconds">Секунд</div></div>
+        <div class="tile"><div class="num" id="d">—</div><div class="label" data-i18n="days">Днів</div></div>
+        <div class="tile"><div class="num" id="h">—</div><div class="label" data-i18n="hours">Годин</div></div>
+        <div class="tile"><div class="num" id="m">—</div><div class="label" data-i18n="minutes">Хвилин</div></div>
+        <div class="tile"><div class="num" id="s">—</div><div class="label" data-i18n="seconds">Секунд</div></div>
       </div>
 
-      <!-- Share -->
-      <div class="share" aria-label="Share" id="share">
-        <span class="share__label" id="shareLabel" data-i18n="share">Поширити:</span>
-        <a id="share-x" class="share__btn" href="#" rel="noopener" title="X" target="_blank" aria-label="Share on X">
+      <div class="share" id="share" aria-label="Share">
+        <span class="share__label" data-i18n="share">Поширити:</span>
+        <a id="share-x" class="share__btn" href="#" rel="noopener" target="_blank" aria-label="Share on X">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg> X
         </a>
-        <a id="share-fb" class="share__btn" href="#" rel="noopener" title="Facebook" target="_blank" aria-label="Share on Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
+        <a id="share-fb" class="share__btn" href="#" rel="noopener" target="_blank" aria-label="Share on Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6л.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
         </a>
       </div>
     </div>
 
     <!-- Реклама середина -->
     <div class="ad ad--mid" id="adMid">
-      <!-- AdSense (другий блок)
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="ZZZZZZZZZZ" data-ad-format="rectangle, horizontal, vertical" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-      -->
-      <div class="ad__ph" aria-hidden="true">Рекламний блок (rectangle)</div>
+      <div class="ad__ph">Рекламний блок (rectangle)</div>
     </div>
 
-    <!-- FAQ -->
     <details class="faq" id="faq">
-      <summary id="faqQ" data-i18n="faqQ">Як рахується час?</summary>
-      <div id="faqA" data-i18n="faqA">
+      <summary data-i18n="faqQ">Як рахується час?</summary>
+      <div data-i18n="faqA">
         Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST), що відповідає <b>17:00 UTC</b>.
         Рахуємо різницю між вашою локальною датою та цією фіксованою міткою.
       </div>
@@ -154,24 +145,143 @@
 
     <!-- Реклама низ -->
     <div class="ad ad--bottom" id="adBottom">
-      <!-- AdSense (третій блок)
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="AAAAAAAAAA" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-      -->
-      <div class="ad__ph" aria-hidden="true">Рекламний блок (responsive)</div>
+      <div class="ad__ph">Рекламний блок (responsive)</div>
     </div>
 
-    <!-- Footer -->
     <div class="footer" id="footer">
       <a id="consent" href="#" data-i18n="manageConsent">Налаштування cookies</a> •
       <a href="/privacy" data-i18n="privacy">Політика конфіденційності</a> •
       <a href="/about" data-i18n="about">Про сайт</a> •
-      <a href="https://buymeacoffee.com/yourname" rel="noopener" target="_blank" data-i18n="donate">Підтримати</a>
+      <a href="https://buymeacoffee.com/yourname" target="_blank" rel="noopener" data-i18n="donate">Підтримати</a>
     </div>
   </div>
 
-  <!-- ПІДКЛЮЧЕННЯ ЛОГІКИ (обов'язково поруч із index.html) -->
-  <script src="app.js" defer></script>
-  <noscript>Для роботи таймера потрібен JavaScript.</noscript>
+  <script>
+  (function(){
+    "use strict";
+
+    /* ===== Конфіг ===== */
+    const INAUG_UTC = Date.UTC(2029,0,20,17,0,0); // 20 Jan 2029 17:00 UTC
+    const qs = new URLSearchParams(location.search);
+    const $ = (s)=>document.querySelector(s);
+
+    /* ===== I18N ===== */
+    const I18N = {
+      uk:{title:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
+        h1:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
+        subtitle:"Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.",
+        theme:"Тема:",sound:"Звук:",lang:"Мова:",
+        soundOff:"Вимкнено",soundElectronic:"Електронний",soundClassic:"Класичний",
+        days:"Днів",hours:"Годин",minutes:"Хвилин",seconds:"Секунд",
+        share:"Поширити:",faqQ:"Як рахується час?",
+        faqA:"Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST), що відповідає <b>17:00 UTC</b>. Рахуємо різницю між вашою локальною датою та цією фіксованою міткою.",
+        manageConsent:"Налаштування cookies",privacy:"Політика конфіденційності",about:"Про сайт",donate:"Підтримати"},
+      en:{title:"HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?",
+        h1:"HOW LONG DOES DONALD TRUMP<br>HAVE LEFT AS PRESIDENT?",
+        subtitle:"Countdown to <b>January 20, 2029, 12:00 (Washington)</b>.",
+        theme:"Theme:",sound:"Sound:",lang:"Language:",
+        soundOff:"Off",soundElectronic:"Electronic",soundClassic:"Classic",
+        days:"Days",hours:"Hours",minutes:"Minutes",seconds:"Seconds",
+        share:"Share:",faqQ:"How is the time calculated?",
+        faqA:"We count down to <b>January 20, 2029, 12:00</b> Washington time (EST), which equals <b>17:00 UTC</b>. We compute the difference between your local time and this fixed timestamp.",
+        manageConsent:"Cookie settings",privacy:"Privacy policy",about:"About",donate:"Support"}
+    };
+
+    /* ===== Storage ===== */
+    const storage={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch{return d}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
+
+    /* ===== State ===== */
+    let lang=(qs.get('lang')||storage.get('lang',navigator.language?.toLowerCase().startsWith('uk')?'uk':'en')).toLowerCase();
+    if(!['uk','en'].includes(lang)) lang='uk';
+    let theme=(qs.get('theme')||storage.get('theme','auto')).toLowerCase();
+    if(!['auto','light','dark'].includes(theme)) theme='auto';
+    let sound=(qs.get('sound')||storage.get('sound','off')).toLowerCase(); // off|electronic|classic
+    if(!['off','electronic','classic'].includes(sound)) sound='off';
+    const isEmbed = qs.get('embed')==='1';
+
+    /* ===== Theme ===== */
+    function applyTheme(){
+      const actual=theme==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):theme;
+      document.documentElement.setAttribute('data-theme',actual);
+      const v=$('#valTheme'); if(v) v.textContent=theme[0].toUpperCase()+theme.slice(1);
+    }
+    applyTheme(); try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(theme==='auto')applyTheme();});}catch{}
+
+    /* ===== I18N render ===== */
+    function t(k){return I18N[lang][k]}
+    function applyI18n(){
+      document.documentElement.lang=(lang==='uk'?'uk':'en');
+      document.title=t('title');
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key=el.getAttribute('data-i18n');
+        if(key==='h1'||key==='subtitle'||key==='faqA') el.innerHTML=t(key); else el.textContent=t(key);
+      });
+      $('#valLang').textContent=(lang==='uk'?'UA':'EN');
+      $('#valSound').textContent=(sound==='off'?t('soundOff'):(sound==='electronic'?t('soundElectronic'):t('soundClassic')));
+      const og=document.querySelector('meta[property="og:locale"]'); if(og) og.setAttribute('content',lang==='uk'?'uk_UA':'en_US');
+      buildShare();
+    }
+    applyI18n();
+
+    /* ===== Timer ===== */
+    const elD=$('#d'), elH=$('#h'), elM=$('#m'), elS=$('#s');
+    function flip(el,val){ if(el.textContent!==val){ el.textContent=val; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); } }
+    function update(){
+      const now=Date.now(); let diff=Math.max(0,INAUG_UTC-now);
+      const d=Math.floor(diff/86400000); diff-=d*86400000;
+      const h=Math.floor(diff/3600000); diff-=h*3600000;
+      const m=Math.floor(diff/60000); diff-=m*60000;
+      const s=Math.floor(diff/1000);
+      flip(elD,String(d)); flip(elH,String(h).padStart(2,'0')); flip(elM,String(m).padStart(2,'0')); flip(elS,String(s).padStart(2,'0'));
+      tickSound();
+    }
+    setInterval(update,1000); update();
+
+    /* ===== Sound ===== */
+    let audioCtx=null, audioReady=false; const VOL=0.25;
+    function ensureAudio(){ if(audioReady) return; const Ctx=window.AudioContext||window.webkitAudioContext; if(!Ctx) return; audioCtx=new Ctx(); audioCtx.resume&&audioCtx.resume(); audioReady=true; }
+    function prime(){ ensureAudio(); document.removeEventListener('click',prime); document.removeEventListener('keydown',prime); document.removeEventListener('touchstart',prime); }
+    document.addEventListener('click',prime,{passive:true}); document.addEventListener('keydown',prime); document.addEventListener('touchstart',prime,{passive:true});
+    function beepElectronic(){ if(!audioCtx) return; const o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type='square'; o.frequency.value=880; o.connect(g); g.connect(audioCtx.destination); const n=audioCtx.currentTime; g.gain.setValueAtTime(0.0001,n); g.gain.exponentialRampToValueAtTime(VOL,n+0.005); g.gain.exponentialRampToValueAtTime(0.0001,n+0.06); o.start(n); o.stop(n+0.08); }
+    function beepClassic(){ if(!audioCtx) return; const o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type='triangle'; o.frequency.value=3000; o.connect(g); g.connect(audioCtx.destination); const n=audioCtx.currentTime; g.gain.setValueAtTime(0.0001,n); g.gain.exponentialRampToValueAtTime(VOL*0.7,n+0.002); g.gain.exponentialRampToValueAtTime(0.0001,n+0.03); o.start(n); o.stop(n+0.04); }
+    function tickSound(){ if(sound==='off'||!audioCtx) return; try{ (sound==='electronic'?beepElectronic:beepClassic)(); }catch{} }
+
+    /* ===== Buttons ===== */
+    $('#btnTheme').addEventListener('click',()=>{ theme=theme==='auto'?'light':theme==='light'?'dark':'auto'; storage.set('theme',theme); applyTheme(); });
+    $('#btnSound').addEventListener('click',()=>{ sound=sound==='off'?'electronic':sound==='electronic'?'classic':'off'; storage.set('sound',sound); ensureAudio(); applyI18n(); });
+    $('#btnLang').addEventListener('click',()=>{ lang=(lang==='uk')?'en':'uk'; storage.set('lang',lang); applyI18n(); });
+
+    /* ===== Share ===== */
+    function buildShare(){
+      const shareX=$('#share-x'), shareFB=$('#share-fb');
+      const url=new URL(location.href); url.searchParams.delete('embed');
+      const shareUrl=url.toString();
+      const text=(lang==='uk'?'СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?':'HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?');
+      if(navigator.share){
+        [shareX,shareFB].forEach(a=>a?.addEventListener('click',async e=>{e.preventDefault(); try{await navigator.share({title:text,text,url:shareUrl});}catch{}}));
+        return;
+      }
+      if(shareX){ const x=new URL('https://twitter.com/intent/tweet'); x.searchParams.set('text',text); x.searchParams.set('url',shareUrl); shareX.href=x.toString(); }
+      if(shareFB){ const fb=new URL('https://www.facebook.com/sharer/sharer.php'); fb.searchParams.set('u',shareUrl); shareFB.href=fb.toString(); }
+      function popup(e){ const a=e.currentTarget,w=580,h=420,y=(screen.height-h)/2,x=(screen.width-w)/2; window.open(a.href,'share',`width=${w},height=${h},left=${x},top=${y},noopener`); e.preventDefault(); }
+      [shareX,shareFB].forEach(a=>a?.addEventListener('click',popup));
+    }
+    buildShare();
+
+    /* ===== Embed режим ===== */
+    if(isEmbed){
+      $('#controls')?.remove(); $('#adTop')?.remove(); $('#adMid')?.remove(); $('#adBottom')?.remove();
+      $('#share')?.remove(); $('#faq')?.remove(); $('#footer')?.remove();
+      $('#title').style.display='none'; $('#subtitle').style.display='none';
+      const card=$('#card'); card.style.background='transparent'; card.style.boxShadow='none'; card.style.border='0';
+      document.body.style.backgroundImage='none';
+    }
+
+    /* ===== Cookie-кнопка (заглушка) ===== */
+    $('#consent')?.addEventListener('click',(e)=>{e.preventDefault(); alert(lang==='uk'?'Тут відкриватиметься панель керування cookie (CMP).':'A cookie consent (CMP) panel will open here.');});
+
+    console.log('PresidencyClock: single-file ready ✓');
+  })();
+  </script>
 </body>
 </html>
