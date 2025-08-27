@@ -95,7 +95,7 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="wrap" id="wrap">
     <h1 id="title" data-i18n="h1">СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</h1>
     <div class="subtitle" id="subtitle" data-i18n="subtitle">Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.</div>
 
@@ -125,7 +125,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg> X
         </a>
         <a id="share-fb" class="share__btn" href="#" rel="noopener" target="_blank" aria-label="Share on Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6л.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
         </a>
       </div>
     </div>
@@ -216,8 +216,8 @@
         const key=el.getAttribute('data-i18n');
         if(key==='h1'||key==='subtitle'||key==='faqA') el.innerHTML=t(key); else el.textContent=t(key);
       });
-      $('#valLang').textContent=(lang==='uk'?'UA':'EN');
-      $('#valSound').textContent=(sound==='off'?t('soundOff'):(sound==='electronic'?t('soundElectronic'):t('soundClassic')));
+      $('#valLang')?.textContent=(lang==='uk'?'UA':'EN');
+      $('#valSound')?.textContent=(sound==='off'?t('soundOff'):(sound==='electronic'?t('soundElectronic'):t('soundClassic')));
       const og=document.querySelector('meta[property="og:locale"]'); if(og) og.setAttribute('content',lang==='uk'?'uk_UA':'en_US');
       buildShare();
     }
@@ -225,7 +225,7 @@
 
     /* ===== Timer ===== */
     const elD=$('#d'), elH=$('#h'), elM=$('#m'), elS=$('#s');
-    function flip(el,val){ if(el.textContent!==val){ el.textContent=val; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); } }
+    function flip(el,val){ if(el && el.textContent!==val){ el.textContent=val; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); } }
     function update(){
       const now=Date.now(); let diff=Math.max(0,INAUG_UTC-now);
       const d=Math.floor(diff/86400000); diff-=d*86400000;
@@ -247,9 +247,9 @@
     function tickSound(){ if(sound==='off'||!audioCtx) return; try{ (sound==='electronic'?beepElectronic:beepClassic)(); }catch{} }
 
     /* ===== Buttons ===== */
-    $('#btnTheme').addEventListener('click',()=>{ theme=theme==='auto'?'light':theme==='light'?'dark':'auto'; storage.set('theme',theme); applyTheme(); });
-    $('#btnSound').addEventListener('click',()=>{ sound=sound==='off'?'electronic':sound==='electronic'?'classic':'off'; storage.set('sound',sound); ensureAudio(); applyI18n(); });
-    $('#btnLang').addEventListener('click',()=>{ lang=(lang==='uk')?'en':'uk'; storage.set('lang',lang); applyI18n(); });
+    $('#btnTheme')?.addEventListener('click',()=>{ theme=theme==='auto'?'light':theme==='light'?'dark':'auto'; storage.set('theme',theme); applyTheme(); });
+    $('#btnSound')?.addEventListener('click',()=>{ sound=sound==='off'?'electronic':sound==='electronic'?'classic':'off'; storage.set('sound',sound); ensureAudio(); applyI18n(); });
+    $('#btnLang')?.addEventListener('click',()=>{ lang=(lang==='uk')?'en':'uk'; storage.set('lang',lang); applyI18n(); });
 
     /* ===== Share ===== */
     function buildShare(){
@@ -270,18 +270,36 @@
 
     /* ===== Embed режим ===== */
     if(isEmbed){
+      // Прибрати все, що не потрібно у віджеті
       $('#controls')?.remove(); $('#adTop')?.remove(); $('#adMid')?.remove(); $('#adBottom')?.remove();
       $('#share')?.remove(); $('#faq')?.remove(); $('#footer')?.remove();
-      $('#title').style.display='none'; $('#subtitle').style.display='none';
-      const card=$('#card'); card.style.background='transparent'; card.style.boxShadow='none'; card.style.border='0';
+      // Сховати заголовки
+      const titleEl=$('#title'); if(titleEl) titleEl.style.display='none';
+      const subtitleEl=$('#subtitle'); if(subtitleEl) subtitleEl.style.display='none';
+      // Зробити чистий блок без тіней/рамок і зайвих відступів
+      const card=$('#card'); if(card){ card.style.background='transparent'; card.style.boxShadow='none'; card.style.border='0'; }
+      const wrap=$('#wrap'); if(wrap){ wrap.style.margin='0 auto'; wrap.style.padding='0'; }
       document.body.style.backgroundImage='none';
+      document.body.style.background='transparent';
     }
 
     /* ===== Cookie-кнопка (заглушка) ===== */
     $('#consent')?.addEventListener('click',(e)=>{e.preventDefault(); alert(lang==='uk'?'Тут відкриватиметься панель керування cookie (CMP).':'A cookie consent (CMP) panel will open here.');});
 
-    console.log('PresidencyClock: single-file ready ✓');
+    console.log('PresidencyClock: single-file (embed-ready) ✓');
   })();
   </script>
+
+  <!-- =======================
+       ЯК ВБУДОВУВАТИ ЯК ВІДЖЕТ
+       =======================
+       На іншому сайті вставляють:
+       <iframe
+         src="https://presidencyclock.com/?embed=1&lang=uk&theme=auto&sound=off"
+         width="320" height="140"
+         style="border:0;overflow:hidden"
+         loading="lazy"
+         title="Presidency Clock"></iframe>
+  -->
 </body>
 </html>
