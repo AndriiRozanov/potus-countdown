@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- М’який CSP, щоб скрипт точно запустився навіть на строгих хостингах -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;">
   <title data-i18n="title">СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</title>
 
@@ -10,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Condensed:wght@700;800&display=swap" rel="stylesheet">
 
-  <!-- Canonical & Social (переконайся, що /og.jpg існує) -->
+  <!-- Canonical & Social (забезпеч, що /og.jpg існує 1200x630) -->
   <link rel="canonical" href="https://presidencyclock.com/">
   <meta property="og:url" content="https://presidencyclock.com/">
   <meta property="og:type" content="website">
@@ -29,32 +30,60 @@
 
   <style>
     :root{
-      --bg:#f6f8fd; --stripe:rgba(13,17,23,.06); --surface:#fff; --tile-bg:#f3f5fa;
-      --btn-bg:#fff; --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720;
-      --accent:#3d77ff; --glow1:rgba(68,118,255,.28); --glow2:rgba(255,160,62,.16);
+      /* Light */
+      --bg:#f6f8fd;
+      --stripe:rgba(13,17,23,.06);
+      --surface:#fff;
+      --tile-bg:#f3f5fa;
+      --btn-bg:#fff;
+      --line:rgba(13,17,23,.12);
+      --text:#0c1220;
+      --num:#0f1720;
+      --accent:#3d77ff;
+      --glow1:rgba(68,118,255,.28);
+      --glow2:rgba(255,160,62,.16);
       --muted:#6b7280;
     }
     [data-theme="dark"]{
-      --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06);
-      --tile-bg:rgba(255,255,255,.05); --btn-bg:rgba(255,255,255,.06); --line:rgba(255,255,255,.16);
-      --text:#f2f5ff; --num:#fff; --accent:#8ab8ff; --glow1:rgba(78,128,255,.20);
-      --glow2:rgba(255,120,0,.08); --muted:#a1a1aa;
+      /* справді чорна */
+      --bg:#000000;
+      --stripe:rgba(255,255,255,.08);
+      --surface:rgba(255,255,255,.06);
+      --tile-bg:rgba(255,255,255,.05);
+      --btn-bg:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.16);
+      --text:#f2f5ff;
+      --num:#ffffff;
+      --accent:#8ab8ff;
+      --glow1:rgba(78,128,255,.20);
+      --glow2:rgba(255,120,0,.08);
+      --muted:#a1a1aa;
     }
+
     html,body{height:100%}
     body{
-      margin:0; font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--text); background:var(--bg);
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      /* акуратний фон */
       background-image:
         radial-gradient(900px 480px at 78% 18%, var(--glow1), transparent 60%),
         radial-gradient(700px 420px at 20% 90%, var(--glow2), transparent 65%),
         repeating-linear-gradient(to bottom, var(--stripe) 0, var(--stripe) 1px, transparent 1px, transparent 24px);
       background-attachment: fixed,fixed,fixed;
     }
+
     .wrap{max-width:1100px;margin:36px auto;padding:0 16px}
     h1{
-      font-family:"Roboto Condensed","Inter",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.02em;
-      font-weight:800; font-size:clamp(28px,3.2vw,42px); line-height:1.12; text-align:center; margin:12px 0 8px;
+      font-family:"Roboto Condensed","Inter",system-ui,sans-serif;
+      text-transform:uppercase; letter-spacing:.02em;
+      font-weight:800; text-align:center;
+      font-size:clamp(28px,3.2vw,42px); line-height:1.12; margin:12px 0 8px;
     }
     .subtitle{text-align:center;opacity:.9;margin-bottom:12px;font-weight:600}
+
+    /* Контроли */
     .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
     .ctrl{
       appearance:none;border:1px solid var(--line);background:var(--btn-bg);border-radius:999px;padding:8px 12px;
@@ -63,25 +92,34 @@
     .ctrl:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:transparent}
     .ctrl:hover{transform:translateY(-1px)}
     .ctrl small{opacity:.7;font-weight:600}
+
+    /* Карта / Лічильник */
     .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;width:min(980px,98vw);margin:0 auto 10px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
     .timer{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
     .tile{min-width:170px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--tile-bg);text-align:center}
     .num{font-family:"Roboto Condensed","Inter",system-ui,sans-serif;font-size:clamp(40px,6vw,52px);font-weight:800;letter-spacing:.02em;color:var(--num);transition:transform .18s ease,filter .18s ease}
     .num.flip{transform:translateY(-4px);filter:brightness(1.05)}
     .label{font-size:13px;opacity:.82;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+
+    /* Реклама */
     .ad{display:flex;justify-content:center;align-items:center;margin:14px auto;width:100%}
     .ad--top{min-height:90px}.ad--mid{min-height:250px}.ad--bottom{min-height:90px}
     .ad__ph{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--muted)}
+
+    /* Share */
     .share{display:flex;gap:.5rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px}
     .share__label{opacity:.8;font-weight:700}
     .share__btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .75rem;border:1px solid var(--line);border-radius:999px;background:var(--btn-bg);text-decoration:none;color:inherit;font-weight:700;cursor:pointer}
     .share__btn svg{width:18px;height:18px;fill:currentColor;display:block}
     .share__btn:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:transparent}
     .share__btn:hover{transform:translateY(-1px)}
+
+    /* FAQ & footer */
     .faq{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;width:min(980px,98vw);margin:10px auto}
     .faq summary{cursor:pointer;font-weight:700}
     .footer{opacity:.75;font-size:13px;text-align:center;margin:16px 0}
     .footer a{color:var(--accent);text-decoration:none}.footer a:hover{text-decoration:underline}
+
     @media (max-width:540px){.tile{min-width:46%}}
     @media (prefers-reduced-motion:reduce){.num{transition:none}}
   </style>
@@ -91,12 +129,14 @@
     <h1 id="title" data-i18n="h1">СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</h1>
     <div class="subtitle" id="subtitle" data-i18n="subtitle">Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.</div>
 
+    <!-- Контроли -->
     <div class="controls" role="group" aria-label="Controls" id="controls">
       <button id="btnTheme" class="ctrl" type="button"><small id="lblTheme" data-i18n="theme">Тема:</small> <span id="valTheme">Auto</span></button>
       <button id="btnSound" class="ctrl" type="button"><small id="lblSound" data-i18n="sound">Звук:</small> <span id="valSound" data-i18n="soundOff">Вимкнено</span></button>
       <button id="btnLang"  class="ctrl" type="button"><small id="lblLang" data-i18n="lang">Мова:</small> <span id="valLang">UA</span></button>
     </div>
 
+    <!-- Реклама зверху -->
     <div class="ad ad--top" id="adTop">
       <!-- AdSense (розкоментуй і підстав свої дані)
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
@@ -106,6 +146,7 @@
       <div class="ad__ph" aria-hidden="true">Рекламний блок (responsive)</div>
     </div>
 
+    <!-- Лічильник -->
     <div class="card" id="card">
       <div id="timer" class="timer" aria-live="polite">
         <div class="tile"><div class="num" id="d">—</div><div class="label" id="labD" data-i18n="days">Днів</div></div>
@@ -114,17 +155,19 @@
         <div class="tile"><div class="num" id="s">—</div><div class="label" id="labS" data-i18n="seconds">Секунд</div></div>
       </div>
 
+      <!-- Share -->
       <div class="share" aria-label="Share" id="share">
         <span class="share__label" id="shareLabel" data-i18n="share">Поширити:</span>
         <a id="share-x" class="share__btn" href="#" rel="noopener" title="X" target="_blank" aria-label="Share on X">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg><span> X</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3H22l-7.1 8.1L22.7 21h-6.4l-5-6.6L5 21H2l7.6-8.7L1.5 3H8l4.6 6 6.3-6Z"/></svg> X
         </a>
         <a id="share-fb" class="share__btn" href="#" rel="noopener" title="Facebook" target="_blank" aria-label="Share on Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg><span> Facebook</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.6l.4-3h-3V9c0-.9.3-1.5 1.7-1.5H17V5.1c-.5-.1-1.6-.1-2.9-.1-2.6 0-4.4 1.6-4.4 4.3V11H7v3h2.7v8h3.8Z"/></svg> Facebook
         </a>
       </div>
     </div>
 
+    <!-- Реклама середина -->
     <div class="ad ad--mid" id="adMid">
       <!-- AdSense (другий блок)
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="ZZZZZZZZZZ" data-ad-format="rectangle, horizontal, vertical" data-full-width-responsive="true"></ins>
@@ -133,6 +176,7 @@
       <div class="ad__ph" aria-hidden="true">Рекламний блок (rectangle)</div>
     </div>
 
+    <!-- FAQ -->
     <details class="faq" id="faq">
       <summary id="faqQ" data-i18n="faqQ">Як рахується час?</summary>
       <div id="faqA" data-i18n="faqA">
@@ -141,6 +185,7 @@
       </div>
     </details>
 
+    <!-- Реклама низ -->
     <div class="ad ad--bottom" id="adBottom">
       <!-- AdSense (третій блок)
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="AAAAAAAAAA" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -149,6 +194,7 @@
       <div class="ad__ph" aria-hidden="true">Рекламний блок (responsive)</div>
     </div>
 
+    <!-- Footer -->
     <div class="footer" id="footer">
       <a id="consent" href="#" data-i18n="manageConsent">Налаштування cookies</a> •
       <a href="/privacy" data-i18n="privacy">Політика конфіденційності</a> •
@@ -157,19 +203,20 @@
     </div>
   </div>
 
-  <!-- ===== УВЕСЬ JS УСЕРЕДИНІ (щоб точно запустився) ===== -->
+  <!-- УВЕСЬ JS УСЕРЕДИНІ -->
   <script>
   (function(){
     "use strict";
 
-    /* ---- Конфіг ---- */
+    /* ===== Конфіг ===== */
     const INAUG_UTC = Date.UTC(2029, 0, 20, 17, 0, 0); // 20 Jan 2029 17:00 UTC
     const qs = new URLSearchParams(location.search);
-    const $ = (s)=>document.querySelector(s);
+    const $  = (s)=>document.querySelector(s);
 
-    /* ---- I18N ---- */
+    /* ===== I18N ===== */
     const I18N = {
-      uk: { title:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
+      uk: {
+        title:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
         h1:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
         subtitle:"Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.",
         theme:"Тема:", sound:"Звук:", lang:"Мова:",
@@ -179,7 +226,8 @@
         faqA:"Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST), що відповідає <b>17:00 UTC</b>. Рахуємо різницю між вашою локальною датою та цією фіксованою міткою.",
         manageConsent:"Налаштування cookies", privacy:"Політика конфіденційності", about:"Про сайт", donate:"Підтримати"
       },
-      en: { title:"HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?",
+      en: {
+        title:"HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?",
         h1:"HOW LONG DOES DONALD TRUMP<br>HAVE LEFT AS PRESIDENT?",
         subtitle:"Countdown to <b>January 20, 2029, 12:00 (Washington)</b>.",
         theme:"Theme:", sound:"Sound:", lang:"Language:",
@@ -191,79 +239,87 @@
       }
     };
 
-    /* ---- Storage ---- */
+    /* ===== Storage ===== */
     const storage = {
-      get(k, def){ try{ const v = localStorage.getItem(k); return v===null?def:v } catch { return def } },
-      set(k,v){ try{ localStorage.setItem(k,v) } catch{} }
+      get(k, d){ try{ const v = localStorage.getItem(k); return v===null?d:v }catch{ return d } },
+      set(k, v){ try{ localStorage.setItem(k, v) }catch{} }
     };
 
-    /* ---- State ---- */
+    /* ===== State ===== */
     let lang  = (qs.get('lang')  || storage.get('lang', navigator.language.startsWith('uk')?'uk':'en')).toLowerCase();
     if(!['uk','en'].includes(lang)) lang='uk';
     let theme = (qs.get('theme') || storage.get('theme', 'auto')).toLowerCase();
     if(!['auto','light','dark'].includes(theme)) theme='auto';
     let sound = (qs.get('sound') || storage.get('sound', 'off')).toLowerCase(); // off|electronic|classic
     if(!['off','electronic','classic'].includes(sound)) sound='off';
+
     const isEmbed = qs.get('embed')==='1';
 
-    /* ---- Theme ---- */
+    /* ===== Theme ===== */
     function applyTheme(){
       const actual = theme==='auto'
-        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light')
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
         : theme;
       document.documentElement.setAttribute('data-theme', actual);
-      const el=$('#valTheme'); if(el) el.textContent = theme[0].toUpperCase()+theme.slice(1);
+      const el = $('#valTheme'); if(el) el.textContent = theme[0].toUpperCase() + theme.slice(1);
     }
     applyTheme();
-    try{ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{ if(theme==='auto') applyTheme(); }); }catch{}
+    try{
+      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ()=>{ if(theme==='auto') applyTheme(); });
+    }catch{}
 
-    /* ---- I18N render ---- */
-    function t(k){ return I18N[lang][k]; }
+    /* ===== I18N render ===== */
+    function t(key){ return I18N[lang][key]; }
     function applyI18n(){
-      document.documentElement.lang=(lang==='uk'?'uk':'en');
-      document.title=t('title');
+      document.documentElement.lang = (lang==='uk'?'uk':'en');
+      document.title = t('title');
       document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key=el.getAttribute('data-i18n');
-        if(key==='h1'||key==='subtitle'||key==='faqA'){ el.innerHTML=t(key); } else { el.textContent=t(key); }
+        const key = el.getAttribute('data-i18n');
+        if(key==='h1' || key==='subtitle' || key==='faqA'){ el.innerHTML = t(key); }
+        else { el.textContent = t(key); }
       });
-      $('#valLang').textContent=(lang==='uk'?'UA':'EN');
-      $('#valSound').textContent=(sound==='off'?t('soundOff'):(sound==='electronic'?t('soundElectronic'):t('soundClassic')));
-      const ogLoc=document.querySelector('meta[property="og:locale"]');
+      $('#valLang').textContent = (lang==='uk'?'UA':'EN');
+      $('#valSound').textContent = (sound==='off'?t('soundOff'):(sound==='electronic'?t('soundElectronic'):t('soundClassic')));
+      const ogLoc = document.querySelector('meta[property="og:locale"]');
       if(ogLoc) ogLoc.setAttribute('content', lang==='uk'?'uk_UA':'en_US');
       buildShareLinks();
     }
     applyI18n();
 
-    /* ---- Timer ---- */
+    /* ===== Timer ===== */
     const elD=$('#d'), elH=$('#h'), elM=$('#m'), elS=$('#s');
-    function flip(el,val){
+    function flip(el, val){
       if(!el) return;
       if(el.textContent!==val){ el.textContent=val; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); }
     }
     function update(){
-      const now=Date.now();
-      let diff=Math.max(0, INAUG_UTC-now);
-      const days=Math.floor(diff/86400000); diff-=days*86400000;
-      const hours=Math.floor(diff/3600000); diff-=hours*3600000;
-      const minutes=Math.floor(diff/60000); diff-=minutes*60000;
-      const seconds=Math.floor(diff/1000);
-      flip(elD,String(days));
-      flip(elH,String(hours).padStart(2,'0'));
-      flip(elM,String(minutes).padStart(2,'0'));
-      flip(elS,String(seconds).padStart(2,'0'));
+      const now = Date.now();
+      let diff = Math.max(0, INAUG_UTC - now);
+      const days = Math.floor(diff/86400000); diff-=days*86400000;
+      const hours = Math.floor(diff/3600000); diff-=hours*3600000;
+      const minutes = Math.floor(diff/60000); diff-=minutes*60000;
+      const seconds = Math.floor(diff/1000);
+      flip(elD, String(days));
+      flip(elH, String(hours).padStart(2,'0'));
+      flip(elM, String(minutes).padStart(2,'0'));
+      flip(elS, String(seconds).padStart(2,'0'));
       tickSound();
     }
     setInterval(update,1000); update();
 
-    /* ---- Sound (Web Audio) ---- */
+    /* ===== Sound (Web Audio) ===== */
     let audioCtx=null, audioReady=false;
     const VOL=0.25;
     function ensureAudio(){
       if(audioReady) return;
-      const Ctx=window.AudioContext||window.webkitAudioContext; if(!Ctx) return;
-      audioCtx=audioCtx||new Ctx(); audioCtx.resume&&audioCtx.resume(); audioReady=true;
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if(!Ctx) return;
+      audioCtx = audioCtx || new Ctx();
+      audioCtx.resume && audioCtx.resume();
+      audioReady = true;
     }
-    function prime(){ ensureAudio();
+    function prime(){
+      ensureAudio();
       document.removeEventListener('click',prime);
       document.removeEventListener('keydown',prime);
       document.removeEventListener('touchstart',prime);
@@ -274,7 +330,7 @@
 
     function beepElectronic(){
       if(!audioCtx) return;
-      const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
       o.type='square'; o.frequency.value=880; o.connect(g); g.connect(audioCtx.destination);
       const n=audioCtx.currentTime;
       g.gain.setValueAtTime(0.0001,n);
@@ -284,7 +340,7 @@
     }
     function beepClassic(){
       if(!audioCtx) return;
-      const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
       o.type='triangle'; o.frequency.value=3000; o.connect(g); g.connect(audioCtx.destination);
       const n=audioCtx.currentTime;
       g.gain.setValueAtTime(0.0001,n);
@@ -297,20 +353,21 @@
       try{ (sound==='electronic'?beepElectronic:beepClassic)(); }catch{}
     }
 
-    /* ---- Buttons ---- */
-    $('#btnTheme').addEventListener('click',()=>{
+    /* ===== Buttons ===== */
+    $('#btnTheme').addEventListener('click', ()=>{
       theme = theme==='auto' ? 'light' : theme==='light' ? 'dark' : 'auto';
-      storage.set('theme',theme); applyTheme();
+      storage.set('theme', theme); applyTheme();
     });
-    $('#btnSound').addEventListener('click',()=>{
+    $('#btnSound').addEventListener('click', ()=>{
       sound = sound==='off' ? 'electronic' : sound==='electronic' ? 'classic' : 'off';
-      storage.set('sound',sound); ensureAudio(); applyI18n();
+      storage.set('sound', sound); ensureAudio(); applyI18n();
     });
-    $('#btnLang').addEventListener('click',()=>{
-      lang=(lang==='uk')?'en':'uk'; storage.set('lang',lang); applyI18n();
+    $('#btnLang').addEventListener('click', ()=>{
+      lang = (lang==='uk') ? 'en' : 'uk';
+      storage.set('lang', lang); applyI18n();
     });
 
-    /* ---- Share ---- */
+    /* ===== Share ===== */
     const shareX=$('#share-x'), shareFB=$('#share-fb');
     function buildShareLinks(){
       const url=new URL(location.href); url.searchParams.delete('embed');
@@ -320,26 +377,28 @@
         : 'HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?');
 
       if(navigator.share){
-        [shareX,shareFB].forEach(a=>a?.addEventListener('click',async e=>{e.preventDefault(); try{await navigator.share({title:text,text, url:shareUrl});}catch{}}));
+        [shareX,shareFB].forEach(a=>a?.addEventListener('click',async e=>{e.preventDefault(); try{await navigator.share({title:text,text,url:shareUrl});}catch{}}));
         return;
       }
       if(shareX){
-        const x=new URL('https://twitter.com/intent/tweet'); x.searchParams.set('text',text); x.searchParams.set('url',shareUrl);
-        shareX.href=x.toString();
+        const x = new URL('https://twitter.com/intent/tweet');
+        x.searchParams.set('text', text); x.searchParams.set('url', shareUrl);
+        shareX.href = x.toString();
       }
       if(shareFB){
-        const fb=new URL('https://www.facebook.com/sharer/sharer.php'); fb.searchParams.set('u',shareUrl);
-        shareFB.href=fb.toString();
+        const fb = new URL('https://www.facebook.com/sharer/sharer.php');
+        fb.searchParams.set('u', shareUrl); shareFB.href = fb.toString();
       }
       function popup(e){
         const a=e.currentTarget, w=580,h=420,y=(screen.height-h)/2,x=(screen.width-w)/2;
-        window.open(a.href,'share',`width=${w},height=${h},left=${x},top=${y},noopener`); e.preventDefault();
+        window.open(a.href,'share',`width=${w},height=${h},left=${x},top=${y},noopener`);
+        e.preventDefault();
       }
       [shareX,shareFB].forEach(a=>{ a?.addEventListener('click',popup); });
     }
     buildShareLinks();
 
-    /* ---- Embed mode ---- */
+    /* ===== Embed mode ===== */
     if(isEmbed){
       $('#controls')?.remove(); $('#adTop')?.remove(); $('#adMid')?.remove(); $('#adBottom')?.remove();
       $('#share')?.remove(); $('#faq')?.remove(); $('#footer')?.remove();
@@ -348,11 +407,13 @@
       document.body.style.backgroundImage='none';
     }
 
-    /* ---- Consent placeholder ---- */
-    $('#consent')?.addEventListener('click',(e)=>{ e.preventDefault(); alert(lang==='uk'?'Тут відкриватиметься панель керування cookie (CMP).':'A cookie consent (CMP) panel will open here.'); });
+    /* ===== Consent placeholder ===== */
+    $('#consent')?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      alert(lang==='uk'?'Тут відкриватиметься панель керування cookie (CMP).':'A cookie consent (CMP) panel will open here.');
+    });
 
-    /* ---- Маленький індикатор для дебага ---- */
-    console.log('PresidencyClock JS: OK');
+    console.log('PresidencyClock: ready');
   })();
   </script>
 </body>
