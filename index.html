@@ -3,15 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- М’який CSP, щоб скрипт точно запустився навіть на строгих хостингах -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;">
   <title data-i18n="title">СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</title>
 
-  <!-- Fonts -->
+  <!-- Fonts (можеш забрати, якщо твій CSP не любить зовнішні стилі) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Condensed:wght@700;800&display=swap" rel="stylesheet">
 
-  <!-- Canonical & Social (забезпеч, що /og.jpg існує 1200x630) -->
+  <!-- Canonical & Social -->
   <link rel="canonical" href="https://presidencyclock.com/">
   <meta property="og:url" content="https://presidencyclock.com/">
   <meta property="og:type" content="website">
@@ -30,60 +28,33 @@
 
   <style>
     :root{
-      /* Light */
-      --bg:#f6f8fd;
-      --stripe:rgba(13,17,23,.06);
-      --surface:#fff;
-      --tile-bg:#f3f5fa;
-      --btn-bg:#fff;
-      --line:rgba(13,17,23,.12);
-      --text:#0c1220;
-      --num:#0f1720;
-      --accent:#3d77ff;
-      --glow1:rgba(68,118,255,.28);
-      --glow2:rgba(255,160,62,.16);
+      --bg:#f6f8fd; --stripe:rgba(13,17,23,.06); --surface:#fff; --tile-bg:#f3f5fa;
+      --btn-bg:#fff; --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720;
+      --accent:#3d77ff; --glow1:rgba(68,118,255,.28); --glow2:rgba(255,160,62,.16);
       --muted:#6b7280;
     }
     [data-theme="dark"]{
-      /* справді чорна */
-      --bg:#000000;
-      --stripe:rgba(255,255,255,.08);
-      --surface:rgba(255,255,255,.06);
-      --tile-bg:rgba(255,255,255,.05);
-      --btn-bg:rgba(255,255,255,.06);
-      --line:rgba(255,255,255,.16);
-      --text:#f2f5ff;
-      --num:#ffffff;
-      --accent:#8ab8ff;
-      --glow1:rgba(78,128,255,.20);
-      --glow2:rgba(255,120,0,.08);
-      --muted:#a1a1aa;
+      --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06);
+      --tile-bg:rgba(255,255,255,.05); --btn-bg:rgba(255,255,255,.06); --line:rgba(255,255,255,.16);
+      --text:#f2f5ff; --num:#fff; --accent:#8ab8ff; --glow1:rgba(78,128,255,.20);
+      --glow2:rgba(255,120,0,.08); --muted:#a1a1aa;
     }
-
     html,body{height:100%}
     body{
-      margin:0;
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      /* акуратний фон */
+      margin:0; font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--text); background:var(--bg);
       background-image:
         radial-gradient(900px 480px at 78% 18%, var(--glow1), transparent 60%),
         radial-gradient(700px 420px at 20% 90%, var(--glow2), transparent 65%),
         repeating-linear-gradient(to bottom, var(--stripe) 0, var(--stripe) 1px, transparent 1px, transparent 24px);
       background-attachment: fixed,fixed,fixed;
     }
-
     .wrap{max-width:1100px;margin:36px auto;padding:0 16px}
     h1{
       font-family:"Roboto Condensed","Inter",system-ui,sans-serif;
-      text-transform:uppercase; letter-spacing:.02em;
-      font-weight:800; text-align:center;
-      font-size:clamp(28px,3.2vw,42px); line-height:1.12; margin:12px 0 8px;
+      text-transform:uppercase; letter-spacing:.02em; font-weight:800;
+      font-size:clamp(28px,3.2vw,42px); line-height:1.12; text-align:center; margin:12px 0 8px;
     }
     .subtitle{text-align:center;opacity:.9;margin-bottom:12px;font-weight:600}
-
-    /* Контроли */
     .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
     .ctrl{
       appearance:none;border:1px solid var(--line);background:var(--btn-bg);border-radius:999px;padding:8px 12px;
@@ -93,7 +64,6 @@
     .ctrl:hover{transform:translateY(-1px)}
     .ctrl small{opacity:.7;font-weight:600}
 
-    /* Карта / Лічильник */
     .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;width:min(980px,98vw);margin:0 auto 10px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
     .timer{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
     .tile{min-width:170px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--tile-bg);text-align:center}
@@ -101,12 +71,10 @@
     .num.flip{transform:translateY(-4px);filter:brightness(1.05)}
     .label{font-size:13px;opacity:.82;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
 
-    /* Реклама */
     .ad{display:flex;justify-content:center;align-items:center;margin:14px auto;width:100%}
     .ad--top{min-height:90px}.ad--mid{min-height:250px}.ad--bottom{min-height:90px}
     .ad__ph{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--muted)}
 
-    /* Share */
     .share{display:flex;gap:.5rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px}
     .share__label{opacity:.8;font-weight:700}
     .share__btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .75rem;border:1px solid var(--line);border-radius:999px;background:var(--btn-bg);text-decoration:none;color:inherit;font-weight:700;cursor:pointer}
@@ -114,7 +82,6 @@
     .share__btn:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:transparent}
     .share__btn:hover{transform:translateY(-1px)}
 
-    /* FAQ & footer */
     .faq{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;width:min(980px,98vw);margin:10px auto}
     .faq summary{cursor:pointer;font-weight:700}
     .footer{opacity:.75;font-size:13px;text-align:center;margin:16px 0}
@@ -203,218 +170,8 @@
     </div>
   </div>
 
-  <!-- УВЕСЬ JS УСЕРЕДИНІ -->
-  <script>
-  (function(){
-    "use strict";
-
-    /* ===== Конфіг ===== */
-    const INAUG_UTC = Date.UTC(2029, 0, 20, 17, 0, 0); // 20 Jan 2029 17:00 UTC
-    const qs = new URLSearchParams(location.search);
-    const $  = (s)=>document.querySelector(s);
-
-    /* ===== I18N ===== */
-    const I18N = {
-      uk: {
-        title:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
-        h1:"СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?",
-        subtitle:"Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.",
-        theme:"Тема:", sound:"Звук:", lang:"Мова:",
-        soundOff:"Вимкнено", soundElectronic:"Електронний", soundClassic:"Класичний",
-        days:"Днів", hours:"Годин", minutes:"Хвилин", seconds:"Секунд",
-        share:"Поширити:", faqQ:"Як рахується час?",
-        faqA:"Відлік ведеться до миті <b>20 січня 2029, 12:00</b> за часом Вашингтона (EST), що відповідає <b>17:00 UTC</b>. Рахуємо різницю між вашою локальною датою та цією фіксованою міткою.",
-        manageConsent:"Налаштування cookies", privacy:"Політика конфіденційності", about:"Про сайт", donate:"Підтримати"
-      },
-      en: {
-        title:"HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?",
-        h1:"HOW LONG DOES DONALD TRUMP<br>HAVE LEFT AS PRESIDENT?",
-        subtitle:"Countdown to <b>January 20, 2029, 12:00 (Washington)</b>.",
-        theme:"Theme:", sound:"Sound:", lang:"Language:",
-        soundOff:"Off", soundElectronic:"Electronic", soundClassic:"Classic",
-        days:"Days", hours:"Hours", minutes:"Minutes", seconds:"Seconds",
-        share:"Share:", faqQ:"How is the time calculated?",
-        faqA:"We count down to <b>January 20, 2029, 12:00</b> Washington time (EST), which equals <b>17:00 UTC</b>. We compute the difference between your local time and this fixed timestamp.",
-        manageConsent:"Cookie settings", privacy:"Privacy policy", about:"About", donate:"Support"
-      }
-    };
-
-    /* ===== Storage ===== */
-    const storage = {
-      get(k, d){ try{ const v = localStorage.getItem(k); return v===null?d:v }catch{ return d } },
-      set(k, v){ try{ localStorage.setItem(k, v) }catch{} }
-    };
-
-    /* ===== State ===== */
-    let lang  = (qs.get('lang')  || storage.get('lang', navigator.language.startsWith('uk')?'uk':'en')).toLowerCase();
-    if(!['uk','en'].includes(lang)) lang='uk';
-    let theme = (qs.get('theme') || storage.get('theme', 'auto')).toLowerCase();
-    if(!['auto','light','dark'].includes(theme)) theme='auto';
-    let sound = (qs.get('sound') || storage.get('sound', 'off')).toLowerCase(); // off|electronic|classic
-    if(!['off','electronic','classic'].includes(sound)) sound='off';
-
-    const isEmbed = qs.get('embed')==='1';
-
-    /* ===== Theme ===== */
-    function applyTheme(){
-      const actual = theme==='auto'
-        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-        : theme;
-      document.documentElement.setAttribute('data-theme', actual);
-      const el = $('#valTheme'); if(el) el.textContent = theme[0].toUpperCase() + theme.slice(1);
-    }
-    applyTheme();
-    try{
-      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ()=>{ if(theme==='auto') applyTheme(); });
-    }catch{}
-
-    /* ===== I18N render ===== */
-    function t(key){ return I18N[lang][key]; }
-    function applyI18n(){
-      document.documentElement.lang = (lang==='uk'?'uk':'en');
-      document.title = t('title');
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(key==='h1' || key==='subtitle' || key==='faqA'){ el.innerHTML = t(key); }
-        else { el.textContent = t(key); }
-      });
-      $('#valLang').textContent = (lang==='uk'?'UA':'EN');
-      $('#valSound').textContent = (sound==='off'?t('soundOff'):(sound==='electronic'?t('soundElectronic'):t('soundClassic')));
-      const ogLoc = document.querySelector('meta[property="og:locale"]');
-      if(ogLoc) ogLoc.setAttribute('content', lang==='uk'?'uk_UA':'en_US');
-      buildShareLinks();
-    }
-    applyI18n();
-
-    /* ===== Timer ===== */
-    const elD=$('#d'), elH=$('#h'), elM=$('#m'), elS=$('#s');
-    function flip(el, val){
-      if(!el) return;
-      if(el.textContent!==val){ el.textContent=val; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); }
-    }
-    function update(){
-      const now = Date.now();
-      let diff = Math.max(0, INAUG_UTC - now);
-      const days = Math.floor(diff/86400000); diff-=days*86400000;
-      const hours = Math.floor(diff/3600000); diff-=hours*3600000;
-      const minutes = Math.floor(diff/60000); diff-=minutes*60000;
-      const seconds = Math.floor(diff/1000);
-      flip(elD, String(days));
-      flip(elH, String(hours).padStart(2,'0'));
-      flip(elM, String(minutes).padStart(2,'0'));
-      flip(elS, String(seconds).padStart(2,'0'));
-      tickSound();
-    }
-    setInterval(update,1000); update();
-
-    /* ===== Sound (Web Audio) ===== */
-    let audioCtx=null, audioReady=false;
-    const VOL=0.25;
-    function ensureAudio(){
-      if(audioReady) return;
-      const Ctx = window.AudioContext || window.webkitAudioContext;
-      if(!Ctx) return;
-      audioCtx = audioCtx || new Ctx();
-      audioCtx.resume && audioCtx.resume();
-      audioReady = true;
-    }
-    function prime(){
-      ensureAudio();
-      document.removeEventListener('click',prime);
-      document.removeEventListener('keydown',prime);
-      document.removeEventListener('touchstart',prime);
-    }
-    document.addEventListener('click',prime,{passive:true});
-    document.addEventListener('keydown',prime);
-    document.addEventListener('touchstart',prime,{passive:true});
-
-    function beepElectronic(){
-      if(!audioCtx) return;
-      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-      o.type='square'; o.frequency.value=880; o.connect(g); g.connect(audioCtx.destination);
-      const n=audioCtx.currentTime;
-      g.gain.setValueAtTime(0.0001,n);
-      g.gain.exponentialRampToValueAtTime(VOL,n+0.005);
-      g.gain.exponentialRampToValueAtTime(0.0001,n+0.06);
-      o.start(n); o.stop(n+0.08);
-    }
-    function beepClassic(){
-      if(!audioCtx) return;
-      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-      o.type='triangle'; o.frequency.value=3000; o.connect(g); g.connect(audioCtx.destination);
-      const n=audioCtx.currentTime;
-      g.gain.setValueAtTime(0.0001,n);
-      g.gain.exponentialRampToValueAtTime(VOL*0.7,n+0.002);
-      g.gain.exponentialRampToValueAtTime(0.0001,n+0.03);
-      o.start(n); o.stop(n+0.04);
-    }
-    function tickSound(){
-      if(sound==='off'||!audioCtx) return;
-      try{ (sound==='electronic'?beepElectronic:beepClassic)(); }catch{}
-    }
-
-    /* ===== Buttons ===== */
-    $('#btnTheme').addEventListener('click', ()=>{
-      theme = theme==='auto' ? 'light' : theme==='light' ? 'dark' : 'auto';
-      storage.set('theme', theme); applyTheme();
-    });
-    $('#btnSound').addEventListener('click', ()=>{
-      sound = sound==='off' ? 'electronic' : sound==='electronic' ? 'classic' : 'off';
-      storage.set('sound', sound); ensureAudio(); applyI18n();
-    });
-    $('#btnLang').addEventListener('click', ()=>{
-      lang = (lang==='uk') ? 'en' : 'uk';
-      storage.set('lang', lang); applyI18n();
-    });
-
-    /* ===== Share ===== */
-    const shareX=$('#share-x'), shareFB=$('#share-fb');
-    function buildShareLinks(){
-      const url=new URL(location.href); url.searchParams.delete('embed');
-      const shareUrl=url.toString();
-      const text=(lang==='uk'
-        ? 'СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?'
-        : 'HOW LONG DOES DONALD TRUMP HAVE LEFT AS PRESIDENT?');
-
-      if(navigator.share){
-        [shareX,shareFB].forEach(a=>a?.addEventListener('click',async e=>{e.preventDefault(); try{await navigator.share({title:text,text,url:shareUrl});}catch{}}));
-        return;
-      }
-      if(shareX){
-        const x = new URL('https://twitter.com/intent/tweet');
-        x.searchParams.set('text', text); x.searchParams.set('url', shareUrl);
-        shareX.href = x.toString();
-      }
-      if(shareFB){
-        const fb = new URL('https://www.facebook.com/sharer/sharer.php');
-        fb.searchParams.set('u', shareUrl); shareFB.href = fb.toString();
-      }
-      function popup(e){
-        const a=e.currentTarget, w=580,h=420,y=(screen.height-h)/2,x=(screen.width-w)/2;
-        window.open(a.href,'share',`width=${w},height=${h},left=${x},top=${y},noopener`);
-        e.preventDefault();
-      }
-      [shareX,shareFB].forEach(a=>{ a?.addEventListener('click',popup); });
-    }
-    buildShareLinks();
-
-    /* ===== Embed mode ===== */
-    if(isEmbed){
-      $('#controls')?.remove(); $('#adTop')?.remove(); $('#adMid')?.remove(); $('#adBottom')?.remove();
-      $('#share')?.remove(); $('#faq')?.remove(); $('#footer')?.remove();
-      $('#title').style.display='none'; $('#subtitle').style.display='none';
-      $('#card').style.background='transparent'; $('#card').style.boxShadow='none'; $('#card').style.border='0';
-      document.body.style.backgroundImage='none';
-    }
-
-    /* ===== Consent placeholder ===== */
-    $('#consent')?.addEventListener('click', (e)=>{
-      e.preventDefault();
-      alert(lang==='uk'?'Тут відкриватиметься панель керування cookie (CMP).':'A cookie consent (CMP) panel will open here.');
-    });
-
-    console.log('PresidencyClock: ready');
-  })();
-  </script>
+  <!-- ПІДКЛЮЧЕННЯ ЛОГІКИ (обов'язково поруч із index.html) -->
+  <script src="app.js" defer></script>
+  <noscript>Для роботи таймера потрібен JavaScript.</noscript>
 </body>
 </html>
