@@ -1,6 +1,36 @@
 <!doctype html>
 <html lang="uk"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- THEME PACK -->
+<script>
+(function(){
+  try{
+    var pref=(localStorage.getItem('theme')||'auto').toLowerCase();
+    var darkOS=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme=pref==='auto'?(darkOS?'dark':'light'):pref;
+    document.documentElement.setAttribute('data-theme',theme);
+    document.documentElement.style.colorScheme=(theme==='dark'?'dark':'light');
+    if(pref==='auto'&&window.matchMedia){
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){
+        var t=e.matches?'dark':'light';
+        document.documentElement.setAttribute('data-theme',t);
+        document.documentElement.style.colorScheme=(t==='dark'?'dark':'light');
+      });
+    }
+  }catch(e){}
+})();
+</script>
+
+<style>
+:root{ --bg:#f6f8fd; --stripe:rgba(13,17,23,.06); --surface:#fff; --tile-bg:#f3f5fa; --btn-bg:#fff;
+  --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720; --accent:#3d77ff;
+  --glow1:rgba(68,118,255,.28); --glow2:rgba(255,160,62,.16); --muted:#6b7280; }
+[data-theme="dark"]{ --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06); --tile-bg:rgba(255,255,255,.05);
+  --btn-bg:rgba(255,255,255,.06); --line:rgba(255,255,255,.16); --text:#f2f5ff; --num:#fff; --accent:#8ab8ff;
+  --glow1:rgba(78,128,255,.20); --glow2:rgba(255,120,0,.08); --muted:#a1a1aa; }
+body{ background:var(--bg); color:var(--text); }
+</style>
+<!-- /THEME PACK -->
 <title>Дайджести (АІ) — Presidency Clock</title>
 <link rel="canonical" href="https://presidencyclock.com/uk/digest/">
 <meta name="description" content="Короткі АІ-резюме світових політичних новин. Нова підбірка кожні 3 дні.">
