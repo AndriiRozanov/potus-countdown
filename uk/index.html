@@ -4,8 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</title>
+  <meta name="description" content="Живий лічильник до 20 січня 2029, 12:00 (Вашингтон). Простий інструмент громадського контролю та корисні довідкові сторінки про президентські терміни.">
 
+  <!-- canonical -->
   <link rel="canonical" href="https://presidencyclock.com/uk/">
+
+  <!-- hreflang (аналогічні сторінки іншими мовами) -->
+  <link rel="alternate" hreflang="uk" href="https://presidencyclock.com/uk/">
+  <link rel="alternate" hreflang="en" href="https://presidencyclock.com/en/">
+  <link rel="alternate" hreflang="fr" href="https://presidencyclock.com/fr/">
+  <link rel="alternate" hreflang="es" href="https://presidencyclock.com/es/">
+  <link rel="alternate" hreflang="de" href="https://presidencyclock.com/de/">
+  <link rel="alternate" hreflang="x-default" href="https://presidencyclock.com/en/">
+
+  <!-- Open Graph / Twitter -->
   <meta property="og:url" content="https://presidencyclock.com/uk/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?">
@@ -26,6 +38,23 @@
   <!-- runtime favicon -->
   <link id="favicon" rel="icon" type="image/svg+xml" href="">
   <meta name="theme-color" content="#f6f8fd">
+
+  <!-- JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Presidency Clock",
+    "url":"https://presidencyclock.com/",
+    "inLanguage":"uk",
+    "publisher":{"@type":"Organization","name":"Presidency Clock","email":"presidencyclock@gmail.com"},
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://presidencyclock.com/uk/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
 
   <style>
     :root{
@@ -91,6 +120,12 @@
     .footer{opacity:.75;font-size:13px;text-align:center;margin:12px 0;padding-bottom:var(--safe-bottom)}
     .footer a{color:var(--accent);text-decoration:none}.footer a:hover{text-decoration:underline}
 
+    /* просте топ-меню */
+    .topnav{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:12px auto 10px}
+    .topnav a{color:inherit;text-decoration:none;font-weight:700;border:1px solid var(--line);background:var(--btn-bg);padding:.4rem .7rem;border-radius:999px}
+    .topnav a:hover{transform:translateY(-1px)}
+    .muted{color:var(--muted);font-size:.95em}
+
     @media (max-width:720px){
       .timer{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
       .card{padding:10px}
@@ -114,6 +149,17 @@
   </div>
 
   <div class="wrap">
+
+    <!-- TOP NAV (внутрішні лінки /uk/) -->
+    <nav class="topnav" aria-label="Головне меню">
+      <a href="/uk/">Головна</a>
+      <a href="/uk/about/">Про сайт</a>
+      <a href="/uk/presidents/">Президенти</a>
+      <a href="/uk/digest/">Дайджести</a>
+      <a href="/uk/privacy/">Політика</a>
+      <a href="/uk/contact/">Контакти</a>
+    </nav>
+
     <h1>СКІЛЬКИ ДОНАЛЬДУ ТРАМПУ<br>ЗАЛИШИЛОСЬ БУТИ ПРЕЗИДЕНТОМ?</h1>
     <div class="subtitle">Відлік до <b>20 січня 2029, 12:00 (Вашингтон)</b>.</div>
 
@@ -156,10 +202,17 @@
            data-ad-slot="6745326926" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
+    <!-- ДАЙДЖЕСТ-БЛОК (AI) -->
+    <div class="card" id="digest">
+      <h2 style="margin:6px 0 10px;">Політичний дайджест (AI)</h2>
+      <p class="muted">Коротке AI-резюме головних політичних новин світу. Новий випуск — кожні 3 дні.</p>
+      <p><a href="/uk/digest/">Перейти до всіх дайджестів →</a></p>
+    </div>
+
     <div class="footer">
       <a id="consent" href="#">Налаштування cookies</a> •
-      <a href="/privacy.html">Політика конфіденційності</a> •
-      <a href="/about.html">Про сайт</a>
+      <a href="/uk/privacy/">Політика конфіденційності</a> •
+      <a href="/uk/about/">Про сайт</a>
     </div>
 
     <!-- ads bottom -->
@@ -254,7 +307,7 @@
   }
   function tickSound(){ if(sound==='off'||!audioCtx) return; try{ (sound==='electronic'?beepElectronic:beepClassic)(); }catch(e){} }
 
-  /* ====== таймер (надійний старт) ====== */
+  /* ====== таймер ====== */
   function getSlots(){
     let d=document.querySelector('#d'),h=document.querySelector('#h'),m=document.querySelector('#m'),s=document.querySelector('#s');
     if(!(d&&h&&m&&s)){ const a=document.querySelectorAll('.timer .num'); if(a.length>=4){ d=a[0]; h=a[1]; m=a[2]; s=a[3]; } }
@@ -264,7 +317,7 @@
   function startTimer(){
     const slots=getSlots();
     function tick(){
-      let diff=Math.max(0, INAUG_UTC-Date.now());
+      let diff=Math.max(0, Date.UTC(2029,0,20,17,0,0)-Date.now());
       const dd=Math.floor(diff/86400000); diff-=dd*86400000;
       const hh=Math.floor(diff/3600000);  diff-=hh*3600000;
       const mm=Math.floor(diff/60000);    diff-=mm*60000;
