@@ -14,30 +14,24 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT  # корінь сайту
 LANGS = os.getenv("LANGS", "uk,de,es,en").split(",")  # які мови генерувати
 TIMEZONE = os.getenv("TIMEZONE", "Europe/Kyiv")
-TARGET_TIMES = os.getenv("TARGET_TIMES", "05:00,20:00").split(",")  # локальний час
-WINDOW_MIN = int(os.getenv("WINDOW_MIN", "7"))  # «вікно» в хв, щоб спіймати точний час
+TARGET_TIMES = os.getenv("TARGET_TIMES", "05:00,20:00").split(",")  # локальний час запусків
+WINDOW_MIN = int(os.getenv("WINDOW_MIN", "7"))  # «вікно» у хв, щоб спіймати точний час
 MIN_ITEMS = int(os.getenv("DIGEST_MIN_ITEMS", "12"))  # мін. кількість унікальних новин
 
-# ДЖЕРЕЛА (можеш редагувати — додавати/видаляти):
+# Джерела RSS (можеш додавати/видаляти рядки)
 FEEDS = [
-  # Міжнародні
   "https://www.reuters.com/politics/rss",
   "https://feeds.bbci.co.uk/news/politics/rss.xml",
   "https://www.politico.eu/feed",
-  # Україна
   "https://www.pravda.com.ua/rss/view_politics/",
   "https://www.eurointegration.com.ua/rss/",
-  # Німеччина
   "https://www.tagesschau.de/xml",
   "https://www.zeit.de/politik/index.xml",
-  # Іспанія
   "https://elpais.com/rss/politica.xml",
-  # США/Канада
   "https://www.npr.org/rss/rss.php?id=1014",
   "https://www.cbc.ca/cmlink/rss-politics",
 ]
 
-# Локалізовані підписи інтерфейсу
 STRINGS = {
   "uk": {"title":"Політичні підсумки дня","readmore":"Джерело","updated":"Оновлено","home":"Головна","digest":"Дайджести"},
   "de": {"title":"Politische Tageszusammenfassung","readmore":"Quelle","updated":"Aktualisiert","home":"Startseite","digest":"Digest"},
@@ -45,7 +39,6 @@ STRINGS = {
   "en": {"title":"Daily political roundup","readmore":"Source","updated":"Updated","home":"Home","digest":"Digests"},
 }
 
-# Простий, легкий шаблон сторінки з вашим AdSense
 HTML_TMPL = Template(r"""<!doctype html>
 <html lang="{{ lang }}" data-theme="auto">
 <head>
@@ -118,15 +111,12 @@ HTML_TMPL = Template(r"""<!doctype html>
 </html>
 """)
 
-# ==== ЛОГІКА ================================================================
-
 def _norm(s): return re.sub(r"\s+"," ", (s or "").strip())
 
 def now_local():
   return dt.datetime.now(ZoneInfo(TIMEZONE))
 
 def is_within_target_window(now: dt.datetime) -> bool:
-  """Публікуємо лише в потрібні хвилини (двічі на добу, з урахуванням DST)."""
   local = now
   for t in TARGET_TIMES:
     hh, mm = t.split(":")
@@ -167,7 +157,6 @@ def dedupe(items):
   return out
 
 def score_and_pick(items, limit=24):
-  # просте ранжування: політичні ключові слова + свіжість (за наявністю published/updated)
   kw = re.compile(r"(election|parliament|cabinet|minister|president|policy|verkhovna rada|rada|bundestag|bundes|senate|congress|канцлер|уряд|вибор|президент|рада)", re.I)
   scored=[]
   for it in items:
@@ -178,81 +167,36 @@ def score_and_pick(items, limit=24):
   scored.sort(key=lambda x: x[0], reverse=True)
   return [x[1] for x in scored[:limit]]
 
-# ======================== ШІ-ПІДСУМКИ (OpenAI) ===============================
-
+# ==== ШІ-підсумки (OpenAI) ===================================================
 def llm_available() -> bool:
   return bool(os.getenv("OPENAI_API_KEY"))
 
-def _openai_chat(messages, model="gpt-4o-mini", temperature=0.2, max_tokens=500):
-  """Легкий HTTP-запит до OpenAI Chat Completions API без SDK. Повертає текст."""
+def _openai_chat(messages, model="gpt-4o-mini", temperature=0.2, max_tokens=2000):
   api_key = os.getenv("OPENAI_API_KEY")
-  if not api_key:
-    return None
+  if not api_key: return None
   url = "https://api.openai.com/v1/chat/completions"
-  headers = {
-    "Authorization": f"Bearer {api_key}",
-    "Content-Type": "application/json",
-  }
-  payload = {
-    "model": model,
-    "messages": messages,
-    "temperature": temperature,
-    "max_tokens": max_tokens,
-    "response_format": {"type":"json_object"}
-  }
+  headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+  payload = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "response_format":{"type":"json_object"}}
   try:
     r = requests.post(url, headers=headers, data=json.dumps(payload), timeout=60)
     r.raise_for_status()
-    data = r.json()
-    return data["choices"][0]["message"]["content"]
+    return r.json()["choices"][0]["message"]["content"]
   except Exception as e:
     print("OpenAI error:", e)
     return None
 
 def summarize_smart(lang: str, items):
-  """
-  Пакетно просимо ШІ зробити нейтральні 2–3-реченеві підсумки мовою `lang`.
-  Повертаємо такий самий формат елементів, як у plain-версії.
-  Якщо щось пішло не так — автоматично fallback на plain.
-  """
-  # готуємо компактний input
-  compact = [
-    {"title": it["title"], "summary": it["summary_raw"], "url": it["url"], "source": it["source"]}
-    for it in items
-  ]
-
-  # Системний промпт максимально чіткий, просимо JSON
-  sys = (
-    "You are a careful, factual news summarizer. "
-    "Return ONLY valid JSON with field 'items' as an array. "
-    "Each item must have keys: headline, summary, url, source. "
-    "Language must be the requested target, neutral tone, 2–3 concise sentences. "
-    "Do not invent facts; rely only on the provided inputs."
-  )
-
-  user = {
-    "role": "user",
-    "content": json.dumps({
-      "target_language": lang,
-      "instructions": "Summarize each input item into 2–3 neutral sentences in the target language. Keep names, numbers, and dates accurate. No opinions.",
-      "items": compact
-    })
-  }
-
+  compact = [{"title": it["title"], "summary": it["summary_raw"], "url": it["url"], "source": it["source"]} for it in items]
+  sys = ("You are a careful, factual news summarizer. Return ONLY valid JSON with field 'items' as an array. "
+         "Each item must have keys: headline, summary, url, source. Language must be the requested target, neutral tone, 2–3 concise sentences. Do not invent facts.")
   res = _openai_chat(
-    messages=[
-      {"role":"system","content":sys},
-      user
-    ],
+    messages=[{"role":"system","content":sys},
+              {"role":"user","content": json.dumps({"target_language": lang, "items": compact})}],
     model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
-    temperature=0.2,
-    max_tokens=2000
+    temperature=0.2, max_tokens=2000
   )
-
   if not res:
-    # fallback
     return summarize_plain(items)
-
   try:
     data = json.loads(res)
     out=[]
@@ -261,43 +205,28 @@ def summarize_smart(lang: str, items):
       summary  = it.get("summary") or ""
       url      = it.get("url") or ""
       source   = it.get("source") or ""
-      if not (headline and url and source):
-        continue
-      # невелике страхування довжини
+      if not (headline and url and source): continue
       if len(summary) > 400: summary = summary[:397] + "…"
       out.append({"headline":headline, "summary":summary, "url":url, "source":source})
-    # якщо раптом вийшло порожньо — fallback
     return out if out else summarize_plain(items)
   except Exception as e:
     print("LLM parse error:", e)
     return summarize_plain(items)
 
-# ======================== БАЗОВА (fallback) ВЕРСІЯ ===========================
-
 def summarize_plain(items):
-  """Базовий, безкоштовний підсумок: беремо заголовок і короткий summary з RSS."""
   out=[]
   for it in items:
     summ = it["summary_raw"] or it["title"]
     if len(summ) > 320: summ = summ[:317] + "…"
-    out.append({
-      "headline": it["title"],
-      "summary": summ,
-      "url": it["url"],
-      "source": it["source"]
-    })
+    out.append({"headline": it["title"], "summary": summ, "url": it["url"], "source": it["source"]})
   return out
-
-# ======================== РЕНДЕР ============================================
 
 def render_page(lang, date_str, items):
   strings = STRINGS.get(lang, STRINGS["en"])
   canonical = f"https://presidencyclock.com/{lang}/digest/{date_str}/"
-  # hreflang на інші мови того самого випуску
   alts = [{"code": l, "href": f"https://presidencyclock.com/{l}/digest/{date_str}/"} for l in LANGS if l != lang]
   html = HTML_TMPL.render(
-    lang=lang, title=strings["title"], date=date_str,
-    time=now_local().strftime("%H:%M"),
+    lang=lang, title=strings["title"], date=date_str, time=now_local().strftime("%H:%M"),
     canonical=canonical, meta_desc=strings["title"],
     home=strings["home"], digest=strings["digest"],
     readmore=strings["readmore"], updated=strings["updated"],
@@ -319,38 +248,25 @@ def render_index(lang):
 <h1>Digests</h1><ul>{links}</ul></div></body></html>"""
   (ddir / "index.html").write_text(html, encoding="utf-8")
 
-# ======================== MAIN ==============================================
-
 def main():
-  # Тайм-гейт: запускаємось часто, але публікуємо тільки о 05:00 і 20:00
-  if not is_within_target_window(now_local()) and os.getenv("FORCE", "false").lower() != "true":
-    print("Not target time — skip.")
-    return
+  # публікуємо лише о 05:00 та 20:00 за Києвом (або якщо FORCE=true)
+  if not is_within_target_window(now_local()) and os.getenv("FORCE","false").lower() != "true":
+    print("Not target time — skip."); return
 
   raw = fetch_all()
   items = score_and_pick(dedupe(raw), limit=24)
   if len(items) < MIN_ITEMS:
-    print("Below threshold — skip.")
-    return
+    print("Below threshold — skip."); return
 
-  # Вибір режиму підсумку
   if llm_available():
-    summarized = summarize_smart(lang="uk", items=items)  # робимо україномовний як «еталонний»
-    # Далі — для кожної мови переформатуємо під мову сторінки
-    # Щоб не платити двічі, переузагальнювати не будемо — просто попросимо LLM змінити мову,
-    # але це вимагало б ще одного виклику. Тому краще одразу згенерувати для КОЖНОЇ мови:
-    multi = {}
-    for lang in LANGS:
-      multi[lang] = summarize_smart(lang=lang, items=items)
+    multi = {lang: summarize_smart(lang=lang, items=items) for lang in LANGS}
   else:
     multi = {lang: summarize_plain(items) for lang in LANGS}
 
   date_str = now_local().date().isoformat()
-
   for lang in LANGS:
     render_page(lang, date_str, multi[lang])
     render_index(lang)
-
   print("Digest generated.")
 
 if __name__ == "__main__":
