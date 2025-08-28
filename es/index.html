@@ -4,8 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>¿CUÁNTO TIEMPO LE QUEDA A DONALD TRUMP COMO PRESIDENTE?</title>
+  <meta name="description" content="Cuenta regresiva en tiempo real hasta el 20 de enero de 2029, 12:00 (Washington). Herramienta simple de seguimiento y páginas de referencia sobre mandatos presidenciales.">
 
+  <!-- canonical -->
   <link rel="canonical" href="https://presidencyclock.com/es/">
+
+  <!-- hreflang (versiones de esta misma página) -->
+  <link rel="alternate" hreflang="uk" href="https://presidencyclock.com/uk/">
+  <link rel="alternate" hreflang="en" href="https://presidencyclock.com/en/">
+  <link rel="alternate" hreflang="fr" href="https://presidencyclock.com/fr/">
+  <link rel="alternate" hreflang="es" href="https://presidencyclock.com/es/">
+  <link rel="alternate" hreflang="de" href="https://presidencyclock.com/de/">
+  <link rel="alternate" hreflang="x-default" href="https://presidencyclock.com/en/">
+
+  <!-- Open Graph / Twitter (dejado como en tu versión) -->
   <meta property="og:url" content="https://presidencyclock.com/es/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="¿CUÁNTO TIEMPO LE QUEDA A DONALD TRUMP COMO PRESIDENTE?">
@@ -20,9 +32,29 @@
   <meta name="twitter:title" content="¿CUÁNTO TIEMPO LE QUEDA A DONALD TRUMP COMO PRESIDENTE?">
   <meta name="twitter:description" content="Cuenta regresiva hasta el 20 de enero de 2029, 12:00 (Washington).">
 
+  <!-- AdSense owner -->
   <meta name="google-adsense-account" content="ca-pub-5023415479696725">
+
+  <!-- runtime favicon -->
   <link id="favicon" rel="icon" type="image/svg+xml" href="">
   <meta name="theme-color" content="#f6f8fd">
+
+  <!-- JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Presidency Clock",
+    "url":"https://presidencyclock.com/",
+    "inLanguage":"es",
+    "publisher":{"@type":"Organization","name":"Presidency Clock","email":"presidencyclock@gmail.com"},
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://presidencyclock.com/es/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
 
   <style>
     :root{
@@ -97,6 +129,12 @@
     .footer{opacity:.75;font-size:13px;text-align:center;margin:12px 0;padding-bottom:var(--safe-bottom)}
     .footer a{color:var(--accent);text-decoration:none}.footer a:hover{text-decoration:underline}
 
+    /* menú superior simple */
+    .topnav{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:12px auto 10px}
+    .topnav a{color:inherit;text-decoration:none;font-weight:700;border:1px solid var(--line);background:var(--btn-bg);padding:.4rem .7rem;border-radius:999px}
+    .topnav a:hover{transform:translateY(-1px)}
+    .muted{color:var(--muted);font-size:.95em}
+
     @media (max-width:720px){
       .timer{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
       .card{padding:10px}
@@ -124,6 +162,17 @@
   </div>
 
   <div class="wrap">
+
+    <!-- TOP NAV (enlaces internos /es/) -->
+    <nav class="topnav" aria-label="Menú principal">
+      <a href="/es/">Inicio</a>
+      <a href="/es/about/">Acerca del sitio</a>
+      <a href="/es/presidents/">Presidentes</a>
+      <a href="/es/digest/">Resúmenes</a>
+      <a href="/es/privacy/">Política</a>
+      <a href="/es/contact/">Contacto</a>
+    </nav>
+
     <h1>¿CUÁNTO TIEMPO LE QUEDA A DONALD TRUMP<br>COMO PRESIDENTE?</h1>
     <div class="subtitle">Cuenta regresiva hasta el <b>20 de enero de 2029, 12:00 (Washington)</b>.</div>
 
@@ -164,10 +213,17 @@
            data-ad-slot="6745326926" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
+    <!-- BLOQUE RESÚMENES (IA) -->
+    <div class="card" id="digest">
+      <h2 style="margin:6px 0 10px;">Resúmenes políticos (IA)</h2>
+      <p class="muted">Resumen IA de las principales noticias políticas del mundo. Nueva edición cada 3 días.</p>
+      <p><a href="/es/digest/">Ver todos los resúmenes →</a></p>
+    </div>
+
     <div class="footer">
       <a id="consent" href="#">Configuración de cookies</a> •
-      <a href="/privacy.html">Política de privacidad</a> •
-      <a href="/about.html">Acerca del sitio</a>
+      <a href="/es/privacy/">Política de privacidad</a> •
+      <a href="/es/about/">Acerca del sitio</a>
     </div>
 
     <div class="ad ad--bottom">
