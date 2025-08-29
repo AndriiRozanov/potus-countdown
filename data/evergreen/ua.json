@@ -1,8 +1,0 @@
-[
-  { "name": "Leonid Kravchuk", "office": "President", "start": "1991-12-05", "end": "1994-07-19" },
-  { "name": "Leonid Kuchma",   "office": "President", "start": "1994-07-19", "end": "2005-01-23" },
-  { "name": "Viktor Yushchenko","office": "President", "start": "2005-01-23", "end": "2010-02-25" },
-  { "name": "Viktor Yanukovych","office": "President", "start": "2010-02-25", "end": "2014-02-22" },
-  { "name": "Petro Poroshenko","office": "President", "start": "2014-06-07", "end": "2019-05-20" },
-  { "name": "Volodymyr Zelenskyy","office": "President", "start": "2019-05-20", "end": "present" }
-]
