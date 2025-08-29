@@ -1,5 +1,11 @@
 [
   {
+    "headline": "Asylum hotel ruling won't feel like much of a victory at Home Office",
+    "summary": "The government avoids having its asylum policy thrown into chaos but the court ruling is a gift for its opponents.",
+    "url": "https://www.bbc.com/news/articles/c7vlpdqeg4qo?at_medium=RSS&at_campaign=rss",
+    "source": "feeds.bbci.co.uk"
+  },
+  {
     "headline": "Ministers didn't do cost review of council mergers",
     "summary": "The government relied on a report by a lobbyist group that now says reorganisation could make no savings.",
     "url": "https://www.bbc.com/news/articles/cj9wxnlnrxdo?at_medium=RSS&at_campaign=rss",
@@ -72,18 +78,6 @@
     "source": "politico.eu"
   },
   {
-    "headline": "Limping through the Trump era: Can Europe lead again?",
-    "summary": "From a picturesque mountain resort in Austria, at the European Forum Alpbach, host Sarah Wheaton unpacks fresh threats by the U.S. to hit countries with tariffs over their digital rules — drawing instant reactions from the European Commission’s Sabine Weyand and Nobel laureate Joseph Stiglitz. She then sits down wit…",
-    "url": "https://www.politico.eu/podcast/eu-confidential/limping-through-the-trump-era-can-europe-lead-again/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
-    "source": "politico.eu"
-  },
-  {
-    "headline": "EU moves closer to using Russian assets to rebuild Ukraine",
-    "summary": "Foreign ministers on Saturday will discuss plans to transfer the funds into riskier investments.",
-    "url": "https://www.politico.eu/article/eu-moves-closer-using-russian-assets-rebuild-ukraine/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
-    "source": "politico.eu"
-  },
-  {
     "headline": "Зеленський про нову атаку на Харків: В України недостатньо ППО, і це – слабкість світу",
     "summary": "На тлі нової жорстокої атаки на Харків та область президент Володимир Зеленський закликав світових лідерів до більшої рішучості у протидії російському терору, зокрема - дозволити Україні ефективно знищувати пускові установки ворога на території РФ.",
     "url": "http://www.pravda.com.ua/news/2024/05/23/7457231/",
@@ -120,27 +114,33 @@
     "source": "pravda.com.ua"
   },
   {
-    "headline": "CNN: Трамп позбавив держохорони колишню віцепрезидентку Гарріс",
-    "summary": "Президент США Дональд Трамп позбавив колишню віцепрезидентку Камалу Гарріс держохорони, яку їй надавала Секретна служба.",
-    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219053/",
+    "headline": "Зеленський вірить, що Трамп не втратив інтересу до перемовин щодо завершення війни",
+    "summary": "Президент України Володимир Зеленський переконаний, що президент США Дональд Трамп не втратив інтересу до переговорного процесу довкола російсько-української війни.",
+    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219047/",
     "source": "eurointegration.com.ua"
   },
   {
-    "headline": "Зеленський висловився про ідею \"буферної зони\" в Україні",
-    "summary": "Президент Володимир Зеленський прокоментував інформацію, що з’явилась у ЗМІ, про те, що в рамках майбутньої мирної угоди європейські лідери розглядають можливість створення 40-кілометрової буферної зони між українськими та російськими військами.",
-    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219052/",
+    "headline": "Санду: якщо до влади прийдуть проросійські сили, Молдову використають проти України",
+    "summary": "Молдовська президентка Мая Санду попередила, що у разі перемоги на парламентських виборах проросійських сил Молдову можуть використати проти України.",
+    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219046/",
     "source": "eurointegration.com.ua"
   },
   {
-    "headline": "Зеленський прагне, щоб потенційні гарантії безпеки від партнерів були юридично зобов’язуючі",
-    "summary": "Президент України Володимир Зеленський прагне, щоб потенційні гарантії безпеки від партнерів у рамках мирної угоди отримали схвалення відповідних парламентів і були юридично зобов’язуючими.",
-    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219051/",
+    "headline": "Кошта поговорить з Орбаном про вето на відкриття кластерів для України 10 вересня",
+    "summary": "Президент Європейської ради Антоніу Кошта обговорить позицію Угорщини щодо європейської інтеграції України під час зустрічі з прем’єр-міністром Угорщини Віктором Орбаном у Будапешті 10 вересня.",
+    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219043/",
     "source": "eurointegration.com.ua"
   },
   {
-    "headline": "Зеленський прокоментував, чи існує \"дедлайн\" Трампа для РФ перед можливими санкціями",
-    "summary": "Президент України Володимир Зеленський зазначив, що після зустрічі з лідером РФ на Алясці президент США висловив готовність чекати \"пару тижнів\", щоб там погодились на двосторонню зустріч Путіна й Зеленського, і цей термін скоро сплине.",
-    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219049/",
+    "headline": "Фон дер Ляєн назвала Путіна \"хижаком\" і попередила про ризики для Європи",
+    "summary": "Президентка Єврокомісії Урсула фон дер Ляєн попередила про ризики, які РФ становить для Європи, відзначивши у цьому контексті важливість безпеки східних кордонів.",
+    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219042/",
     "source": "eurointegration.com.ua"
+  },
+  {
+    "headline": "Edouard Philippe maintient une voix critique à l’intérieur du camp présidentiel",
+    "summary": "L’ancien premier ministre, qui fait sa rentrée samedi 30 août, cultive l’art de la distanciation avec ses alliés pour mieux s’affirmer et se frayer un chemin vers l’Elysée. Les turbulences actuelles pourraient toutefois précipiter son calendrier.",
+    "url": "https://www.lemonde.fr/politique/article/2025/08/29/edouard-philippe-maintient-une-voix-critique-a-l-interieur-du-camp-presidentiel_6637420_823448.html",
+    "source": "lemonde.fr"
   }
 ]
