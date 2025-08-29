@@ -1,4 +1,8 @@
-name: Generate digests (Kyiv 05:00 & 20:00)
+- name: Generate digests
+  env:
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  run: |
+    python scripts/generate_digest.py
 
 on:
   schedule:
