@@ -13,10 +13,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      TIMEZONE: Europe/Kyiv
-      LANGS: uk,de,es,en
-      DIGEST_MIN_ITEMS: '8'
-      OPENAI_MODEL: gpt-4o-mini
+     env:
+  TIMEZONE: Europe/Kyiv
+  LANGS: uk,de,fr,es
+  DIGEST_MIN_ITEMS: '8'
+  OPENAI_MODEL: gpt-4o-mini
       # OUT_DIR не вказуємо — за замовчуванням пишемо в корінь репо
     steps:
       - name: Checkout
