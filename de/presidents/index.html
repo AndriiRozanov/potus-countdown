@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Präsidenten-Amtszeiten — Presidency Clock</title>
+  <title>Amtszeiten — Presidency Clock</title>
 
   <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://presidencyclock.com/de/presidents/">
@@ -12,14 +12,13 @@
   <link rel="alternate" hreflang="fr" href="https://presidencyclock.com/fr/presidents/">
   <link rel="alternate" hreflang="es" href="https://presidencyclock.com/es/presidents/">
   <link rel="alternate" hreflang="en" href="https://presidencyclock.com/en/presidents/">
-  <link rel="alternate" hreflang="x-default" href="https://presidencyclock.com/en/presidents/">
 
   <!-- SEO -->
-  <meta name="description" content="Die letzten 5 Staats- bzw. Regierungschefs: Ukraine, USA, Kanada (Premierminister), Spanien (Regierungspräsident), Mexiko, Frankreich. Beginn/Ende der Amtszeit, Dauer in Tagen und ≈ Jahren, Durchschnitt.">
+  <meta name="description" content="Die letzten 5 Staats- bzw. Regierungschefs: Ukraine, USA, Kanada (Premierminister), Spanien (Präsident der Regierung), Mexiko, Frankreich. Beginn/Ende, Tage & ≈ Jahre, Durchschnittsdauer.">
   <meta property="og:url" content="https://presidencyclock.com/de/presidents/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Präsidenten-Amtszeiten — Presidency Clock">
-  <meta property="og:description" content="Liste der letzten 5 Amtsinhaber pro Land mit der Dauer ihrer Amtszeiten und dem Durchschnitt.">
+  <meta property="og:title" content="Amtszeiten — Presidency Clock">
+  <meta property="og:description" content="Letzte 5 Führungspersonen pro Land mit Dauer der Amtszeiten und Durchschnittswerten.">
   <meta property="og:image" content="https://presidencyclock.com/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -27,8 +26,8 @@
   <meta property="og:locale" content="de_DE">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://presidencyclock.com/og.jpg">
-  <meta name="twitter:title" content="Präsidenten-Amtszeiten — Presidency Clock">
-  <meta name="twitter:description" content="Beginn/Ende der Amtszeiten, Tage und Jahre, Durchschnittswerte.">
+  <meta name="twitter:title" content="Amtszeiten — Presidency Clock">
+  <meta name="twitter:description" content="Beginn/Ende, Tage & ≈ Jahre, Durchschnittsdauer.">
 
   <!-- AdSense -->
   <meta name="google-adsense-account" content="ca-pub-5023415479696725">
@@ -65,39 +64,21 @@
       background-attachment:fixed,fixed,fixed;
       padding-bottom:var(--safe-bottom);
     }
-
-    /* Brand (fixed) — nicht über Menü */
-    .brand{
-      position: fixed;
-      left: calc(12px + var(--safe-left));
-      top: calc(8px + var(--safe-top));
-      z-index: 10;              /* unter dem Menü */
-      display: inline-flex;      /* nur so breit wie Inhalt */
-      align-items: center;
-      gap: .5rem;
-      width: auto;
-      pointer-events: none;      /* Container fängt keine Klicks ab */
-    }
-    .brand__link, .brand__text{ pointer-events: auto; } /* innen klickbar */
-
+    .brand{position:fixed;left:calc(12px + var(--safe-left));top:calc(8px + var(--safe-top));z-index:20;display:flex;align-items:center;gap:.5rem}
     .brand__link{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--text);box-shadow:0 2px 10px rgba(0,0,0,.06)}
     .brand__icon{width:22px;height:22px;display:block;color:var(--text)}
     .brand__text{font-weight:800;letter-spacing:.01em;user-select:none;font-size:14px}
 
-    .wrap{max-width:1100px;margin:calc(56px + var(--safe-top)) auto 28px;padding:0 14px}
-
+    .wrap{max-width:1100px;margin:calc(26px + var(--safe-top)) auto 28px;padding:0 14px}
     h1{font-weight:800;letter-spacing:.01em;text-align:center;margin:6px 0 4px;font-size:clamp(20px,4.6vw,40px);line-height:1.06}
     .subtitle{text-align:center;opacity:.9;margin-bottom:10px;font-weight:600;font-size:clamp(12px,2.6vw,15px)}
 
-    /* Hauptmenü */
-    .topnav{
-      position: relative; z-index: 50;
-      display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:12px auto
-    }
+    /* Oberes Seitenmenü */
+    .topnav{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:12px auto}
     .topnav a{color:var(--accent);text-decoration:none;font-weight:700}
     .topnav a:hover{text-decoration:underline}
 
-    /* Anker-Menü innerhalb der Seite */
+    /* Innersparten-Menü (Ankerlinks zu Ländern) */
     .nav{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:8px auto 12px}
     .nav a{color:var(--accent);text-decoration:none;font-weight:700}
     .nav a:hover{text-decoration:underline}
@@ -120,7 +101,7 @@
 
     @media (max-width:720px){
       .brand__text{display:none}
-      .wrap{margin:calc(50px + var(--safe-top)) auto 18px}
+      .wrap{margin:calc(22px + var(--safe-top)) auto 18px}
       th,td{padding:7px}
     }
   </style>
@@ -131,22 +112,22 @@
     <a class="brand__link" href="/de/" aria-label="Presidency Clock">
       <svg class="brand__icon" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"></circle><path d="M16 8v8l6 4"></path></g></svg>
     </a>
-    <span class="brand__text">Presidency&nbsp;Clock</span>
+    <span class="brand__text" aria-hidden="true">Presidency&nbsp;Clock</span>
   </div>
 
   <div class="wrap">
-    <!-- Einheitliches Hauptmenü (DE) -->
+    <!-- Oberes Hauptmenü (DE-Pfade) -->
     <nav class="topnav" aria-label="Hauptmenü">
       <a href="/de/">Startseite</a>
       <a href="/de/about/">Über die Seite</a>
-      <a href="/de/presidents/">Präsidenten-Amtszeiten</a>
+      <a href="/de/presidents/">Amtszeiten</a>
       <a href="/de/digest/">Digest</a>
       <a href="/de/privacy/">Datenschutz</a>
       <a href="/de/contacts/">Kontakt</a>
     </nav>
 
-    <h1>Präsidenten-Amtszeiten</h1>
-    <div class="subtitle">Letzte 5 Amtsinhaber je Land. Wir zeigen <b>Beginn</b> und <b>Ende</b> der Amtszeit, <b>Tage</b> und <b>≈ Jahre</b>. Tabellen sind nach Dauer sortiert (kürzeste zuerst).</div>
+    <h1>Amtszeiten</h1>
+    <div class="subtitle">Die letzten 5 Führungspersonen je Land. Wir zeigen <b>Beginn</b> und <b>Ende</b> der Amtszeit, <b>Tage</b> und <b>≈ Jahre</b>. Tabellen sind nach Dauer sortiert (kürzeste zuerst).</div>
 
     <!-- ads top -->
     <div class="ad ad--top">
@@ -155,7 +136,7 @@
            data-ad-slot="9877072514" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
-    <!-- Länder-Anker -->
+    <!-- Länder-Anker im Inhalt -->
     <div class="nav" aria-label="Länder">
       <a href="#ua">Ukraine</a>
       <a href="#us">USA</a>
@@ -185,7 +166,7 @@
 (function(){
   "use strict";
 
-  /* THEMA + FAVICON */
+  /* ====== THEMA + FAVICON ====== */
   function setFavicon(hex){
     const svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='"+hex+"' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'><circle cx='32' cy='32' r='24'/><path d='M32 14v18l12 8'/></svg>";
     const url='data:image/svg+xml,'+encodeURIComponent(svg);
@@ -200,11 +181,12 @@
   }
   applyTheme();
 
-  /* DATEN */
+  /* ====== DATEN (ISO-Daten) ====== */
+  // Wenn Ende = null — zählen wir bis heute (lokale Zeit des Nutzers).
   const DATA = {
     ua: {
       title: 'Ukraine',
-      note: 'Gewählte Präsidenten (ohne kommissarische Amtsinhaber).',
+      note: 'Gewählte Präsidenten (ohne „amtierend“).',
       leaders: [
         {name:'Wolodymyr Selenskyj', start:'2019-05-20', end:null},
         {name:'Petro Poroschenko',   start:'2014-06-07', end:'2019-05-20'},
@@ -215,7 +197,7 @@
     },
     us: {
       title: 'USA',
-      note: 'Nicht aufeinanderfolgende Amtszeiten werden getrennt dargestellt.',
+      note: 'Wenn eine Person zwei nicht aufeinanderfolgende Amtszeiten hatte, zeigen wir sie in getrennten Zeilen.',
       leaders: [
         {name:'Donald Trump (2. Amtszeit)', start:'2025-01-20', end:null},
         {name:'Joe Biden',                  start:'2021-01-20', end:'2025-01-20'},
@@ -226,7 +208,7 @@
     },
     ca: {
       title: 'Kanada',
-      note: 'Premierminister (Regierungschef).',
+      note: 'Hier sind Premierminister (Regierungschefs) aufgeführt.',
       leaders: [
         {name:'Justin Trudeau',  start:'2015-11-04', end:null},
         {name:'Stephen Harper',  start:'2006-02-06', end:'2015-11-04'},
@@ -250,11 +232,11 @@
       title: 'Mexiko',
       note: 'Präsident der Republik.',
       leaders: [
-        {name:'Claudia Sheinbaum',                start:'2024-10-01', end:null},
-        {name:'Andrés Manuel López Obrador',      start:'2018-12-01', end:'2024-09-30'},
-        {name:'Enrique Peña Nieto',               start:'2012-12-01', end:'2018-11-30'},
-        {name:'Felipe Calderón',                  start:'2006-12-01', end:'2012-11-30'},
-        {name:'Vicente Fox',                      start:'2000-12-01', end:'2006-11-30'}
+        {name:'Claudia Sheinbaum',             start:'2024-10-01', end:null},
+        {name:'Andrés Manuel López Obrador',   start:'2018-12-01', end:'2024-09-30'},
+        {name:'Enrique Peña Nieto',            start:'2012-12-01', end:'2018-11-30'},
+        {name:'Felipe Calderón',               start:'2006-12-01', end:'2012-11-30'},
+        {name:'Vicente Fox',                   start:'2000-12-01', end:'2006-11-30'}
       ]
     },
     fr: {
@@ -265,16 +247,16 @@
         {name:'François Hollande', start:'2012-05-15', end:'2017-05-14'},
         {name:'Nicolas Sarkozy',   start:'2007-05-16', end:'2012-05-15'},
         {name:'Jacques Chirac',    start:'1995-05-17', end:'2007-05-16'},
-        {name:'François Mitterrand', start:'1981-05-21', end:'1995-05-17'}
+        {name:'François Mitterrand',start:'1981-05-21', end:'1995-05-17'}
       ]
     }
   };
 
-  /* UTIL */
+  /* ====== UTILs ====== */
   const fmt = (d)=>d?new Date(d).toLocaleDateString('de-DE',{year:'numeric',month:'2-digit',day:'2-digit'}):'—';
   function diffDays(a,b){
     const A=new Date(a), B=b?new Date(b):new Date();
-    A.setHours(12,0,0,0); B.setHours(12,0,0,0);
+    A.setHours(12,0,0,0); B.setHours(12,0,0,0); // TZ-Drift vermeiden
     return Math.max(0, Math.round((B-A)/86400000));
   }
   function yearsApprox(days){ return (days/365.2425).toFixed(2); }
@@ -309,13 +291,14 @@
       tr.innerHTML = `
         <td>${r.name}</td>
         <td>${fmt(r.start)}</td>
-        <td>${r.end?fmt(r.end):'<small>amtierend</small>'}</td>
+        <td>${r.end?fmt(r.end):'<small>läuft</small>'}</td>
         <td>${r.days.toLocaleString('de-DE')}</td>
         <td>${r.yrs}</td>
       `;
       tb.appendChild(tr);
     });
 
+    // Durchschnittliche Amtszeit
     const avgDays = Math.round(rows.reduce((s,x)=>s+x.days,0)/rows.length);
     const avg = document.createElement('div');
     avg.style.margin='8px 0 2px';
@@ -341,7 +324,7 @@
   }
   mount();
 
-  /* AdSense */
+  /* ====== AdSense ====== */
   (function(){
     const s=document.createElement('script');
     s.async=true;
