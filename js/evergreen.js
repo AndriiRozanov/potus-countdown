@@ -38,7 +38,10 @@ let active = countries[0];
 
   async function load(code){
     try{
+// всередині load()
 const res = await fetch(`/assets/evergreen/${code}.json?cb=${Date.now()}`);
+...
+note.textContent = `/assets/evergreen/${code}.json`;
       if (!res.ok) return [];
       const arr = await res.json();
 
