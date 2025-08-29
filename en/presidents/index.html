@@ -47,6 +47,24 @@
       --safe-left: env(safe-area-inset-left, 0px);
       --safe-right: env(safe-area-inset-right, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
+      /* FIX: щоб .brand не перекривав меню по всій ширині */
+.brand{
+  position: fixed;
+  left: calc(12px + var(--safe-left));
+  top: calc(8px + var(--safe-top));
+  z-index: 20;
+  display: inline-flex;      /* було flex — міняємо на inline-flex */
+  align-items: center;
+  gap: .5rem;
+  width: auto;               /* не розтягувати на всю ширину */
+  pointer-events: none;      /* сама смуга не ловить кліки */
+}
+.brand__link, .brand__text{ pointer-events: auto; } /* але всередині кліки працюють */
+
+.wrap{ margin: calc(56px + var(--safe-top)) auto 28px; } /* трохи більше відступу зверху */
+
+.topnav{ position: relative; z-index: 50; } /* меню гарантовано вище всіх фон.елементів */
+
     }
     [data-theme="dark"]{
       --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06);
