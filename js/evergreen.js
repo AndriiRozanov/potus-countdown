@@ -10,8 +10,8 @@
   const t = k => I18N[lang][k] || k;
 
   // список країн
-  const countries = ['us','ua','ca','mx','es','fr','de'];
-  let active = countries[0];
+ const countries = ['us','ua','ca','mx','es','fr','de'];
+let active = countries[0];
 
   function applyI18n(){
     $$('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
