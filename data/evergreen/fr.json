@@ -1,1 +1,9 @@
-[]
+[
+  { "name": "Georges Pompidou", "office": "President", "start": "1969-06-20", "end": "1974-04-02" },
+  { "name": "Valéry Giscard d’Estaing", "office": "President", "start": "1974-05-27", "end": "1981-05-21" },
+  { "name": "Charles de Gaulle", "office": "President", "start": "1959-01-08", "end": "1969-04-28" },
+  { "name": "François Mitterrand", "office": "President", "start": "1981-05-21", "end": "1995-05-17" },
+  { "name": "Jacques Chirac", "office": "President", "start": "1995-05-17", "end": "2007-05-16" },
+  { "name": "Nicolas Sarkozy", "office": "President", "start": "2007-05-16", "end": "2012-05-15" },
+  { "name": "François Hollande", "office": "President", "start": "2012-05-15", "end": "2017-05-14" }
+]
