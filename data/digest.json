@@ -1,0 +1,12 @@
+{
+  "updated": "2025-08-29T20:00:00Z",
+  "items": [
+    {
+      "title": "Sample: major political headline goes here",
+      "url": "https://example.com/story",
+      "source": "Example News",
+      "summary": "Short summary of the story. The real workflow will overwrite this.",
+      "lang": "en"
+    }
+  ]
+}
