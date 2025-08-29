@@ -1,26 +1,22 @@
-- name: Generate digests
-  env:
-    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-  run: |
-    python scripts/generate_digest.py
+name: Generate digests
 
 on:
   schedule:
-    # Запуск кожні 10 хв. Скрипт публікує ТІЛЬКИ о 05:00 та 20:00 за Києвом
-    - cron: "*/10 * * * *"
-  workflow_dispatch:
-    inputs:
-      force:
-        description: "Force run now (ignore time gate)"
-        required: false
-        default: "false"
+    - cron: '0 2 * * *'    # 05:00 Kyiv (UTC+3)
+    - cron: '0 17 * * *'   # 20:00 Kyiv (UTC+3)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
+    env:
+      TIMEZONE: Europe/Kyiv
+      LANGS: uk,de,fr,es
+      DIGEST_MIN_ITEMS: '8'
+      OPENAI_MODEL: gpt-4o-mini
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,37 +24,29 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install feedparser Jinja2 requests
+          python -m pip install -U pip
+          pip install -r requirements.txt
 
       - name: Generate digests
         env:
-          TZ: Europe/Kyiv
-          TIMEZONE: Europe/Kyiv
-          TARGET_TIMES: "05:00,20:00"  # двічі на день за Києвом
-          WINDOW_MIN: "7"
-          LANGS: "uk,de,es,en"
-          DIGEST_MIN_ITEMS: "12"
-          FORCE: ${{ github.event.inputs.force }}
-          # [опціонально] розумні підсумки від ШІ:
-          # додай секрет у репозиторії з назвою OPENAI_API_KEY
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          # OPENAI_MODEL: gpt-4o-mini
+          SITE_ORIGIN: https://presidencyclock.com
         run: |
-          python scripts/generate_digest.py
+          python potus-countdown/scripts/generate_digest.py
 
-      - name: Commit & push if changed
+      - name: Commit & push changes
         run: |
           git config user.name "presidencyclock-bot"
-          git config user.email "bot@users.noreply.github.com"
+          git config user.email "bot@presidencyclock.local"
           git add -A
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: publish political digest"
-            git push
-          else
+          if git diff --cached --quiet; then
             echo "No changes to commit."
+          else
+            git commit -m "auto: digests $(date -u +'%Y-%m-%d %H:%M:%S')"
+            git pull --rebase
+            git push
           fi
