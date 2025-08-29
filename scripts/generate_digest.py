@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 """
-PresidencyClock — авто-дайджести (стабільна версія для GitHub Actions).
-- Двічі на день збирає політичні новини з RSS.
-- Якщо є OPENAI_API_KEY — робить «розумні» 2–3-реченеві підсумки мовою сторінки.
-- Генерує сторінки: /{lang}/digest/YYYY-MM-DD/index.html (+ items.json)
-- Оновлює індекс:   /{lang}/digest/index.html (список дат + прев’ю останнього випуску).
-- Захист від «пропусків»: якщо за сьогодні випуску ще нема — створює його при кожному запуску.
+PresidencyClock — авто-дайджести (мультимовний + hreflang).
+Мови за замовчуванням: uk,de,fr,es. (керується змінною оточення LANGS)
+- Збирає політичні новини з RSS.
+- Якщо є OPENAI_API_KEY — робить короткі підсумки МОВОЮ КОЖНОЇ СТОРІНКИ.
+- Генерує: /{lang}/digest/YYYY-MM-DD/index.html (+ items.json)
+- Оновлює: /{lang}/digest/index.html
+- Додає <link rel="alternate" hreflang="..."> для SEO між мовами.
 """
 
 import os, re, json, hashlib, pathlib, datetime as dt
@@ -20,14 +21,15 @@ import requests
 
 # ========================= НАЛАШТУВАННЯ =========================
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-OUT = pathlib.Path(os.getenv("OUT_DIR", ROOT))  # куди писати файли (за замовчуванням — корінь репо)
-LANGS = [x.strip() for x in os.getenv("LANGS", "uk,de,es,en").split(",") if x.strip()]
+OUT = pathlib.Path(os.getenv("OUT_DIR", ROOT))
+LANGS = [x.strip() for x in os.getenv("LANGS", "uk,de,fr,es").split(",") if x.strip()]
 TIMEZONE = os.getenv("TIMEZONE", "Europe/Kyiv")
-MIN_ITEMS = int(os.getenv("DIGEST_MIN_ITEMS", "8"))  # мінімальна кількість новин (опустили до 8 для стабільності)
+MIN_ITEMS = int(os.getenv("DIGEST_MIN_ITEMS", "8"))
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+SITE = os.getenv("SITE_ORIGIN", "https://presidencyclock.com")  # для canonical/hreflang
 
 FEEDS = [
-  # International
+  # International (англомовні — як фід-джерела)
   "https://www.reuters.com/politics/rss",
   "https://feeds.bbci.co.uk/news/politics/rss.xml",
   "https://www.politico.eu/feed",
@@ -37,6 +39,9 @@ FEEDS = [
   # Germany
   "https://www.tagesschau.de/xml",
   "https://www.zeit.de/politik/index.xml",
+  # France
+  "https://www.lemonde.fr/politique/rss_full.xml",
+  "https://www.lefigaro.fr/rss/figaro_politique.xml",
   # Spain
   "https://elpais.com/rss/politica.xml",
   # USA/Canada
@@ -51,9 +56,11 @@ STRINGS = {
     "updated":"Оновлено",
     "home":"Головна",
     "digest":"Дайджести",
-    "desc":"Короткі AI-резюме політичних новин. Оновлюється: двічі на день.",
+    "desc":"Короткі AI-резюме політичних новин. Оновлюється двічі на день.",
     "latest":"Останній випуск",
-    "see_full":"Переглянути повний випуск"
+    "see_full":"Переглянути повний випуск",
+    "archive":"Архів",
+    "digests_word":"Дайджести"
   },
   "de": {
     "title":"Politische Tageszusammenfassung",
@@ -61,9 +68,23 @@ STRINGS = {
     "updated":"Aktualisiert",
     "home":"Startseite",
     "digest":"Digest",
-    "desc":"Kurze KI-Zusammenfassungen der politischen Nachrichten. Aktualisiert: zweimal täglich.",
+    "desc":"Kurze KI-Zusammenfassungen politischer Nachrichten. Zweimal täglich aktualisiert.",
     "latest":"Neueste Ausgabe",
-    "see_full":"Ganze Ausgabe ansehen"
+    "see_full":"Ganze Ausgabe ansehen",
+    "archive":"Archiv",
+    "digests_word":"Digests"
+  },
+  "fr": {
+    "title":"Résumé politique du jour",
+    "readmore":"Source",
+    "updated":"Mis à jour",
+    "home":"Accueil",
+    "digest":"Synthèses",
+    "desc":"Brefs résumés d’actualité politique générés par IA. Mise à jour deux fois par jour.",
+    "latest":"Dernière édition",
+    "see_full":"Voir l’édition complète",
+    "archive":"Archive",
+    "digests_word":"Synthèses"
   },
   "es": {
     "title":"Resumen político del día",
@@ -71,19 +92,11 @@ STRINGS = {
     "updated":"Actualizado",
     "home":"Inicio",
     "digest":"Digest",
-    "desc":"Resúmenes breves de noticias políticas. Actualizado: dos veces al día.",
+    "desc":"Breves resúmenes de noticias políticas con IA. Se actualiza dos veces al día.",
     "latest":"Última edición",
-    "see_full":"Ver edición completa"
-  },
-  "en": {
-    "title":"Daily political roundup",
-    "readmore":"Source",
-    "updated":"Updated",
-    "home":"Home",
-    "digest":"Digests",
-    "desc":"Short AI summaries of political news. Updated twice a day.",
-    "latest":"Latest edition",
-    "see_full":"View full edition"
+    "see_full":"Ver edición completa",
+    "archive":"Archivo",
+    "digests_word":"Digests"
   },
 }
 
@@ -95,6 +108,9 @@ HTML_TMPL = Template(r"""<!doctype html>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ title }} — {{ date }}</title>
   <link rel="canonical" href="{{ canonical }}">
+  {% for alt in alternates %}
+  <link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}">
+  {% endfor %}
   <meta name="description" content="{{ meta_desc }}">
   <meta name="google-adsense-account" content="ca-pub-5023415479696725">
   <style>
@@ -154,8 +170,11 @@ INDEX_TMPL = Template(r"""<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ title }} — Digests</title>
-  <link rel="canonical" href="https://presidencyclock.com/{{ lang }}/digest/">
+  <title>{{ title }} — {{ digests_word }}</title>
+  <link rel="canonical" href="{{ canonical }}">
+  {% for alt in alternates %}
+  <link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}">
+  {% endfor %}
   <meta name="description" content="{{ desc }}">
   <style>
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f6f8fd;color:#0c1220}
@@ -195,7 +214,7 @@ INDEX_TMPL = Template(r"""<!doctype html>
     {% endif %}
 
     <div class="dates">
-      <h2>Архів</h2>
+      <h2>{{ archive }}</h2>
       <ul>
         {% for d in dates %}
         <li><a href="/{{ lang }}/digest/{{ d }}/">{{ d }}</a></li>
@@ -218,6 +237,16 @@ def todays_digest_exists(lang: str, date_str: str) -> bool:
 def log(msg: str):
   ts = now_local().strftime("%Y-%m-%d %H:%M:%S")
   print(f"[{ts}] {msg}")
+
+def make_alternates(date_str: str | None):
+  # будуємо набір hreflang-посилань між мовами
+  alts=[]
+  for l in LANGS:
+    href = f"{SITE}/{l}/digest/{date_str}/" if date_str else f"{SITE}/{l}/digest/"
+    alts.append({"hreflang": l, "href": href})
+  # x-default — на англомовний індекс дайджестів
+  alts.append({"hreflang":"x-default", "href": f"{SITE}/en/digest/"})
+  return alts
 
 # ========================= FETCH + PICK ==========================
 def fetch_all():
@@ -256,7 +285,7 @@ def dedupe(items):
   return out
 
 def score_and_pick(items, limit=24):
-  kw = re.compile(r"(election|parliament|cabinet|minister|president|policy|verkhovna rada|rada|bundestag|bundes|senate|congress|канцлер|уряд|вибор|президент|рада)", re.I)
+  kw = re.compile(r"(election|parliament|cabinet|minister|president|policy|verkhovna rada|rada|bundestag|bundes|senate|congress|канцлер|уряд|вибор|президент|рада|assemblée|élysée|ministre|parlement)", re.I)
   scored=[]
   for it in items:
     score=0
@@ -300,7 +329,7 @@ def summarize_smart(lang, items):
     messages=[{"role":"system","content":sys},{"role":"user","content":json.dumps({"items":compact})}],
     model=OPENAI_MODEL, temperature=0.2, max_tokens=2000
   )
-  if not res: return summarize_plain(items)
+  if not res: return summarize_plain(items, lang)
   try:
     data=json.loads(res)
     out=[]
@@ -309,12 +338,13 @@ def summarize_smart(lang, items):
       if not (h and u and src): continue
       if len(s)>400: s=s[:397]+"…"
       out.append({"headline":h,"summary":s,"url":u,"source":src})
-    return out if out else summarize_plain(items)
+    return out if out else summarize_plain(items, lang)
   except Exception as e:
     log(f"LLM parse error: {e}")
-    return summarize_plain(items)
+    return summarize_plain(items, lang)
 
-def summarize_plain(items):
+def summarize_plain(items, lang):
+  # без LLM: копіюємо титли/описи як є (можуть бути англ/іншою мовою)
   out=[]
   for it in items:
     summ=it["summary_raw"] or it["title"]
@@ -324,14 +354,14 @@ def summarize_plain(items):
 
 # ========================= RENDER ================================
 def render_page(lang, date_str, items):
-  strings=STRINGS.get(lang, STRINGS["en"])
-  canonical=f"https://presidencyclock.com/{lang}/digest/{date_str}/"
+  strings=STRINGS.get(lang, STRINGS["uk"])
+  canonical=f"{SITE}/{lang}/digest/{date_str}/"
   html=HTML_TMPL.render(
     lang=lang, title=strings["title"], date=date_str, time=now_local().strftime("%H:%M"),
     canonical=canonical, meta_desc=strings["title"],
     home=strings["home"], digest=strings["digest"],
     readmore=strings["readmore"], updated=strings["updated"],
-    items=items
+    items=items, alternates=make_alternates(date_str)
   )
   out_dir=OUT/lang/"digest"/date_str
   out_dir.mkdir(parents=True, exist_ok=True)
@@ -339,7 +369,7 @@ def render_page(lang, date_str, items):
   (out_dir/"items.json").write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
 
 def render_index(lang):
-  strings=STRINGS.get(lang, STRINGS["en"])
+  strings=STRINGS.get(lang, STRINGS["uk"])
   ddir=OUT/lang/"digest"
   ddir.mkdir(parents=True, exist_ok=True)
   dates=sorted([p.name for p in ddir.iterdir() if p.is_dir()], reverse=True)
@@ -356,6 +386,9 @@ def render_index(lang):
   html=INDEX_TMPL.render(
     lang=lang,
     title=strings["title"],
+    digests_word=strings.get("digests_word", "Digests"),
+    canonical=f"{SITE}/{lang}/digest/",
+    alternates=make_alternates(None),
     desc=strings["desc"],
     dates=dates[:90],
     latest_date=latest_date,
@@ -363,7 +396,8 @@ def render_index(lang):
     latest_label=strings.get("latest","Latest"),
     readmore=strings["readmore"],
     see_full=strings.get("see_full","View full"),
-    home=strings["home"]
+    home=strings["home"],
+    archive=strings.get("archive","Archive")
   )
   (ddir/"index.html").write_text(html, encoding="utf-8")
 
@@ -371,22 +405,19 @@ def render_index(lang):
 def main():
   date_str = now_local().date().isoformat()
 
-  # 1) Збір новин
   raw=fetch_all()
   items=score_and_pick(dedupe(raw), limit=24)
   if len(items) < MIN_ITEMS:
     log(f"Below threshold ({len(items)}<{MIN_ITEMS}) — skip.")
     return
 
-  # 2) Підсумки (LLM або прості)
   if llm_available():
-    log("LLM available — generating smart summaries…")
+    log("LLM available — generating smart summaries per language…")
     multi={lang: summarize_smart(lang, items) for lang in LANGS}
   else:
-    log("No OPENAI_API_KEY — using plain summaries.")
-    multi={lang: summarize_plain(items) for lang in LANGS}
+    log("No OPENAI_API_KEY — using plain (non-translated) summaries.")
+    multi={lang: summarize_plain(items, lang) for lang in LANGS}
 
-  # 3) Генерація сторінок (один раз на день для кожної мови)
   for lang in LANGS:
     if todays_digest_exists(lang, date_str) and os.getenv("FORCE","false").lower()!="true":
       log(f"{lang}: digest for {date_str} already exists — skip.")
