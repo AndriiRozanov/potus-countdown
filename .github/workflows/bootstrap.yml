@@ -2,14 +2,13 @@ name: Bootstrap site (safe)
 on:
   workflow_dispatch: {}
 permissions:
-  contents: write   # дозволяє пуш у репо
+  contents: write
 jobs:
   make:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # 1) Запускаємо твій bootstrap.sh якщо є; інакше нічого страшного
       - name: Generate static site via bootstrap.sh
         shell: bash
         run: |
@@ -17,31 +16,30 @@ jobs:
           if [[ -f bootstrap.sh ]]; then
             bash bootstrap.sh
           else
-            echo "bootstrap.sh not found (це не критично, але тоді файлів не створиться)."
+            echo "bootstrap.sh not found (не критично, але тоді файлів може не бути)."
           fi
 
-      # 2) Створюємо аліаси мов /en, /uk, /es, /fr, /de
       - name: Create language aliases (/en, /uk, /es, /fr, /de)
         shell: bash
         run: |
-          mkdir -p en uk es fr de
+          set -e
           for code in en uk es fr de; do
-            cat > $code/index.html <<HTML
-<!doctype html><meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=/index.html?lang=$code">
-<title>Redirecting…</title>
-HTML
+            mkdir -p "$code"
+            printf '%s\n' \
+              '<!doctype html><meta charset="utf-8">' \
+              "<meta http-equiv=\"refresh\" content=\"0; url=/index.html?lang=$code\">" \
+              '<title>Redirecting…</title>' \
+              > "$code/index.html"
           done
 
-      # 3) Комітимо всі згенеровані файли, але ВИКЛЮЧАЄМО workflow digest.yml
       - name: Commit generated files (exclude workflows)
+        shell: bash
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add -A
-            # якщо bootstrap.sh створив .github/workflows/digest.yml — не додаємо його, інакше GitHub заблокує пуш
-            git restore --staged .github/workflows/digest.yml || true
+            git restore --staged .github/workflows/digest.yml 2>/dev/null || true
             git commit -m "bootstrap: generate static site"
             git push
           else
