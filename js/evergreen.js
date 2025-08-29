@@ -5,7 +5,8 @@
   let lang=(params.get('lang')||localStorage.getItem('lang')||(navigator.language||'en')).slice(0,2).toLowerCase();
   if(!I18N[lang]) lang='en';
   const t=k=>I18N[lang][k]||k;
-
+// список країн
+let active = countries[0];
   // i18n
   function applyI18n(){
     $$('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));
@@ -18,7 +19,7 @@
     });
   }
 
-  const countries=['us','ua','ca','mx','es','fr','de'];
+  const countries = ['us','ua','ca','mx','es','fr','de'];
   let active='us';
 
   // таби
