@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Presidency Clock — Widget</title>
+<style>
+  :root{--bg:transparent;--fg:#e8edf7;--muted:#9fb3c8;--card:#121833;--card-border:#24305a}
+  html,body{margin:0;padding:8px;background:transparent;color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial}
+  .countdown{display:flex;gap:8px}
+  .tile{min-width:84px;text-align:center;background:rgba(255,255,255,.04);border:1px solid var(--card-border);border-radius:10px;padding:10px 8px}
+  .num{font-size:22px;font-weight:800}
+  .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .btn{border:1px solid var(--card-border);background:rgba(255,255,255,.04);color:var(--fg);padding:6px 8px;border-radius:8px;cursor:pointer;margin-top:6px;margin-right:6px;font-size:12px}
+</style>
+</head>
+<body>
+  <div class="countdown">
+    <div class="tile"><div class="num" id="d">0</div><div class="lbl" id="lbl-d">Days</div></div>
+    <div class="tile"><div class="num" id="h">00</div><div class="lbl" id="lbl-h">Hours</div></div>
+    <div class="tile"><div class="num" id="m">00</div><div class="lbl" id="lbl-m">Minutes</div></div>
+    <div class="tile"><div class="num" id="s">00</div><div class="lbl" id="lbl-s">Seconds</div></div>
+  </div>
+  <div>
+    <button class="btn" id="tick">Tick</button>
+    <button class="btn" id="beep">Beep</button>
+    <button class="btn" id="mute">Unmute</button>
+  </div>
+<script>
+  const I18N={en:{seconds:"Seconds",unmute:"Unmute",mute:"Mute"},uk:{seconds:"Секунди",unmute:"Увімкнути звук",mute:"Вимкнути звук"},es:{seconds:"Segundos",unmute:"Activar sonido",mute:"Silenciar"},fr:{seconds:"Secondes",unmute:"Activer le son",mute:"Couper le son"},de:{seconds:"Sekunden",unmute:"Ton ein",mute:"Stumm"}};
+  const p=new URLSearchParams(location.search); let lang=(p.get('lang')||'en').toLowerCase(); if(!I18N[lang]) lang='en';
+  document.getElementById('lbl-s').textContent=I18N[lang].seconds;
+  class ClockAudio{constructor(){this.ctx=null;this.enabled=false;this.mode='tick'}ensure(){if(!this.ctx)this.ctx=new (window.AudioContext||window.webkitAudioContext)()}setMode(m){this.mode=m}toggle(on){this.enabled=(on===undefined)?!this.enabled:on;if(this.enabled)this.ensure();return this.enabled}play(){if(!this.enabled)return;this.ensure();const o=this.ctx.createOscillator(),g=this.ctx.createGain();o.type='square';o.frequency.value=(this.mode==='beep')?880:220;g.gain.value=0.001;g.gain.exponentialRampToValueAtTime(0.00001,this.ctx.currentTime+0.08);o.connect(g).connect(this.ctx.destination);o.start();o.stop(this.ctx.currentTime+0.08)}}
+  const audio=new ClockAudio(); let muted=true;
+  function setMode(m){ audio.setMode(m); }
+  function toggle(){ muted=!muted; audio.toggle(!muted); document.getElementById('mute').textContent= muted? I18N[lang].unmute : I18N[lang].mute; }
+  document.getElementById('tick').onclick=()=>setMode('tick');
+  document.getElementById('beep').onclick=()=>setMode('beep');
+  document.getElementById('mute').onclick=toggle; document.getElementById('mute').textContent=I18N[lang].unmute;
+  const TARGET=Date.parse('2029-01-20T17:00:00Z'), pad=n=>String(n).padStart(2,'0');
+  function tick(){ const now=Date.now(); let diff=Math.max(0,TARGET-now);
+    const s=Math.floor(diff/1000)%60, m=Math.floor(diff/60000)%60, h=Math.floor(diff/3600000)%24, d=Math.floor(diff/86400000);
+    dEl.textContent=d; hEl.textContent=pad(h); mEl.textContent=pad(m); sEl.textContent=pad(s);
+    if(!muted) audio.play(); if(diff===0) clearInterval(timer);
+  }
+  const dEl=d, hEl=h, mEl=m, sEl=s; let timer=setInterval(tick,1000); tick();
+</script>
+</body>
+</html>
