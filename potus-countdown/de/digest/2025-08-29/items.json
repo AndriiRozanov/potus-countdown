@@ -78,6 +78,12 @@
     "source": "feeds.bbci.co.uk"
   },
   {
+    "headline": "Macron: Putin will have played Trump if he doesn’t meet with Zelenskyy",
+    "summary": "U.S. President Donald Trump has given a Monday deadline for Russia to agree to the talks with Ukraine.",
+    "url": "https://www.politico.eu/article/emmanuel-macron-vladimir-putin-donald-trump-volodymyr-zelenskyy-war-in-ukraine-peace-talks/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "source": "politico.eu"
+  },
+  {
     "headline": "DSEI UK 2025: preparing the future force, today",
     "summary": "This September, Excel London will host DSEI UK, the global hub for defence and security innovation. Over four days, more than 50,000 participants, from Ministers and military leaders to industry innovators and academic researchers, will converge to exchange ideas, explore cutting-edge technology, and foster partners…",
     "url": "https://www.politico.eu/sponsored-content/dsei-uk-2025-preparing-the-future-force-today/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
@@ -120,27 +126,21 @@
     "source": "pravda.com.ua"
   },
   {
-    "headline": "Венс каже, що готовий стати президентом США",
-    "summary": "Віцепрезидент США Джей Ді Венс заявив, що в разі необхідності готовий виконувати повноваження президента Дональда Трампа, якщо з ним щось трапиться.",
-    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219089/",
-    "source": "eurointegration.com.ua"
+    "headline": "Vote de confiance : le PS affirme être « volontaire » pour succéder à François Bayrou",
+    "summary": "Olivier Faure a demandé vendredi à Emmanuel Macron de nommer un premier ministre issu de la gauche, en cas de chute du gouvernement Bayrou. Prônant « une autre manière de gouverner », il a pris « l’engagement de ne pas utiliser le 49.3, ce qui mécaniquement nous obligera à trouver des compromis texte par texte ».",
+    "url": "https://www.lemonde.fr/politique/article/2025/08/29/le-ps-ira-voir-francois-bayrou-a-matignon-pour-lui-redire-qu-il-ne-votera-pas-la-confiance-et-affirme-etre-volontaire-pour-lui-succeder_6637389_823449.html",
+    "source": "lemonde.fr"
   },
   {
-    "headline": "3350 ракет від США, президент Португалії \"наїхав\" на Трампа, ідея буферної зони: новини дня",
-    "summary": "У США схвалили продаж Україні тисяч ракет із супутнім обладнанням, які можуть надійти вже цього року.",
-    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219088/",
-    "source": "eurointegration.com.ua"
+    "headline": "Edouard Philippe maintient une voix critique à l’intérieur du camp présidentiel",
+    "summary": "L’ancien premier ministre, qui fait sa rentrée samedi 30 août, cultive l’art de la distanciation avec ses alliés pour mieux s’affirmer et se frayer un chemin vers l’Elysée. Les turbulences actuelles pourraient toutefois précipiter son calendrier.",
+    "url": "https://www.lemonde.fr/politique/article/2025/08/29/edouard-philippe-maintient-une-voix-critique-a-l-interieur-du-camp-presidentiel_6637420_823448.html",
+    "source": "lemonde.fr"
   },
   {
-    "headline": "FT: Трамп пропонував розгорнути китайські війська як миротворців в Україні",
-    "summary": "Президент США Дональд Трамп нібито запропонував розгорнути китайські війська як миротворців в Україні після припинення повномасштабної російської агресії.",
-    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219087/",
-    "source": "eurointegration.com.ua"
-  },
-  {
-    "headline": "Макрон: Трамп не може залишити без реакції ухиляння Путіна від зустрічі із Зеленським",
-    "summary": "Президент Франції Емманюель Макрон вважає, що якщо очільник Кремля продовжить ухилятися від зустрічі з президентом України, на яку погодився під час саміту з Трампом – це те, що американський президент не може залишити без реакції.",
-    "url": "https://www.eurointegration.com.ua/news/2025/08/29/7219086/",
-    "source": "eurointegration.com.ua"
+    "headline": "Vote de confiance : François Bayrou donnera dimanche à 18 heures une interview aux quatre chaînes d’info en continu",
+    "summary": "Le premier ministre, qui sollicitera un vote de confiance de l’Assemblée le 8 septembre, « répondra aux questions de Darius Rochebin (LCI), Myriam Encaoua (Franceinfo), Marc Fauvelle (BFM-TV) et Sonia Mabrouk (CNews) », selon ces chaînes.",
+    "url": "https://www.lemonde.fr/politique/article/2025/08/29/vote-de-confiance-francois-bayrou-donnera-dimanche-a-18-heures-une-interview-aux-quatre-chaines-d-info-en-continu_6637393_823448.html",
+    "source": "lemonde.fr"
   }
 ]
