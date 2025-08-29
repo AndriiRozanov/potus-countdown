@@ -3,13 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Президенти і терміни — Presidency Clock</title>
+  <title>Президентські терміни — Presidency Clock</title>
 
+  <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://presidencyclock.com/uk/presidents/">
-  <meta name="description" content="Останні 5 лідерів: Україна, США, Канада (прем’єр-міністри), Іспанія (президент уряду), Мексика, Франція. Початок і кінець каденції, тривалість у днях і роках, середній термін.">
+  <link rel="alternate" hreflang="uk" href="https://presidencyclock.com/uk/presidents/">
+  <link rel="alternate" hreflang="de" href="https://presidencyclock.com/de/presidents/">
+  <link rel="alternate" hreflang="fr" href="https://presidencyclock.com/fr/presidents/">
+  <link rel="alternate" hreflang="es" href="https://presidencyclock.com/es/presidents/">
+
+  <!-- SEO -->
+  <meta name="description" content="Останні 5 лідерів: Україна, США, Канада (прем’єр-міністри), Іспанія (президент уряду), Мексика, Франція. Початок/кінець каденції, тривалість у днях і роках, середній термін.">
   <meta property="og:url" content="https://presidencyclock.com/uk/presidents/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Президенти і терміни — Presidency Clock">
+  <meta property="og:title" content="Президентські терміни — Presidency Clock">
   <meta property="og:description" content="Останні 5 лідерів по країнах з підрахунком тривалості каденцій та середніх термінів.">
   <meta property="og:image" content="https://presidencyclock.com/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -18,7 +25,7 @@
   <meta property="og:locale" content="uk_UA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://presidencyclock.com/og.jpg">
-  <meta name="twitter:title" content="Президенти і терміни — Presidency Clock">
+  <meta name="twitter:title" content="Президентські терміни — Presidency Clock">
   <meta name="twitter:description" content="Початок/кінець каденцій, дні та роки, середні терміни.">
 
   <!-- AdSense -->
@@ -64,6 +71,13 @@
     .wrap{max-width:1100px;margin:calc(26px + var(--safe-top)) auto 28px;padding:0 14px}
     h1{font-weight:800;letter-spacing:.01em;text-align:center;margin:6px 0 4px;font-size:clamp(20px,4.6vw,40px);line-height:1.06}
     .subtitle{text-align:center;opacity:.9;margin-bottom:10px;font-weight:600;font-size:clamp(12px,2.6vw,15px)}
+
+    /* Верхнє меню сайту */
+    .topnav{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:12px auto}
+    .topnav a{color:var(--accent);text-decoration:none;font-weight:700}
+    .topnav a:hover{text-decoration:underline}
+
+    /* Внутрішнє меню розділу (якірні посилання на країни) */
     .nav{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:8px auto 12px}
     .nav a{color:var(--accent);text-decoration:none;font-weight:700}
     .nav a:hover{text-decoration:underline}
@@ -101,7 +115,17 @@
   </div>
 
   <div class="wrap">
-    <h1>Президенти і терміни</h1>
+    <!-- Єдине верхнє меню сайту -->
+    <nav class="topnav" aria-label="Головне меню">
+      <a href="/uk/">Головна</a>
+      <a href="/uk/about/">Про сайт</a>
+      <a href="/uk/presidents/">Президентські терміни</a>
+      <a href="/uk/digest/">Дайджести</a>
+      <a href="/uk/privacy/">Політика конфіденційності</a>
+      <a href="/uk/contacts/">Контакти</a>
+    </nav>
+
+    <h1>Президентські терміни</h1>
     <div class="subtitle">Останні 5 лідерів кожної країни. Показуємо <b>початок</b> і <b>кінець</b> каденції, <b>днів</b> та <b>≈ років</b>. Таблиці відсортовані за тривалістю (від найкоротших).</div>
 
     <!-- ads top -->
@@ -111,7 +135,8 @@
            data-ad-slot="9877072514" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
-    <div class="nav">
+    <!-- Якірне меню країн всередині сторінки -->
+    <div class="nav" aria-label="Країни">
       <a href="#ua">Україна</a>
       <a href="#us">США</a>
       <a href="#ca">Канада</a>
@@ -132,7 +157,7 @@
     <div class="footer">
       <a href="/uk/privacy/">Політика конфіденційності</a> •
       <a href="/uk/about/">Про сайт</a> •
-      <a href="/uk/contact/">Контакти</a>
+      <a href="/uk/contacts/">Контакти</a>
     </div>
   </div>
 
