@@ -1,0 +1,51 @@
+name: Generate Digests
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 05:00 Київ (UTC+3)
+    - cron: '0 17 * * *'  # 20:00 Київ (UTC+3)
+  workflow_dispatch: {}    # ручний запуск
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TIMEZONE: Europe/Kyiv
+      LANGS: uk,de,es,en
+      DIGEST_MIN_ITEMS: '8'
+      OPENAI_MODEL: gpt-4o-mini
+      # OUT_DIR не вказуємо — за замовчуванням пишемо в корінь репо
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install -U pip
+          pip install -r requirements.txt
+
+      - name: Generate digests
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # додай у Settings → Secrets
+        run: |
+          python scripts/digest.py
+
+      - name: Commit & push
+        run: |
+          git config user.name "presidencyclock-bot"
+          git config user.email "bot@presidencyclock.local"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "auto: digests $(date -u +'%Y-%m-%d %H:%M:%S')"
+            git push
+          fi
