@@ -1,9 +1,9 @@
-<!doctype html><html lang="en"><head>
-<meta http-equiv="refresh" content="0; url=/en/contact/">
-<link rel="canonical" href="/en/contact/">
-<title>Redirecting…</title>
-</head><body>Redirecting to <a href="/en/contact/">/en/contact/</a></body></html>
-  <!-- THEME PACK: apply theme BEFORE paint + color tokens -->
+<!doctype html>
+<html lang="es" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+
+  <!-- THEME PACK: aplicar tema ANTES de pintar + tokens -->
   <script>
   (function(){
     try{
@@ -75,25 +75,12 @@
   /* Content */
   h1{font-weight:800;margin:8px 0 6px}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0}
-  .row{display:grid;grid-template-columns:1fr;gap:12px}
-  .label{font-weight:700;margin-bottom:6px}
-  .muted{opacity:.8}
-  .btn{
-    display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;
-    background:var(--btn-bg);border:1px solid var(--line);border-radius:10px;
-    padding:8px 12px;font-weight:700;color:var(--text);text-decoration:none;
-  }
-  .btn:hover{background:var(--tile-bg)}
+  .muted{opacity:.85}
   .ad{display:flex;justify-content:center;align-items:center;margin:12px 0}
-  input,textarea{
-    width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);
-    font:inherit;
-  }
-  textarea{min-height:120px;resize:vertical}
-  form .actions{display:flex;gap:10px;flex-wrap:wrap}
+  ul{padding-left:18px}
   </style>
 
-  <!-- Favicon that adapts to theme -->
+  <!-- Favicon adaptable -->
   <link id="favicon" rel="icon" type="image/svg+xml" href="">
   <script>
     function updateFavicon(){
@@ -109,18 +96,18 @@
 
   <!-- Meta -->
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Contact — Presidency Clock</title>
-  <meta name="description" content="Get in touch with the Presidency Clock team: email, quick message, feedback.">
-  <link rel="canonical" href="https://presidencyclock.com/en/contact/">
+  <title>Contacto — Presidency Clock</title>
+  <meta name="description" content="Cómo contactarnos: correo electrónico, pautas de comentarios y privacidad.">
+  <link rel="canonical" href="https://presidencyclock.com/es/contacts/">
   <meta name="google-adsense-account" content="ca-pub-5023415479696725">
   <meta name="theme-color" content="#f6f8fd">
 </head>
 <body>
   <div class="wrap">
-    <!-- Header with theme switcher -->
+    <!-- Cabecera con selector de tema -->
     <div class="topbar">
       <div class="brand">
-        <a class="brand__logo" href="/en/" aria-label="Presidency Clock">
+        <a class="brand__logo" href="/es/" aria-label="Presidency Clock">
           <svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"></circle><path d="M16 8v8l6 4"></path></g></svg>
         </a>
         <div class="brand__title">Presidency&nbsp;Clock</div>
@@ -128,27 +115,27 @@
 
       <div class="theme" id="themeBox">
         <button class="theme__btn" id="themeBtn" aria-haspopup="true" aria-expanded="false">
-          <span id="themeLabel">Theme: auto</span>
+          <span id="themeLabel">Tema: auto</span>
         </button>
-        <div class="theme__menu" id="themeMenu" role="menu" aria-label="Theme switcher">
-          <div class="theme__opt" data-value="auto"  role="menuitem">Auto <span class="badge">follows OS</span></div>
-          <div class="theme__opt" data-value="light" role="menuitem">Light</div>
-          <div class="theme__opt" data-value="dark"  role="menuitem">Dark</div>
+        <div class="theme__menu" id="themeMenu" role="menu" aria-label="Selector de tema">
+          <div class="theme__opt" data-value="auto"  role="menuitem">Auto <span class="badge">como el sistema</span></div>
+          <div class="theme__opt" data-value="light" role="menuitem">Clara</div>
+          <div class="theme__opt" data-value="dark"  role="menuitem">Oscura</div>
         </div>
       </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="card" aria-label="Navigation">
-      <a href="/en/">Home</a> •
-      <a href="/en/presidents/">Presidents</a> •
-      <a href="/en/digest/">Digests</a> •
-      <a href="/en/about/">About</a> •
-      <a href="/en/privacy/">Privacy</a>
+    <!-- Navegación -->
+    <nav class="card" aria-label="Menú principal">
+      <a href="/es/">Inicio</a> •
+      <a href="/es/presidents/">Presidentes</a> •
+      <a href="/es/digest/">Digests</a> •
+      <a href="/es/about/">Acerca de</a> •
+      <a href="/es/privacy/">Privacidad</a> •
+      <a href="/es/contacts/">Contacto</a>
     </nav>
 
-    <h1>Contact</h1>
-    <p class="muted">Send us your suggestion, question, or a bug report.</p>
+    <h1>Contacto</h1>
 
     <div class="ad ad--top">
       <ins class="adsbygoogle" style="display:block;min-height:90px"
@@ -156,37 +143,31 @@
            data-ad-slot="9877072514" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
-    <!-- Contact card -->
     <section class="card">
-      <div class="label">Email</div>
-      <!-- Anti-spam: build email from parts -->
-      <p>
-        <a id="mail" href="#" data-user="hello" data-domain="presidencyclock.com" data-subject="Question about the site">click to write</a>
-        <button class="btn" id="copyEmail" type="button" aria-label="Copy email">Copy email</button>
+      <h2>Cómo contactarnos</h2>
+      <p class="muted">
+        La forma más rápida es por correo: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a>.
+        Envíanos sugerencias, reportes de errores, correcciones de traducción o propuestas de colaboración.
       </p>
-      <p class="muted">Please mention the reason in the subject line (e.g., “Advertising proposal”).</p>
     </section>
 
-    <!-- Quick message via default mail client -->
     <section class="card">
-      <div class="label">Quick message</div>
-      <form id="mailtoForm">
-        <div class="row">
-          <div>
-            <label for="subj" class="label">Subject</label>
-            <input id="subj" name="subject" placeholder="Message subject" required>
-          </div>
-          <div>
-            <label for="msg" class="label">Message</label>
-            <textarea id="msg" name="message" placeholder="Your message…" required></textarea>
-          </div>
-        </div>
-        <div class="actions" style="margin-top:10px">
-          <button class="btn" type="submit">Open in mail</button>
-          <button class="btn" type="reset">Clear</button>
-        </div>
-        <p class="muted" style="margin-top:8px">The form opens your mail client with prefilled address, subject and body.</p>
-      </form>
+      <h2>Qué incluir</h2>
+      <ul>
+        <li>Enlace de la página (URL) e idioma.</li>
+        <li>Qué esperabas vs. qué viste (2–3 frases breves).</li>
+        <li>Captura de pantalla opcional si ayuda.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Plazo de respuesta</h2>
+      <p>Normalmente respondemos en <b>1–2 días</b>. Leemos todos los mensajes, aunque no siempre podemos responder a todos.</p>
+    </section>
+
+    <section class="card">
+      <h2>Privacidad</h2>
+      <p>Usamos tu correo solo para responderte. Más detalles en nuestra <a href="/es/privacy/">Política de privacidad</a>.</p>
     </section>
 
     <div class="ad ad--bottom">
@@ -196,7 +177,7 @@
     </div>
   </div>
 
-  <!-- Theme switcher logic -->
+  <!-- Lógica del selector de tema -->
   <script>
   (function(){
     var btn  = document.getElementById('themeBtn');
@@ -204,7 +185,7 @@
     var lab  = document.getElementById('themeLabel');
 
     function currentPref(){ return (localStorage.getItem('theme')||'auto').toLowerCase(); }
-    function labelFrom(pref){ return pref==='auto' ? 'auto' : (pref==='light'?'light':'dark'); }
+    function labelFrom(pref){ return pref==='auto' ? 'auto' : (pref==='light'?'clara':'oscura'); }
 
     function applyTheme(pref){
       localStorage.setItem('theme', pref);
@@ -212,7 +193,7 @@
       var theme  = pref==='auto' ? (darkOS?'dark':'light') : pref;
       document.documentElement.setAttribute('data-theme', theme);
       document.documentElement.style.colorScheme = (theme==='dark'?'dark':'light');
-      lab.textContent = 'Theme: ' + labelFrom(pref);
+      lab.textContent = 'Tema: ' + labelFrom(pref);
       try{ updateFavicon(); }catch(_){}
     }
     function toggleMenu(open){
@@ -220,7 +201,7 @@
       menu.classList.toggle('open', willOpen);
       btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
     }
-    lab.textContent = 'Theme: ' + labelFrom(currentPref());
+    lab.textContent = 'Tema: ' + labelFrom(currentPref());
     applyTheme(currentPref());
     btn.addEventListener('click', function(e){ e.preventDefault(); toggleMenu(); });
     menu.querySelectorAll('.theme__opt').forEach(function(opt){
@@ -234,43 +215,7 @@
   })();
   </script>
 
-  <!-- Build email, copy, and mailto form -->
-  <script>
-  (function(){
-    // Build email from parts (anti-scrape)
-    var a = document.getElementById('mail');
-    var u = a.getAttribute('data-user');
-    var d = a.getAttribute('data-domain');
-    var s = a.getAttribute('data-subject') || '';
-    var email = u + '@' + d;
-    a.textContent = email;
-    a.href = 'mailto:' + email + (s ? ('?subject=' + encodeURIComponent(s)) : '');
-
-    // Copy email
-    var copyBtn = document.getElementById('copyEmail');
-    copyBtn.addEventListener('click', function(){
-      try{
-        navigator.clipboard.writeText(email).then(function(){
-          var old = copyBtn.textContent;
-          copyBtn.textContent = 'Copied!';
-          setTimeout(function(){ copyBtn.textContent = old; }, 1200);
-        });
-      }catch(e){}
-    });
-
-    // Mailto form
-    var form = document.getElementById('mailtoForm');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var subj = document.getElementById('subj').value.trim();
-      var msg  = document.getElementById('msg').value.trim();
-      var link = 'mailto:' + email + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(msg);
-      window.location.href = link;
-    });
-  })();
-  </script>
-
-  <!-- AdSense loader -->
+  <!-- Carga de AdSense -->
   <script>
     (function(){
       const s=document.createElement('script'); s.async=true;
