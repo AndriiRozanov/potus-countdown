@@ -81,22 +81,26 @@
     fr:{title:"Temps restant du mandat de Donald Trump",sub:"Le mandat se termine à 12 h (ET) le 20 janvier.",sound:"Son",tick:"Tic-tac",beep:"Bip numérique",mute:"Couper le son",unmute:"Activer le son",shareX:"Partager sur X",shareFB:"Partager sur Facebook",copyIframe:"Copier l’iframe",copyScript:"Copier le script",copied:"Copié !",seconds:"Secondes",terms:"Fin du mandat : 12:00 ET, 20 janvier 2029.",widgetNote:"Code d’intégration du widget :"},
     de:{title:"Verbleibende Amtszeit von Donald Trump",sub:"Die Amtszeit endet um 12:00 ET am 20. Januar.",sound:"Sound",tick:"Ticken",beep:"Digitaler Piepton",mute:"Stumm",unmute:"Ton ein",shareX:"Auf X teilen",shareFB:"Auf Facebook teilen",copyIframe:"Iframe kopieren",copyScript:"Script kopieren",copied:"Kopiert!",seconds:"Sekunden",terms:"Amtsende: 12:00 ET, 20. Januar 2029.",widgetNote:"Widget einbetten:"}
   };
-  const params=new URLSearchParams(location.search);
-  let lang=(params.get('lang')||'en').toLowerCase(); if(!I18N[lang]) lang='en';
-  const t=k=>I18N[lang][k]||k;
+  const $ = id => document.getElementById(id);
+  const params = new URLSearchParams(location.search);
+  let lang = (params.get('lang')||'en').toLowerCase(); if(!I18N[lang]) lang='en';
+  const t = k => I18N[lang][k] || k;
 
   // Fill UI
-  document.title='Presidency Clock — '+t('title');
-  title.textContent=t('title'); sub.textContent=t('sub'); terms.textContent=t('terms');
-  document.getElementById('sound-label').textContent=t('sound');
-  btn-tick.textContent=t('tick'); btn-beep.textContent=t('beep');
-  document.getElementById('mute').textContent=t('unmute');
-  lbl-s.textContent=t('seconds');
-  document.getElementById('share-x').textContent=t('shareX');
-  document.getElementById('share-fb').textContent=t('shareFB');
-  document.getElementById('copy-iframe').textContent=t('copyIframe');
-  document.getElementById('copy-script').textContent=t('copyScript');
-  document.getElementById('widget-note').textContent=t('widgetNote');
+  document.title = 'Presidency Clock — ' + t('title');
+  $('title').textContent = t('title');
+  $('sub').textContent = t('sub');
+  $('terms').textContent = t('terms');
+  $('sound-label').textContent = t('sound');
+  $('btn-tick').textContent = t('tick');
+  $('btn-beep').textContent = t('beep');
+  $('mute').textContent = t('unmute');
+  $('lbl-s').textContent = t('seconds');
+  $('share-x').textContent = t('shareX');
+  $('share-fb').textContent = t('shareFB');
+  $('copy-iframe').textContent = t('copyIframe');
+  $('copy-script').textContent = t('copyScript');
+  $('widget-note').textContent = t('widgetNote');
 
   // ---------- sounds ----------
   class ClockAudio{
@@ -110,49 +114,45 @@
       o.connect(g).connect(this.ctx.destination); o.start(); o.stop(this.ctx.currentTime+0.08);
     }
   }
-  const audio=new ClockAudio();
-  let muted=true, mode='tick';
+  const audio = new ClockAudio();
+  let muted = true, mode = 'tick';
   function setMode(m){ mode=m; audio.setMode(mode);
     document.querySelectorAll('.snd').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.mode===mode)));
   }
-  function toggleMute(){ muted=!muted; audio.toggle(!muted);
-    document.getElementById('mute').textContent=muted?t('unmute'):t('mute');
-  }
+  function toggleMute(){ muted=!muted; audio.toggle(!muted); $('mute').textContent = muted? t('unmute') : t('mute'); }
   document.querySelectorAll('.snd').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
-  document.getElementById('mute').addEventListener('click',toggleMute);
+  $('mute').addEventListener('click',toggleMute);
   document.querySelectorAll('.lang').forEach(b=>b.addEventListener('click',()=>{ location.search='?lang='+b.dataset.lang; }));
 
   // ---------- countdown ----------
   const TARGET = Date.parse('2029-01-20T17:00:00Z'); // 12:00 ET
-  const pad = n=>String(n).padStart(2,'0');
+  const pad = n => String(n).padStart(2,'0');
   function tick(){
     const now=Date.now(); let diff=Math.max(0, TARGET-now);
     const s=Math.floor(diff/1000)%60, m=Math.floor(diff/60000)%60, h=Math.floor(diff/3600000)%24, d=Math.floor(diff/86400000);
-    dEl.textContent=d; hEl.textContent=pad(h); mEl.textContent=pad(m); sEl.textContent=pad(s);
-    if(!muted) audio.play();
-    if(diff===0) clearInterval(timer);
+    $('d').textContent=d; $('h').textContent=pad(h); $('m').textContent=pad(m); $('s').textContent=pad(s);
+    if(!muted) audio.play(); if(diff===0) clearInterval(timer);
   }
-  const dEl = document.getElementById('d'),
-        hEl = document.getElementById('h'),
-        mEl = document.getElementById('m'),
-        sEl = document.getElementById('s');
   let timer=setInterval(tick,1000); tick();
 
   // ---------- share ----------
-  const pageUrl = encodeURIComponent(location.origin+'/clock/?lang='+lang);
+  const pageUrl = encodeURIComponent(location.origin + '/clock/?lang=' + lang);
   const text = encodeURIComponent(t('title'));
-  document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${text}&url=${pageUrl}`;
-  document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  $('share-x').href = `https://twitter.com/intent/tweet?text=${text}&url=${pageUrl}`;
+  $('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
 
   // ---------- embed codes ----------
   const iframeCode = `<iframe src="${location.origin}/widget.html?lang=${lang}&theme=dark" width="100%" height="140" style="border:0;border-radius:12px" loading="lazy"></iframe>`;
-  const scriptCode = `<script src="${location.origin}/js/embed.js" data-lang="${lang}" data-theme="dark" async></script>`;
-  const embed = document.getElementById('embed-code');
-  embed.textContent = iframeCode;
-  function copy(txt,btn){ navigator.clipboard.writeText(txt).then(()=>{ btn.textContent=t('copied'); setTimeout(()=>btn.textContent = btn===copyIframe?t('copyIframe'):t('copyScript'), 1200); });}
-  const copyIframe = document.getElementById('copy-iframe'), copyScript = document.getElementById('copy-script');
-  copyIframe.addEventListener('click',()=>copy(iframeCode,copyIframe));
-  copyScript.addEventListener('click',()=>copy(scriptCode,copyScript));
+  const scriptCode = '<script src="' + location.origin + '/js/embed.js" data-lang="' + lang + '" data-theme="dark" async><\\/script>'; // важливо: <\/script>!
+  const embed = $('embed-code'); embed.textContent = iframeCode;
+  function copy(txt,btn){
+    navigator.clipboard.writeText(txt).then(()=>{
+      btn.textContent = t('copied'); setTimeout(()=> btn.textContent = (btn===$('copy-iframe')?t('copyIframe'):t('copyScript')), 1200);
+    });
+  }
+  $('copy-iframe').addEventListener('click',()=>copy(iframeCode, $('copy-iframe')));
+  $('copy-script').addEventListener('click',()=>copy(scriptCode, $('copy-script')));
+
   // default sound mode
   setMode('tick');
 </script>
