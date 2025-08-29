@@ -1,51 +1,40 @@
 name: Generate digests
-
 on:
-  workflow_dispatch: {}   # спершу запускаємо вручну; розклад додамо потім
-
+  schedule:
+    - cron: '0 2 * * *'    # 05:00 Київ (UTC+3)
+    - cron: '0 17 * * *'   # 20:00 Київ (UTC+3)
+  workflow_dispatch: {}
 permissions:
   contents: write
-
 jobs:
-  build:
+  digests:
     runs-on: ubuntu-latest
     env:
       TIMEZONE: Europe/Kyiv
       LANGS: uk,de,fr,es
-      DIGEST_MIN_ITEMS: '5'   # трохи нижче, щоб гарантовано згенерувалось
+      DIGEST_MIN_ITEMS: '5'
       OPENAI_MODEL: gpt-4o-mini
       SITE_ORIGIN: https://presidencyclock.com
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
-
       - name: Install deps
         run: |
           python -m pip install -U pip
           pip install -r requirements.txt
-
-            - name: Generate digests
+      - name: Generate digests (autodetect path)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          FORCE: "true"          # можна прибрати пізніше
-          DIGEST_MIN_ITEMS: "5"  # можна підняти пізніше
+          FORCE: "true"
         run: |
-          # Автовизначення, де лежить скрипт
           if [ -f potus-countdown/scripts/generate_digest.py ]; then
             python potus-countdown/scripts/generate_digest.py
           elif [ -f scripts/generate_digest.py ]; then
             python scripts/generate_digest.py
           else
-            echo "Не знайшов generate_digest.py ні в potus-countdown/scripts/, ні в scripts/"
-            ls -la
-            exit 1
+            echo "Не знайшов generate_digest.py"; ls -la; exit 1
           fi
-
       - name: Commit & push
         run: |
           git config user.name "presidencyclock-bot"
