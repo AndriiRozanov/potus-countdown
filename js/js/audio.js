@@ -33,3 +33,6 @@ class ClockAudio {
   }
 }
 window.ClockAudio = ClockAudio;
+// одразу після:  const audio = new ClockAudio();
+window.addEventListener('pointerdown', () => { try { audio.ensure && audio.ensure(); } catch(e){} }, { once: true });
+
