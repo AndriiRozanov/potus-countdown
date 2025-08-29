@@ -1,93 +1,155 @@
 <!doctype html>
-<html lang="fr" data-theme="auto">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Présidents & mandats — Presidency Clock</title>
+  <title>Presidential terms — Presidency Clock</title>
 
-  <link rel="canonical" href="https://presidencyclock.com/fr/presidents/">
-  <meta name="description" content="5 derniers dirigeants par pays : Ukraine, États-Unis, Canada, Espagne, Mexique, France. Début/fin, jours & années approx., mandat moyen.">
-  <meta property="og:url" content="https://presidencyclock.com/fr/presidents/">
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://presidencyclock.com/en/presidents/">
+  <link rel="alternate" hreflang="uk" href="https://presidencyclock.com/uk/presidents/">
+  <link rel="alternate" hreflang="de" href="https://presidencyclock.com/de/presidents/">
+  <link rel="alternate" hreflang="fr" href="https://presidencyclock.com/fr/presidents/">
+  <link rel="alternate" hreflang="es" href="https://presidencyclock.com/es/presidents/">
+  <link rel="alternate" hreflang="en" href="https://presidencyclock.com/en/presidents/">
+  <link rel="alternate" hreflang="x-default" href="https://presidencyclock.com/en/presidents/">
+
+  <!-- SEO -->
+  <meta name="description" content="The latest 5 leaders per country: Ukraine, USA, Canada (prime ministers), Spain (prime minister), Mexico, France. Start/end of term, duration in days and ≈ years, average term.">
+  <meta property="og:url" content="https://presidencyclock.com/en/presidents/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Présidents & mandats — Presidency Clock">
-  <meta property="og:description" content="Début/fin, jours et années approx. par pays.">
+  <meta property="og:title" content="Presidential terms — Presidency Clock">
+  <meta property="og:description" content="Last 5 officeholders per country with term durations and averages.">
   <meta property="og:image" content="https://presidencyclock.com/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Presidency Clock">
-  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://presidencyclock.com/og.jpg">
-  <meta name="twitter:title" content="Présidents & mandats — Presidency Clock">
-  <meta name="twitter:description" content="Début/fin, jours & années approx., mandat moyen.">
+  <meta name="twitter:title" content="Presidential terms — Presidency Clock">
+  <meta name="twitter:description" content="Start/end of terms, days and years, average durations.">
 
+  <!-- AdSense -->
   <meta name="google-adsense-account" content="ca-pub-5023415479696725">
+
+  <!-- Favicon (runtime) -->
   <link id="favicon" rel="icon" type="image/svg+xml" href="">
   <meta name="theme-color" content="#f6f8fd">
 
   <style>
-    :root{ --bg:#f6f8fd; --stripe:rgba(13,17,23,.06); --surface:#fff; --tile-bg:#f3f5fa; --btn-bg:#fff; --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720; --accent:#3d77ff; --glow1:rgba(68,118,255,.28); --glow2:rgba(255,160,62,.16); --muted:#6b7280; --safe-top: env(safe-area-inset-top, 0px); --safe-left: env(safe-area-inset-left, 0px); --safe-right: env(safe-area-inset-right, 0px); --safe-bottom: env(safe-area-inset-bottom, 0px); }
-    [data-theme="dark"]{ --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06); --tile-bg:rgba(255,255,255,.05); --btn-bg:rgba(255,255,255,.06); --line:rgba(255,255,255,.16); --text:#f2f5ff; --num:#fff; --accent:#8ab8ff; --glow1:rgba(78,128,255,.20); --glow2:rgba(255,120,0,.08); --muted:#a1a1aa; }
+    :root{
+      --bg:#f6f8fd; --stripe:rgba(13,17,23,.06); --surface:#fff; --tile-bg:#f3f5fa;
+      --btn-bg:#fff; --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720;
+      --accent:#3d77ff; --glow1:rgba(68,118,255,.28); --glow2:rgba(255,160,62,.16);
+      --muted:#6b7280;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    [data-theme="dark"]{
+      --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06);
+      --tile-bg:rgba(255,255,255,.05); --btn-bg:rgba(255,255,255,.06); --line:rgba(255,255,255,.16);
+      --text:#f2f5ff; --num:#fff; --accent:#8ab8ff; --glow1:rgba(78,128,255,.20); --glow2:rgba(255,120,0,.08);
+      --muted:#a1a1aa;
+    }
     html,body{height:100%}
-    body{ margin:0; color:var(--text); background:var(--bg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background-image: radial-gradient(900px 480px at 78% 18%, var(--glow1), transparent 60%),
-                        radial-gradient(700px 420px at 20% 90%, var(--glow2), transparent 65%),
-                        repeating-linear-gradient(to bottom, var(--stripe) 0, var(--stripe) 1px, transparent 1px, transparent 24px);
-      background-attachment:fixed,fixed,fixed; padding-bottom:var(--safe-bottom); }
+    body{
+      margin:0; color:var(--text); background:var(--bg);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background-image:
+        radial-gradient(900px 480px at 78% 18%, var(--glow1), transparent 60%),
+        radial-gradient(700px 420px at 20% 90%, var(--glow2), transparent 65%),
+        repeating-linear-gradient(to bottom, var(--stripe) 0, var(--stripe) 1px, transparent 1px, transparent 24px);
+      background-attachment:fixed,fixed,fixed;
+      padding-bottom:var(--safe-bottom);
+    }
     .brand{position:fixed;left:calc(12px + var(--safe-left));top:calc(8px + var(--safe-top));z-index:20;display:flex;align-items:center;gap:.5rem}
     .brand__link{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--text);box-shadow:0 2px 10px rgba(0,0,0,.06)}
     .brand__icon{width:22px;height:22px;display:block;color:var(--text)}
     .brand__text{font-weight:800;letter-spacing:.01em;user-select:none;font-size:14px}
+
     .wrap{max-width:1100px;margin:calc(26px + var(--safe-top)) auto 28px;padding:0 14px}
     h1{font-weight:800;letter-spacing:.01em;text-align:center;margin:6px 0 4px;font-size:clamp(20px,4.6vw,40px);line-height:1.06}
     .subtitle{text-align:center;opacity:.9;margin-bottom:10px;font-weight:600;font-size:clamp(12px,2.6vw,15px)}
+
+    /* Top navigation */
+    .topnav{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:12px auto}
+    .topnav a{color:var(--accent);text-decoration:none;font-weight:700}
+    .topnav a:hover{text-decoration:underline}
+
+    /* In-page anchors (countries) */
     .nav{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:8px auto 12px}
     .nav a{color:var(--accent);text-decoration:none;font-weight:700}
     .nav a:hover{text-decoration:underline}
+
     .ad{display:flex;justify-content:center;align-items:center;margin:10px auto;width:100%}
     .ad--top{min-height:90px}.ad--mid{min-height:220px}.ad--bottom{min-height:90px}
+
     .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px;width:min(980px,98vw);margin:0 auto 10px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
     h2{margin:.2rem 0 .6rem}
     .note{font-size:13px;opacity:.8;margin:.2rem 0 .6rem}
+
     table{width:100%;border-collapse:collapse}
     th,td{padding:8px;border-bottom:1px solid var(--line);text-align:left}
     th{font-size:12px;text-transform:uppercase;letter-spacing:.06em}
     td small{opacity:.75}
     .avg{display:inline-block;background:var(--tile-bg);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-weight:800;font-size:12px}
+
     .footer{opacity:.75;font-size:13px;text-align:center;margin:12px 0}
     .footer a{color:var(--accent);text-decoration:none}.footer a:hover{text-decoration:underline}
-    @media (max-width:720px){ .brand__text{display:none} .wrap{margin:calc(22px + var(--safe-top)) auto 18px} th,td{padding:7px} }
+
+    @media (max-width:720px){
+      .brand__text{display:none}
+      .wrap{margin:calc(22px + var(--safe-top)) auto 18px}
+      th,td{padding:7px}
+    }
   </style>
 </head>
 <body>
+  <!-- brand -->
   <div class="brand">
-    <a class="brand__link" href="/fr/" aria-label="Presidency Clock">
+    <a class="brand__link" href="/en/" aria-label="Presidency Clock">
       <svg class="brand__icon" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"></circle><path d="M16 8v8l6 4"></path></g></svg>
     </a>
     <span class="brand__text" aria-hidden="true">Presidency&nbsp;Clock</span>
   </div>
 
   <div class="wrap">
-    <h1>Présidents & mandats</h1>
-    <div class="subtitle">5 derniers dirigeants par pays. Nous affichons le <b>début</b> et la <b>fin</b> du mandat, les <b>jours</b> et les <b>≈ années</b>. Trié du plus court au plus long.</div>
+    <!-- Unified top menu -->
+    <nav class="topnav" aria-label="Main menu">
+      <a href="/en/">Home</a>
+      <a href="/en/about/">About</a>
+      <a href="/en/presidents/">Presidential terms</a>
+      <a href="/en/digest/">Digests</a>
+      <a href="/en/privacy/">Privacy Policy</a>
+      <a href="/en/contacts/">Contacts</a>
+    </nav>
 
+    <h1>Presidential terms</h1>
+    <div class="subtitle">Latest 5 leaders per country. We show <b>start</b> and <b>end</b> of term, <b>days</b> and <b>≈ years</b>. Tables are sorted by duration (shortest first).</div>
+
+    <!-- ads top -->
     <div class="ad ad--top">
       <ins class="adsbygoogle" style="display:block;min-height:90px"
            data-ad-client="ca-pub-5023415479696725"
            data-ad-slot="9877072514" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
-    <div class="nav">
+    <!-- Countries anchor menu -->
+    <div class="nav" aria-label="Countries">
       <a href="#ua">Ukraine</a>
-      <a href="#us">États-Unis</a>
+      <a href="#us">USA</a>
       <a href="#ca">Canada</a>
-      <a href="#es">Espagne</a>
-      <a href="#mx">Mexique</a>
+      <a href="#es">Spain</a>
+      <a href="#mx">Mexico</a>
       <a href="#fr">France</a>
     </div>
 
     <div id="tables"></div>
 
+    <!-- ads bottom -->
     <div class="ad ad--bottom">
       <ins class="adsbygoogle" style="display:block;min-height:90px"
            data-ad-client="ca-pub-5023415479696725"
@@ -95,9 +157,9 @@
     </div>
 
     <div class="footer">
-      <a href="/fr/privacy/">Confidentialité</a> •
-      <a href="/fr/about/">À propos</a> •
-      <a href="/fr/contact/">Contact</a>
+      <a href="/en/privacy/">Privacy Policy</a> •
+      <a href="/en/about/">About</a> •
+      <a href="/en/contacts/">Contacts</a>
     </div>
   </div>
 
@@ -105,6 +167,7 @@
 (function(){
   "use strict";
 
+  /* ====== THEME + FAVICON ====== */
   function setFavicon(hex){
     const svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='"+hex+"' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'><circle cx='32' cy='32' r='24'/><path d='M32 14v18l12 8'/></svg>";
     const url='data:image/svg+xml,'+encodeURIComponent(svg);
@@ -119,56 +182,85 @@
   }
   applyTheme();
 
+  /* ====== DATA (ISO dates) ====== */
+  // If end = null — count until today (user's local time).
   const DATA = {
-    ua: { title:'Ukraine', note:'Présidents élus (intérim exclus).', leaders:[
-      {name:'Volodymyr Zelensky', start:'2019-05-20', end:null},
-      {name:'Petro Porochenko',   start:'2014-06-07', end:'2019-05-20'},
-      {name:'Viktor Ianoukovytch',start:'2010-02-25', end:'2014-02-22'},
-      {name:'Viktor Iouchtchenko',start:'2005-01-23', end:'2010-02-25'},
-      {name:'Leonid Koutchma',    start:'1994-07-19', end:'2005-01-23'}
-    ]},
-    us: { title:'États-Unis', note:'Deux mandats non consécutifs sont listés sur des lignes séparées.', leaders:[
-      {name:'Donald Trump (2ᵉ mandat)', start:'2025-01-20', end:null},
-      {name:'Joe Biden',                start:'2021-01-20', end:'2025-01-20'},
-      {name:'Donald Trump (1ᵉʳ mandat)',start:'2017-01-20', end:'2021-01-20'},
-      {name:'Barack Obama',             start:'2009-01-20', end:'2017-01-20'},
-      {name:'George W. Bush',           start:'2001-01-20', end:'2009-01-20'}
-    ]},
-    ca: { title:'Canada', note:'Premiers ministres (chef du gouvernement).', leaders:[
-      {name:'Justin Trudeau', start:'2015-11-04', end:null},
-      {name:'Stephen Harper', start:'2006-02-06', end:'2015-11-04'},
-      {name:'Paul Martin',    start:'2003-12-12', end:'2006-02-06'},
-      {name:'Jean Chrétien',  start:'1993-11-04', end:'2003-12-12'},
-      {name:'Kim Campbell',   start:'1993-06-25', end:'1993-11-04'}
-    ]},
-    es: { title:'Espagne', note:'Président du Gouvernement (chef du gouvernement).', leaders:[
-      {name:'Pedro Sánchez',                start:'2018-06-02', end:null},
-      {name:'Mariano Rajoy',                start:'2011-12-21', end:'2018-06-01'},
-      {name:'José Luis Rodríguez Zapatero', start:'2004-04-17', end:'2011-12-21'},
-      {name:'José María Aznar',             start:'1996-05-05', end:'2004-04-17'},
-      {name:'Felipe González',              start:'1982-12-02', end:'1996-05-05'}
-    ]},
-    mx: { title:'Mexique', note:'Président de la République.', leaders:[
-      {name:'Claudia Sheinbaum',                     start:'2024-10-01', end:null},
-      {name:'Andrés Manuel López Obrador',           start:'2018-12-01', end:'2024-09-30'},
-      {name:'Enrique Peña Nieto',                    start:'2012-12-01', end:'2018-11-30'},
-      {name:'Felipe Calderón',                       start:'2006-12-01', end:'2012-11-30'},
-      {name:'Vicente Fox',                           start:'2000-12-01', end:'2006-11-30'}
-    ]},
-    fr: { title:'France', note:'Président de la République.', leaders:[
-      {name:'Emmanuel Macron',   start:'2017-05-14', end:null},
-      {name:'François Hollande', start:'2012-05-15', end:'2017-05-14'},
-      {name:'Nicolas Sarkozy',   start:'2007-05-16', end:'2012-05-15'},
-      {name:'Jacques Chirac',    start:'1995-05-17', end:'2007-05-16'},
-      {name:'François Mitterrand', start:'1981-05-21', end:'1995-05-17'}
-    ]}
+    ua: {
+      title: 'Ukraine',
+      note: 'Elected presidents (acting heads excluded).',
+      leaders: [
+        {name:'Volodymyr Zelenskyy', start:'2019-05-20', end:null},
+        {name:'Petro Poroshenko',    start:'2014-06-07', end:'2019-05-20'},
+        {name:'Viktor Yanukovych',   start:'2010-02-25', end:'2014-02-22'},
+        {name:'Viktor Yushchenko',   start:'2005-01-23', end:'2010-02-25'},
+        {name:'Leonid Kuchma',       start:'1994-07-19', end:'2005-01-23'}
+      ]
+    },
+    us: {
+      title: 'USA',
+      note: 'If a leader served two non-consecutive terms, we show separate rows.',
+      leaders: [
+        {name:'Donald Trump (2nd term)', start:'2025-01-20', end:null},
+        {name:'Joe Biden',               start:'2021-01-20', end:'2025-01-20'},
+        {name:'Donald Trump (1st term)', start:'2017-01-20', end:'2021-01-20'},
+        {name:'Barack Obama',            start:'2009-01-20', end:'2017-01-20'},
+        {name:'George W. Bush',          start:'2001-01-20', end:'2009-01-20'}
+      ]
+    },
+    ca: {
+      title: 'Canada',
+      note: 'Prime ministers (head of government).',
+      leaders: [
+        {name:'Justin Trudeau',  start:'2015-11-04', end:null},
+        {name:'Stephen Harper',  start:'2006-02-06', end:'2015-11-04'},
+        {name:'Paul Martin',     start:'2003-12-12', end:'2006-02-06'},
+        {name:'Jean Chrétien',   start:'1993-11-04', end:'2003-12-12'},
+        {name:'Kim Campbell',    start:'1993-06-25', end:'1993-11-04'}
+      ]
+    },
+    es: {
+      title: 'Spain',
+      note: 'Prime Minister (President of the Government).',
+      leaders: [
+        {name:'Pedro Sánchez',              start:'2018-06-02', end:null},
+        {name:'Mariano Rajoy',              start:'2011-12-21', end:'2018-06-01'},
+        {name:'José Luis Rodríguez Zapatero', start:'2004-04-17', end:'2011-12-21'},
+        {name:'José María Aznar',           start:'1996-05-05', end:'2004-04-17'},
+        {name:'Felipe González',            start:'1982-12-02', end:'1996-05-05'}
+      ]
+    },
+    mx: {
+      title: 'Mexico',
+      note: 'President of the Republic.',
+      leaders: [
+        {name:'Claudia Sheinbaum',             start:'2024-10-01', end:null},
+        {name:'Andrés Manuel López Obrador',   start:'2018-12-01', end:'2024-09-30'},
+        {name:'Enrique Peña Nieto',            start:'2012-12-01', end:'2018-11-30'},
+        {name:'Felipe Calderón',               start:'2006-12-01', end:'2012-11-30'},
+        {name:'Vicente Fox',                   start:'2000-12-01', end:'2006-11-30'}
+      ]
+    },
+    fr: {
+      title: 'France',
+      note: 'President of the Republic.',
+      leaders: [
+        {name:'Emmanuel Macron',   start:'2017-05-14', end:null},
+        {name:'François Hollande', start:'2012-05-15', end:'2017-05-14'},
+        {name:'Nicolas Sarkozy',   start:'2007-05-16', end:'2012-05-15'},
+        {name:'Jacques Chirac',    start:'1995-05-17', end:'2007-05-16'},
+        {name:'François Mitterrand', start:'1981-05-21', end:'1995-05-17'}
+      ]
+    }
   };
 
-  const locale='fr-FR';
-  const labels={ name:"nom", start:"début", end:"fin", days:"jours", years:"années (≈)", ongoing:"<small>en cours</small>", avg:"Durée moyenne" };
-
-  const fmt=(d)=>d?new Date(d).toLocaleDateString(locale,{year:'numeric',month:'2-digit',day:'2-digit'}):'—';
-  function diffDays(a,b){ const A=new Date(a), B=b?new Date(b):new Date(); A.setHours(12,0,0,0); B.setHours(12,0,0,0); return Math.max(0, Math.round((B-A)/86400000)); }
+  /* ====== UTIL ====== */
+  const fmt = (d)=>d?new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'2-digit',day:'2-digit'}):'—';
+  function diffDays(a,b){
+    const A=new Date(a), B=b?new Date(b):new Date();
+    // normalize to noon to avoid TZ edge cases
+    A.setHours(12,0,0,0); B.setHours(12,0,0,0);
+    return Math.max(0, Math.round((B-A)/86400000));
+  }
   function yearsApprox(days){ return (days/365.2425).toFixed(2); }
 
   function renderCountry(id, block){
@@ -177,28 +269,54 @@
     const note=document.createElement('div'); note.className='note'; note.textContent=block.note;
 
     const table=document.createElement('table');
-    table.innerHTML=`<thead><tr>
-      <th>${labels.name}</th><th>${labels.start}</th><th>${labels.end}</th><th>${labels.days}</th><th>${labels.years}</th>
-    </tr></thead><tbody></tbody>`;
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Days</th>
+          <th>Years (≈)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    `;
 
-    const rows=block.leaders.map(l=>{const d=diffDays(l.start,l.end);return {...l,days:d,yrs:yearsApprox(d)}}).sort((a,b)=>a.days-b.days);
+    const rows = block.leaders.map(l=>{
+      const days=diffDays(l.start, l.end);
+      return {...l, days, yrs:yearsApprox(days)};
+    }).sort((a,b)=>a.days-b.days);
+
     const tb=table.querySelector('tbody');
     rows.forEach(r=>{
       const tr=document.createElement('tr');
-      tr.innerHTML=`<td>${r.name}</td><td>${fmt(r.start)}</td><td>${r.end?fmt(r.end):labels.ongoing}</td><td>${r.days.toLocaleString(locale)}</td><td>${r.yrs}</td>`;
+      tr.innerHTML = `
+        <td>${r.name}</td>
+        <td>${fmt(r.start)}</td>
+        <td>${r.end?fmt(r.end):'<small>incumbent</small>'}</td>
+        <td>${r.days.toLocaleString('en-US')}</td>
+        <td>${r.yrs}</td>
+      `;
       tb.appendChild(tr);
     });
 
-    const avgDays=Math.round(rows.reduce((s,x)=>s+x.days,0)/rows.length);
-    const avg=document.createElement('div'); avg.style.margin='8px 0 2px';
-    avg.innerHTML=`<span class="avg">${labels.avg} : ${avgDays.toLocaleString(locale)} ${labels.days} (~${yearsApprox(avgDays)} ans)</span>`;
+    // average term
+    const avgDays = Math.round(rows.reduce((s,x)=>s+x.days,0)/rows.length);
+    const avg = document.createElement('div');
+    avg.style.margin='8px 0 2px';
+    avg.innerHTML = `<span class="avg">Average term: ${avgDays.toLocaleString('en-US')} days (~${yearsApprox(avgDays)} years)</span>`;
 
-    wrap.appendChild(h); wrap.appendChild(note); wrap.appendChild(table); wrap.appendChild(avg);
+    wrap.appendChild(h);
+    wrap.appendChild(note);
+    wrap.appendChild(table);
+    wrap.appendChild(avg);
     return wrap;
   }
 
   function mount(){
-    const host=document.getElementById('tables'); if(!host) return; host.innerHTML='';
+    const host=document.getElementById('tables');
+    if(!host) return;
+    host.innerHTML='';
     host.appendChild(renderCountry('ua',DATA.ua));
     host.appendChild(renderCountry('us',DATA.us));
     host.appendChild(renderCountry('ca',DATA.ca));
@@ -208,13 +326,16 @@
   }
   mount();
 
+  /* ====== AdSense ====== */
   (function(){
-    const s=document.createElement('script'); s.async=true;
+    const s=document.createElement('script');
+    s.async=true;
     s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725';
     s.crossOrigin='anonymous';
     s.onload=function(){ try{ const arr=(window.adsbygoogle=window.adsbygoogle||[]); document.querySelectorAll('ins.adsbygoogle').forEach(()=>arr.push({})); }catch(e){} };
     document.head.appendChild(s);
   })();
+
 })();
 </script>
 </body>
