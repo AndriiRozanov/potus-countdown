@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 
 """
-PresidencyClock — авто-дайджести.
+PresidencyClock — авто-дайджести (стабільна версія для GitHub Actions).
 - Двічі на день збирає політичні новини з RSS.
 - Якщо є OPENAI_API_KEY — робить «розумні» 2–3-реченеві підсумки мовою сторінки.
 - Генерує сторінки: /{lang}/digest/YYYY-MM-DD/index.html (+ items.json)
 - Оновлює індекс:   /{lang}/digest/index.html (список дат + прев’ю останнього випуску).
+- Захист від «пропусків»: якщо за сьогодні випуску ще нема — створює його при кожному запуску.
 """
 
 import os, re, json, hashlib, pathlib, datetime as dt
@@ -19,12 +20,11 @@ import requests
 
 # ========================= НАЛАШТУВАННЯ =========================
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-OUT = ROOT
-LANGS = os.getenv("LANGS", "uk,de,es,en").split(",")
+OUT = pathlib.Path(os.getenv("OUT_DIR", ROOT))  # куди писати файли (за замовчуванням — корінь репо)
+LANGS = [x.strip() for x in os.getenv("LANGS", "uk,de,es,en").split(",") if x.strip()]
 TIMEZONE = os.getenv("TIMEZONE", "Europe/Kyiv")
-TARGET_TIMES = os.getenv("TARGET_TIMES", "05:00,20:00").split(",")   # локальні часи запусків
-WINDOW_MIN = int(os.getenv("WINDOW_MIN", "7"))                        # «вікно» хвилин
-MIN_ITEMS = int(os.getenv("DIGEST_MIN_ITEMS", "12"))                  # мін. кількість новин
+MIN_ITEMS = int(os.getenv("DIGEST_MIN_ITEMS", "8"))  # мінімальна кількість новин (опустили до 8 для стабільності)
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 FEEDS = [
   # International
@@ -211,25 +211,28 @@ INDEX_TMPL = Template(r"""<!doctype html>
 def _norm(s): return re.sub(r"\s+"," ", (s or "").strip())
 def now_local(): return dt.datetime.now(ZoneInfo(TIMEZONE))
 
-def is_within_target_window(now: dt.datetime) -> bool:
-  for t in TARGET_TIMES:
-    hh, mm = t.split(":")
-    target = now.replace(hour=int(hh), minute=int(mm), second=0, microsecond=0)
-    delta = abs((now - target).total_seconds())/60.0
-    if delta <= WINDOW_MIN:
-      return True
-  return False
+def todays_digest_exists(lang: str, date_str: str) -> bool:
+  ddir = OUT/lang/"digest"/date_str
+  return (ddir/"items.json").exists() or (ddir/"index.html").exists()
+
+def log(msg: str):
+  ts = now_local().strftime("%Y-%m-%d %H:%M:%S")
+  print(f"[{ts}] {msg}")
 
 # ========================= FETCH + PICK ==========================
 def fetch_all():
-  items = []
+  items=[]
+  headers={"User-Agent":"PresidencyClockBot/1.0 (+https://presidencyclock.com)"}
   for url in FEEDS:
     try:
-      feed = feedparser.parse(url)
+      r = requests.get(url, headers=headers, timeout=20)
+      r.raise_for_status()
+      feed = feedparser.parse(r.content)
+      got = 0
       for e in feed.entries:
         link = e.get("link") or ""
         title = _norm(e.get("title"))
-        if not link or not title: 
+        if not link or not title:
           continue
         summary = _norm(e.get("summary") or e.get("description") or "")
         items.append({
@@ -238,8 +241,10 @@ def fetch_all():
           "summary_raw": summary,
           "source": urlparse(url).netloc.replace("www.","")
         })
-    except Exception:
-      continue
+        got += 1
+      log(f"OK {url} — {got} items")
+    except Exception as ex:
+      log(f"ERR {url}: {ex}")
   return items
 
 def dedupe(items):
@@ -282,7 +287,7 @@ def _openai_chat(messages, model="gpt-4o-mini", temperature=0.2, max_tokens=2000
     r.raise_for_status()
     return r.json()["choices"][0]["message"]["content"]
   except Exception as e:
-    print("OpenAI error:", e)
+    log(f"OpenAI error: {e}")
     return None
 
 def summarize_smart(lang, items):
@@ -293,7 +298,7 @@ def summarize_smart(lang, items):
        "'. Neutral tone, 2–3 concise sentences per item. Do not invent facts.")
   res=_openai_chat(
     messages=[{"role":"system","content":sys},{"role":"user","content":json.dumps({"items":compact})}],
-    model=os.getenv("OPENAI_MODEL","gpt-4o-mini"), temperature=0.2, max_tokens=2000
+    model=OPENAI_MODEL, temperature=0.2, max_tokens=2000
   )
   if not res: return summarize_plain(items)
   try:
@@ -306,7 +311,7 @@ def summarize_smart(lang, items):
       out.append({"headline":h,"summary":s,"url":u,"source":src})
     return out if out else summarize_plain(items)
   except Exception as e:
-    print("LLM parse error:", e)
+    log(f"LLM parse error: {e}")
     return summarize_plain(items)
 
 def summarize_plain(items):
@@ -331,7 +336,6 @@ def render_page(lang, date_str, items):
   out_dir=OUT/lang/"digest"/date_str
   out_dir.mkdir(parents=True, exist_ok=True)
   (out_dir/"index.html").write_text(html, encoding="utf-8")
-  # Збережемо також JSON, щоб індекс міг узяти прев’ю
   (out_dir/"items.json").write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
 
 def render_index(lang):
@@ -346,7 +350,7 @@ def render_index(lang):
     if jpath.exists():
       try:
         data=json.loads(jpath.read_text(encoding="utf-8"))
-        preview=data[:3]  # перші 3 матеріали
+        preview=data[:3]
       except Exception:
         preview=[]
   html=INDEX_TMPL.render(
@@ -365,26 +369,33 @@ def render_index(lang):
 
 # ========================= MAIN =================================
 def main():
-  # Публікуємо лише у потрібні «вікна» або якщо FORCE=true
-  if not is_within_target_window(now_local()) and os.getenv("FORCE","false").lower()!="true":
-    print("Not target time — skip."); return
+  date_str = now_local().date().isoformat()
 
+  # 1) Збір новин
   raw=fetch_all()
   items=score_and_pick(dedupe(raw), limit=24)
   if len(items) < MIN_ITEMS:
-    print("Below threshold — skip."); return
+    log(f"Below threshold ({len(items)}<{MIN_ITEMS}) — skip.")
+    return
 
+  # 2) Підсумки (LLM або прості)
   if llm_available():
+    log("LLM available — generating smart summaries…")
     multi={lang: summarize_smart(lang, items) for lang in LANGS}
   else:
+    log("No OPENAI_API_KEY — using plain summaries.")
     multi={lang: summarize_plain(items) for lang in LANGS}
 
-  date_str = now_local().date().isoformat()
+  # 3) Генерація сторінок (один раз на день для кожної мови)
   for lang in LANGS:
+    if todays_digest_exists(lang, date_str) and os.getenv("FORCE","false").lower()!="true":
+      log(f"{lang}: digest for {date_str} already exists — skip.")
+      continue
     render_page(lang, date_str, multi[lang])
     render_index(lang)
+    log(f"{lang}: digest generated for {date_str}")
 
-  print("Digest generated.")
+  log("Done.")
 
 if __name__=="__main__":
   main()
