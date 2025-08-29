@@ -1,21 +1,49 @@
-name: Bootstrap site
+name: Bootstrap site (safe)
 on:
   workflow_dispatch: {}
+permissions:
+  contents: write   # дозволяє пуш у репо
 jobs:
   make:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run bootstrap
+
+      # 1) Запускаємо твій bootstrap.sh якщо є; інакше нічого страшного
+      - name: Generate static site via bootstrap.sh
+        shell: bash
         run: |
-          chmod +x bootstrap.sh
-          bash bootstrap.sh
-      - name: Commit generated files
+          chmod +x bootstrap.sh 2>/dev/null || true
+          if [[ -f bootstrap.sh ]]; then
+            bash bootstrap.sh
+          else
+            echo "bootstrap.sh not found (це не критично, але тоді файлів не створиться)."
+          fi
+
+      # 2) Створюємо аліаси мов /en, /uk, /es, /fr, /de
+      - name: Create language aliases (/en, /uk, /es, /fr, /de)
+        shell: bash
+        run: |
+          mkdir -p en uk es fr de
+          for code in en uk es fr de; do
+            cat > $code/index.html <<HTML
+<!doctype html><meta charset="utf-8">
+<meta http-equiv="refresh" content="0; url=/index.html?lang=$code">
+<title>Redirecting…</title>
+HTML
+          done
+
+      # 3) Комітимо всі згенеровані файли, але ВИКЛЮЧАЄМО workflow digest.yml
+      - name: Commit generated files (exclude workflows)
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add -A
+            # якщо bootstrap.sh створив .github/workflows/digest.yml — не додаємо його, інакше GitHub заблокує пуш
+            git restore --staged .github/workflows/digest.yml || true
             git commit -m "bootstrap: generate static site"
             git push
+          else
+            echo "Nothing to commit."
           fi
