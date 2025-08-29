@@ -1,13 +1,14 @@
-name: Generate digests (Kyiv 05:00 & 20:00)
+name: Generate digests
 
 on:
   schedule:
-    - cron: '0 2 * * *'   # 05:00 Київ (UTC+3)
-    - cron: '0 17 * * *'  # 20:00 Київ (UTC+3)
-  workflow_dispatch: {}    # ручний запуск
+    - cron: '0 2 * * *'    # 05:00 Kyiv (UTC+3)
+    - cron: '0 17 * * *'   # 20:00 Kyiv (UTC+3)
+  workflow_dispatch: {}
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   build:
@@ -17,34 +18,66 @@ jobs:
       LANGS: uk,de,fr,es
       DIGEST_MIN_ITEMS: '8'
       OPENAI_MODEL: gpt-4o-mini
+      SITE_ORIGIN: https://presidencyclock.com
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Show repo layout (debug)
+        run: |
+          echo "PWD=$(pwd)"
+          echo "---- .github/workflows ----"; ls -la .github/workflows || true
+          echo "---- potus-countdown ----"; ls -la potus-countdown || true
+          echo "---- scripts ----"; ls -la potus-countdown/scripts || true
+          test -f potus-countdown/scripts/generate_digest.py && echo "OK: script exists" || (echo "ERROR: script missing"; exit 1)
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           python -m pip install -U pip
-          pip install -r requirements.txt
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install feedparser==6.0.11 Jinja2==3.1.4 requests==2.32.3
+          fi
+          python - << 'PY'
+import feedparser, jinja2, requests, sys
+print("Deps OK:", sys.version)
+print("feedparser", feedparser.__version__, "jinja2", jinja2.__version__, "requests", requests.__version__)
+PY
 
       - name: Generate digests
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python scripts/generate_digest.py
+          python potus-countdown/scripts/generate_digest.py
 
-      - name: Commit & push
+      - name: Commit & push (or PR if protected)
+        id: push_changes
+        continue-on-error: true
         run: |
           git config user.name "presidencyclock-bot"
           git config user.email "bot@presidencyclock.local"
           git add -A
           if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "auto: digests $(date -u +'%Y-%m-%d %H:%M:%S')"
-            git push
+            echo "No changes to commit."; exit 0
           fi
+          git commit -m "auto: digests $(date -u +'%Y-%m-%d %H:%M:%S')"
+          git pull --rebase || true
+          git push
+
+      - name: Create PR if push failed
+        if: steps.push_changes.outcome == 'failure'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "auto: digests $(date -u +'%Y-%m-%d %H:%M:%S')"
+          title: "Auto digests update"
+          body: "Direct push is restricted; creating PR automatically."
+          branch: auto/digests-update
+          delete-branch: true
