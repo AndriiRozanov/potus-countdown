@@ -47,24 +47,6 @@
       --safe-left: env(safe-area-inset-left, 0px);
       --safe-right: env(safe-area-inset-right, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
-      /* FIX: щоб .brand не перекривав меню по всій ширині */
-.brand{
-  position: fixed;
-  left: calc(12px + var(--safe-left));
-  top: calc(8px + var(--safe-top));
-  z-index: 20;
-  display: inline-flex;      /* було flex — міняємо на inline-flex */
-  align-items: center;
-  gap: .5rem;
-  width: auto;               /* не розтягувати на всю ширину */
-  pointer-events: none;      /* сама смуга не ловить кліки */
-}
-.brand__link, .brand__text{ pointer-events: auto; } /* але всередині кліки працюють */
-
-.wrap{ margin: calc(56px + var(--safe-top)) auto 28px; } /* трохи більше відступу зверху */
-
-.topnav{ position: relative; z-index: 50; } /* меню гарантовано вище всіх фон.елементів */
-
     }
     [data-theme="dark"]{
       --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06);
@@ -83,17 +65,36 @@
       background-attachment:fixed,fixed,fixed;
       padding-bottom:var(--safe-bottom);
     }
-    .brand{position:fixed;left:calc(12px + var(--safe-left));top:calc(8px + var(--safe-top));z-index:20;display:flex;align-items:center;gap:.5rem}
+
+    /* ===== Brand (fixed logo) — NO overlay on menu ===== */
+    .brand{
+      position: fixed;
+      left: calc(12px + var(--safe-left));
+      top: calc(8px + var(--safe-top));
+      z-index: 10;                 /* below the menu */
+      display: inline-flex;         /* fit to content width */
+      align-items: center;
+      gap: .5rem;
+      width: auto;
+      pointer-events: none;         /* this container doesn't intercept clicks */
+    }
+    .brand__link, .brand__text{ pointer-events: auto; } /* inner elements still clickable */
+
     .brand__link{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--text);box-shadow:0 2px 10px rgba(0,0,0,.06)}
     .brand__icon{width:22px;height:22px;display:block;color:var(--text)}
     .brand__text{font-weight:800;letter-spacing:.01em;user-select:none;font-size:14px}
 
-    .wrap{max-width:1100px;margin:calc(26px + var(--safe-top)) auto 28px;padding:0 14px}
+    .wrap{max-width:1100px;margin:calc(56px + var(--safe-top)) auto 28px;padding:0 14px}
+
     h1{font-weight:800;letter-spacing:.01em;text-align:center;margin:6px 0 4px;font-size:clamp(20px,4.6vw,40px);line-height:1.06}
     .subtitle{text-align:center;opacity:.9;margin-bottom:10px;font-weight:600;font-size:clamp(12px,2.6vw,15px)}
 
     /* Top navigation */
-    .topnav{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:12px auto}
+    .topnav{
+      position: relative;           /* enables z-index */
+      z-index: 50;                  /* above brand and backgrounds */
+      display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:12px auto
+    }
     .topnav a{color:var(--accent);text-decoration:none;font-weight:700}
     .topnav a:hover{text-decoration:underline}
 
@@ -120,22 +121,22 @@
 
     @media (max-width:720px){
       .brand__text{display:none}
-      .wrap{margin:calc(22px + var(--safe-top)) auto 18px}
+      .wrap{margin:calc(50px + var(--safe-top)) auto 18px}
       th,td{padding:7px}
     }
   </style>
 </head>
 <body>
   <!-- brand -->
-  <div class="brand">
+  <div class="brand" aria-hidden="false">
     <a class="brand__link" href="/en/" aria-label="Presidency Clock">
       <svg class="brand__icon" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"></circle><path d="M16 8v8l6 4"></path></g></svg>
     </a>
-    <span class="brand__text" aria-hidden="true">Presidency&nbsp;Clock</span>
+    <span class="brand__text">Presidency&nbsp;Clock</span>
   </div>
 
   <div class="wrap">
-    <!-- Unified top menu -->
+    <!-- Unified top menu (now definitely clickable) -->
     <nav class="topnav" aria-label="Main menu">
       <a href="/en/">Home</a>
       <a href="/en/about/">About</a>
