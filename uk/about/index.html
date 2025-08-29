@@ -3,22 +3,21 @@
 <head>
   <meta charset="utf-8">
 
-  <!-- THEME PACK (фікс теми — вставлено у <head>, спрацьовує ДО рендеру) -->
+  <!-- THEME PACK: застосувати тему ДО першого рендеру + колірні токени -->
   <script>
   (function(){
     try{
       var pref=(localStorage.getItem('theme')||'auto').toLowerCase();
-      var darkOS=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = pref==='auto' ? (darkOS?'dark':'light') : pref;
+      var darkOS=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme=pref==='auto' ? (darkOS?'dark':'light') : pref;
       document.documentElement.setAttribute('data-theme', theme);
-      document.documentElement.style.colorScheme = (theme==='dark'?'dark':'light');
-      // якщо обрано "авто" — реагуємо на зміну теми ОС
+      document.documentElement.style.colorScheme=(theme==='dark'?'dark':'light');
       if(pref==='auto' && window.matchMedia){
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e){
           var t=e.matches?'dark':'light';
           document.documentElement.setAttribute('data-theme', t);
-          document.documentElement.style.colorScheme = (t==='dark'?'dark':'light');
-          if(window.updateFavicon) updateFavicon();
+          document.documentElement.style.colorScheme=(t==='dark'?'dark':'light');
+          try{ if(window.updateFavicon) updateFavicon(); }catch(_){}
         });
       }
     }catch(e){}
@@ -26,7 +25,6 @@
   </script>
 
   <style>
-  /* Токени кольорів (обидві теми) */
   :root{
     --bg:#f6f8fd; --stripe:rgba(13,17,23,.06); --surface:#fff; --tile-bg:#f3f5fa; --btn-bg:#fff;
     --line:rgba(13,17,23,.12); --text:#0c1220; --num:#0f1720; --accent:#3d77ff;
@@ -38,10 +36,9 @@
     --glow1:rgba(78,128,255,.20); --glow2:rgba(255,120,0,.08); --muted:#a1a1aa;
   }
 
-  /* Базова сітка/типографіка */
   html,body{height:100%}
   body{
-    margin:0; color:var(--text); background:var(--bg);
+    margin:0; background:var(--bg); color:var(--text);
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     background-image:
       radial-gradient(900px 480px at 78% 18%, var(--glow1), transparent 60%),
@@ -50,10 +47,9 @@
     background-attachment:fixed,fixed,fixed;
   }
   .wrap{max-width:1100px;margin:0 auto;padding:18px 14px 32px}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
+  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 
-  /* Хедер і перемикач теми */
+  /* Header + theme switcher */
   .topbar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin:8px 0 16px}
   .brand{display:flex;align-items:center;gap:.5rem}
   .brand__logo{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
@@ -72,42 +68,43 @@
     display:none; padding:6px; z-index:20;
   }
   .theme__menu.open{display:block}
-  .theme__opt{
-    display:flex;align-items:center;gap:.5rem; padding:8px 10px; border-radius:8px; cursor:pointer; user-select:none;
-  }
+  .theme__opt{display:flex;align-items:center;gap:.5rem; padding:8px 10px; border-radius:8px; cursor:pointer; user-select:none}
   .theme__opt:hover{background:var(--tile-bg)}
   .badge{font-size:12px;opacity:.75}
 
-  /* Контентні блоки */
-  main h1{font-weight:800;margin:8px 0 6px}
+  /* Content */
+  h1{font-weight:800;margin:8px 0 6px}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0}
-  nav.card a{margin-right:10px}
+  .muted{opacity:.85}
+  .ad{display:flex;justify-content:center;align-items:center;margin:12px 0}
+  ul{padding-left:18px}
   </style>
 
-  <!-- Фавікон під тему -->
+  <!-- Favicon, що адаптується до теми -->
   <link id="favicon" rel="icon" type="image/svg+xml" href="">
   <script>
-  function updateFavicon(){
-    try{
-      var textColor=getComputedStyle(document.documentElement).getPropertyValue('--text').trim()||'#0c1220';
-      var svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='"+textColor+"' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'><circle cx='32' cy='32' r='24'/><path d='M32 14v18l12 8'/></svg>";
-      var url='data:image/svg+xml,'+encodeURIComponent(svg);
-      var link=document.getElementById('favicon'); if(link) link.href=url;
-    }catch(e){}
-  }
-  (function(){ updateFavicon(); })();
+    function updateFavicon(){
+      try{
+        var c=getComputedStyle(document.documentElement).getPropertyValue('--text').trim()||'#0c1220';
+        var svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='"+c+"' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'><circle cx='32' cy='32' r='24'/><path d='M32 14v18l12 8'/></svg>";
+        var url='data:image/svg+xml,'+encodeURIComponent(svg);
+        var link=document.getElementById('favicon'); if(link) link.href=url;
+      }catch(e){}
+    }
+    (function(){ updateFavicon(); })();
   </script>
-  <!-- /THEME PACK -->
 
-  <!-- Метадані сторінки (онови під себе) -->
+  <!-- Meta -->
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Назва сторінки — Presidency Clock</title>
-  <meta name="description" content="Короткий опис сторінки українською.">
+  <title>Про сайт — Presidency Clock</title>
+  <meta name="description" content="Що таке Presidency Clock, як формується дайджест, графік оновлень і контакти.">
+  <link rel="canonical" href="https://presidencyclock.com/uk/about/">
+  <meta name="google-adsense-account" content="ca-pub-5023415479696725">
   <meta name="theme-color" content="#f6f8fd">
 </head>
 <body>
   <div class="wrap">
-    <!-- Верхня панель з перемикачем теми (вставляй на ВСІХ сторінках UA) -->
+    <!-- Шапка з перемикачем теми -->
     <div class="topbar">
       <div class="brand">
         <a class="brand__logo" href="/uk/" aria-label="Presidency Clock">
@@ -116,37 +113,68 @@
         <div class="brand__title">Presidency&nbsp;Clock</div>
       </div>
 
-      <!-- Перемикач теми (працює будь-де) -->
       <div class="theme" id="themeBox">
         <button class="theme__btn" id="themeBtn" aria-haspopup="true" aria-expanded="false">
           <span id="themeLabel">Тема: авто</span>
         </button>
         <div class="theme__menu" id="themeMenu" role="menu" aria-label="Перемикач теми">
-          <div class="theme__opt" data-value="auto"  role="menuitem">Авто <span class="badge">за темою ОС</span></div>
+          <div class="theme__opt" data-value="auto"  role="menuitem">Авто <span class="badge">як в ОС</span></div>
           <div class="theme__opt" data-value="light" role="menuitem">Світла</div>
           <div class="theme__opt" data-value="dark"  role="menuitem">Темна</div>
         </div>
       </div>
     </div>
 
-    <!-- Навігація (онови посилання під себе) -->
-    <nav class="card" aria-label="Основна навігація">
-      <a href="/uk/">Головна</a>
-      <a href="/uk/presidents/">Президенти</a>
-      <a href="/uk/digest/">Дайджести</a>
-      <a href="/uk/about/">Про сайт</a>
-      <a href="/uk/privacy/">Приватність</a>
-      <a href="/uk/contact/">Контакти</a>
+    <!-- Навігація -->
+    <nav class="card" aria-label="Навігація">
+      <a href="/uk/">Головна</a> •
+      <a href="/uk/presidents/">Президентські терміни</a> •
+      <a href="/uk/digest/">Дайджести</a> •
+      <a href="/uk/about/">Про сайт</a> •
+      <a href="/uk/contacts/">Контакти</a>
     </nav>
 
-    <!-- ТВОЙ КОНТЕНТ: заміни вміст main на потрібний текст/розмітку -->
-    <main>
-      <h1>Заголовок сторінки</h1>
-      <div class="card">
-        Це приклад UA-сторінки зі справною темою і перемикачем. Скопіюй цей файл та використай як основу для інших сторінок.
-        Вибір теми зберігається і застосовується на всіх сторінках без миготіння.
-      </div>
-    </main>
+    <h1>Про сайт</h1>
+
+    <div class="ad ad--top">
+      <ins class="adsbygoogle" style="display:block;min-height:90px"
+           data-ad-client="ca-pub-5023415479696725"
+           data-ad-slot="9877072514" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <section class="card">
+      <h2>Що це за сайт?</h2>
+      <p class="muted">
+        <b>Presidency Clock</b> — компактний проєкт про лідерів і політичні часові лінії.
+        Також ми публікуємо <a href="/uk/digest/">дайджести</a> з нейтральними короткими підсумками головних політичних новин.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Як формується дайджест</h2>
+      <ul>
+        <li>Збираємо матеріали з перевірених RSS-стрічок (міжнародна та локальна політика).</li>
+        <li>Видаляємо дублікати та пріоритезуємо політичні ключові слова.</li>
+        <li>Якщо налаштований API-ключ — ШІ пише нейтральні, <b>стислі 2–3-реченеві</b> підсумки мовою сторінки; інакше використовуємо описи з RSS.</li>
+        <li>Кожен пункт посилається на першоджерело.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Графік оновлень</h2>
+      <p>Дайджести оновлюються <b>двічі на день</b>. На <a href="/uk/digest/">індекс-сторінці</a> є останній превʼю-випуск і архів.</p>
+    </section>
+
+    <section class="card">
+      <h2>Контакти</h2>
+      <p>Є пропозиція або знайшли помилку? Напишіть нам через розділ <a href="/uk/contacts/">Контакти</a>.</p>
+    </section>
+
+    <div class="ad ad--bottom">
+      <ins class="adsbygoogle" style="display:block;min-height:90px"
+           data-ad-client="ca-pub-5023415479696725"
+           data-ad-slot="5432245255" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
   </div>
 
   <!-- Логіка перемикача теми -->
@@ -157,7 +185,9 @@
     var lab  = document.getElementById('themeLabel');
 
     function currentPref(){ return (localStorage.getItem('theme')||'auto').toLowerCase(); }
-    function labelFrom(pref){ return pref==='auto' ? 'авто' : (pref==='light'?'світла':'темна'); }
+    function labelFrom(pref){
+      return pref==='auto' ? 'авто' : (pref==='light'?'світла':'темна');
+    }
 
     function applyTheme(pref){
       localStorage.setItem('theme', pref);
@@ -166,32 +196,36 @@
       document.documentElement.setAttribute('data-theme', theme);
       document.documentElement.style.colorScheme = (theme==='dark'?'dark':'light');
       lab.textContent = 'Тема: ' + labelFrom(pref);
-      updateFavicon && updateFavicon();
+      try{ updateFavicon(); }catch(_){}
     }
     function toggleMenu(open){
       var willOpen = (open!==undefined ? open : !menu.classList.contains('open'));
       menu.classList.toggle('open', willOpen);
       btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
     }
-
-    // ініціалізуємо напис на кнопці і тему
     lab.textContent = 'Тема: ' + labelFrom(currentPref());
     applyTheme(currentPref());
-
     btn.addEventListener('click', function(e){ e.preventDefault(); toggleMenu(); });
     menu.querySelectorAll('.theme__opt').forEach(function(opt){
-      opt.addEventListener('click', function(){
-        applyTheme(this.getAttribute('data-value')); toggleMenu(false);
-      });
+      opt.addEventListener('click', function(){ applyTheme(this.getAttribute('data-value')); toggleMenu(false); });
     });
     document.addEventListener('click', function(e){
       if(!menu.contains(e.target) && !btn.contains(e.target)) toggleMenu(false);
     });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') toggleMenu(false); });
-
-    // зробимо глобальний API, якщо колись захочеш кнопки в іншому місці:
-    window.__setTheme = applyTheme;  // приклад: __setTheme('dark')
+    window.__setTheme = applyTheme; // можна викликати будь-де: __setTheme('dark')
   })();
+  </script>
+
+  <!-- Завантаження AdSense -->
+  <script>
+    (function(){
+      const s=document.createElement('script'); s.async=true;
+      s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725';
+      s.crossOrigin='anonymous';
+      s.onload=function(){ try{ const arr=(window.adsbygoogle=window.adsbygoogle||[]); document.querySelectorAll('ins.adsbygoogle').forEach(()=>arr.push({})); }catch(e){} };
+      document.head.appendChild(s);
+    })();
   </script>
 </body>
 </html>
