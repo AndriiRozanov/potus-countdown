@@ -32,19 +32,26 @@
       tabs.appendChild(b);
     });
   }
+async function load(code){
+  try{
+    const res = await fetch(`/data/evergreen/${code}.json?cb=${Date.now()}`);
+    if (!res.ok) return [];
+    const arr = await res.json();
 
-  async function load(code){
-    try{
-      const res=await fetch(`/data/evergreen/${code}.json?cb=${Date.now()}`);
-      if(!res.ok) return [];
-      const arr=await res.json();
-      // Обчислюємо дні та сортуємо (від найменшого до найбільшого)
-      return arr.map(x=>{
-        const start=new Date(x.start), end=new Date(x.end);
-        const days=Math.round((end-start)/86400000);
-        return {...x, days};
-      }).sort((a,b)=>a.days-b.days);
-    }catch(e){ return []; }
+    const parseDate = (s) => {
+      if (!s || /^(present|incumbent|now|current)$/i.test(String(s).trim())) return new Date(); // сьогодні
+      const d = new Date(s);
+      return isNaN(d) ? null : d;
+    };
+
+    return arr.map(x => {
+      const start = parseDate(x.start);
+      const end   = parseDate(x.end) || new Date();
+      const days  = start ? Math.round((end - start) / 86400000) : 0;
+      return { ...x, days };
+    }).sort((a,b) => a.days - b.days); // від найкоротшого до найдовшого
+  } catch (e) {
+    return [];
   }
 
   async function render(code){
