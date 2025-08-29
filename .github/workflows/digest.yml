@@ -19,7 +19,6 @@ jobs:
       DIGEST_MIN_ITEMS: '8'
       OPENAI_MODEL: gpt-4o-mini
       SITE_ORIGIN: https://presidencyclock.com
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,11 +28,9 @@ jobs:
       - name: Show repo layout (debug)
         run: |
           echo "PWD=$(pwd)"
-          ls -la
-          echo "---- potus-countdown ----"
-          ls -la potus-countdown || true
-          echo "---- scripts ----"
-          ls -la potus-countdown/scripts || true
+          echo "---- .github/workflows ----"; ls -la .github/workflows || true
+          echo "---- potus-countdown ----"; ls -la potus-countdown || true
+          echo "---- scripts ----"; ls -la potus-countdown/scripts || true
           test -f potus-countdown/scripts/generate_digest.py && echo "OK: script exists" || (echo "ERROR: script missing"; exit 1)
 
       - name: Set up Python
@@ -41,28 +38,27 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies (smart fallback)
+      - name: Install dependencies
         run: |
           python -m pip install -U pip
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
-          elif [ -f potus-countdown/requirements.txt ]; then
-            pip install -r potus-countdown/requirements.txt
           else
-            echo "requirements.txt not found -> installing minimal set"
             pip install feedparser==6.0.11 Jinja2==3.1.4 requests==2.32.3
           fi
-          python -c "import sys,feedparser,jinja2,requests; print('Deps OK:', sys.version, feedparser.__version__, jinja2.__version__, requests.__version__)"
+          python - << 'PY'
+import feedparser, jinja2, requests, sys
+print("Deps OK:", sys.version)
+print("feedparser", feedparser.__version__, "jinja2", jinja2.__version__, "requests", requests.__version__)
+PY
 
       - name: Generate digests
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          set -e
           python potus-countdown/scripts/generate_digest.py
 
-      # Варіант А: прямий пуш (якщо гілка main НЕ захищена)
-      - name: Commit & push changes
+      - name: Commit & push (or PR if protected)
         id: push_changes
         continue-on-error: true
         run: |
@@ -70,20 +66,18 @@ jobs:
           git config user.email "bot@presidencyclock.local"
           git add -A
           if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
+            echo "No changes to commit."; exit 0
           fi
           git commit -m "auto: digests $(date -u +'%Y-%m-%d %H:%M:%S')"
           git pull --rebase || true
           git push
 
-      # Варіант Б: якщо пуш заборонений (protected branch) — створюємо PR
-      - name: Create Pull Request if push failed
+      - name: Create PR if push failed
         if: steps.push_changes.outcome == 'failure'
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "auto: digests $(date -u +'%Y-%m-%d %H:%M:%S')"
           title: "Auto digests update"
-          body: "This PR was created because direct push to the default branch is restricted."
+          body: "Direct push is restricted; creating PR automatically."
           branch: auto/digests-update
           delete-branch: true
