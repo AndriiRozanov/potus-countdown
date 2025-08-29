@@ -1,0 +1,85 @@
+name: Generate digests
+
+on:
+  schedule:
+    - cron: '0 2 * * *'    # 05:00 Kyiv (UTC+3)
+    - cron: '0 17 * * *'   # 20:00 Kyiv (UTC+3)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: digests
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TIMEZONE: Europe/Kyiv
+      LANGS: uk,de,fr,es
+      DIGEST_MIN_ITEMS: '8'
+      OPENAI_MODEL: gpt-4o-mini
+      SITE_ORIGIN: https://presidencyclock.com
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - name: Install dependencies (with fallback)
+        run: |
+          python -m pip install -U pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          elif [ -f potus-countdown/requirements.txt ]; then
+            pip install -r potus-countdown/requirements.txt
+          else
+            pip install feedparser==6.0.11 Jinja2==3.1.4 requests==2.32.3
+          fi
+
+      - name: Find script path
+        id: find_script
+        shell: bash
+        run: |
+          set -e
+          if [ -f potus-countdown/scripts/generate_digest.py ]; then
+            echo "script=potus-countdown/scripts/generate_digest.py" >> "$GITHUB_OUTPUT"
+          elif [ -f scripts/generate_digest.py ]; then
+            echo "script=scripts/generate_digest.py" >> "$GITHUB_OUTPUT"
+          else
+            echo "ERROR: generate_digest.py not found in potus-countdown/scripts/ or scripts/"
+            exit 1
+          fi
+
+      - name: Generate digests
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          echo "Using script: ${{ steps.find_script.outputs.script }}"
+          python "${{ steps.find_script.outputs.script }}"
+
+      # робимо PR замість прямого пуша — не зламається, навіть якщо main захищений
+      - name: Commit changes to a branch
+        run: |
+          git config user.name "presidencyclock-bot"
+          git config user.email "bot@presidencyclock.local"
+          git checkout -B auto/digests-update
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "auto: digests $(date -u +'%Y-%m-%d %H:%M:%S')"
+          git push -u origin auto/digests-update --force
+
+      - name: Create / update Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "Auto digests update"
+          body: "Automated digests update from GitHub Actions."
+          branch: auto/digests-update
+          commit-message: "auto: digests"
+          delete-branch: false
