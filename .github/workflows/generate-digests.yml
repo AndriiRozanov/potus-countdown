@@ -29,12 +29,22 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
 
-      - name: Generate digests (FORCE)
+            - name: Generate digests
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          FORCE: "true"                      # примусово створити сьогоднішній випуск
+          FORCE: "true"          # можна прибрати пізніше
+          DIGEST_MIN_ITEMS: "5"  # можна підняти пізніше
         run: |
-          python potus-countdown/scripts/generate_digest.py
+          # Автовизначення, де лежить скрипт
+          if [ -f potus-countdown/scripts/generate_digest.py ]; then
+            python potus-countdown/scripts/generate_digest.py
+          elif [ -f scripts/generate_digest.py ]; then
+            python scripts/generate_digest.py
+          else
+            echo "Не знайшов generate_digest.py ні в potus-countdown/scripts/, ні в scripts/"
+            ls -la
+            exit 1
+          fi
 
       - name: Commit & push
         run: |
