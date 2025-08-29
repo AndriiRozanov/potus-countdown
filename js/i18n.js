@@ -1,7 +1,9 @@
 // js/i18n.js — повний словник (5 мов)
 window.I18N = {
   en: {
+    // nav
     home:"Home", presidents:"Presidents & Terms", digest:"AI Digest", about:"About", privacy:"Privacy", contact:"Contact",
+    // index
     title:"Time left in Donald Trump’s presidency",
     sub:"U.S. presidential terms end at 12:00 noon ET on January 20 (Twentieth Amendment).",
     seconds:"Seconds", selectSound:"Sound", tickSound:"Ticking", beepSound:"Digital beep",
@@ -9,11 +11,26 @@ window.I18N = {
     shareX:"Share on X", shareFB:"Share on Facebook", copy:"Copy code", copied:"Copied!",
     madeWith:"Made with", in:"in", kyiv:"Kyiv",
     termsNote:"Constitutional end of term: 12:00 ET, January 20, 2029.",
-    // Presidents & terms page
+    // Presidents & Terms page
     evTitle:"Leaders by shortest-to-longest time in office",
     evSubtitle:"United States, Ukraine, Canada, Mexico, Spain, France, Germany",
     country:{us:"United States", ua:"Ukraine", ca:"Canada", mx:"Mexico", es:"Spain", fr:"France", de:"Germany"},
-    col:{name:"Name", office:"Office", start:"Start", end:"End", days:"Days"}
+    col:{name:"Name", office:"Office", start:"Start", end:"End", days:"Days"},
+    noData:"No data yet.",
+    // Digest page
+    dgTitle:"AI Digest — top political stories",
+    dgUpdated:"Last updated",
+    dgEmpty:"No stories yet. Please check back soon.",
+    dgReadMore:"Read",
+    // About/Privacy/Contact
+    aboutTitle:"About",
+    aboutP1:"Presidency Clock is a minimal countdown with an embeddable widget, 5 languages, evergreen stats and an AI digest.",
+    aboutP2:"Our goal is a small site that works on its own and can be monetized with ads.",
+    privacyTitle:"Privacy policy",
+    privacyP1:"We do not use third-party trackers by default. If AdSense is enabled, Google may set its own cookies.",
+    contactTitle:"Contact",
+    contactP1:"Have feedback or want to partner?",
+    email:"Email"
   },
   uk: {
     home:"Головна", presidents:"Президенти і терміни", digest:"AI-дайджест", about:"Про нас", privacy:"Конфіденційність", contact:"Зв'язок",
@@ -27,7 +44,20 @@ window.I18N = {
     evTitle:"Керівники від найкоротшого до найдовшого строку",
     evSubtitle:"США, Україна, Канада, Мексика, Іспанія, Франція, Німеччина",
     country:{us:"США", ua:"Україна", ca:"Канада", mx:"Мексика", es:"Іспанія", fr:"Франція", de:"Німеччина"},
-    col:{name:"Ім'я", office:"Посада", start:"Початок", end:"Кінець", days:"Днів"}
+    col:{name:"Ім'я", office:"Посада", start:"Початок", end:"Кінець", days:"Днів"},
+    noData:"Даних поки що немає.",
+    dgTitle:"AI-дайджест — головні політичні новини",
+    dgUpdated:"Останнє оновлення",
+    dgEmpty:"Поки немає матеріалів. Завітайте пізніше.",
+    dgReadMore:"Читати",
+    aboutTitle:"Про нас",
+    aboutP1:"Presidency Clock — мінімалістичний зворотний відлік із вбудованим віджетом, 5 мовами, «президентами і термінами» та AI-дайджестом.",
+    aboutP2:"Мета — невеликий сайт, який працює сам і монетизується рекламою.",
+    privacyTitle:"Політика конфіденційності",
+    privacyP1:"За замовчуванням ми не використовуємо сторонні трекери. Якщо увімкнений AdSense, Google може встановлювати власні кукі.",
+    contactTitle:"Зв'язок",
+    contactP1:"Є ідеї чи пропозиції?",
+    email:"Пошта"
   },
   es: {
     home:"Inicio", presidents:"Presidentes y mandatos", digest:"AI Digest", about:"Acerca de", privacy:"Privacidad", contact:"Contacto",
@@ -41,7 +71,20 @@ window.I18N = {
     evTitle:"Líderes por menor a mayor tiempo en el cargo",
     evSubtitle:"EE. UU., Ucrania, Canadá, México, España, Francia, Alemania",
     country:{us:"EE. UU.", ua:"Ucrania", ca:"Canadá", mx:"México", es:"España", fr:"Francia", de:"Alemania"},
-    col:{name:"Nombre", office:"Cargo", start:"Inicio", end:"Fin", days:"Días"}
+    col:{name:"Nombre", office:"Cargo", start:"Inicio", end:"Fin", days:"Días"},
+    noData:"Aún no hay datos.",
+    dgTitle:"AI Digest — principales noticias políticas",
+    dgUpdated:"Última actualización",
+    dgEmpty:"Aún no hay artículos. Vuelve pronto.",
+    dgReadMore:"Leer",
+    aboutTitle:"Acerca de",
+    aboutP1:"Presidency Clock es una cuenta regresiva mínima con widget, 5 idiomas, presidentes y mandatos, y un AI-digest.",
+    aboutP2:"Meta: un sitio pequeño que funcione solo y se monetice con anuncios.",
+    privacyTitle:"Política de privacidad",
+    privacyP1:"Por defecto no usamos rastreadores de terceros. Si se activa AdSense, Google puede establecer sus cookies.",
+    contactTitle:"Contacto",
+    contactP1:"¿Tienes comentarios o quieres colaborar?",
+    email:"Correo"
   },
   fr: {
     home:"Accueil", presidents:"Présidents et mandats", digest:"AI Digest", about:"À propos", privacy:"Confidentialité", contact:"Contact",
@@ -53,9 +96,22 @@ window.I18N = {
     madeWith:"Fait avec", in:"à", kyiv:"Kyiv",
     termsNote:"Fin du mandat : 12:00 ET, 20 janvier 2029.",
     evTitle:"Dirigeants du plus court au plus long mandat",
-    evSubtitle:"USA, Ukraine, Canada, Mexique, Espagne, France, Allemagne",
+    evSubtitle:"États-Unis, Ukraine, Canada, Mexique, Espagne, France, Allemagne",
     country:{us:"États-Unis", ua:"Ukraine", ca:"Canada", mx:"Mexique", es:"Espagne", fr:"France", de:"Allemagne"},
-    col:{name:"Nom", office:"Fonction", start:"Début", end:"Fin", days:"Jours"}
+    col:{name:"Nom", office:"Fonction", start:"Début", end:"Fin", days:"Jours"},
+    noData:"Pas encore de données.",
+    dgTitle:"AI Digest — principales actualités politiques",
+    dgUpdated:"Dernière mise à jour",
+    dgEmpty:"Aucun article pour le moment.",
+    dgReadMore:"Lire",
+    aboutTitle:"À propos",
+    aboutP1:"Presidency Clock est un compte à rebours minimal avec widget, 5 langues, présidents & mandats et un AI-digest.",
+    aboutP2:"Objectif : un petit site autonome monétisable par la publicité.",
+    privacyTitle:"Confidentialité",
+    privacyP1:"Par défaut, nous n'utilisons pas de traceurs tiers. Si AdSense est activé, Google peut définir ses propres cookies.",
+    contactTitle:"Contact",
+    contactP1:"Des retours ou une proposition de partenariat ?",
+    email:"E-mail"
   },
   de: {
     home:"Start", presidents:"Präsidenten & Amtszeiten", digest:"AI-Digest", about:"Über uns", privacy:"Datenschutz", contact:"Kontakt",
@@ -69,6 +125,19 @@ window.I18N = {
     evTitle:"Amtszeiten: kürzeste bis längste",
     evSubtitle:"USA, Ukraine, Kanada, Mexiko, Spanien, Frankreich, Deutschland",
     country:{us:"USA", ua:"Ukraine", ca:"Kanada", mx:"Mexiko", es:"Spanien", fr:"Frankreich", de:"Deutschland"},
-    col:{name:"Name", office:"Amt", start:"Beginn", end:"Ende", days:"Tage"}
+    col:{name:"Name", office:"Amt", start:"Beginn", end:"Ende", days:"Tage"},
+    noData:"Noch keine Daten.",
+    dgTitle:"AI-Digest — wichtigste Politik-News",
+    dgUpdated:"Zuletzt aktualisiert",
+    dgEmpty:"Noch keine Artikel.",
+    dgReadMore:"Lesen",
+    aboutTitle:"Über uns",
+    aboutP1:"Presidency Clock ist ein minimalistischer Countdown mit Widget, 5 Sprachen, Präsidenten & Amtszeiten sowie AI-Digest.",
+    aboutP2:"Ziel: eine kleine, selbstlaufende Seite, die per Werbung monetarisiert wird.",
+    privacyTitle:"Datenschutz",
+    privacyP1:"Standardmäßig keine Drittanbieter-Tracker. Bei AdSense kann Google eigene Cookies setzen.",
+    contactTitle:"Kontakt",
+    contactP1:"Feedback oder Partnerschaft?",
+    email:"E-Mail"
   }
 };
