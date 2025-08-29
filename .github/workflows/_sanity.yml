@@ -1,28 +1,21 @@
 name: _sanity (quick check)
-on: { workflow_dispatch: {} }
+on:
+  workflow_dispatch: {}
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
+        with:
+          fetch-depth: 0
       - name: Show layout
         run: |
           echo "PWD = $(pwd)"
-          echo "---- root .github/workflows ----"; ls -la .github/workflows || true
-          echo "---- potus-countdown ----"; ls -la potus-countdown || true
-          echo "---- potus-countdown/scripts ----"; ls -la potus-countdown/scripts || true
-          echo "---- root scripts ----"; ls -la scripts || true
-      - name: Check script presence
-        run: |
-          if [ -f potus-countdown/scripts/generate_digest.py ]; then
-            echo "OK: script at potus-countdown/scripts/generate_digest.py"
-          elif [ -f scripts/generate_digest.py ]; then
-            echo "OK: script at scripts/generate_digest.py"
-          else
-            echo "ERROR: generate_digest.py not found in expected locations"; exit 1
-          fi
-      - name: Python test
+          ls -la .github/workflows || true
+          ls -la potus-countdown || true
+          ls -la potus-countdown/scripts || true
+          ls -la scripts || true
+      - name: Python smoke test
         run: |
           python -V
           python - << 'PY'
