@@ -1,4 +1,4 @@
-name: Generate Digests
+name: Generate digests (Kyiv 05:00 & 20:00)
 
 on:
   schedule:
@@ -13,12 +13,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-     env:
-  TIMEZONE: Europe/Kyiv
-  LANGS: uk,de,fr,es
-  DIGEST_MIN_ITEMS: '8'
-  OPENAI_MODEL: gpt-4o-mini
-      # OUT_DIR не вказуємо — за замовчуванням пишемо в корінь репо
+      TIMEZONE: Europe/Kyiv
+      LANGS: uk,de,fr,es
+      DIGEST_MIN_ITEMS: '8'
+      OPENAI_MODEL: gpt-4o-mini
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,9 +33,9 @@ jobs:
 
       - name: Generate digests
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # додай у Settings → Secrets
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python scripts/digest.py
+          python scripts/generate_digest.py
 
       - name: Commit & push
         run: |
