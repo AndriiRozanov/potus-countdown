@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 
-  <!-- THEME PACK -->
+  <!-- THEME PACK: aplicar tema ANTES de pintar + tokens -->
   <script>
   (function(){
     try{
@@ -33,6 +33,7 @@
   [data-theme="dark"]{
     --bg:#000; --stripe:rgba(255,255,255,.08); --surface:rgba(255,255,255,.06); --tile-bg:rgba(255,255,255,.05);
     --btn-bg:rgba(255,255,255,.06); --line:rgba(255,255,255,.16); --text:#f2f5ff; --num:#fff; --accent:#8ab8ff;
+    --glow1:rgba(78,128,255,.20); --glow2:rgba(255,120,0,.08); --muted:#a1a1aa;
   }
 
   html,body{height:100%}
@@ -48,7 +49,7 @@
   .wrap{max-width:1100px;margin:0 auto;padding:18px 14px 32px}
   a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 
-  /* Cabecera + selector de tema */
+  /* Header + theme switcher */
   .topbar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin:8px 0 16px}
   .brand{display:flex;align-items:center;gap:.5rem}
   .brand__logo{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
@@ -62,7 +63,7 @@
     padding:6px 10px; border-radius:10px; font-weight:700; cursor:pointer;
   }
   .theme__menu{
-    position:absolute; right:0; top:40px; min-width:180px; background:var(--surface);
+    position:absolute; right:0; top:40px; min-width:160px; background:var(--surface);
     border:1px solid var(--line); border-radius:12px; box-shadow:0 8px 28px rgba(0,0,0,.12);
     display:none; padding:6px; z-index:20;
   }
@@ -71,28 +72,15 @@
   .theme__opt:hover{background:var(--tile-bg)}
   .badge{font-size:12px;opacity:.75}
 
-  /* Contenido */
+  /* Content */
   h1{font-weight:800;margin:8px 0 6px}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0}
-  .row{display:grid;grid-template-columns:1fr;gap:12px}
-  .label{font-weight:700;margin-bottom:6px}
-  .muted{opacity:.8}
-  .btn{
-    display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;
-    background:var(--btn-bg);border:1px solid var(--line);border-radius:10px;
-    padding:8px 12px;font-weight:700;color:var(--text);text-decoration:none;
-  }
-  .btn:hover{background:var(--tile-bg)}
+  .muted{opacity:.85}
   .ad{display:flex;justify-content:center;align-items:center;margin:12px 0}
-  input,textarea{
-    width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);
-    font:inherit;
-  }
-  textarea{min-height:120px;resize:vertical}
-  form .actions{display:flex;gap:10px;flex-wrap:wrap}
+  ul{padding-left:18px}
   </style>
 
-  <!-- Favicon -->
+  <!-- Favicon adaptable -->
   <link id="favicon" rel="icon" type="image/svg+xml" href="">
   <script>
     function updateFavicon(){
@@ -109,14 +97,14 @@
   <!-- Meta -->
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>Contacto — Presidency Clock</title>
-  <meta name="description" content="Ponte en contacto con el equipo de Presidency Clock: correo electrónico, mensaje rápido, comentarios.">
-  <link rel="canonical" href="https://presidencyclock.com/es/contact/">
+  <meta name="description" content="Cómo contactarnos: correo electrónico, pautas de comentarios y privacidad.">
+  <link rel="canonical" href="https://presidencyclock.com/es/contacts/">
   <meta name="google-adsense-account" content="ca-pub-5023415479696725">
   <meta name="theme-color" content="#f6f8fd">
 </head>
 <body>
   <div class="wrap">
-    <!-- Cabecera -->
+    <!-- Cabecera con selector de tema -->
     <div class="topbar">
       <div class="brand">
         <a class="brand__logo" href="/es/" aria-label="Presidency Clock">
@@ -129,8 +117,8 @@
         <button class="theme__btn" id="themeBtn" aria-haspopup="true" aria-expanded="false">
           <span id="themeLabel">Tema: auto</span>
         </button>
-        <div class="theme__menu" id="themeMenu" role="menu" aria-label="Cambiar tema">
-          <div class="theme__opt" data-value="auto"  role="menuitem">Automático <span class="badge">según el sistema</span></div>
+        <div class="theme__menu" id="themeMenu" role="menu" aria-label="Selector de tema">
+          <div class="theme__opt" data-value="auto"  role="menuitem">Auto <span class="badge">como el sistema</span></div>
           <div class="theme__opt" data-value="light" role="menuitem">Clara</div>
           <div class="theme__opt" data-value="dark"  role="menuitem">Oscura</div>
         </div>
@@ -138,16 +126,16 @@
     </div>
 
     <!-- Navegación -->
-    <nav class="card" aria-label="Navegación">
+    <nav class="card" aria-label="Menú principal">
       <a href="/es/">Inicio</a> •
       <a href="/es/presidents/">Presidentes</a> •
-      <a href="/es/digest/">Resúmenes</a> •
-      <a href="/es/about/">Acerca del sitio</a> •
-      <a href="/es/privacy/">Privacidad</a>
+      <a href="/es/digest/">Digests</a> •
+      <a href="/es/about/">Acerca de</a> •
+      <a href="/es/privacy/">Privacidad</a> •
+      <a href="/es/contacts/">Contacto</a>
     </nav>
 
     <h1>Contacto</h1>
-    <p class="muted">Envíanos una sugerencia, una pregunta o informa de un error.</p>
 
     <div class="ad ad--top">
       <ins class="adsbygoogle" style="display:block;min-height:90px"
@@ -155,37 +143,31 @@
            data-ad-slot="9877072514" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
-    <!-- Tarjeta de contacto -->
     <section class="card">
-      <div class="label">Correo electrónico</div>
-      <!-- Anti-spam: construir la dirección por partes -->
-      <p>
-        <a id="mail" href="#" data-user="hello" data-domain="presidencyclock.com" data-subject="Pregunta sobre el sitio">haz clic para escribir</a>
-        <button class="btn" id="copyEmail" type="button" aria-label="Copiar correo">Copiar correo</button>
+      <h2>Cómo contactarnos</h2>
+      <p class="muted">
+        La forma más rápida es por correo: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a>.
+        Envíanos sugerencias, reportes de errores, correcciones de traducción o propuestas de colaboración.
       </p>
-      <p class="muted">Te recomendamos indicar brevemente el motivo en el asunto (p. ej., «Propuesta de publicidad»).</p>
     </section>
 
-    <!-- Mensaje rápido vía cliente de correo -->
     <section class="card">
-      <div class="label">Mensaje rápido</div>
-      <form id="mailtoForm">
-        <div class="row">
-          <div>
-            <label for="subj" class="label">Asunto</label>
-            <input id="subj" name="subject" placeholder="Asunto del mensaje" required>
-          </div>
-          <div>
-            <label for="msg" class="label">Mensaje</label>
-            <textarea id="msg" name="message" placeholder="Tu mensaje…" required></textarea>
-          </div>
-        </div>
-        <div class="actions" style="margin-top:10px">
-          <button class="btn" type="submit">Abrir en correo</button>
-          <button class="btn" type="reset">Borrar</button>
-        </div>
-        <p class="muted" style="margin-top:8px">El formulario abrirá tu cliente de correo con dirección, asunto y texto ya rellenados.</p>
-      </form>
+      <h2>Qué incluir</h2>
+      <ul>
+        <li>Enlace de la página (URL) e idioma.</li>
+        <li>Qué esperabas vs. qué viste (2–3 frases breves).</li>
+        <li>Captura de pantalla opcional si ayuda.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Plazo de respuesta</h2>
+      <p>Normalmente respondemos en <b>1–2 días</b>. Leemos todos los mensajes, aunque no siempre podemos responder a todos.</p>
+    </section>
+
+    <section class="card">
+      <h2>Privacidad</h2>
+      <p>Usamos tu correo solo para responderte. Más detalles en nuestra <a href="/es/privacy/">Política de privacidad</a>.</p>
     </section>
 
     <div class="ad ad--bottom">
@@ -233,40 +215,7 @@
   })();
   </script>
 
-  <!-- Construir email, copiar y mailto -->
-  <script>
-  (function(){
-    var a = document.getElementById('mail');
-    var u = a.getAttribute('data-user');
-    var d = a.getAttribute('data-domain');
-    var s = a.getAttribute('data-subject') || '';
-    var email = u + '@' + d;
-    a.textContent = email;
-    a.href = 'mailto:' + email + (s ? ('?subject=' + encodeURIComponent(s)) : '');
-
-    var copyBtn = document.getElementById('copyEmail');
-    copyBtn.addEventListener('click', function(){
-      try{
-        navigator.clipboard.writeText(email).then(function(){
-          var old = copyBtn.textContent;
-          copyBtn.textContent = '¡Copiado!';
-          setTimeout(function(){ copyBtn.textContent = old; }, 1200);
-        });
-      }catch(e){}
-    });
-
-    var form = document.getElementById('mailtoForm');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var subj = document.getElementById('subj').value.trim();
-      var msg  = document.getElementById('msg').value.trim();
-      var link = 'mailto:' + email + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(msg);
-      window.location.href = link;
-    });
-  })();
-  </script>
-
-  <!-- AdSense loader -->
+  <!-- Carga de AdSense -->
   <script>
     (function(){
       const s=document.createElement('script'); s.async=true;
