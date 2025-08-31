@@ -1,5 +1,11 @@
 [
   {
+    "headline": "Minister warns parents on school attendance ahead of new term",
+    "summary": "It comes as data shows children who missed some of the first week of school were more likely to be persistently absent.",
+    "url": "https://www.bbc.com/news/articles/cg7jk3rr225o?at_medium=RSS&at_campaign=rss",
+    "source": "feeds.bbci.co.uk"
+  },
+  {
     "headline": "Asylum hotel ruling won't feel like much of a victory at Home Office",
     "summary": "The government avoids having its asylum policy thrown into chaos but the court ruling is a gift for its opponents.",
     "url": "https://www.bbc.com/news/articles/c7vlpdqeg4qo?at_medium=RSS&at_campaign=rss",
@@ -84,27 +90,27 @@
     "source": "feeds.bbci.co.uk"
   },
   {
-    "headline": "Houthi prime minister killed in Israeli airstrike on Yemen capital",
+    "headline": "Von der Leyen visit spotlights Bulgaria’s uneasy growth as European arms hub",
+    "summary": "European Commission president's trip comes on the heels of Germany's Rheinmetall announcing that it plans two new factories in Bulgaria to establish the country as Europe’s largest gunpowder manufacturer.",
+    "url": "https://www.politico.eu/article/von-der-leyen-visit-spotlights-bulgaria-uneasy-role-europe-arms-hub/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "source": "politico.eu"
+  },
+  {
+    "headline": "Strong deterrence needed against ‘predator’ Putin, von der Leyen tells Poles",
+    "summary": "European Commission president is on a tour of the so-called front-line states to reassure them of the EU's support against Russian aggression.",
+    "url": "https://www.politico.eu/article/putin-predator-von-der-leyen-tells-poles-tusk-defense-border-belarus-poland/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "source": "politico.eu"
+  },
+  {
+    "headline": "China’s Xi welcomes Putin and Modi as Trump roils global order",
+    "summary": "This year's Shanghai Cooperation Organization summit will focus largely on U.S. President Donald Trump’s trade war.",
+    "url": "https://www.politico.eu/article/chinas-xi-welcomes-putin-modi-trump-roils-global-relations/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "source": "politico.eu"
+  },
+  {
+    "headline": "Houthi prime minister killed in Israeli airstrike on Yemen",
     "summary": "Prime Minister Ahmed al-Rahawi was the most senior Houthi official to be killed in the Israeli-U.S. campaign against the Iran-backed rebels.",
     "url": "https://www.politico.eu/article/houthi-prime-minister-killed-in-israeli-airstrike-on-yemen-capital/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
-    "source": "politico.eu"
-  },
-  {
-    "headline": "White House declares $4.9B in foreign aid unilaterally canceled in end-run around Congress’ funding power",
-    "summary": "The administration is setting up clash with Capitol Hill over its use of the \"pocket rescission.\"",
-    "url": "https://www.politico.com/news/2025/08/29/trump-asks-congress-to-claw-back-5b-in-foreign-aid-amid-threat-of-pocket-cancellation-00535396?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
-    "source": "politico.eu"
-  },
-  {
-    "headline": "Former Ukraine parliament speaker shot dead in Lviv",
-    "summary": "A murder investigation has been launched, Ukraine’s Prosecutor General's Office said.",
-    "url": "https://www.politico.eu/article/former-ukraine-parliament-speaker-andriy-parubiy-shot-dead-lviv-says-zelenskyy/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
-    "source": "politico.eu"
-  },
-  {
-    "headline": "US must join forces with Europe to pressure Putin, say EU foreign ministers",
-    "summary": "The call comes after U.S. President Donald Trump set a deadline for Vladimir Putin to meet with his Ukrainian counterpart.",
-    "url": "https://www.politico.eu/article/us-must-join-forces-europe-pressure-putin-ukraine-russia-war-eu-foreign-ministers/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
     "source": "politico.eu"
   },
   {
@@ -126,21 +132,15 @@
     "source": "pravda.com.ua"
   },
   {
-    "headline": "Budget 2026 : François Ruffin appelle à « demander de faire les efforts à ceux qui ont les poches pleines »",
-    "summary": "« Notre grande affaire, ce n’est pas de faire détester tel ministre», « la police » ou « le Parti socialiste », mais « de nous faire aimer », a déclaré le député du Nord, l’un des défenseurs de l’union de la gauche.",
-    "url": "https://www.lemonde.fr/politique/article/2025/08/30/budget-2026-francois-ruffin-appelle-a-demander-de-faire-les-efforts-a-ceux-qui-ont-les-poches-pleines_6637556_823448.html",
+    "headline": "Vote de confiance : Olivier Faure affirme que la décision des socialistes de voter contre est « irrévocable »",
+    "summary": "Le PS se rendra jeudi à Matignon à l’invitation de François Bayrou mais uniquement par « politesse républicaine ». « Le seul mot que j’attends [du premier ministre] maintenant, c’est de dire au revoir », a déclaré le patron des socialistes dimanche.",
+    "url": "https://www.lemonde.fr/politique/article/2025/08/31/vote-de-confiance-olivier-faure-affirme-que-la-decision-des-socialistes-de-voter-contre-est-irrevocable_6637891_823448.html",
     "source": "lemonde.fr"
   },
   {
-    "headline": "Edouard Philippe prend ses distances avec François Bayrou sur les rapports entre générations",
-    "summary": "Le premier ministre avait fait le distinguo entre les jeunes, selon lui principales victimes de l’endettement, et le « confort » des seniors. « Je n’accuse pas les boomeurs d’égoïsme », a réagi le président d’Horizons.",
-    "url": "https://www.lemonde.fr/politique/article/2025/08/30/edouard-philippe-prend-ses-distances-avec-francois-bayrou-sur-les-rapports-entre-generations_6637549_823448.html",
-    "source": "lemonde.fr"
-  },
-  {
-    "headline": "Le PS présente un budget « de gauche » pour remplacer celui de François Bayrou, afin « de trouver une majorité » à l’Assemblée nationale",
-    "summary": "Suspension de la réforme des retraites, taxe sur les patrimoines, baisse de la CSG et relance économique… Le plan dévoilé samedi par les socialistes à Blois prévoit 14 milliards d’euros d’économie.",
-    "url": "https://www.lemonde.fr/politique/article/2025/08/30/le-ps-devoile-son-budget-alternatif-suspension-de-la-reforme-des-retraites-taxe-sur-les-patrimoines-baisse-de-la-csg-et-relance-economique_6637534_823448.html",
+    "headline": "Manuel Valls appelle au « sursaut politique » pour « éviter le suicide collectif »",
+    "summary": "« L’état du pays nous oblige non pas à provoquer des élections » mais à être « responsable », a argumenté le ministre des outre-mer, qui répondait aux questions du « Monde », de France Inter et de France Télévisions.",
+    "url": "https://www.lemonde.fr/politique/article/2025/08/31/en-direct-manuel-valls-est-l-invite-de-l-emission-questions-politiques_6637787_823448.html",
     "source": "lemonde.fr"
   }
 ]
