@@ -1,79 +1,80 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-  color: #333;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  transition: all 0.3s;
-}
-body.dark {
-  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-  color: #fff;
-}
-.container {
-  padding: 20px;
-  max-width: 800px;
-}
-h1 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-}
-.clock {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-}
-.clock div {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.8em;
-  color: #007aff;
-}
-.clock div span {
-  font-size: 0.6em;
-  color: #666;
-}
-.controls {
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-select, button {
-  padding: 8px 12px;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #fff;
-  cursor: pointer;
-}
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-@media (max-width: 600px) {
-  .clock div {
-    width: 60px;
-    height: 60px;
-    font-size: 1.2em;
-  }
-  .container {
-    padding: 10px;
-  }
-  .controls {
-    flex-direction: column;
-    gap: 5px;
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presidency Clock</title>
+  <meta name="description" content="Countdown timer showing how much time is left for Donald Trump in office. Includes news digest and presidential data.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Шапка -->
+  <header>
+    <h1 id="site-title">Presidency Clock</h1>
+    <div class="controls">
+      <button id="theme-toggle">🌓</button>
+      <select id="language-select">
+        <option value="en">EN</option>
+        <option value="uk">UA</option>
+        <option value="es">ES</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="it">IT</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Таймер -->
+  <main>
+    <section id="countdown-section">
+      <h2 id="timer-title">Time left in office</h2>
+      <div id="countdown">00:00:00</div>
+      <button id="embed-button">Get Embed Code</button>
+    </section>
+
+    <!-- Блоки у два стовпці -->
+    <div class="dashboard">
+      <!-- Ліва колонка -->
+      <div class="left-col">
+        <section id="trump-today">
+          <h2>Main about Trump today</h2>
+          <div id="trump-news"></div>
+        </section>
+
+        <section id="news-digest">
+          <h2>News Digest</h2>
+          <div id="news-container"></div>
+        </section>
+      </div>
+
+      <!-- Права колонка -->
+      <div class="right-col">
+        <section id="presidents-table">
+          <h2>Presidents by Time in Office</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>President</th>
+                <th>Time in office</th>
+              </tr>
+            </thead>
+            <tbody id="presidents-data">
+              <!-- Дані будемо додавати скриптом -->
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer>
+    <p><a href="about.html">About Us</a> | <a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
