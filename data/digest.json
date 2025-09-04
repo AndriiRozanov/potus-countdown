@@ -1,20 +1,45 @@
 {
-  "updatedAt": "2025-09-04T12:00:00Z",
+  "updatedAt": "2025-09-04T13:18:02.644Z",
   "items": [
     {
-      "title": "Digest item #1 (demo)",
-      "summary": "4–5 sentence summary placeholder. Will be auto-updated by GitHub Action using RSS + AI.",
-      "url": "https://example.com/digest-1"
+      "title": "RFK Jr. Faces Senate Grilling After Vaccine Changes and C.D.C. Shake-Up",
+      "url": "https://www.nytimes.com/2025/09/04/us/politics/kennedy-senate-hearing-vaccines-cdc.html",
+      "summary": "Some Republican lawmakers have questioned whether Health Secretary Robert F. Kennedy Jr.’s recent actions contradict pledges he made about vaccine access in order to win confirmation."
     },
     {
-      "title": "Digest item #2 (demo)",
-      "summary": "Another placeholder that will be replaced several times a day.",
-      "url": "https://example.com/digest-2"
+      "title": "On Epstein Files, Women Lead the G.O.P. Resistance to Trump",
+      "url": "https://www.nytimes.com/2025/09/04/us/politics/greene-boebert-mace-epstein-trump.html",
+      "summary": "The Republican rift over whether to demand greater transparency in the case has once again highlighted a gender divide in the male-dominated party."
     },
     {
-      "title": "Digest item #3 (demo)",
-      "summary": "Short, informative, with a link to the source.",
-      "url": "https://example.com/digest-3"
+      "title": "Trump Administration Targets Financial Relief for Undocumented Students",
+      "url": "https://www.nytimes.com/2025/09/04/us/politics/trump-tuition-undocumented-students.html",
+      "summary": "The Justice Department has challenged several states that offer in-state tuition to unauthorized immigrants, contending that the policies discriminate against U.S. citizens."
+    },
+    {
+      "title": "Texas Senate Passes Bill to Crack Down on Mail-Order Abortion Pills",
+      "url": "https://www.nytimes.com/2025/09/04/us/politics/texas-senate-abortion-pills-bill.html",
+      "summary": "Gov. Greg Abbott is expected to sign the legislation, which allows nearly anyone to sue abortion medication providers and distributors."
+    },
+    {
+      "title": "Man From Russia Identified as Festival-Goer Found Dead at Burning Man",
+      "url": "https://www.nytimes.com/2025/09/03/us/burning-man-festival-death-russia.html",
+      "summary": "The man, Vadim Kruglov, 37, was found “lying in a pool of blood,” the authorities said. Officials are investigating his death as a possible homicide."
+    },
+    {
+      "title": "Trump Asks Supreme Court to Allow His Sweeping Tariffs",
+      "url": "https://www.nytimes.com/2025/09/03/us/politics/trump-supreme-court-tariffs.html",
+      "summary": "A federal appeals court had invalidated a centerpiece of President Trump’s economic strategy, finding that a 1977 law did not authorize the tariffs."
+    },
+    {
+      "title": "US sheriffs decry White House effort to hire away local law enforcement for Ice",
+      "url": "https://www.theguardian.com/us-news/2025/sep/04/trump-ice-immigration-hiring",
+      "summary": "&lt;p&gt;One sheriff calls surprise use of deputy email list offering $50,000 hiring bonus ‘unprofessional and unethical’&lt;/p&gt;&lt;p&gt;The White House’s aggressive &lt;a href=\"https://www.theguardian.com/us-news/2025/sep/02/immigration-hiring-push-trump-private-army\"&gt;push&lt;/a&gt; to hire federal immigration agents is causing friction with local sheriffs – even those who back &lt;a href=\"https://www.theguardian.com/us-news/donaldtrump\"&gt;Donald Trump&lt;/a&gt;’s deportation agenda.&lt;/p&gt;&lt;p&gt;More than a dozen US sheriffs and law enforcement associations have complained that US Immigration and Customs Enforcement (Ice) has tried to poach local deputies and officers as Ice rapidly expands.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/us-news/2025/sep/04/trump-ice-immigration-hiring\"&gt;Continue reading...&lt;/a&gt;"
+    },
+    {
+      "title": "Louisiana prison’s notoriety key to its selection as immigration jail, says Noem",
+      "url": "https://www.theguardian.com/us-news/2025/sep/04/louisiana-prison-chosen-for-immigration-detainees-due-to-its-notoriety-say-noem",
+      "summary": "&lt;p&gt;Homeland security secretary Kristi Noem says she hopes it will encourage people in the US illegally to self-deport&lt;/p&gt;&lt;p&gt;The &lt;a href=\"https://www.theguardian.com/us-news/trump-administration\"&gt;Trump administration&lt;/a&gt; purposely chose a notorious Louisiana prison to hold immigration detainees as a way to encourage people in the US illegally to self-deport, the Department of Homeland Security (DHS) secretary, Kristi Noem, said on Wednesday.&lt;/p&gt;&lt;p&gt;A complex inside the Louisiana state penitentiary, an immense rural prison better known as &lt;a href=\"https://www.theguardian.com/us-news/2022/aug/08/life-without-parole-prison-angola-louisiana-visiting-room\"&gt;Angola&lt;/a&gt;, will be used to detain those whom Noem described as the “worst of the worst” Immigration and Customs Enforcement (Ice) detainees. Noem was speaking to reporters as she stood on the grounds of the facility near a new sign reading, “Louisiana Lockup”.&lt;/p&gt; &lt;a href=\"https://www.theguardian.com/us-news/2025/sep/04/louisiana-prison-chosen-for-immigration-detainees-due-to-its-notoriety-say-noem\"&gt;Continue reading...&lt;/a&gt;"
     }
   ]
 }
