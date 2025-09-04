@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n-head="trump-today-title">Main about Trump today — Presidency Clock</title>
+  <meta name="description" content="Daily headline about Donald Trump selected by AI based on engagement. Archive of top stories." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 data-i18n="trump-today">Main about Trump today</h1>
+      <div class="controls">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
+        <label class="visually-hidden" for="language-select">Language</label>
+        <select id="language-select" aria-label="Language select">
+          <option value="en">EN</option>
+          <option value="uk">UA</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+          <option value="it">IT</option>
+          <option value="zh">中文</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <p class="muted small" id="archive-note" data-i18n="archive-note">
+        Top daily headline picked by AI. Below is the recent archive.
+      </p>
+      <div id="trump-today-latest" class="stack" style="margin-bottom:1rem;"></div>
+      <hr style="border:none; border-top:1px solid var(--card-border); margin:1rem 0;">
+      <div id="trump-today-archive" class="stack"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-links">
+        <a href="index.html" data-i18n="home">Home</a>
+        <span aria-hidden="true">·</span>
+        <a href="about.html" data-i18n="about">About Us</a>
+        <span aria-hidden="true">·</span>
+        <a href="privacy.html" data-i18n="privacy">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="contact.html" data-i18n="contact">Contact</a>
+      </p>
+      <p class="muted small">© <span id="year"></span> Presidency Clock</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
