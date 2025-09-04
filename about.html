@@ -26,19 +26,15 @@
       <h1>Про нас</h1>
       <div class="controls">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
-
-        <label class="visually-hidden" for="language-select">Language</label>
-        <select id="language-select" aria-label="Language">
-          <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
-          <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
-          <option value="zh">中文</option><option value="ja">日本語</option>
-        </select>
-
-        <nav class="lang-links" aria-label="Languages">
-          <a href="?lang=en">EN</a><a href="?lang=uk">UA</a><a href="?lang=es">ES</a>
-          <a href="?lang=fr">FR</a><a href="?lang=de">DE</a><a href="?lang=it">IT</a>
-          <a href="?lang=zh">中文</a><a href="?lang=ja">日本語</a>
-        </nav>
+        <form id="lang-form" method="get" action="" style="display:inline">
+          <label class="visually-hidden" for="language-select">Language</label>
+          <select id="language-select" name="lang" aria-label="Language"
+            onchange="(function(sel){var v=String(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
+            <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
+            <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
+            <option value="zh">中文</option><option value="ja">日本語</option>
+          </select>
+        </form>
       </div>
     </div>
   </header>
@@ -64,25 +60,10 @@
   </footer>
 
   <script src="script.js?v=3"></script>
-<script src="seo.js?v=3"></script>
-<script
-  src="monetization.js?v=3"
-  data-ga="G-XXXXXXXXXX"
-  data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
-  data-slot-top="0000000001"
-  data-slot-infeed="0000000002"
-  data-slot-side="0000000003"></script>
-
-<!-- Language switcher: fallback-only (?lang=...) -->
-<script>
-(function(){var L=["en","uk","es","fr","de","it","zh","ja"];
-function n(v){v=String(v||"").toLowerCase();if(v==="ua")return"uk";if(v==="us"||v==="en-us")return"en";return L.indexOf(v)>-1?v:"en";}
-function b(){var p=(location.pathname||"/").replace(/\/+$/,"")||"/";var a=p.split("/").filter(Boolean);var l=a[0];if(l&&L.indexOf(l)>-1&&l!=="en"){return (("/"+a.slice(1).join("/"))||"/");}return p;}
-function u(lang,base){var q=base.indexOf("?")>-1;return (base==="/"?"/":base)+(q?"&":"?")+"lang="+lang;}
-function init(){var s=document.getElementById("language-select");if(!s)return;s.onchange=function(){location.href=u(n(s.value), b());};}
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();})();
-</script>
-
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script src="seo.js?v=3"></script>
+  <script src="monetization.js?v=3"
+    data-ga="G-XXXXXXXXXX" data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+    data-slot-top="0000000001" data-slot-infeed="0000000002" data-slot-side="0000000003"></script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
