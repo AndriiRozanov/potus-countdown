@@ -5,18 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Про нас — Presidency Clock</title>
   <meta name="description" content="Про проєкт Presidency Clock: лічильник терміну президентства та добірка новин." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Про нас — Presidency Clock" />
+  <meta property="og:description" content="Мінімалістичний лічильник часу та новинні дайджести." />
+  <meta property="og:url" content="https://presidencyclock.com/about.html" />
+  <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Про нас — Presidency Clock" />
+  <meta name="twitter:description" content="Незалежний інформаційний проєкт." />
+  <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <h1>Про нас</h1>
-    </div>
-  </header>
+  <header class="site-header"><div class="container header-inner"><h1>Про нас</h1></div></header>
   <main class="container">
     <section class="card stack">
       <p><strong>Presidency Clock</strong> — незалежний неофіційний інформаційний проєкт з мінімалістичним лічильником часу та новинними дайджестами. Мета — надавати зручний, зрозумілий і швидкий доступ до ключової інформації.</p>
-      <p>Ми не є пов’язаними з урядом США або будь-якими політичними структурами. Матеріали на сайті мають інформаційний і довідковий характер.</p>
+      <p>Ми не є пов’язаними з урядами або політичними структурами. Матеріали на сайті мають інформаційний і довідковий характер.</p>
       <p>Зв’язок: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p>
     </section>
   </main>
@@ -25,11 +33,20 @@
       <p class="footer-links">
         <a href="index.html">Головна</a> ·
         <a href="privacy.html">Політика конфіденційності</a> ·
-        <a href="contact.html">Контакти</a>
+        <a href="contact.html">Контакти</a> ·
+        <a href="#" onclick="pcOpenConsent();return false;">Manage cookies</a>
       </p>
       <p class="muted small">© <span id="year"></span> Presidency Clock</p>
     </div>
   </footer>
+  <script
+    src="monetization.js"
+    data-ga="G-XXXXXXXXXX"
+    data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+    data-slot-top="0000000001"
+    data-slot-infeed="0000000002"
+    data-slot-side="0000000003">
+  </script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
