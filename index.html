@@ -3,35 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Presidency Clock</title>
-  <link rel="stylesheet" href="/css/style.css"> <!-- Якщо є CSS, залиши цей рядок -->
+  <title>Trump Presidency Countdown</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Логотип -->
-  <h1 data-i18n="title">Presidency Clock logo</h1>
+  <h1>Час до кінця президентства Трампа</h1>
+  <div id="countdown"></div>
+  <script src="/js/countdown.js"></script>
 
-  <!-- Таймер -->
-  <div id="days"><span class="num"></span> <span data-i18n="days">Days</span></div>
-  <div id="hours"><span class="num"></span> <span data-i18n="hours">Hours</span></div>
-  <div id="minutes"><span class="num"></span> <span data-i18n="minutes">Minutes</span></div>
-  <div id="seconds"><span class="num"></span> <span data-i18n="seconds">Seconds</span></div>
+  <h2>Попередні президенти США</h2>
+  <ul id="presidents"></ul>
+  <script src="/js/presidents.js"></script>
 
-  <!-- Слоти для реклами -->
-  <div class="ad-slot" style="width: 300px; height: 250px;">Ad slot 1 — 300×250</div>
-  <div class="ad-slot" style="width: 300px; height: 250px;">Ad slot 2 — 300×250</div>
-  <div class="ad-slot" style="width: 728px; height: 90px;">Ad slot 3 — 728×90</div>
+  <h2>Останні новини</h2>
+  <div id="news"></div>
+  <script src="/js/news.js"></script>
 
-  <!-- Кнопки для звуку -->
-  <button id="enable-sound" data-i18n="enable">Enable sound</button>
-  <button id="mute-btn" data-i18n="unmute">Unmute</button>
-  <button class="sound-option" data-mode="tick" data-i18n="tickSound">Ticking</button>
-  <button class="sound-option" data-mode="beep" data-i18n="beepSound">Digital beep</button>
-
-  <!-- Кнопки для шарингу -->
-  <a id="share-x" data-i18n="shareX">Share on X</a>
-  <a id="share-fb" data-i18n="shareFB">Share on Facebook</a>
-
-  <!-- Підключення JavaScript -->
-  <script src="/js/embed.js" data-lang="" data-theme="dark" async></script>
+  <!-- Місце для реклами AdSense (додай код після схвалення) -->
+  <div id="ad-slot-1"></div>
 </body>
 </html>
