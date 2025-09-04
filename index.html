@@ -38,6 +38,10 @@
     <section id="countdown-section" class="card center">
       <h2 id="timer-title" data-i18n="timer">Time left in office</h2>
       <div id="countdown" class="counter">00:00:00</div>
+
+      <!-- AD: top banner slot -->
+      <div id="ad-top" class="ad-slot"></div>
+
       <button id="embed-button" class="primary-btn" data-i18n="embed">Get Embed Code</button>
     </section>
 
@@ -63,6 +67,9 @@
           </div>
           <div id="trump-news" class="stack"></div>
         </section>
+
+        <!-- AD: in-feed slot between blocks -->
+        <div id="ad-infeed" class="ad-slot"></div>
 
         <!-- News Digest (short list) -->
         <section id="news-digest" class="card">
@@ -95,6 +102,10 @@
               </tbody>
             </table>
           </div>
+
+          <!-- AD: side/rectangle inside card -->
+          <div id="ad-side" class="ad-slot"></div>
+
           <p class="muted small" style="margin-top:.5rem;">
             Preview shows shortest-serving leaders across countries. Click “View all” for filters and sorting.
           </p>
@@ -122,6 +133,17 @@
   </noscript>
 
   <script src="script.js"></script>
+
+  <!-- Monetization: set your IDs via data-attributes -->
+  <script
+    src="monetization.js"
+    data-ga="G-XXXXXXXXXX"
+    data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+    data-slot-top="0000000001"
+    data-slot-infeed="0000000002"
+    data-slot-side="0000000003">
+  </script>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
