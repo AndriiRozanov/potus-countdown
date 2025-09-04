@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>News Digest — Presidency Clock</title>
+  <meta name="description" content="AI-updated news digest about US politics and Trump. Updated several times a day with headlines, summaries and sources." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 data-i18n="digest">News Digest</h1>
+      <div class="controls">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
+        <select id="language-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="uk">UA</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+          <option value="it">IT</option>
+          <option value="zh">中文</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <p class="muted small" id="digest-note">
+        Updated several times a day. Headlines, 4–5 sentence summaries, and links to sources.
+      </p>
+      <div id="digest-list" class="stack"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-links">
+        <a href="index.html" data-i18n="home">Home</a>
+        <span aria-hidden="true">·</span>
+        <a href="about.html" data-i18n="about">About Us</a>
+        <span aria-hidden="true">·</span>
+        <a href="privacy.html" data-i18n="privacy">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="contact.html" data-i18n="contact">Contact</a>
+      </p>
+      <p class="muted small">© <span id="year"></span> Presidency Clock</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
