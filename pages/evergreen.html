@@ -1,60 +1,17 @@
-<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Presidents & Terms — Presidency Clock</title>
-<link rel="canonical" href="https://presidencyclock.com/pages/evergreen.html">
-<style>
-:root{--bg:#0b1020;--fg:#e8edf7;--muted:#9fb3c8;--accent:#3d6cff;--card:#121833;--card-border:#24305a}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-a{color:var(--accent);text-decoration:none}
-header,footer{padding:14px 18px;border-bottom:1px solid var(--card-border)}
-header{display:flex;align-items:center;gap:14px}
-nav{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
-nav a{padding:8px 10px;border:1px solid var(--card-border);border-radius:8px;background:rgba(255,255,255,.03)}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-.card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:16px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-.btn{border:1px solid var(--card-border);background:rgba(255,255,255,.04);color:var(--fg);padding:8px 10px;border-radius:10px;cursor:pointer}
-.btn[aria-pressed="true"]{outline:2px solid var(--accent)}
-table{width:100%;border-collapse:collapse}
-th,td{padding:10px;border-bottom:1px solid var(--card-border);text-align:left}
-th{color:var(--muted);text-transform:uppercase;font-size:12px;letter-spacing:.05em}
-.badge{color:var(--muted)}
-.lang-switch{margin-left:auto;display:flex;gap:8px}
-.note{color:var(--muted);margin-top:8px}
-</style>
-</head><body>
-<header>
-  <a href="/"><img src="/assets/logo.svg" alt="logo" height="32"></a>
-  <nav>
-    <a href="/" data-i18n="home"></a>
-    <a href="/pages/evergreen.html" data-i18n="presidents"></a>
-    <a href="/pages/digest.html" data-i18n="digest"></a>
-    <a href="/pages/about.html" data-i18n="about"></a>
-    <a href="/pages/privacy.html" data-i18n="privacy"></a>
-    <a href="/pages/contact.html" data-i18n="contact"></a>
-  </nav>
-</header>
-
-<main class="container card">
-  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-    <h1 style="margin:0" data-i18n="evTitle"></h1>
-    <span class="badge" data-i18n="evSubtitle"></span>
-    <div class="lang-switch" id="lang"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presidents</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 data-i18n="evergreen">Presidents by Term Length</h1>
+    <div id="president-tables"></div>
   </div>
-
-  <div class="tabs" id="tabs"></div>
-  <div id="table-wrap"></div>
-  <div class="note" id="note"></div>
-</main>
-
-<footer class="container">
-  <small class="badge"><span data-i18n="madeWith"></span> ♥ <span data-i18n="in"></span> <span data-i18n="kyiv"></span></small>
-</footer>
-<!-- i18n словники -->
-<script src="/js/i18n.js?v=6"></script>
-<!-- фолбек-дані, щоб все працювало навіть якщо JSON ще не віддаються -->
-<script src="/js/evergreen.data.js?v=6"></script>
-<!-- основна логіка евергріну (нова версія) -->
-<script src="/js/evergreen.v5.js?v=6"></script>
+  <script src="/js/presidents.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
+</html>
