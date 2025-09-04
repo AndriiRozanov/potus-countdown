@@ -335,12 +335,21 @@ function hydrateDynamicLabels(lang) {
   const lang = (langSelect && langSelect.value) || initialLang;
   hydrateDynamicLabels(lang);
 
+  // Trump today (latest)
   if (trumpNewsEl) {
-    trumpNewsEl.innerHTML = "";
-    const latest = demoData.trumpToday[0];
-    trumpNewsEl.appendChild(createNewsCard(latest, { withSummary: true, lang }));
+    try {
+      const res = await fetch("data/trump-today.json", { cache: "no-store" });
+      const data = await res.json();
+      trumpNewsEl.innerHTML = "";
+      const item = data.latest || demoData.trumpToday[0];
+      trumpNewsEl.appendChild(createNewsCard(item, { withSummary: true, lang }));
+    } catch {
+      trumpNewsEl.innerHTML = "";
+      trumpNewsEl.appendChild(createNewsCard(demoData.trumpToday[0], { withSummary: true, lang }));
+    }
   }
 
+  // Digest preview: first 3 items
   if (newsDigestEl) {
     try {
       const res = await fetch("data/digest.json", { cache: "no-store" });
@@ -357,24 +366,43 @@ function hydrateDynamicLabels(lang) {
     }
   }
 })();
+    } catch {
+      newsDigestEl.innerHTML = "";
+      demoData.digestItems.slice(0, 3).forEach(item => {
+        newsDigestEl.appendChild(createNewsCard(item, { withSummary: true, lang }));
+      });
+    }
+  }
+})();
 
 /* ====== Mount: trump-today.html (archive view) ====== */
-(function mountTrumpTodayPage() {
+(async function mountTrumpTodayPage() {
   const latestWrap = document.getElementById("trump-today-latest");
   const archiveWrap = document.getElementById("trump-today-archive");
   if (!(latestWrap && archiveWrap)) return;
 
   const lang = (langSelect && langSelect.value) || initialLang;
 
-  latestWrap.innerHTML = "";
-  latestWrap.appendChild(createNewsCard(demoData.trumpToday[0], { withSummary: true, lang }));
+  try {
+    const res = await fetch("data/trump-today.json", { cache: "no-store" });
+    const data = await res.json();
 
-  archiveWrap.innerHTML = "";
-  demoData.trumpToday.slice(1).forEach(item => {
-    archiveWrap.appendChild(createNewsCard(item, { withSummary: true, lang }));
-  });
+    // Latest
+    latestWrap.innerHTML = "";
+    latestWrap.appendChild(createNewsCard(data.latest || demoData.trumpToday[0], { withSummary: true, lang }));
+
+    // Archive
+    archiveWrap.innerHTML = "";
+    (data.archive || []).forEach(item => {
+      archiveWrap.appendChild(createNewsCard(item, { withSummary: true, lang }));
+    });
+  } catch (e) {
+    console.error("Failed to load trump-today.json", e);
+    latestWrap.innerHTML = "";
+    latestWrap.appendChild(createNewsCard(demoData.trumpToday[0], { withSummary: true, lang }));
+    archiveWrap.innerHTML = `<p class="muted">Archive is not available yet.</p>`;
+  }
 })();
-
 /* ====== Mount: digest.html (full list from data/digest.json) ====== */
 (async function mountDigestPage() {
   const list = document.getElementById("digest-list");
