@@ -1,7 +1,9 @@
 // scripts/build-sitemap.mjs
 import fs from "node:fs/promises";
 
-const BASE = (process.env.SITE_BASE_URL || "https://potus-countdown.vercel.app").replace(/\/+$/, "");
+// Бере BASE з змінної, або за замовчуванням наш домен
+const BASE = (process.env.SITE_BASE_URL || "https://presidencyclock.com").replace(/\/+$/, "");
+
 // Додай/зміни список сторінок за потреби:
 const PAGES = [
   "/",               // index.html
@@ -13,9 +15,7 @@ const PAGES = [
   "/contact.html"
 ];
 
-function isoDate(d = new Date()) {
-  return d.toISOString();
-}
+function isoDate(d = new Date()) { return d.toISOString(); }
 
 async function main() {
   const lastmod = isoDate();
@@ -40,7 +40,4 @@ ${urls}
   console.log("sitemap.xml written for", BASE);
 }
 
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+main().catch(err => { console.error(err); process.exit(1); });
