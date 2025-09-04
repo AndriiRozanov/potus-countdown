@@ -12,19 +12,20 @@
   <meta property="og:description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data." />
   <meta property="og:url" content="https://presidencyclock.com/" />
   <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Presidency Clock — Trump Countdown" />
   <meta name="twitter:description" content="Live countdown, news digest, presidents data." />
   <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
-<!-- Performance hints (швидший старт з’єднань для GA/AdSense) -->
-<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-<link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
 
-<!-- Колір адресного рядка на мобільних -->
-<meta name="theme-color" content="#0b0f18">
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+  <meta name="theme-color" content="#0b0f18">
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -52,6 +53,7 @@
       <button id="embed-button" class="primary-btn" data-i18n="embed">Get Embed Code</button>
     </section>
 
+    <!-- Embed modal -->
     <div id="embed-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="embed-title">
       <div class="modal-content card">
         <button id="close-modal" class="icon-btn close" aria-label="Close">×</button>
@@ -120,12 +122,12 @@
     </div>
   </footer>
 
-  <noscript>This site needs JavaScript to display the live countdown and translations.</noscript>
-
-  <script src="script.js"></script>
-  <script src="seo.js"></script>
+  <!-- scripts (порядок важливий) -->
+  <script src="script.js?v=3"></script>
+  <script src="lang-router.js?v=1"></script>
+  <script src="seo.js?v=3"></script>
   <script
-    src="monetization.js"
+    src="monetization.js?v=3"
     data-ga="G-XXXXXXXXXX"
     data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
     data-slot-top="0000000001"
