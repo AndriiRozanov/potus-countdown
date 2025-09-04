@@ -1,10 +1,17 @@
 {
-  "updatedAt": "2025-09-04T20:00:00Z",
+  "updatedAt": "2025-09-04T20:42:07.904Z",
   "latest": {
     "date": "2025-09-04",
-    "title": "Sample headline about Trump (demo)",
-    "summary": "This is a placeholder. The GitHub Action will replace it with an actual top story once it runs.",
-    "url": "https://example.com/source"
+    "title": "Harvard Won Its Money Back, but Will It Actually Get It?",
+    "summary": "A judge ruled that the Trump administration broke the law in canceling billions in federal funds for Harvard. Whether the money is returned matters for the rest of higher education.",
+    "url": "https://www.nytimes.com/2025/09/04/us/harvard-federal-funds-court-victory-trump-administration.html"
   },
-  "archive": []
+  "archive": [
+    {
+      "date": "2025-09-04",
+      "title": "Sample headline about Trump (demo)",
+      "summary": "This is a placeholder. The GitHub Action will replace it with an actual top story once it runs.",
+      "url": "https://example.com/source"
+    }
+  ]
 }
