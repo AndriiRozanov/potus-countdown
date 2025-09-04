@@ -220,3 +220,16 @@ tbody tr:hover { background: color-mix(in srgb, var(--card), var(--bg-2) 18%); }
 }
 .footer-links { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; margin: 0 0 .4rem; }
 .footer-links span { color: var(--muted); }
+/* --- Ad slots: reserve space to reduce CLS --- */
+#ad-top.ad-slot     { min-height: 100px; }   /* mobile 320x100 / 300x100, desktop 728x90 */
+#ad-infeed.ad-slot  { min-height: 280px; }   /* typical in-feed card height */
+#ad-side.ad-slot    { min-height: 250px; }   /* 300x250 rectangle style */
+
+@media (min-width: 768px) {
+  #ad-top.ad-slot   { min-height: 90px; }
+  #ad-infeed.ad-slot{ min-height: 300px; }
+  #ad-side.ad-slot  { min-height: 250px; }
+}
+
+/* Avoid margins collapse around ad containers */
+.ad-slot { display: block; width: 100%; }
