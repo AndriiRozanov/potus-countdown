@@ -55,18 +55,27 @@
     <!-- Dashboard -->
     <div class="dashboard">
       <div class="left-col">
+        <!-- Main about Trump today (short preview) -->
         <section id="trump-today" class="card">
-          <h2 data-i18n="trump-today">Main about Trump today</h2>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
+            <h2 data-i18n="trump-today" style="margin:0;">Main about Trump today</h2>
+            <a class="secondary-btn" href="trump-today.html" id="view-all-trump" data-i18n="view-all">View all</a>
+          </div>
           <div id="trump-news" class="stack"></div>
         </section>
 
+        <!-- News Digest (short list) -->
         <section id="news-digest" class="card">
-          <h2 data-i18n="digest">News Digest</h2>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
+            <h2 data-i18n="digest" style="margin:0;">News Digest</h2>
+            <a class="secondary-btn" href="digest.html" id="view-all-digest" data-i18n="view-all">View all</a>
+          </div>
           <div id="news-container" class="stack"></div>
         </section>
       </div>
 
       <div class="right-col">
+        <!-- Presidents table -->
         <section id="presidents-table" class="card">
           <h2 data-i18n="presidents">Presidents by Time in Office</h2>
           <div class="table-wrap">
@@ -108,7 +117,6 @@
 
   <script src="script.js"></script>
   <script>
-    // set footer year without touching your main script
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
