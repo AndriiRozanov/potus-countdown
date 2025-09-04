@@ -1,0 +1,100 @@
+/* ====== Базові стилі ====== */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ====== Теми ====== */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+body.dark {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+}
+
+/* ====== Шапка ====== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #111, #333);
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ====== Таймер ====== */
+#countdown-section {
+  text-align: center;
+  margin: 3rem auto;
+}
+
+#countdown {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+#embed-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+/* ====== Dashboard ====== */
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.left-col, .right-col {
+  flex: 1;
+  min-width: 300px;
+}
+
+section h2 {
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.25rem;
+}
+
+/* ====== Таблиця ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+/* ====== Футер ====== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #222;
+  color: #aaa;
+}
+footer a {
+  color: #aaa;
+  text-decoration: none;
+}
