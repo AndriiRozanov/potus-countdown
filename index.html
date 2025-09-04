@@ -5,59 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Presidency Clock — Trump Countdown</title>
   <meta name="description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data. Multilingual and embeddable." />
-  <link rel="stylesheet" href="style.css" />
 
-  <!-- SEO -->
-  <link rel="canonical" href="https://YOUR_DOMAIN/" />
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Presidency Clock — Trump Countdown" />
   <meta property="og:description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data." />
-  <meta property="og:url" content="https://YOUR_DOMAIN/" />
-  <meta property="og:image" content="https://YOUR_DOMAIN/og-image.jpg" />
+  <meta property="og:url" content="https://presidencyclock.com/" />
+  <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Presidency Clock — Trump Countdown" />
   <meta name="twitter:description" content="Live countdown, news digest, presidents data." />
-  <meta name="twitter:image" content="https://YOUR_DOMAIN/og-image.jpg" />
+  <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <h1 id="site-title" data-i18n="title">
-        How much time does Donald Trump have left as president?
-      </h1>
-
+      <h1 id="site-title" data-i18n="title">How much time does Donald Trump have left as president?</h1>
       <div class="controls">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
         <label class="visually-hidden" for="language-select">Language</label>
         <select id="language-select" aria-label="Language select">
-          <option value="en">EN</option>
-          <option value="uk">UA</option>
-          <option value="es">ES</option>
-          <option value="fr">FR</option>
-          <option value="de">DE</option>
-          <option value="it">IT</option>
-          <option value="zh">中文</option>
-          <option value="ja">日本語</option>
+          <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
+          <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
+          <option value="zh">中文</option><option value="ja">日本語</option>
         </select>
       </div>
     </div>
   </header>
 
-  <!-- Main -->
   <main class="container">
-    <!-- Countdown -->
     <section id="countdown-section" class="card center">
       <h2 id="timer-title" data-i18n="timer">Time left in office</h2>
       <div id="countdown" class="counter">00:00:00</div>
-
-      <!-- AD: top banner slot -->
       <div id="ad-top" class="ad-slot"></div>
-
       <button id="embed-button" class="primary-btn" data-i18n="embed">Get Embed Code</button>
     </section>
 
-    <!-- Embed modal -->
     <div id="embed-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="embed-title">
       <div class="modal-content card">
         <button id="close-modal" class="icon-btn close" aria-label="Close">×</button>
@@ -68,24 +55,20 @@
       </div>
     </div>
 
-    <!-- Dashboard -->
     <div class="dashboard">
       <div class="left-col">
-        <!-- Main about Trump today -->
         <section id="trump-today" class="card">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
             <h2 data-i18n="trump-today" style="margin:0;">Main about Trump today</h2>
             <a class="secondary-btn" href="trump-today.html" id="view-all-trump" data-i18n="view-all">View all</a>
           </div>
           <div id="trump-news" class="stack"></div>
         </section>
 
-        <!-- AD: in-feed slot -->
         <div id="ad-infeed" class="ad-slot"></div>
 
-        <!-- News Digest -->
         <section id="news-digest" class="card">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
             <h2 data-i18n="digest" style="margin:0;">News Digest</h2>
             <a class="secondary-btn" href="digest.html" id="view-all-digest" data-i18n="view-all">View all</a>
           </div>
@@ -94,9 +77,8 @@
       </div>
 
       <div class="right-col">
-        <!-- Presidents (preview) -->
         <section id="presidents-table" class="card">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
             <h2 data-i18n="presidents" style="margin:0;">Presidents by Time in Office</h2>
             <a class="secondary-btn" href="presidents.html" id="view-all-presidents" data-i18n="view-all">View all</a>
           </div>
@@ -112,19 +94,13 @@
               <tbody id="presidents-data"></tbody>
             </table>
           </div>
-
-          <!-- AD: side slot -->
           <div id="ad-side" class="ad-slot"></div>
-
-          <p class="muted small" style="margin-top:.5rem;">
-            Preview shows shortest-serving leaders across countries. Click “View all” for filters and sorting.
-          </p>
+          <p class="muted small" style="margin-top:.5rem;">Preview shows shortest-serving leaders across countries. Click “View all” for filters and sorting.</p>
         </section>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <p class="footer-links">
@@ -143,15 +119,14 @@
   <noscript>This site needs JavaScript to display the live countdown and translations.</noscript>
 
   <script src="script.js"></script>
-  <!-- Monetization / Consent / Analytics / AdSense -->
   <script
     src="monetization.js"
     data-ga="G-XXXXXXXXXX"
     data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
     data-slot-top="0000000001"
     data-slot-infeed="0000000002"
-    data-slot-side="0000000003"></script>
-
+    data-slot-side="0000000003">
+  </script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
