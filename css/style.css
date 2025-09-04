@@ -1,13 +1,47 @@
-table {
-  width: 90%;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.container {
+  padding: 20px;
+}
+.clock {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 400px;
   margin: 20px auto;
-  border-collapse: collapse;
 }
-th, td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
+.clock div {
+  background: #000;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: #00ffcc;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
 }
-th {
-  background: #333;
+.clock span {
+  font-size: 0.6em;
+  color: #ccc;
+}
+@media (max-width: 600px) {
+  .clock div {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5em;
+  }
+  .container {
+    padding: 10px;
+  }
 }
