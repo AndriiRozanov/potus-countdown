@@ -1,75 +1,148 @@
-<!DOCTYPE html>
-<html lang="uk">
+<!doctype html>
+<html lang="en" data-theme="auto">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Контакти — Presidency Clock</title>
-  <meta name="description" content="Зв'яжіться з командою Presidency Clock." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">Contact — PresidencyClock</title>
+  <meta name="description" content="Contact PresidencyClock team — reach us by email or form." />
+  <link rel="canonical" href="https://presidencyclock.com/contact.html" />
 
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+  <link rel="preconnect" href="https://fundingchoicesmessages.google.com" crossorigin>
 
-  <!-- AdSense -->
-  <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
+  <!-- Adsense Auto ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
 
-  <!-- lang-from-query -->
+  <!-- Consent Mode v2 -->
   <script>
-  (function(){var u=new URLSearchParams(location.search),r=u.get('lang');if(!r)return;var l=r.toLowerCase();if(l==='ua')l='uk';if(l==='us'||l==='en-us')l='en';var A=['en','uk','es','fr','de','it','zh','ja'];if(A.indexOf(l)===-1)return;try{localStorage.setItem('pc_lang',l);}catch(e){};document.documentElement.setAttribute('lang',l);} )();
+    (function () {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+
+      gtag('consent','default',{
+        ad_storage:'denied',
+        ad_user_data:'denied',
+        ad_personalization:'denied',
+        analytics_storage:'denied',
+        wait_for_update: 500
+      });
+      gtag('set','ads_data_redaction',true);
+    })();
   </script>
 
-  <!-- Theme init -->
+  <!-- Funding Choices -->
+  <script async src="https://fundingchoicesmessages.google.com/i/pub-5023415479696725?ers=1"></script>
+
+  <!-- Lang + Theme init -->
   <script>
-  (function(){var s=null;try{s=localStorage.getItem('pc_theme');}catch(e){};var t=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);} )();
+    (function(){
+      var params = new URLSearchParams(location.search);
+      var supported = ['en','uk'];
+      var lang = (params.get('lang')||'').toLowerCase();
+      if(!supported.includes(lang)){
+        lang = (navigator.language||'en').slice(0,2);
+        if(!supported.includes(lang)) lang = 'en';
+      }
+      document.documentElement.lang = lang;
+
+      var saved = localStorage.getItem('pc-theme')||'auto';
+      document.documentElement.setAttribute('data-theme', saved);
+      if(saved==='dark') document.documentElement.classList.add('dark');
+      if(saved==='light') document.documentElement.classList.remove('dark');
+    })();
   </script>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="container header-inner">
-      <h1>Контакти</h1>
-      <div class="controls">
-        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
-        <form id="lang-form" method="get" action="" style="display:inline">
-          <label class="visually-hidden" for="language-select">Language</label>
-          <select id="language-select" name="lang" aria-label="Language"
-            onchange="(function(sel){var v=(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
-            <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
-            <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
-            <option value="zh">中文</option><option value="ja">日本語</option>
-          </select>
-        </form>
+    <nav class="container nav">
+      <a class="logo" href="/index.html">PresidencyClock</a>
+      <ul class="nav-links">
+        <li><a href="/index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="/presidents.html" data-i18n="nav_presidents">Presidents</a></li>
+        <li><a href="/digest.html" data-i18n="nav_digest">Digest</a></li>
+        <li><a href="/trump-today.html" data-i18n="nav_trump">Trump Today</a></li>
+        <li><a href="/privacy.html" data-i18n="nav_privacy">Privacy</a></li>
+        <li><a href="/about.html" data-i18n="nav_about">About</a></li>
+        <li><a class="active" href="/contact.html" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <select id="langSelect">
+          <option value="en">EN</option>
+          <option value="uk">UK</option>
+        </select>
+        <button id="themeToggle" class="btn" type="button">Theme</button>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main class="container">
-    <section class="card stack">
-      <p>Найшвидший спосіб зв’язку: електронна пошта.</p>
-      <p><strong>Email:</strong> <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p>
+  <main class="container prose">
+    <h1 data-i18n="h1">Contact</h1>
+
+    <!-- EN -->
+    <section data-lang="en">
+      <p>If you’d like to contact the PresidencyClock team, email us at:</p>
+      <p><a href="mailto:hello@presidencyclock.com">hello@presidencyclock.com</a></p>
+      <form class="contact-form">
+        <label>Name:<br><input type="text" name="name" required></label><br>
+        <label>Email:<br><input type="email" name="email" required></label><br>
+        <label>Message:<br><textarea name="message" rows="5" required></textarea></label><br>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- UK -->
+    <section data-lang="uk">
+      <p>Щоб зв’язатися з командою PresidencyClock, напишіть нам:</p>
+      <p><a href="mailto:hello@presidencyclock.com">hello@presidencyclock.com</a></p>
+      <form class="contact-form">
+        <label>Ім’я:<br><input type="text" name="name" required></label><br>
+        <label>Email:<br><input type="email" name="email" required></label><br>
+        <label>Повідомлення:<br><textarea name="message" rows="5" required></textarea></label><br>
+        <button type="submit">Надіслати</button>
+      </form>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p class="footer-links">
-        <a href="index.html">Головна</a> ·
-        <a href="about.html">Про нас</a> ·
-        <a href="privacy.html">Політика конфіденційності</a>
-      </p>
-      <p class="muted small">© <span id="year"></span> Presidency Clock</p>
+    <div class="container footer-grid">
+      <div>&copy; <span id="year"></span> PresidencyClock</div>
+      <div class="footer-links">
+        <a href="/privacy.html" data-i18n="nav_privacy">Privacy</a> •
+        <a href="/about.html" data-i18n="nav_about">About</a>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
-  <script src="seo.js?v=4"></script>
+  <script src="/script.js" defer></script>
+  <script src="/seo.js" defer></script>
   <script>
-  (function(){function a(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('pc_theme',t);}catch(e){}}var b=document.getElementById('theme-toggle');if(!b)return;b.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||'light';a(c==='dark'?'light':'dark');});})();
+    (function(){
+      var lang=document.documentElement.lang||'en';
+      document.getElementById('langSelect').value=lang;
+      document.getElementById('langSelect').addEventListener('change',function(){
+        var p=new URLSearchParams(location.search);p.set('lang',this.value);
+        location.href=location.pathname+'?'+p.toString();
+      });
+      document.getElementById('year').textContent=new Date().getFullYear();
+      document.getElementById('themeToggle').onclick=function(){
+        var cur=document.documentElement.getAttribute('data-theme')||'auto';
+        var next=cur==='light'?'dark':(cur==='dark'?'auto':'light');
+        document.documentElement.setAttribute('data-theme',next);
+        localStorage.setItem('pc-theme',next);
+      };
+      var dict={en:{title:'Contact — PresidencyClock',h1:'Contact'},uk:{title:'Контакти — PresidencyClock',h1:'Контакти'}};
+      var t=dict[lang]||dict.en;
+      document.querySelector('[data-i18n="title"]')?.textContent=t.title;
+      document.querySelector('[data-i18n="h1"]')?.textContent=t.h1;
+      document.querySelectorAll('section[data-lang]').forEach(s=>s.style.display=s.getAttribute('data-lang')===lang?'':'none');
+    })();
   </script>
-  <script>
-  (function(){var s=document.getElementById('language-select');if(!s)return;var l=(function(){var p=new URLSearchParams(location.search).get('lang');if(p){p=p.toLowerCase();if(p==='ua')p='uk';if(p==='us'||p==='en-us')p='en';return p;}try{var v=localStorage.getItem('pc_lang');if(v) return v;}catch(e){};return document.documentElement.getAttribute('lang')||'uk';})();s.value=(['en','uk','es','fr','de','it','zh','ja'].indexOf(l)>-1)?l:'uk';})();
-  </script>
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
