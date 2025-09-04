@@ -1,17 +1,16 @@
-function updateCountdown() {
-  const endDate = new Date('2029-01-20T12:00:00-05:00');
-  const now = new Date();
-  const diff = endDate - now;
-
-  if (diff > 0) {
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / 1000 / 60) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-    document.getElementById('countdown').innerHTML = `${days} днів, ${hours} годин, ${minutes} хвилин, ${seconds} секунд`;
-  } else {
-    document.getElementById('countdown').innerHTML = 'Термін закінчився!';
-  }
+const TARGET = Date.parse('2029-01-20T17:00:00Z');
+function render() {
+  const d = Math.max(0, TARGET - Date.now());
+  const days = Math.floor(d / 86400000);
+  const hours = Math.floor((d / 3600000) % 24).toString().padStart(2, '0');
+  const minutes = Math.floor((d / 60000) % 60).toString().padStart(2, '0');
+  const seconds = Math.floor((d / 1000) % 60).toString().padStart(2, '0');
+  document.getElementById('countdown').innerHTML = `
+    <div><span>Days</span>${days}</div>
+    <div><span>Hours</span>${hours}</div>
+    <div><span>Minutes</span>${minutes}</div>
+    <div><span>Seconds</span>${seconds}</div>
+  `;
 }
-setInterval(updateCountdown, 1000);
-updateCountdown();
+setInterval(render, 1000);
+render();
