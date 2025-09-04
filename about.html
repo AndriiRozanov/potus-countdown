@@ -43,11 +43,25 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="seo.js"></script>
-  <script src="monetization.js"
-    data-ga="G-XXXXXXXXXX" data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
-    data-slot-top="0000000001" data-slot-infeed="0000000002" data-slot-side="0000000003"></script>
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="script.js?v=3"></script>
+
+<!-- новий роутер мов: саме він міняє адресу на /uk/, /es/, ... -->
+<script src="lang-router.js?v=1"></script>
+
+<!-- SEO (canonical/hreflang/JSON-LD) -->
+<script src="seo.js?v=3"></script>
+
+<!-- монетизація / кукі / GA / AdSense -->
+<script
+  src="monetization.js?v=3"
+  data-ga="G-XXXXXXXXXX"
+  data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+  data-slot-top="0000000001"
+  data-slot-infeed="0000000002"
+  data-slot-side="0000000003"></script>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
 </body>
 </html>
