@@ -14,3 +14,14 @@ function render() {
 }
 setInterval(render, 1000);
 render();
+function changeLang(lang) {
+  localStorage.setItem('lang', lang);
+  location.search = `?lang=${lang}`;
+}
+document.getElementById('enable-sound').addEventListener('click', () => {
+  soundOn = true;
+  audio.setEnabled(true);
+  document.getElementById('mute-btn').textContent = t('mute');
+  enableUI(true);
+});
+document.getElementById('mute-btn').addEventListener('click', toggleMute);
