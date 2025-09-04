@@ -240,3 +240,4 @@ tbody tr:hover { background: color-mix(in srgb, var(--card), var(--bg-2) 18%); }
 }
 .lang-links a:hover { opacity:1; }
 @media (max-width:480px){ .lang-links { display:none; } } /* на мобілці можна приховати */
+#lang-form select { margin-left: .5rem; }
