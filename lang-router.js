@@ -2,15 +2,13 @@
 (function () {
   const LANGS = ["en","uk","es","fr","de","it","zh","ja"];
 
-  // нормалізація частої плутанини
   function normalizeLang(v){
     v = String(v || "").toLowerCase();
-    if (v === "ua") return "uk";           // правильно "uk"
+    if (v === "ua") return "uk";
     if (v === "us" || v === "en-us") return "en";
     return LANGS.includes(v) ? v : "en";
   }
 
-  // повертає { lang, basePath } де basePath — шлях без мовного префікса
   function detectFromPathname(pathname){
     const p = (pathname || "/").replace(/\/+$/, "") || "/";
     const parts = p.split("/").filter(Boolean);
@@ -21,7 +19,7 @@
   }
 
   function buildUrl(lang, basePath){
-    if (lang === "en") return basePath;                  // англ. — без префікса
+    if (lang === "en") return basePath;
     return basePath === "/" ? `/${lang}/` : `/${lang}${basePath}`;
   }
 
@@ -29,22 +27,17 @@
     const sel = document.getElementById("language-select");
     if (!sel) return;
 
-    // Ставимо значення селекта згідно з URL
     const { lang, basePath } = detectFromPathname(location.pathname);
     sel.value = lang;
 
-    // Прибираємо усі можливі старі обробники (клон-заміна)
+    // прибираємо можливі старі обробники
     const clone = sel.cloneNode(true);
     sel.parentNode.replaceChild(clone, sel);
 
-    // Новий надійний обробник
     clone.addEventListener("change", function(e){
       const targetLang = normalizeLang(e.target.value);
       const url = buildUrl(targetLang, detectFromPathname(location.pathname).basePath);
-      if (location.pathname !== url) {
-        // Навігація тільки якщо справді інший шлях
-        location.assign(url);
-      }
+      if (location.pathname !== url) location.assign(url);
     }, { passive: true });
   }
 
@@ -54,7 +47,7 @@
     bind();
   }
 
-  // діагностика в консоль за запитом
+  // діагностика за бажанням
   window.__LANG_DEBUG = function(){
     const d = detectFromPathname(location.pathname);
     console.log("lang-router:", d, "select.value=", document.getElementById("language-select")?.value);
