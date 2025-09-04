@@ -67,6 +67,7 @@
   </header>
 
   <main class="container">
+    <!-- === Existing card with tabs/sort/table (kept as-is) === -->
     <section class="card">
       <div id="country-tabs" class="stack" style="margin-bottom:1rem;">
         <div style="display:flex; gap:.5rem; flex-wrap:wrap;"></div>
@@ -93,6 +94,13 @@
       </div>
       <p class="muted small" style="margin-top:.5rem;">Tip: click country tabs to filter. Use the sort button to toggle ascending/descending by days in office.</p>
     </section>
+
+    <!-- === NEW: Auto-generated “tenure tables” block (safe, independent) === -->
+    <section id="tenure" class="card">
+      <h2 style="margin-bottom:.5rem;">Presidents by Tenure (auto-updated)</h2>
+      <div id="tenure-tables"></div>
+    </section>
+    <!-- === /NEW === -->
   </main>
 
   <footer class="site-footer">
@@ -107,6 +115,7 @@
     </div>
   </footer>
 
+  <!-- Your existing scripts -->
   <script src="script.js?v=4"></script>
   <script src="seo.js?v=4"></script>
   <script>
@@ -116,5 +125,8 @@
   (function(){var s=document.getElementById('language-select');if(!s)return;var l=(function(){var p=new URLSearchParams(location.search).get('lang');if(p){p=p.toLowerCase();if(p==='ua')p='uk';if(p==='us'||p==='en-us')p='en';return p;}try{var v=localStorage.getItem('pc_lang');if(v) return v;}catch(e){};return document.documentElement.getAttribute('lang')||'en';})();s.value=(['en','uk','es','fr','de','it','zh','ja'].indexOf(l)>-1)?l:'en';})();
   </script>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+  <!-- NEW: tenure tables script (builds 10 country tables automatically) -->
+  <script src="/scripts/tenure.js" defer></script>
 </body>
 </html>
