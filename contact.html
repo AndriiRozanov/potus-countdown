@@ -5,14 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Контакти — Presidency Clock</title>
   <meta name="description" content="Зв'яжіться з командою Presidency Clock." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Контакти — Presidency Clock" />
+  <meta property="og:description" content="Найшвидший спосіб зв’язку — email." />
+  <meta property="og:url" content="https://presidencyclock.com/contact.html" />
+  <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Контакти — Presidency Clock" />
+  <meta name="twitter:description" content="Електронна пошта для зв’язку." />
+  <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <h1>Контакти</h1>
-    </div>
-  </header>
+  <header class="site-header"><div class="container header-inner"><h1>Контакти</h1></div></header>
   <main class="container">
     <section class="card stack">
       <p>Найшвидший спосіб зв’язку: електронна пошта.</p>
@@ -24,11 +32,20 @@
       <p class="footer-links">
         <a href="index.html">Головна</a> ·
         <a href="about.html">Про нас</a> ·
-        <a href="privacy.html">Політика конфіденційності</a>
+        <a href="privacy.html">Політика конфіденційності</a> ·
+        <a href="#" onclick="pcOpenConsent();return false;">Manage cookies</a>
       </p>
       <p class="muted small">© <span id="year"></span> Presidency Clock</p>
     </div>
   </footer>
+  <script
+    src="monetization.js"
+    data-ga="G-XXXXXXXXXX"
+    data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+    data-slot-top="0000000001"
+    data-slot-infeed="0000000002"
+    data-slot-side="0000000003">
+  </script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
