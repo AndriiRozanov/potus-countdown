@@ -1,115 +1,123 @@
 <script>
 // =========================
-// PresidencyClock: tenure tables (Wikidata -> HTML)
+// PresidencyClock: Tenure tables (last 40 years)
+// Дані з відкритого джерела: Wikidata SPARQL endpoint
 // =========================
 
-// Мапа посад (Wikidata item IDs) для кожної країни.
-// Ми рахуємо фактичний час перебування на посаді (сума всіх окремих строк / каденцій).
-// Якщо кінець відсутній (чинний лідер) — рахуємо до "сьогодні".
+// Посада, яка в країні = головний керівник держави/уряду за практикою останніх 40 років
+// (де-факто керівники: UK/DE/IT/ES/JP — прем'єри; FR/MX/US/UA/CN — президенти)
 const POSITIONS = [
-  { countryKey: 'UA', nameUk: 'Україна', nameEn: 'Ukraine',          wd: 'Q189117' }, // President of Ukraine
-  { countryKey: 'US', nameUk: 'США',      nameEn: 'United States',   wd: 'Q11696'  }, // President of the United States
-  { countryKey: 'GB', nameUk: 'Велика Британія', nameEn: 'United Kingdom', wd: 'Q14211' }, // Prime Minister of the UK
-  { countryKey: 'ES', nameUk: 'Іспанія',  nameEn: 'Spain',           wd: 'Q192059' }, // President of the Government of Spain (Prime Minister)
-  { countryKey: 'MX', nameUk: 'Мексика',  nameEn: 'Mexico',          wd: 'Q191110' }, // President of Mexico
-  { countryKey: 'FR', nameUk: 'Франція',  nameEn: 'France',          wd: 'Q191954' }, // President of France
-  { countryKey: 'DE', nameUk: 'Німеччина',nameEn: 'Germany',         wd: 'Q5677'   }, // Chancellor of Germany (Federal Chancellor)
-  { countryKey: 'IT', nameUk: 'Італія',   nameEn: 'Italy',           wd: 'Q193955' }, // President of the Council of Ministers of Italy (Prime Minister)
-  { countryKey: 'CN', nameUk: 'КНР',      nameEn: 'China',           wd: 'Q157631' }, // President of the PRC
-  { countryKey: 'JP', nameUk: 'Японія',   nameEn: 'Japan',           wd: 'Q123239' }  // Prime Minister of Japan
+  { countryKey: 'UA', nameUk: 'Україна',            nameEn: 'Ukraine',          wd: 'Q189117' }, // President of Ukraine
+  { countryKey: 'US', nameUk: 'США',                 nameEn: 'United States',    wd: 'Q11696'  }, // President of the US
+  { countryKey: 'GB', nameUk: 'Велика Британія',     nameEn: 'United Kingdom',   wd: 'Q14211'  }, // Prime Minister of the UK
+  { countryKey: 'ES', nameUk: 'Іспанія',             nameEn: 'Spain',            wd: 'Q192059' }, // President of the Government of Spain (PM)
+  { countryKey: 'MX', nameUk: 'Мексика',             nameEn: 'Mexico',           wd: 'Q191110' }, // President of Mexico
+  { countryKey: 'FR', nameUk: 'Франція',             nameEn: 'France',           wd: 'Q191954' }, // President of France
+  { countryKey: 'DE', nameUk: 'Німеччина',           nameEn: 'Germany',          wd: 'Q5677'   }, // Chancellor of Germany
+  { countryKey: 'IT', nameUk: 'Італія',              nameEn: 'Italy',            wd: 'Q193955' }, // President of the Council of Ministers of Italy (PM)
+  { countryKey: 'CN', nameUk: 'КНР',                 nameEn: 'China (PRC)',      wd: 'Q157631' }, // President of the PRC
+  { countryKey: 'JP', nameUk: 'Японія',              nameEn: 'Japan',            wd: 'Q123239' }  // Prime Minister of Japan
 ];
 
-// Визначаємо мову інтерфейсу із <html lang="...">, fallback — en.
+// Вікно — останні 40 років від сьогодні (враховує високосні автоматично API браузера)
+function getWindow() {
+  const end = new Date();
+  const start = new Date(end);
+  start.setFullYear(end.getFullYear() - 40);
+  return { start, end };
+}
+
+// Мова інтерфейсу
 function getUiLang() {
   const l = (document.documentElement.lang || '').trim().toLowerCase();
-  if (!l) return 'en';
-  // зводимо варіанти типу uk-UA до 'uk'
-  return l.split('-')[0];
+  return (l && l.split('-')[0]) || 'en';
 }
 
-// Формуємо текстовий ряд для тривалості.
-function humanizeDays(days) {
-  const d = Math.max(0, Math.round(days));
-  const years = Math.floor(d / 365.2425);
-  const remDays = Math.round(d - years * 365.2425);
-  if (years > 0) {
-    return `${years} ${plural(years, 'рік','роки','років')} ${remDays} ${plural(remDays,'день','дні','днів')}`;
-  }
-  return `${d} ${plural(d,'день','дні','днів')}`;
-}
-
-// Прості українські множини; для інших мов можна розширити за потреби.
-function plural(n, one, few, many) {
-  const mod10 = n % 10, mod100 = n % 100;
-  if (mod10 === 1 && mod100 !== 11) return one;
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return few;
-  return many;
-}
-
-// Виконуємо SPARQL запит до Wikidata.
-// Беремо всіх осіб, які мали позицію (P39 = wd:<POSITION>), з датами початку (P580) та кінця (P582).
+// SPARQL: беремо всі P39=посада з датами start(P580) і end(P582) якщо є
+// Без додаткових фільтрів — фільтруємо на клієнті за "останні 40 років".
 async function fetchHolders(positionQid, lang) {
   const endpoint = 'https://query.wikidata.org/sparql';
   const query = `
 SELECT ?person ?personLabel ?start ?end WHERE {
-  ?person p:P39 ?statement .
-  ?statement ps:P39 wd:${positionQid} .
-  ?statement pq:P580 ?start .
-  OPTIONAL { ?statement pq:P582 ?end . }
+  ?person p:P39 ?st .
+  ?st ps:P39 wd:${positionQid} .
+  ?st pq:P580 ?start .
+  OPTIONAL { ?st pq:P582 ?end . }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "${lang},en". }
 }
 `;
-  const url = endpoint + '?format=json&query=' + encodeURIComponent(query);
-  const res = await fetch(url, {
-    headers: {
-      'Accept': 'application/sparql-results+json'
-    }
+  const res = await fetch(endpoint + '?format=json&query=' + encodeURIComponent(query), {
+    headers: { 'Accept': 'application/sparql-results+json' }
   });
-  if (!res.ok) throw new Error('Wikidata error ' + res.status);
+  if (!res.ok) throw new Error('Wikidata ' + res.status);
   const data = await res.json();
   return data.results.bindings.map(b => ({
-    id: b.person.value, // full URI
+    id: b.person.value,               // full URI https://www.wikidata.org/entity/Q...
     label: b.personLabel?.value || '',
-    start: b.start?.value,
+    start: b.start?.value || null,
     end: b.end?.value || null
-  }));
+  })).filter(r => r.start); // потрібен хоча б початок
 }
 
-// Групуємо по персоні, сумуємо тривалість (у днях) за всі каденції.
-function aggregateByPerson(rows) {
-  const now = new Date();
+// Перетин двох інтервалів дат у днях (>=0)
+function overlapDays(aStart, aEnd, bStart, bEnd) {
+  const s = Math.max(aStart.getTime(), bStart.getTime());
+  const e = Math.min(aEnd.getTime(),   bEnd.getTime());
+  const diff = e - s;
+  return diff > 0 ? diff / 86400000 : 0;
+}
+
+// Групуємо по персоні і сумуємо тільки дні в межах [T-40y; T]
+function aggregateLast40Y(rows, window) {
   const map = new Map();
   for (const r of rows) {
+    const stintStart = new Date(r.start);
+    const stintEnd   = r.end ? new Date(r.end) : window.end;
+    const daysInWin  = overlapDays(stintStart, stintEnd, window.start, window.end);
+    if (daysInWin <= 0) continue;
+
     const key = r.id;
-    const start = new Date(r.start);
-    const end = r.end ? new Date(r.end) : now;
-    const days = (end - start) / (1000*60*60*24);
     const cur = map.get(key) || { id: key, name: r.label, days: 0, stints: [] };
-    cur.days += days;
-    cur.stints.push({ start: r.start, end: r.end });
-    // беремо найкоротше ім’я з наявних (іноді приходять варіанти з дужками)
+    cur.days += daysInWin;
+    // зберігаємо обрізану до вікна каденцію для підказки (title)
+    const segStart = new Date(Math.max(stintStart.getTime(), window.start.getTime()));
+    const segEnd   = new Date(Math.min(stintEnd.getTime(),   window.end.getTime()));
+    cur.stints.push({ start: segStart.toISOString(), end: segEnd.toISOString() });
     if (r.label && (!cur.name || r.label.length < cur.name.length)) cur.name = r.label;
     map.set(key, cur);
   }
   return Array.from(map.values());
 }
 
-// Рендеримо таблицю країни.
-function renderCountryTable(container, country, people, lang) {
-  // сортуємо від найменшого до найбільшого
-  people.sort((a,b)=> a.days - b.days);
+// Людинозрозуміла тривалість
+function humanizeDays(days) {
+  const d = Math.round(days);
+  const years = Math.floor(d / 365.2425);
+  const rem = Math.round(d - years * 365.2425);
+  if (years > 0) return `${years} ${pluralUk(years,'рік','роки','років')} ${rem} ${pluralUk(rem,'день','дні','днів')}`;
+  return `${d} ${pluralUk(d,'день','дні','днів')}`;
+}
+function pluralUk(n, one, few, many){const m10=n%10,m100=n%100;if(m10===1&&m100!==11)return one;if(m10>=2&&m10<=4&&(m100<10||m100>=20))return few;return many;}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+
+// Рендер секції країни
+function renderCountryTable(container, country, people, lang, window) {
+  people.sort((a,b)=> a.days - b.days); // коротші → довші
 
   const section = document.createElement('section');
   section.className = 'tenure-country';
 
+  const title = (lang==='uk' ? country.nameUk : country.nameEn);
   const h2 = document.createElement('h2');
-  h2.textContent = (lang === 'uk' ? country.nameUk : country.nameEn);
+  h2.textContent = title;
   section.appendChild(h2);
 
-  const src = document.createElement('div');
-  src.className = 'tenure-source';
-  src.innerHTML = `Джерело: <a href="https://www.wikidata.org/wiki/${country.wd}" target="_blank" rel="noopener">Wikidata</a>`;
-  section.appendChild(src);
+  const note = document.createElement('div');
+  const yStart = window.start.toISOString().slice(0,10);
+  const yEnd   = window.end.toISOString().slice(0,10);
+  note.className = 'tenure-source';
+  note.innerHTML = `Період: ${yStart} — ${yEnd}. Джерело: <a href="https://www.wikidata.org/wiki/${country.wd}" target="_blank" rel="noopener">Wikidata</a>`;
+  section.appendChild(note);
 
   const table = document.createElement('table');
   table.className = 'tenure-table';
@@ -117,26 +125,24 @@ function renderCountryTable(container, country, people, lang) {
     <thead>
       <tr>
         <th style="width:3ch;">#</th>
-        <th>Ім’я</th>
-        <th>Загальна тривалість</th>
+        <th>${lang==='uk'?'Ім’я':'Name'}</th>
+        <th>${lang==='uk'?'Сумарно у вікні (40 років)':'Total within window (40y)'}</th>
       </tr>
     </thead>
     <tbody></tbody>
   `;
   const tbody = table.querySelector('tbody');
 
-  people.forEach((p, i) => {
+  people.forEach((p,i)=>{
     const tr = document.createElement('tr');
-    const days = p.days;
     tr.innerHTML = `
       <td>${i+1}</td>
       <td><a href="${p.id}" target="_blank" rel="noopener">${escapeHtml(p.name)}</a></td>
-      <td data-days="${days.toFixed(2)}">${humanizeDays(days)}</td>
+      <td data-days="${p.days.toFixed(2)}">${humanizeDays(p.days)}</td>
     `;
-    // Tooltip зі строками каденцій
-    tr.title = p.stints.map(s => {
-      const end = s.end ? new Date(s.end).toISOString().slice(0,10) : '…';
-      return `${new Date(s.start).toISOString().slice(0,10)} — ${end}`;
+    tr.title = p.stints.map(s=>{
+      const a = s.start.slice(0,10), b = s.end.slice(0,10);
+      return `${a} — ${b}`;
     }).join(' | ');
     tbody.appendChild(tr);
   });
@@ -145,33 +151,50 @@ function renderCountryTable(container, country, people, lang) {
   container.appendChild(section);
 }
 
-function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-
 async function buildAll() {
   const holder = document.getElementById('tenure-tables');
   if (!holder) return;
   const lang = getUiLang();
+  const window = getWindow();
 
-  // Інфо-блок (коротко що це і як ранжується)
+  // Інфо-блок
   const info = document.createElement('p');
   info.className = 'tenure-note';
-  info.textContent = 'Список лідерів за сумарною тривалістю перебування на посаді (від найкоротшої до найдовшої). Дані автоматично підтягуються з відкритого джерела Wikidata.';
+  info.textContent = lang==='uk'
+    ? 'Нижче — керівники країн за сумарною тривалістю на посаді в межах останніх 40 років (від найкоротшої до найдовшої).'
+    : 'Leaders ranked by total time in office within the last 40 years (shortest → longest).';
   holder.appendChild(info);
 
   for (const country of POSITIONS) {
     try {
       const raw = await fetchHolders(country.wd, lang);
-      const people = aggregateByPerson(raw);
-      renderCountryTable(holder, country, people, lang);
+      const people = aggregateLast40Y(raw, window);
+      // Якщо хтось у країні не має жодного дня у вікні — таблиця все одно показується (може бути порожня)
+      renderCountryTable(holder, country, people, lang, window);
     } catch (e) {
       const s = document.createElement('section');
       s.className = 'tenure-country';
       s.innerHTML = `<h2>${lang==='uk'?country.nameUk:country.nameEn}</h2>
-      <p style="color:#b00">Не вдалося завантажити дані (${e.message}).</p>`;
+        <p style="color:#b00">Не вдалося завантажити дані (${escapeHtml(e.message)}).</p>`;
       holder.appendChild(s);
     }
   }
 }
 
 document.addEventListener('DOMContentLoaded', buildAll);
+
+// (стилі — можна покласти у style.css)
+const CSS = `
+.tenure-country { margin: 2rem 0; }
+.tenure-country h2 { margin: 0 0 .25rem 0; }
+.tenure-note { font-size:.95rem; opacity:.85; margin-bottom:.5rem; }
+.tenure-source { font-size:.85rem; margin:.25rem 0 1rem 0; opacity:.75; }
+.tenure-table { width:100%; border-collapse:collapse; }
+.tenure-table th,.tenure-table td { border-bottom:1px solid #e5e5e5; padding:.6rem .5rem; text-align:left; }
+.tenure-table tbody tr:hover { background: rgba(0,0,0,.03); }
+.tenure-table td:nth-child(1){ text-align:right; opacity:.7; }
+.tenure-table td[data-days]{ white-space:nowrap; }
+@media (max-width:640px){ .tenure-table th:nth-child(1),.tenure-table td:nth-child(1){ width:2.5ch; } }
+`;
+const st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 </script>
