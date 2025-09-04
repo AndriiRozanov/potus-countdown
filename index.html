@@ -26,11 +26,36 @@
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
   <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
   <meta name="theme-color" content="#0b0f18">
-<!-- Google AdSense Auto ads -->
-<meta name="google-adsense-account" content="ca-pub-5023415479696725" />
-<script async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725"
-  crossorigin="anonymous"></script>
+
+  <!-- AdSense Auto ads (your pub id) -->
+  <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
+
+  <!-- lang-from-query: make ?lang= override any stored value -->
+  <script>
+  (function () {
+    var usp = new URLSearchParams(location.search);
+    var raw = usp.get('lang'); if (!raw) return;
+    var lang = String(raw).toLowerCase();
+    if (lang === 'ua') lang = 'uk';
+    if (lang === 'us' || lang === 'en-us') lang = 'en';
+    var allowed = ['en','uk','es','fr','de','it','zh','ja'];
+    if (allowed.indexOf(lang) === -1) return;
+    try { localStorage.setItem('pc_lang', lang); } catch (e) {}
+    document.documentElement.setAttribute('lang', lang);
+  })();
+  </script>
+
+  <!-- Theme init (no flash) -->
+  <script>
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('pc_theme'); } catch (e) {}
+    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+  </script>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -38,14 +63,14 @@
     <div class="container header-inner">
       <h1 id="site-title" data-i18n="title">How much time does Donald Trump have left as president?</h1>
 
-      <!-- Controls: theme + languages (HTML form -> ?lang=...) -->
+      <!-- Controls -->
       <div class="controls">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
-
+        <!-- Language form -> ?lang=... -->
         <form id="lang-form" method="get" action="" style="display:inline">
           <label class="visually-hidden" for="language-select">Language</label>
           <select id="language-select" name="lang" aria-label="Language select"
-            onchange="(function(sel){var v=String(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
+            onchange="(function(sel){var v=(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
             <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
             <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
             <option value="zh">中文</option><option value="ja">日本語</option>
@@ -59,7 +84,6 @@
     <section id="countdown-section" class="card center">
       <h2 id="timer-title" data-i18n="timer">Time left in office</h2>
       <div id="countdown" class="counter">00:00:00</div>
-      <div id="ad-top" class="ad-slot"></div>
       <button id="embed-button" class="primary-btn" data-i18n="embed">Get Embed Code</button>
     </section>
 
@@ -83,8 +107,6 @@
           </div>
           <div id="trump-news" class="stack"></div>
         </section>
-
-        <div id="ad-infeed" class="ad-slot"></div>
 
         <section id="news-digest" class="card">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
@@ -113,7 +135,6 @@
               <tbody id="presidents-data"></tbody>
             </table>
           </div>
-          <div id="ad-side" class="ad-slot"></div>
           <p class="muted small" style="margin-top:.5rem;">Preview shows shortest-serving leaders across countries. Click “View all” for filters and sorting.</p>
         </section>
       </div>
@@ -125,28 +146,42 @@
       <p class="footer-links">
         <a href="about.html" data-i18n="about">About Us</a> ·
         <a href="privacy.html" data-i18n="privacy">Privacy Policy</a> ·
-        <a href="contact.html" data-i18n="contact">Contact</a> ·
-        <a href="#" onclick="pcOpenConsent();return false;">Manage cookies</a>
+        <a href="contact.html" data-i18n="contact">Contact</a>
       </p>
       <p class="muted small">© <span id="year"></span> Presidency Clock</p>
     </div>
   </footer>
 
-  <!-- scripts -->
+  <!-- base scripts -->
   <script src="script.js?v=4"></script>
- <script src="script.js?v=4"></script>
-  <script
-    data-ga="G-XXXXXXXXXX"
-    data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
-    data-slot-top="0000000001"
-    data-slot-infeed="0000000002"
-    data-slot-side="0000000003"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-<!-- базові скрипти сайту -->
-<script src="script.js?v=4"></script>
-<script src="seo.js?v=4"></script>
+  <script src="seo.js?v=4"></script>
 
-<!-- Рік у футері -->
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- Theme toggle (independent) -->
+  <script>
+  (function(){
+    function apply(theme){ document.documentElement.setAttribute('data-theme', theme); try{localStorage.setItem('pc_theme', theme);}catch(e){} }
+    var btn=document.getElementById('theme-toggle'); if(!btn) return;
+    btn.addEventListener('click', function(){
+      var curr=document.documentElement.getAttribute('data-theme')||'light';
+      apply(curr==='dark'?'light':'dark');
+    });
+  })();
+  </script>
+
+  <!-- Sync language select with current language -->
+  <script>
+  (function(){
+    var sel=document.getElementById('language-select'); if(!sel) return;
+    var lang=(function(){
+      var p=new URLSearchParams(location.search).get('lang');
+      if (p) { p=p.toLowerCase(); if(p==='ua')p='uk'; if(p==='us'||p==='en-us')p='en'; return p; }
+      try{ var s=localStorage.getItem('pc_lang'); if(s) return s; }catch(e){}
+      return document.documentElement.getAttribute('lang')||'en';
+    })();
+    sel.value = ['en','uk','es','fr','de','it','zh','ja'].indexOf(lang)>-1 ? lang : 'en';
+  })();
+  </script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
