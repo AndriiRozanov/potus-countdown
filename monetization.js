@@ -2,9 +2,8 @@
 (function () {
   const scriptEl = document.currentScript;
 
-  // Read IDs from data-attributes on the script tag
-  const GA_ID       = scriptEl?.dataset?.ga || "";               // e.g. G-XXXXXXXXXX
-  const ADS_CLIENT  = scriptEl?.dataset?.adsense || "";          // e.g. ca-pub-XXXXXXXXXXXXXXXX
+  const GA_ID       = scriptEl?.dataset?.ga || "";
+  const ADS_CLIENT  = scriptEl?.dataset?.adsense || "";
   const SLOT_TOP    = scriptEl?.dataset?.slotTop || "";
   const SLOT_INFEED = scriptEl?.dataset?.slotInfeed || "";
   const SLOT_SIDE   = scriptEl?.dataset?.slotSide || "";
@@ -12,7 +11,6 @@
   const CONSENT_KEY = "pc_consent"; // 'granted' | 'denied'
   const existing = (() => { try { return localStorage.getItem(CONSENT_KEY); } catch { return null; }})();
 
-  // ---------- style for banner & ad-slot ----------
   (function injectStyles(){
     const css = `
       .ad-slot{ margin:.75rem 0; }
@@ -42,7 +40,6 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function(){ window.dataLayer.push(arguments); };
     gtag('js', new Date());
-    // Default: denied (until user acts)
     gtag('consent', 'default', {
       ad_storage: 'denied',
       analytics_storage: 'denied',
@@ -102,7 +99,8 @@
   }
 
   // ---------- Consent UI ----------
-  function showConsentBanner() {
+  let bannerEl = null;
+  function buildBanner() {
     const wrap = document.createElement('div');
     wrap.className = 'pc-consent';
     wrap.innerHTML = `
@@ -115,26 +113,42 @@
         <button class="btn primary" id="pc-accept">Accept</button>
       </div>
     `;
-    document.body.appendChild(wrap);
-
     const acceptBtn = wrap.querySelector('#pc-accept');
     const denyBtn   = wrap.querySelector('#pc-deny');
 
     acceptBtn.addEventListener('click', () => {
       try { localStorage.setItem(CONSENT_KEY, 'granted'); } catch {}
-      wrap.remove();
+      closeBanner();
       grantGtagConsent();
       loadAdSense();
-      // after AdSense script attaches, render units
       setTimeout(renderAllAds, 250);
     });
 
     denyBtn.addEventListener('click', () => {
       try { localStorage.setItem(CONSENT_KEY, 'denied'); } catch {}
-      wrap.remove();
-      // keep GA/Ads in denied mode (no ad/analytics storage)
+      closeBanner();
     });
+    return wrap;
   }
+  function showBanner() {
+    if (bannerEl) return;
+    bannerEl = buildBanner();
+    document.body.appendChild(bannerEl);
+  }
+  function closeBanner() {
+    if (!bannerEl) return;
+    bannerEl.remove();
+    bannerEl = null;
+  }
+
+  // публічна функція для кнопки “Manage cookies”
+  window.pcOpenConsent = function() {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', showBanner, { once: true });
+    } else {
+      showBanner();
+    }
+  };
 
   // ---------- Init ----------
   loadGA();
@@ -144,13 +158,12 @@
     loadAdSense();
     setTimeout(renderAllAds, 250);
   } else if (existing === 'denied') {
-    // do nothing (still can add a “Manage cookies” link later)
+    // no ads/analytics
   } else {
-    // no decision yet
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', showConsentBanner);
+      document.addEventListener('DOMContentLoaded', showBanner);
     } else {
-      showConsentBanner();
+      showBanner();
     }
   }
 })();
