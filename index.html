@@ -34,30 +34,20 @@
     <div class="container header-inner">
       <h1 id="site-title" data-i18n="title">How much time does Donald Trump have left as president?</h1>
 
-      <!-- ===== controls (theme + languages) ===== -->
+      <!-- Controls: theme + languages (HTML form -> ?lang=...) -->
       <div class="controls">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
 
-        <label class="visually-hidden" for="language-select">Language</label>
-        <select id="language-select" aria-label="Language select">
-          <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
-          <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
-          <option value="zh">中文</option><option value="ja">日本語</option>
-        </select>
-
-        <!-- Тимчасові лінки (працюють завжди через ?lang=...) -->
-        <nav class="lang-links" aria-label="Languages">
-          <a href="?lang=en">EN</a>
-          <a href="?lang=uk">UA</a>
-          <a href="?lang=es">ES</a>
-          <a href="?lang=fr">FR</a>
-          <a href="?lang=de">DE</a>
-          <a href="?lang=it">IT</a>
-          <a href="?lang=zh">中文</a>
-          <a href="?lang=ja">日本語</a>
-        </nav>
+        <form id="lang-form" method="get" action="" style="display:inline">
+          <label class="visually-hidden" for="language-select">Language</label>
+          <select id="language-select" name="lang" aria-label="Language select"
+            onchange="(function(sel){var v=String(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
+            <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
+            <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
+            <option value="zh">中文</option><option value="ja">日本語</option>
+          </select>
+        </form>
       </div>
-      <!-- ======================================= -->
     </div>
   </header>
 
@@ -138,43 +128,16 @@
     </div>
   </footer>
 
-  <!-- scripts (порядок важливий) -->
+  <!-- scripts -->
   <script src="script.js?v=3"></script>
-<script src="seo.js?v=3"></script>
-<script
- <script
-  src="monetization.js?v=3"
-  data-ga="G-XXXXXXXXXX"
-  data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
-  data-slot-top="0000000001"
-  data-slot-infeed="0000000002"
-  data-slot-side="0000000003"></script>
-
-<!-- Language switcher: simple & guaranteed (?lang=...) -->
-<script>
-(function(){
-  function init(){
-    var sel = document.getElementById('language-select');
-    if (!sel) return;
-
-    sel.addEventListener('change', function(){
-      var lang = String(sel.value || '').toLowerCase();
-      if (lang === 'ua') lang = 'uk';
-      if (lang === 'us' || lang === 'en-us') lang = 'en';
-
-      var u = new URL(window.location.href);
-      u.searchParams.set('lang', lang);
-      window.location.href = u.pathname + '?' + u.searchParams.toString();
-    });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once:true });
-  } else {
-    init();
-  }
-})();
-</script>
-
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="seo.js?v=3"></script>
+  <script
+    src="monetization.js?v=3"
+    data-ga="G-XXXXXXXXXX"
+    data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+    data-slot-top="0000000001"
+    data-slot-infeed="0000000002"
+    data-slot-side="0000000003"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
