@@ -374,3 +374,97 @@ function hydrateDynamicLabels(lang) {
     archiveWrap.appendChild(createNewsCard(item, { withSummary: true, lang }));
   });
 })();
+/* ========= 3.1: Helper createNewsCard (safe define) ========= */
+if (typeof window.createNewsCard !== "function") {
+  window.createNewsCard = function createNewsCard(item, { withSummary = true, lang = "en" } = {}) {
+    const wrapper = document.createElement("article");
+    wrapper.className = "card";
+    const title = document.createElement("h3");
+    title.style.marginTop = "0";
+
+    const link = document.createElement("a");
+    link.href = item.url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = item.title || "(untitled)";
+    title.appendChild(link);
+    wrapper.appendChild(title);
+
+    if (withSummary && item.summary) {
+      const p = document.createElement("p");
+      p.textContent = item.summary;
+      wrapper.appendChild(p);
+    }
+
+    const actions = document.createElement("div");
+    const a = document.createElement("a");
+    a.href = item.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    const t = (window.translations?.[lang]?.["read-more"]) || (window.translations?.en?.["read-more"]) || "Read more";
+    a.textContent = t;
+    actions.appendChild(a);
+    wrapper.appendChild(actions);
+
+    return wrapper;
+  };
+}
+
+/* ========= 3.2: Mount on digest.html (full) ========= */
+(async function mountDigestPage() {
+  const list = document.getElementById("digest-list");
+  if (!list) return; // not on digest page
+
+  // figure out current UI language
+  const langSelect = document.getElementById("language-select");
+  const lang = (langSelect && langSelect.value) ||
+               (typeof localStorage !== "undefined" && localStorage.getItem("lang")) ||
+               (navigator.language || "en").slice(0, 2);
+  const uiLang = (window.translations && window.translations[lang]) ? lang : "en";
+
+  // Try loading digest data file (no-cache)
+  try {
+    const res = await fetch("data/digest.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    list.innerHTML = "";
+    (data.items || []).forEach(item => {
+      list.appendChild(window.createNewsCard(item, { withSummary: true, lang: uiLang }));
+    });
+
+    // Add "(updated ...)" suffix with local time
+    const note = document.getElementById("digest-note");
+    if (note && data.updatedAt) {
+      const dt = new Date(data.updatedAt);
+      const updatedLabel = ` (updated ${dt.toLocaleString()})`;
+      if (!note.textContent.includes("(updated")) {
+        note.textContent = note.textContent + updatedLabel;
+      } else {
+        // replace existing updated timestamp
+        note.textContent = note.textContent.replace(/\(updated[^\)]*\)/, updatedLabel);
+      }
+    }
+  } catch (e) {
+    console.error("Failed to load digest:", e);
+    list.innerHTML = `<p class="muted">Failed to load digest.</p>`;
+  }
+
+  // Re-render list on language change so buttons/text update
+  if (langSelect) {
+    langSelect.addEventListener("change", async () => {
+      try {
+        const res = await fetch("data/digest.json", { cache: "no-store" });
+        const data = await res.json();
+        const newLang = langSelect.value;
+        const safeLang = (window.translations && window.translations[newLang]) ? newLang : "en";
+        list.innerHTML = "";
+        (data.items || []).forEach(item => {
+          list.appendChild(window.createNewsCard(item, { withSummary: true, lang: safeLang }));
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  }
+})();
