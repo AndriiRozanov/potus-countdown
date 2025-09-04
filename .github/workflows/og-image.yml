@@ -1,0 +1,38 @@
+name: Generate OG Image
+
+on:
+  schedule:
+    - cron: "12 4 * * *"   # щодня 04:12 UTC
+  workflow_dispatch:
+
+jobs:
+  build-og:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install puppeteer
+        run: |
+          npm init -y
+          npm i puppeteer@22 --no-audit --no-fund
+
+      - name: Generate og-image.jpg
+        env:
+          TERM_END_ISO: "2029-01-20T17:00:00Z"  # змінюй за потреби
+        run: node scripts/gen-og.mjs
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add og-image.jpg
+          git commit -m "chore: update og-image [skip ci]" || echo "No changes"
+          git push
