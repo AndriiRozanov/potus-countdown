@@ -5,23 +5,24 @@
   <title>Політика конфіденційності — Presidency Clock</title>
   <meta name="description" content="Політика конфіденційності сайту Presidency Clock." />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Політика конфіденційності — Presidency Clock" />
-  <meta property="og:description" content="Як ми обробляємо дані користувачів." />
-  <meta property="og:url" content="https://presidencyclock.com/privacy.html" />
-  <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
   <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
-  <meta name="theme-color" content="#0b0f18">
-<!-- Google AdSense Auto ads -->
-<meta name="google-adsense-account" content="ca-pub-5023415479696725" />
-<script async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725"
-  crossorigin="anonymous"></script>
+
+  <!-- AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
+
+  <!-- lang-from-query -->
+  <script>
+  (function(){var u=new URLSearchParams(location.search),r=u.get('lang');if(!r)return;var l=r.toLowerCase();if(l==='ua')l='uk';if(l==='us'||l==='en-us')l='en';var A=['en','uk','es','fr','de','it','zh','ja'];if(A.indexOf(l)===-1)return;try{localStorage.setItem('pc_lang',l);}catch(e){};document.documentElement.setAttribute('lang',l);} )();
+  </script>
+
+  <!-- Theme init -->
+  <script>
+  (function(){var s=null;try{s=localStorage.getItem('pc_theme');}catch(e){};var t=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);} )();
+  </script>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -43,23 +44,20 @@
       <p class="footer-links">
         <a href="index.html">Головна</a> ·
         <a href="about.html">Про нас</a> ·
-        <a href="contact.html">Контакти</a> ·
-        <a href="#" onclick="pcOpenConsent();return false;">Manage cookies</a>
+        <a href="contact.html">Контакти</a>
       </p>
       <p class="muted small">© <span id="year"></span> Presidency Clock</p>
     </div>
   </footer>
 
-  <script src="script.js?v=3"></script>
-  <script src="seo.js?v=3"></script>
-    data-ga="G-XXXXXXXXXX" data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
-    data-slot-top="0000000001" data-slot-infeed="0000000002" data-slot-side="0000000003"></script>
+  <script src="script.js?v=4"></script>
+  <script src="seo.js?v=4"></script>
+  <script>
+  (function(){function a(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('pc_theme',t);}catch(e){}}var b=document.getElementById('theme-toggle');if(!b)return;b.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||'light';a(c==='dark'?'light':'dark');});})();
+  </script>
+  <script>
+  (function(){var s=document.getElementById('language-select');if(!s)return;var l=(function(){var p=new URLSearchParams(location.search).get('lang');if(p){p=p.toLowerCase();if(p==='ua')p='uk';if(p==='us'||p==='en-us')p='en';return p;}try{var v=localStorage.getItem('pc_lang');if(v) return v;}catch(e){};return document.documentElement.getAttribute('lang')||'uk';})();s.value=(['en','uk','es','fr','de','it','zh','ja'].indexOf(l)>-1)?l:'uk';})();
+  </script>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-<!-- базові скрипти сайту -->
-<script src="script.js?v=4"></script>
-<script src="seo.js?v=4"></script>
-
-<!-- Рік у футері -->
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
