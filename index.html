@@ -7,18 +7,21 @@
   <link rel="stylesheet" href="/css/style.css"> <!-- Якщо є CSS, залиши цей рядок -->
 </head>
 <body>
-  <!-- Таймер з місцем для цифр -->
-  <div id="days"><span class="num"></span> Days</div>
-  <div id="hours"><span class="num"></span> Hours</div>
-  <div id="minutes"><span class="num"></span> Minutes</div>
-  <div id="seconds"><span class="num"></span> Seconds</div>
+  <!-- Логотип -->
+  <h1 data-i18n="title">Presidency Clock logo</h1>
+
+  <!-- Таймер -->
+  <div id="days"><span class="num"></span> <span data-i18n="days">Days</span></div>
+  <div id="hours"><span class="num"></span> <span data-i18n="hours">Hours</span></div>
+  <div id="minutes"><span class="num"></span> <span data-i18n="minutes">Minutes</span></div>
+  <div id="seconds"><span class="num"></span> <span data-i18n="seconds">Seconds</span></div>
 
   <!-- Слоти для реклами -->
   <div class="ad-slot" style="width: 300px; height: 250px;">Ad slot 1 — 300×250</div>
   <div class="ad-slot" style="width: 300px; height: 250px;">Ad slot 2 — 300×250</div>
   <div class="ad-slot" style="width: 728px; height: 90px;">Ad slot 3 — 728×90</div>
 
-  <!-- Кнопки для звуку (покажуться на основній сторінці, але не в embed) -->
+  <!-- Кнопки для звуку -->
   <button id="enable-sound" data-i18n="enable">Enable sound</button>
   <button id="mute-btn" data-i18n="unmute">Unmute</button>
   <button class="sound-option" data-mode="tick" data-i18n="tickSound">Ticking</button>
