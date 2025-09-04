@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Presidents by Time in Office — Presidency Clock</title>
   <meta name="description" content="Explore presidents by time in office with country tabs and sorting. Evergreen reference updated over time." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Presidents by Time in Office — Presidency Clock" />
+  <meta property="og:description" content="Country tabs, sorting by days served. Evergreen dataset." />
+  <meta property="og:url" content="https://presidencyclock.com/presidents.html" />
+  <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Presidents by Time in Office — Presidency Clock" />
+  <meta name="twitter:description" content="Filter by country and sort by time in office." />
+  <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,14 +26,9 @@
       <div class="controls">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
         <select id="language-select" aria-label="Language">
-          <option value="en">EN</option>
-          <option value="uk">UA</option>
-          <option value="es">ES</option>
-          <option value="fr">FR</option>
-          <option value="de">DE</option>
-          <option value="it">IT</option>
-          <option value="zh">中文</option>
-          <option value="ja">日本語</option>
+          <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
+          <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
+          <option value="zh">中文</option><option value="ja">日本語</option>
         </select>
       </div>
     </div>
@@ -29,24 +36,15 @@
 
   <main class="container">
     <section class="card">
-      <!-- Вкладки країн -->
       <div id="country-tabs" class="stack" style="margin-bottom:1rem;">
-        <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
-          <!-- кнопки створяться скриптом з data/presidents.json -->
-        </div>
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap;"></div>
       </div>
 
-      <!-- Панель керування таблицею -->
       <div style="display:flex; gap:.75rem; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:.5rem;">
-        <div class="muted small">
-          <span id="active-country-label">All Countries</span>
-        </div>
-        <div>
-          <button id="sort-toggle" class="secondary-btn" title="Sort by days served">Sort: shortest → longest</button>
-        </div>
+        <div class="muted small"><span id="active-country-label">All Countries</span></div>
+        <div><button id="sort-toggle" class="secondary-btn" title="Sort by days served">Sort: shortest → longest</button></div>
       </div>
 
-      <!-- Таблиця -->
       <div class="table-wrap">
         <table>
           <thead>
@@ -61,30 +59,32 @@
           <tbody id="presidents-table-body"></tbody>
         </table>
       </div>
-      <p class="muted small" style="margin-top:.5rem;">
-        Tip: click country tabs to filter. Use the sort button to toggle ascending/descending by days in office.
-      </p>
+      <p class="muted small" style="margin-top:.5rem;">Tip: click country tabs to filter. Use the sort button to toggle ascending/descending by days in office.</p>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <p class="footer-links">
-        <a href="index.html" data-i18n="home">Home</a>
-        <span aria-hidden="true">·</span>
-        <a href="about.html" data-i18n="about">About Us</a>
-        <span aria-hidden="true">·</span>
-        <a href="privacy.html" data-i18n="privacy">Privacy Policy</a>
-        <span aria-hidden="true">·</span>
-        <a href="contact.html" data-i18n="contact">Contact</a>
+        <a href="index.html" data-i18n="home">Home</a> ·
+        <a href="about.html" data-i18n="about">About Us</a> ·
+        <a href="privacy.html" data-i18n="privacy">Privacy Policy</a> ·
+        <a href="contact.html" data-i18n="contact">Contact</a> ·
+        <a href="#" onclick="pcOpenConsent();return false;">Manage cookies</a>
       </p>
       <p class="muted small">© <span id="year"></span> Presidency Clock</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <script
+    src="monetization.js"
+    data-ga="G-XXXXXXXXXX"
+    data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+    data-slot-top="0000000001"
+    data-slot-infeed="0000000002"
+    data-slot-side="0000000003">
   </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
