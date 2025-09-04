@@ -45,3 +45,16 @@ body {
     padding: 10px;
   }
 }
+table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+th {
+  background: #333;
+}
