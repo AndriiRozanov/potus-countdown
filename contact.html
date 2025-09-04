@@ -63,49 +63,25 @@
   </footer>
 
   <script src="script.js?v=3"></script>
-  <script src="seo.js?v=3"></script>
-  <script src="monetization.js?v=3"
-    <!-- Language switcher: fallback-only (?lang=...) -->
+<script src="seo.js?v=3"></script>
+<script
+  src="monetization.js?v=3"
+  data-ga="G-XXXXXXXXXX"
+  data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+  data-slot-top="0000000001"
+  data-slot-infeed="0000000002"
+  data-slot-side="0000000003"></script>
+
+<!-- Language switcher: fallback-only (?lang=...) -->
 <script>
-(function(){
-  var LANGS=["en","uk","es","fr","de","it","zh","ja"];
-  function norm(v){v=String(v||"").toLowerCase();
-    if(v==="ua")return"uk"; if(v==="us"||v==="en-us")return"en";
-    return LANGS.indexOf(v)>-1?v:"en";
-  }
-  // базовий шлях сторінки без мовного префікса
-  function basePath(){
-    var p=(location.pathname||"/").replace(/\/+$/,"")||"/";
-    var a=p.split("/").filter(Boolean); var l=a[0];
-    if(l && LANGS.indexOf(l)>-1 && l!=="en"){ return (("/"+a.slice(1).join("/"))||"/"); }
-    return p;
-  }
-  function urlWithParam(lang, base){
-    var q=base.indexOf("?")>-1; return (base==="/"?"/":base)+(q?"&":"?")+"lang="+lang;
-  }
-  function init(){
-    var sel=document.getElementById("language-select"); if(!sel) return;
-    sel.onchange=function(){ var t=norm(sel.value); location.href=urlWithParam(t, basePath()); };
-  }
-  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
-})();
+(function(){var L=["en","uk","es","fr","de","it","zh","ja"];
+function n(v){v=String(v||"").toLowerCase();if(v==="ua")return"uk";if(v==="us"||v==="en-us")return"en";return L.indexOf(v)>-1?v:"en";}
+function b(){var p=(location.pathname||"/").replace(/\/+$/,"")||"/";var a=p.split("/").filter(Boolean);var l=a[0];if(l&&L.indexOf(l)>-1&&l!=="en"){return (("/"+a.slice(1).join("/"))||"/");}return p;}
+function u(lang,base){var q=base.indexOf("?")>-1;return (base==="/"?"/":base)+(q?"&":"?")+"lang="+lang;}
+function init(){var s=document.getElementById("language-select");if(!s)return;s.onchange=function(){location.href=u(n(s.value), b());};}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();})();
 </script>
-    data-ga="G-XXXXXXXXXX" data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
-    data-slot-top="0000000001" data-slot-infeed="0000000002" data-slot-side="0000000003"></script>
 
-  <!-- Language switcher: robust with fallback -->
-  <script>
-  (function(){
-    var L=["en","uk","es","fr","de","it","zh","ja"];
-    function n(v){v=String(v||"").toLowerCase();if(v==="ua")return"uk";if(v==="us"||v==="en-us")return"en";return L.indexOf(v)>-1?v:"en";}
-    function d(){var p=(location.pathname||"/").replace(/\/+$/,"")||"/";var a=p.split("/").filter(Boolean),l="en";if(a.length&&L.indexOf(a[0])>-1&&a[0]!=="en")l=a[0];var b=(l!=="en")?(("/"+a.slice(1).join("/"))||"/"):p;return{lang:l,basePath:b};}
-    function pu(l,b){return l==="en"?b:(b==="/" ? ("/"+l+"/") : ("/"+l+b));}
-    function fu(l,b){var q=b.indexOf("?")>-1;return(b==="/"?"/":b)+(q?"&":"?")+"lang="+l;}
-    function init(){var s=document.getElementById("language-select");if(!s)return;var x=d();s.value=x.lang;s.onchange=function(){var t=n(s.value),b=d().basePath,p=pu(t,b);fetch(p,{method:"HEAD"}).then(function(r){if(r&&r.ok){location.href=p;}else{location.href=fu(t,b);}}).catch(function(){location.href=fu(t,b);});};}
-    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
-  })();
-  </script>
-
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
