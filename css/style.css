@@ -58,3 +58,18 @@ th, td {
 th {
   background: #333;
 }
+.theme-toggle {
+  margin: 10px;
+}
+.theme-toggle select {
+  padding: 5px;
+}
+body.light {
+  background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+  color: #333;
+}
+body.light .clock div {
+  background: #fff;
+  color: #007aff;
+  box-shadow: 0 0 10px rgba(0, 122, 255, 0.5);
+}
