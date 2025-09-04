@@ -1,13 +1,13 @@
 {
   "rewrites": [
     { "source": "/:lang(uk|es|fr|de|it|zh|ja)", "destination": "/?lang=:lang" },
+    { "source": "/:lang(uk|es|fr|de|it|zh|ja)/", "destination": "/?lang=:lang" },
     { "source": "/:lang(uk|es|fr|de|it|zh|ja)/:path*", "destination": "/:path*?lang=:lang" }
   ],
   "redirects": [
     { "source": "/en", "destination": "/", "permanent": true },
     { "source": "/en/:path*", "destination": "/:path*", "permanent": true }
   ],
-  {
   "headers": [
     {
       "source": "/(seo|script|monetization)\\.js",
