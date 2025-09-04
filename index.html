@@ -75,9 +75,12 @@
       </div>
 
       <div class="right-col">
-        <!-- Presidents table -->
+        <!-- Presidents table (preview) -->
         <section id="presidents-table" class="card">
-          <h2 data-i18n="presidents">Presidents by Time in Office</h2>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
+            <h2 data-i18n="presidents" style="margin:0;">Presidents by Time in Office</h2>
+            <a class="secondary-btn" href="presidents.html" id="view-all-presidents" data-i18n="view-all">View all</a>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -88,10 +91,13 @@
                 </tr>
               </thead>
               <tbody id="presidents-data">
-                <!-- Will be populated by script -->
+                <!-- Populated by script -->
               </tbody>
             </table>
           </div>
+          <p class="muted small" style="margin-top:.5rem;">
+            Preview shows shortest-serving leaders across countries. Click “View all” for filters and sorting.
+          </p>
         </section>
       </div>
     </div>
