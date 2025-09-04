@@ -6,32 +6,43 @@
   <title>Presidency Clock — Trump Countdown</title>
   <meta name="description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data. Multilingual and embeddable." />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Presidency Clock — Trump Countdown" />
-  <meta property="og:description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data." />
-  <meta property="og:url" content="https://presidencyclock.com/" />
-  <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <!-- Consent Mode v2 (default denied) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted'
+    });
+  </script>
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Presidency Clock — Trump Countdown" />
-  <meta name="twitter:description" content="Live countdown, news digest, presidents data." />
-  <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
+  <!-- Google Funding Choices (CMP) -->
+  <script async src="https://fundingchoicesmessages.google.com/i/pub-5023415479696725?ers=1"></script>
+  <script>
+    (function () {
+      function signalGooglefcPresent() {
+        if (!window.frames['googlefcPresent']) {
+          if (document.body) {
+            const i = document.createElement('iframe');
+            i.style.cssText = 'width:0;height:0;border:0;display:none';
+            i.name = 'googlefcPresent';
+            document.body.appendChild(i);
+          } else { setTimeout(signalGooglefcPresent, 0); }
+        }
+      }
+      signalGooglefcPresent();
+    })();
+  </script>
 
-  <!-- Performance hints -->
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
-  <meta name="theme-color" content="#0b0f18">
-
-  <!-- AdSense Auto ads (your pub id) -->
+  <!-- AdSense Auto ads -->
   <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
 
-  <!-- lang-from-query: make ?lang= override any stored value -->
+  <!-- lang-from-query: пріоритет ?lang= -->
   <script>
   (function () {
     var usp = new URLSearchParams(location.search);
@@ -56,6 +67,27 @@
   })();
   </script>
 
+  <!-- Perf/meta -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+  <meta name="theme-color" content="#0b0f18">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Presidency Clock — Trump Countdown" />
+  <meta property="og:description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data." />
+  <meta property="og:url" content="https://presidencyclock.com/" />
+  <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Presidency Clock — Trump Countdown" />
+  <meta name="twitter:description" content="Live countdown, news digest, presidents data." />
+  <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -63,10 +95,8 @@
     <div class="container header-inner">
       <h1 id="site-title" data-i18n="title">How much time does Donald Trump have left as president?</h1>
 
-      <!-- Controls -->
       <div class="controls">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
-        <!-- Language form -> ?lang=... -->
         <form id="lang-form" method="get" action="" style="display:inline">
           <label class="visually-hidden" for="language-select">Language</label>
           <select id="language-select" name="lang" aria-label="Language select"
@@ -152,7 +182,7 @@
     </div>
   </footer>
 
-  <!-- base scripts -->
+  <!-- Base scripts -->
   <script src="script.js?v=4"></script>
   <script src="seo.js?v=4"></script>
 
@@ -168,7 +198,7 @@
   })();
   </script>
 
-  <!-- Sync language select with current language -->
+  <!-- Sync language select -->
   <script>
   (function(){
     var sel=document.getElementById('language-select'); if(!sel) return;
