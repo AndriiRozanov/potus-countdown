@@ -22,9 +22,7 @@
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
       }
       .pc-consent p { margin: 0; max-width: 880px; }
-      .pc-consent .btn {
-        border-radius: 10px; padding: .6rem 1rem; cursor: pointer; font: inherit; border: 1px solid #2a3550;
-      }
+      .pc-consent .btn { border-radius: 10px; padding: .6rem 1rem; cursor: pointer; font: inherit; border: 1px solid #2a3550; }
       .pc-consent .btn.primary { background:#5b8cff; color:#0b0f18; border:none; }
       .pc-consent .btn.secondary { background:#121728; color:#e8ecff; }
       .pc-consent a { color:#9bc0ff; }
@@ -141,7 +139,7 @@
     bannerEl = null;
   }
 
-  // публічна функція для кнопки “Manage cookies”
+  // Публічна функція для кнопки “Manage cookies”
   window.pcOpenConsent = function() {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showBanner, { once: true });
@@ -158,7 +156,7 @@
     loadAdSense();
     setTimeout(renderAllAds, 250);
   } else if (existing === 'denied') {
-    // no ads/analytics
+    // нічого не робимо (аналітика/реклама заборонені)
   } else {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showBanner);
