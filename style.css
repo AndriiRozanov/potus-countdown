@@ -233,3 +233,10 @@ tbody tr:hover { background: color-mix(in srgb, var(--card), var(--bg-2) 18%); }
 
 /* Avoid margins collapse around ad containers */
 .ad-slot { display: block; width: 100%; }
+.lang-links { display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; }
+.lang-links a {
+  font-size: .85rem; opacity:.85; text-decoration:none; padding:.15rem .4rem;
+  border:1px solid var(--card-border); border-radius:.4rem;
+}
+.lang-links a:hover { opacity:1; }
+@media (max-width:480px){ .lang-links { display:none; } } /* на мобілці можна приховати */
