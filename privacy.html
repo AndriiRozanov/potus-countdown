@@ -47,22 +47,25 @@
   </footer>
 
   <script src="script.js?v=3"></script>
-  <script src="lang-router.js?v=1"></script>
   <script src="seo.js?v=3"></script>
   <script src="monetization.js?v=3"
     data-ga="G-XXXXXXXXXX" data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
     data-slot-top="0000000001" data-slot-infeed="0000000002" data-slot-side="0000000003"></script>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
   <!-- Language switcher: inline & robust -->
+<!-- Language switcher: robust with fallback -->
 <script>
 (function(){
   var LANGS = ["en","uk","es","fr","de","it","zh","ja"];
+
   function normalize(v){
     v = String(v||"").toLowerCase();
     if (v==="ua") return "uk";
     if (v==="us" || v==="en-us") return "en";
     return LANGS.indexOf(v)>-1 ? v : "en";
   }
+
+  // визначаємо поточну мову з URL та базовий шлях сторінки без префікса
   function detect(){
     var p = (location.pathname||"/").replace(/\/+$/,"") || "/";
     var parts = p.split("/").filter(Boolean);
@@ -71,21 +74,43 @@
     var basePath = (lang!=="en") ? (("/"+parts.slice(1).join("/")) || "/") : p;
     return { lang: lang, basePath: basePath };
   }
-  function urlFor(lang, basePath){
+
+  function prettyUrl(lang, basePath){
     if (lang==="en") return basePath;                 // англ. — без префікса
     return basePath==="/" ? ("/"+lang+"/") : ("/"+lang+basePath);
   }
+
+  function fallbackUrl(lang, basePath){
+    // ?lang=uk як запасний варіант, якщо префікс /uk/ ще не працює
+    var hasQ = basePath.indexOf("?")>-1;
+    return (basePath==="/"?"/":basePath) + (hasQ?"&":"?") + "lang=" + lang;
+  }
+
   function init(){
     var sel = document.getElementById("language-select");
     if (!sel) return;
+
+    // виставляємо вибір у селекті за поточним URL
     var d = detect();
-    sel.value = d.lang;                               // виставляємо поточну мову
+    sel.value = d.lang;
+
     sel.onchange = function(){
-      var l = normalize(sel.value);
-      var url = urlFor(l, detect().basePath);
-      if (location.pathname !== url) location.href = url;
+      var target = normalize(sel.value);
+      var base   = detect().basePath;
+      var pretty = prettyUrl(target, base);
+
+      // спершу пробуємо красивий URL з префіксом
+      fetch(pretty, { method:"HEAD" })
+        .then(function(r){
+          if (r && r.ok) { location.href = pretty; }
+          else           { location.href = fallbackUrl(target, base); }
+        })
+        .catch(function(){
+          location.href = fallbackUrl(target, base);
+        });
     };
   }
+
   if (document.readyState==="loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
