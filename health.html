@@ -6,32 +6,45 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <style>
-    :root{--bg:#0b0f18;--fg:#e6ecf2;--card:#141a24;--muted:#94a3b8;--border:#223049;}
-    @media (prefers-color-scheme: light){
-      :root{--bg:#ffffff;--fg:#0b1220;--card:#f6f8fb;--muted:#4b5563;--border:#e5e7eb;}
+    :root{--bg:#0b0f18;--fg:#e6ecf2;--card:#141a24;--muted:#94a3b8;--border:#223049}
+    @media (prefers-color-scheme:light){
+      :root{--bg:#fff;--fg:#0b1220;--card:#f6f8fb;--muted:#4b5563;--border:#e5e7eb}
     }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     .container{max-width:920px;margin:0 auto;padding:24px}
-    h1{margin:0 0 12px}
     .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:16px}
     code{background:rgba(148,163,184,.15);padding:2px 6px;border-radius:6px}
-    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .muted{color:var(--muted)}
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
     .controls{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
     #lang-form select{margin-left:.25rem}
-    a.btn{display:inline-block;padding:.4rem .7rem;border:1px solid var(--border);border-radius:.5rem;text-decoration:none;color:inherit}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px}
-    @media (min-width:700px){.grid{grid-template-columns:1fr 1fr}}
+    .btn{display:inline-block;padding:.4rem .7rem;border:1px solid var(--border);border-radius:.5rem;text-decoration:none;color:inherit;margin-right:.5rem}
+    .muted{color:var(--muted)}
     footer{margin-top:24px;font-size:.9rem}
   </style>
+
+  <!-- пріоритет мови з ?lang= -->
+  <script>
+  (function () {
+    var usp = new URLSearchParams(location.search);
+    var raw = usp.get('lang');
+    if (!raw) return;
+    var lang = String(raw).toLowerCase();
+    if (lang === 'ua') lang = 'uk';
+    if (lang === 'us' || lang === 'en-us') lang = 'en';
+    var allowed = ['en','uk','es','fr','de','it','zh','ja'];
+    if (allowed.indexOf(lang) === -1) return;
+    try { localStorage.setItem('pc_lang', lang); } catch (e) {}
+    document.documentElement.setAttribute('lang', lang);
+  })();
+  </script>
 </head>
 <body>
   <div class="container">
-    <div class="row" style="justify-content:space-between">
+    <div class="row">
       <h1>Health Check</h1>
 
-      <!-- Мовний перемикач (чистий HTML → додає ?lang=...) -->
+      <!-- Чиста HTML-форма → додає ?lang= та відправляє сторінку -->
       <div class="controls">
         <form id="lang-form" method="get" action="" style="display:inline">
           <label class="visually-hidden" for="language-select">Language</label>
@@ -45,75 +58,59 @@
       </div>
     </div>
 
-    <div class="card grid">
-      <div>
-        <h3 style="margin-top:0">Location</h3>
-        <p><strong>Origin:</strong> <code id="origin"></code></p>
-        <p><strong>Pathname:</strong> <code id="path"></code></p>
-        <p><strong>Search:</strong> <code id="search"></code></p>
-        <p><strong>Detected language:</strong> <code id="lang"></code></p>
-        <p class="muted" id="hint"></p>
-      </div>
-      <div>
-        <h3 style="margin-top:0">Quick links</h3>
-        <p class="row">
-          <a class="btn" href="/health.html">/health.html</a>
-          <a class="btn" href="/?lang=uk">/?lang=uk</a>
-          <a class="btn" href="/?lang=es">/?lang=es</a>
-        </p>
-        <p class="row">
-          <a class="btn" href="/uk/health.html">/uk/health.html</a>
-          <a class="btn" href="/es/health.html">/es/health.html</a>
-        </p>
-        <p class="muted">Якщо посилання з префіксом <code>/uk/</code> відкривається — rewrites працюють.
-          Якщо ні — користуйся варіантом з <code>?lang=</code> (це теж ок).</p>
-      </div>
+    <div class="card">
+      <p><strong>Origin:</strong> <code id="origin"></code></p>
+      <p><strong>Pathname:</strong> <code id="path"></code></p>
+      <p><strong>Search:</strong> <code id="search"></code></p>
+      <p><strong>Detected language:</strong> <code id="lang"></code></p>
+
+      <p class="muted" id="hint"></p>
+      <p>
+        <a class="btn" href="/health.html">/health.html</a>
+        <a class="btn" href="/?lang=uk">/?lang=uk</a>
+        <a class="btn" href="/?lang=es">/?lang=es</a>
+        <a class="btn" href="/uk/health.html">/uk/health.html</a>
+        <a class="btn" href="/es/health.html">/es/health.html</a>
+      </p>
     </div>
 
     <footer class="muted">© <span id="year"></span> Presidency Clock — test page (noindex)</footer>
   </div>
 
   <script>
-    (function(){
-      var u = new URL(location.href);
-      var search = u.searchParams;
-      var langs = ["en","uk","es","fr","de","it","zh","ja"];
-      function detectLang(){
-        var q = (search.get('lang') || '').toLowerCase();
-        if (q === 'ua') q = 'uk';
-        if (q === 'us' || q === 'en-us') q = 'en';
-        if (langs.indexOf(q) > -1) return q;
-        // спроба зчитати з префікса шляху: /uk/health.html
-        var parts = location.pathname.split('/').filter(Boolean);
-        var pref = parts[0] || '';
-        if (langs.indexOf(pref) > -1 && pref !== 'en') return pref;
-        return 'en';
-      }
+  (function(){
+    function detectLang(){
+      var usp = new URLSearchParams(location.search);
+      var q = (usp.get('lang') || '').toLowerCase();
+      if (q === 'ua') q = 'uk';
+      if (q === 'us' || q === 'en-us') q = 'en';
+      var L = ['en','uk','es','fr','de','it','zh','ja'];
+      if (L.indexOf(q) > -1) return q;
+      var parts = location.pathname.split('/').filter(Boolean);
+      var pref = parts[0] || '';
+      if (L.indexOf(pref) > -1 && pref !== 'en') return pref;
+      return 'en';
+    }
+    document.getElementById('origin').textContent = location.origin;
+    document.getElementById('path').textContent = location.pathname;
+    document.getElementById('search').textContent = location.search || '(none)';
+    var lang = detectLang();
+    document.getElementById('lang').textContent = lang;
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      // вивід
-      document.getElementById('origin').textContent = location.origin;
-      document.getElementById('path').textContent = location.pathname;
-      document.getElementById('search').textContent = location.search || '(none)';
-      var lang = detectLang();
-      document.getElementById('lang').textContent = lang;
+    // виставляємо селект
+    var sel = document.getElementById('language-select'); if (sel) sel.value = lang;
 
-      // встановлюємо значення селекта
-      var sel = document.getElementById('language-select');
-      if (sel) sel.value = lang;
-
-      // підказка про rewrites
-      var hint = document.getElementById('hint');
-      if (location.pathname.startsWith('/uk/') || location.pathname.startsWith('/es/')) {
-        hint.textContent = 'Ви на URL із мовним префіксом. Якщо сторінка відкрилась — rewrites активні.';
-      } else if (search.has('lang')) {
-        hint.textContent = 'Мова встановлена через ?lang=. Це повністю робочий варіант для SEO та AdSense.';
-      } else {
-        hint.textContent = 'Мова не задана. Оберіть у селекті — з’явиться ?lang= і сторінка перезавантажиться.';
-      }
-
-      // рік у футері
-      document.getElementById('year').textContent = new Date().getFullYear();
-    })();
+    // хінт
+    var hint = document.getElementById('hint');
+    if (location.pathname.startsWith('/uk/') || location.pathname.startsWith('/es/')) {
+      hint.textContent = 'URL із префіксом (rewrites). Якщо відкривається — rewrites працюють.';
+    } else if ((new URLSearchParams(location.search)).has('lang')) {
+      hint.textContent = 'Мова з параметра ?lang=. Це повністю ок для SEO/AdSense.';
+    } else {
+      hint.textContent = 'Мова не задана. Обери у селекті — зʼявиться ?lang= та перезавантажиться сторінка.';
+    }
+  })();
   </script>
 </body>
 </html>
