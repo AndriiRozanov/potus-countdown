@@ -73,6 +73,7 @@
   <script src="script.js?v=3"></script>
 <script src="seo.js?v=3"></script>
 <script
+  <script
   src="monetization.js?v=3"
   data-ga="G-XXXXXXXXXX"
   data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
@@ -80,16 +81,31 @@
   data-slot-infeed="0000000002"
   data-slot-side="0000000003"></script>
 
-<!-- Language switcher: fallback-only (?lang=...) -->
+<!-- Language switcher: simple & guaranteed (?lang=...) -->
 <script>
-(function(){var L=["en","uk","es","fr","de","it","zh","ja"];
-function n(v){v=String(v||"").toLowerCase();if(v==="ua")return"uk";if(v==="us"||v==="en-us")return"en";return L.indexOf(v)>-1?v:"en";}
-function b(){var p=(location.pathname||"/").replace(/\/+$/,"")||"/";var a=p.split("/").filter(Boolean);var l=a[0];if(l&&L.indexOf(l)>-1&&l!=="en"){return (("/"+a.slice(1).join("/"))||"/");}return p;}
-function u(lang,base){var q=base.indexOf("?")>-1;return (base==="/"?"/":base)+(q?"&":"?")+"lang="+lang;}
-function init(){var s=document.getElementById("language-select");if(!s)return;s.onchange=function(){location.href=u(n(s.value), b());};}
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();})();
+(function(){
+  function init(){
+    var sel = document.getElementById('language-select');
+    if (!sel) return;
+
+    sel.addEventListener('change', function(){
+      var lang = String(sel.value || '').toLowerCase();
+      if (lang === 'ua') lang = 'uk';
+      if (lang === 'us' || lang === 'en-us') lang = 'en';
+
+      var u = new URL(window.location.href);
+      u.searchParams.set('lang', lang);
+      window.location.href = u.pathname + '?' + u.searchParams.toString();
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once:true });
+  } else {
+    init();
+  }
+})();
 </script>
 
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
