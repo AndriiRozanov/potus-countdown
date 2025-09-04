@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Про нас — Presidency Clock</title>
+  <meta name="description" content="Про проєкт Presidency Clock: лічильник терміну президентства та добірка новин." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1>Про нас</h1>
+    </div>
+  </header>
+  <main class="container">
+    <section class="card stack">
+      <p><strong>Presidency Clock</strong> — незалежний неофіційний інформаційний проєкт з мінімалістичним лічильником часу та новинними дайджестами. Мета — надавати зручний, зрозумілий і швидкий доступ до ключової інформації.</p>
+      <p>Ми не є пов’язаними з урядом США або будь-якими політичними структурами. Матеріали на сайті мають інформаційний і довідковий характер.</p>
+      <p>Зв’язок: <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-links">
+        <a href="index.html">Головна</a> ·
+        <a href="privacy.html">Політика конфіденційності</a> ·
+        <a href="contact.html">Контакти</a>
+      </p>
+      <p class="muted small">© <span id="year"></span> Presidency Clock</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
