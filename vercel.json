@@ -1,4 +1,25 @@
 {
+  "rewrites": [
+    { "source": "/uk", "destination": "/?lang=uk" },
+    { "source": "/es", "destination": "/?lang=es" },
+    { "source": "/fr", "destination": "/?lang=fr" },
+    { "source": "/de", "destination": "/?lang=de" },
+    { "source": "/it", "destination": "/?lang=it" },
+    { "source": "/zh", "destination": "/?lang=zh" },
+    { "source": "/ja", "destination": "/?lang=ja" },
+
+    { "source": "/uk/:path*", "destination": "/:path*?lang=uk" },
+    { "source": "/es/:path*", "destination": "/:path*?lang=es" },
+    { "source": "/fr/:path*", "destination": "/:path*?lang=fr" },
+    { "source": "/de/:path*", "destination": "/:path*?lang=de" },
+    { "source": "/it/:path*", "destination": "/:path*?lang=it" },
+    { "source": "/zh/:path*", "destination": "/:path*?lang=zh" },
+    { "source": "/ja/:path*", "destination": "/:path*?lang=ja" }
+  ],
+  "redirects": [
+    { "source": "/en", "destination": "/", "permanent": true },
+    { "source": "/en/:path*", "destination": "/:path*", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.(css|js|jpg|jpeg|png|gif|svg|woff2)",
