@@ -17,7 +17,7 @@ const translations = {
     home: "Home",
     "view-all": "View all",
     "read-more": "Read more",
-    "archive-note": "Top daily headline picked by AI. Below is the recent archive.",
+    "archive-note": "Top daily headline picked by AI. Below is the recent archive."
   },
   uk: {
     title: "Скільки Дональду Трампу залишилось часу на посту президента?",
@@ -36,7 +36,7 @@ const translations = {
     home: "Головна",
     "view-all": "Переглянути все",
     "read-more": "Детальніше",
-    "archive-note": "Головний заголовок дня, обраний ШІ. Нижче — недавній архів.",
+    "archive-note": "Головний заголовок дня, обраний ШІ. Нижче — недавній архів."
   },
   es: {
     title: "¿Cuánto tiempo le queda a Donald Trump como presidente?",
@@ -55,7 +55,7 @@ const translations = {
     home: "Inicio",
     "view-all": "Ver todo",
     "read-more": "Leer más",
-    "archive-note": "Titular diario seleccionado por IA. Abajo el archivo reciente.",
+    "archive-note": "Titular diario seleccionado por IA. Abajo el archivo reciente."
   },
   fr: {
     title: "Combien de temps reste-t-il à Donald Trump en tant que président ?",
@@ -74,7 +74,7 @@ const translations = {
     home: "Accueil",
     "view-all": "Tout voir",
     "read-more": "En savoir plus",
-    "archive-note": "Gros titre du jour choisi par l'IA. Ci-dessous, les archives récentes.",
+    "archive-note": "Gros titre du jour choisi par l'IA. Ci-dessous, les archives récentes."
   },
   de: {
     title: "Wie viel Zeit bleibt Donald Trump noch als Präsident?",
@@ -93,7 +93,7 @@ const translations = {
     home: "Startseite",
     "view-all": "Alle ansehen",
     "read-more": "Mehr lesen",
-    "archive-note": "Tägliche Schlagzeile von KI ausgewählt. Unten das aktuelle Archiv.",
+    "archive-note": "Tägliche Schlagzeile von KI ausgewählt. Unten das aktuelle Archiv."
   },
   it: {
     title: "Quanto tempo resta a Donald Trump come presidente?",
@@ -112,7 +112,7 @@ const translations = {
     home: "Home",
     "view-all": "Vedi tutto",
     "read-more": "Scopri di più",
-    "archive-note": "Titolo del giorno scelto dall'IA. Sotto l'archivio recente.",
+    "archive-note": "Titolo del giorno scelto dall'IA. Sotto l'archivio recente."
   },
   zh: {
     title: "唐纳德·特朗普还剩多少总统任期？",
@@ -131,7 +131,7 @@ const translations = {
     home: "首页",
     "view-all": "查看全部",
     "read-more": "了解更多",
-    "archive-note": "由 AI 选出的今日头条。以下为近期归档。",
+    "archive-note": "由 AI 选出的今日头条。以下为近期归档。"
   },
   ja: {
     title: "ドナルド・トランプが大統領として残された時間は？",
@@ -150,36 +150,28 @@ const translations = {
     home: "ホーム",
     "view-all": "すべて表示",
     "read-more": "詳しく見る",
-    "archive-note": "AI が選んだ本日の見出し。以下は最近のアーカイブです。",
+    "archive-note": "AI が選んだ本日の見出し。以下は最近のアーカイブです。"
   }
 };
-
-// expose for other helpers if needed
 window.translations = translations;
 
 /* ====== Language switching ====== */
 function setLanguage(lang) {
-  // Elements with data-i18n (inner text)
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     const val = translations?.[lang]?.[key] ?? translations?.en?.[key];
     if (typeof val === "string") el.textContent = val;
   });
-  // Elements that hold titles (secondary pages)
   document.querySelectorAll("[data-i18n-head]").forEach((el) => {
     const key = el.getAttribute("data-i18n-head");
     const val = translations?.[lang]?.[key] ?? translations?.en?.[key];
     if (typeof val === "string") el.textContent = val;
   });
 }
-
 const langSelect = document.getElementById("language-select");
-const storedLang = (() => {
-  try { return localStorage.getItem("lang"); } catch { return null; }
-})();
+const storedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; }})();
 const browserLang = (navigator.language || "en").slice(0, 2);
 const initialLang = translations[browserLang] ? (storedLang || browserLang) : (storedLang || "en");
-
 if (langSelect) {
   langSelect.value = initialLang;
   langSelect.addEventListener("change", (e) => {
@@ -187,7 +179,6 @@ if (langSelect) {
     try { localStorage.setItem("lang", lang); } catch {}
     setLanguage(lang);
     hydrateDynamicLabels(lang);
-    // also refresh digest/news buttons if re-rendered later
   });
 }
 setLanguage(initialLang);
@@ -201,8 +192,9 @@ if (themeToggle) {
 }
 
 /* ====== Countdown ====== */
+/* Inauguration is at noon ET (UTC-5) → 17:00:00Z on Jan 20, 2029 */
 function updateCountdown() {
-  const endDate = new Date("2029-01-20T12:00:00Z");
+  const endDate = new Date("2029-01-20T17:00:00Z");
   const now = new Date();
   const diff = endDate - now;
   const el = document.getElementById("countdown");
@@ -337,19 +329,17 @@ function hydrateDynamicLabels(lang) {
 (async function mountHome() {
   const trumpNewsEl = document.getElementById("trump-news");
   const newsDigestEl = document.getElementById("news-container");
-  if (!(trumpNewsEl || newsDigestEl)) return; // not on home
+  if (!(trumpNewsEl || newsDigestEl)) return;
 
   const lang = (langSelect && langSelect.value) || initialLang;
   hydrateDynamicLabels(lang);
 
-  // “Main about Trump today” (latest only; demo for now)
   if (trumpNewsEl) {
     trumpNewsEl.innerHTML = "";
     const latest = demoData.trumpToday[0];
     trumpNewsEl.appendChild(createNewsCard(latest, { withSummary: true, lang }));
   }
 
-  // Digest preview: try fetch real data, fallback to demo
   if (newsDigestEl) {
     try {
       const res = await fetch("data/digest.json", { cache: "no-store" });
@@ -387,7 +377,7 @@ function hydrateDynamicLabels(lang) {
 /* ====== Mount: digest.html (full list from data/digest.json) ====== */
 (async function mountDigestPage() {
   const list = document.getElementById("digest-list");
-  if (!list) return; // not on digest page
+  if (!list) return;
 
   const lang = (langSelect && langSelect.value) || initialLang;
 
@@ -401,7 +391,6 @@ function hydrateDynamicLabels(lang) {
       list.appendChild(createNewsCard(item, { withSummary: true, lang }));
     });
 
-    // show updated timestamp
     const note = document.getElementById("digest-note");
     if (note && data.updatedAt) {
       const dt = new Date(data.updatedAt);
@@ -417,7 +406,6 @@ function hydrateDynamicLabels(lang) {
     list.innerHTML = `<p class="muted">Failed to load digest.</p>`;
   }
 
-  // Re-render on language change to update “Read more” labels
   if (langSelect) {
     langSelect.addEventListener("change", async () => {
       try {
@@ -444,8 +432,8 @@ function hydrateDynamicLabels(lang) {
 
   const state = {
     data: null,
-    sortAsc: true,       // shortest → longest by default
-    activeCountry: "ALL" // "ALL" or specific country
+    sortAsc: true,
+    activeCountry: "ALL"
   };
 
   function daysBetween(start, end) {
@@ -482,21 +470,23 @@ function hydrateDynamicLabels(lang) {
   }
 
   async function loadData() {
-    if (state.data) return state.data;
-    const res = await fetch("data/presidents.json", { cache: "no-store" });
-    const json = await res.json();
-    state.data = {
-      countries: json.countries || [],
-      entries: normalizeEntries(json)
-    };
-    return state.data;
+    try {
+      const res = await fetch("data/presidents.json", { cache: "no-store" });
+      const json = await res.json();
+      return {
+        countries: json.countries || [],
+        entries: normalizeEntries(json)
+      };
+    } catch (e) {
+      console.error("Presidents data error:", e);
+      return { countries: [], entries: [] };
+    }
   }
 
   function renderHomePreview(entries) {
     const tbody = document.getElementById(HOME_TBODY_ID);
     if (!tbody) return;
     tbody.innerHTML = "";
-    // show top-5 shortest overall
     sortByDays(entries, true).slice(0, 5).forEach(row => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
@@ -506,8 +496,6 @@ function hydrateDynamicLabels(lang) {
       `;
       tbody.appendChild(tr);
     });
-
-    // localize the "View all" button
     const btn = document.getElementById(VIEW_ALL_BTN_ID);
     if (btn) {
       const lang = (langSelect && langSelect.value) || initialLang;
@@ -569,32 +557,21 @@ function hydrateDynamicLabels(lang) {
 
   async function mountHome() {
     const el = document.getElementById(HOME_TBODY_ID);
-    if (!el) return; // not on home
-    try {
-      const data = await loadData();
-      renderHomePreview(data.entries);
-    } catch (e) {
-      console.error("Presidents (home) load error:", e);
-      el.innerHTML = `<tr><td colspan="3" class="muted">Failed to load data.</td></tr>`;
-    }
+    if (!el) return;
+    const data = await loadData();
+    renderHomePreview(data.entries);
   }
 
   async function mountPresidentsPage() {
     const el = document.getElementById(PAGE_TBODY_ID);
-    if (!el) return; // not on presidents page
-    try {
-      const data = await loadData();
-      if (!document.querySelector(TABS_WRAP_SELECTOR).children.length) {
-        renderTabs(data.countries);
-      }
-      renderPageTable(data.entries);
-    } catch (e) {
-      console.error("Presidents (page) load error:", e);
-      el.innerHTML = `<tr><td colspan="5" class="muted">Failed to load data.</td></tr>`;
+    if (!el) return;
+    const data = await loadData();
+    if (!document.querySelector(TABS_WRAP_SELECTOR).children.length) {
+      renderTabs(data.countries);
     }
+    renderPageTable(data.entries);
   }
 
-  // Bind sort toggle on presidents page
   (function bindSortToggle() {
     const btn = document.getElementById("sort-toggle");
     if (!btn) return;
@@ -607,7 +584,6 @@ function hydrateDynamicLabels(lang) {
     });
   })();
 
-  // Re-localize the "View all" button when language changes
   (function bindLangRepaint() {
     if (!langSelect) return;
     langSelect.addEventListener("change", () => {
@@ -619,7 +595,6 @@ function hydrateDynamicLabels(lang) {
     });
   })();
 
-  // Mount now
   mountHome();
   mountPresidentsPage();
 })();
