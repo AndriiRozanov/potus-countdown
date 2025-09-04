@@ -5,9 +5,19 @@
   <title>Про нас — Presidency Clock</title>
   <meta name="description" content="Про проєкт Presidency Clock: лічильник терміну президентства та добірка новин." />
 
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+  <!-- Consent Mode v2 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied','ad_user_data': 'denied','ad_personalization': 'denied',
+      'analytics_storage': 'denied','functionality_storage': 'granted','security_storage': 'granted'
+    });
+  </script>
+
+  <!-- Funding Choices -->
+  <script async src="https://fundingchoicesmessages.google.com/i/pub-5023415479696725?ers=1"></script>
+  <script>(function(){function s(){if(!window.frames['googlefcPresent']){if(document.body){const i=document.createElement('iframe');i.style.cssText='width:0;height:0;border:0;display:none';i.name='googlefcPresent';document.body.appendChild(i);}else{setTimeout(s,0);}}}s();})();</script>
 
   <!-- AdSense -->
   <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
@@ -22,6 +32,11 @@
   <script>
   (function(){var s=null;try{s=localStorage.getItem('pc_theme');}catch(e){};var t=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);} )();
   </script>
+
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+  <meta name="theme-color" content="#0b0f18">
 
   <link rel="stylesheet" href="style.css" />
 </head>
