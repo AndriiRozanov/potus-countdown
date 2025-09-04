@@ -33,15 +33,31 @@
   <header class="site-header">
     <div class="container header-inner">
       <h1 id="site-title" data-i18n="title">How much time does Donald Trump have left as president?</h1>
+
+      <!-- ===== controls (theme + languages) ===== -->
       <div class="controls">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
+
         <label class="visually-hidden" for="language-select">Language</label>
         <select id="language-select" aria-label="Language select">
           <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
           <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
           <option value="zh">中文</option><option value="ja">日本語</option>
         </select>
+
+        <!-- Тимчасові лінки (працюють завжди через ?lang=...) -->
+        <nav class="lang-links" aria-label="Languages">
+          <a href="?lang=en">EN</a>
+          <a href="?lang=uk">UA</a>
+          <a href="?lang=es">ES</a>
+          <a href="?lang=fr">FR</a>
+          <a href="?lang=de">DE</a>
+          <a href="?lang=it">IT</a>
+          <a href="?lang=zh">中文</a>
+          <a href="?lang=ja">日本語</a>
+        </nav>
       </div>
+      <!-- ======================================= -->
     </div>
   </header>
 
@@ -132,69 +148,34 @@
     data-slot-top="0000000001"
     data-slot-infeed="0000000002"
     data-slot-side="0000000003"></script>
+
+  <!-- Language switcher: robust with fallback -->
+  <script>
+  (function(){
+    var LANGS = ["en","uk","es","fr","de","it","zh","ja"];
+    function normalize(v){ v=String(v||"").toLowerCase(); if(v==="ua")return"uk"; if(v==="us"||v==="en-us")return"en"; return LANGS.indexOf(v)>-1?v:"en"; }
+    function detect(){
+      var p=(location.pathname||"/").replace(/\/+$/,"")||"/";
+      var parts=p.split("/").filter(Boolean); var lang="en";
+      if(parts.length&&LANGS.indexOf(parts[0])>-1&&parts[0]!=="en") lang=parts[0];
+      var base=(lang!=="en")?(("/"+parts.slice(1).join("/"))||"/"):p;
+      return {lang:lang, basePath:base};
+    }
+    function prettyUrl(lang, base){ if(lang==="en")return base; return base==="/" ? ("/"+lang+"/") : ("/"+lang+base); }
+    function fallbackUrl(lang, base){ var q=base.indexOf("?")>-1; return (base==="/"?"/":base)+(q?"&":"?")+"lang="+lang; }
+    function init(){
+      var sel=document.getElementById("language-select"); if(!sel)return;
+      var d=detect(); sel.value=d.lang;
+      sel.onchange=function(){
+        var t=normalize(sel.value), base=detect().basePath, pretty=prettyUrl(t,base);
+        fetch(pretty,{method:"HEAD"}).then(function(r){ if(r&&r.ok){location.href=pretty;} else {location.href=fallbackUrl(t,base);} })
+        .catch(function(){ location.href=fallbackUrl(t,base); });
+      };
+    }
+    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init); else init();
+  })();
+  </script>
+
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <!-- Language switcher: inline & robust -->
-<!-- Language switcher: robust with fallback -->
-<script>
-(function(){
-  var LANGS = ["en","uk","es","fr","de","it","zh","ja"];
-
-  function normalize(v){
-    v = String(v||"").toLowerCase();
-    if (v==="ua") return "uk";
-    if (v==="us" || v==="en-us") return "en";
-    return LANGS.indexOf(v)>-1 ? v : "en";
-  }
-
-  // визначаємо поточну мову з URL та базовий шлях сторінки без префікса
-  function detect(){
-    var p = (location.pathname||"/").replace(/\/+$/,"") || "/";
-    var parts = p.split("/").filter(Boolean);
-    var lang = "en";
-    if (parts.length && LANGS.indexOf(parts[0])>-1 && parts[0]!=="en") lang = parts[0];
-    var basePath = (lang!=="en") ? (("/"+parts.slice(1).join("/")) || "/") : p;
-    return { lang: lang, basePath: basePath };
-  }
-
-  function prettyUrl(lang, basePath){
-    if (lang==="en") return basePath;                 // англ. — без префікса
-    return basePath==="/" ? ("/"+lang+"/") : ("/"+lang+basePath);
-  }
-
-  function fallbackUrl(lang, basePath){
-    // ?lang=uk як запасний варіант, якщо префікс /uk/ ще не працює
-    var hasQ = basePath.indexOf("?")>-1;
-    return (basePath==="/"?"/":basePath) + (hasQ?"&":"?") + "lang=" + lang;
-  }
-
-  function init(){
-    var sel = document.getElementById("language-select");
-    if (!sel) return;
-
-    // виставляємо вибір у селекті за поточним URL
-    var d = detect();
-    sel.value = d.lang;
-
-    sel.onchange = function(){
-      var target = normalize(sel.value);
-      var base   = detect().basePath;
-      var pretty = prettyUrl(target, base);
-
-      // спершу пробуємо красивий URL з префіксом
-      fetch(pretty, { method:"HEAD" })
-        .then(function(r){
-          if (r && r.ok) { location.href = pretty; }
-          else           { location.href = fallbackUrl(target, base); }
-        })
-        .catch(function(){
-          location.href = fallbackUrl(target, base);
-        });
-    };
-  }
-
-  if (document.readyState==="loading") document.addEventListener("DOMContentLoaded", init);
-  else init();
-})();
-</script>
 </body>
 </html>
