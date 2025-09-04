@@ -140,67 +140,25 @@
 
   <!-- scripts (порядок важливий) -->
   <script src="script.js?v=3"></script>
-  <script src="seo.js?v=3"></script>
-  <script
-    src="monetization.js?v=3"
-    <!-- Language switcher: fallback-only (?lang=...) -->
+<script src="seo.js?v=3"></script>
+<script
+  src="monetization.js?v=3"
+  data-ga="G-XXXXXXXXXX"
+  data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
+  data-slot-top="0000000001"
+  data-slot-infeed="0000000002"
+  data-slot-side="0000000003"></script>
+
+<!-- Language switcher: fallback-only (?lang=...) -->
 <script>
-(function(){
-  var LANGS=["en","uk","es","fr","de","it","zh","ja"];
-  function norm(v){v=String(v||"").toLowerCase();
-    if(v==="ua")return"uk"; if(v==="us"||v==="en-us")return"en";
-    return LANGS.indexOf(v)>-1?v:"en";
-  }
-  // базовий шлях сторінки без мовного префікса
-  function basePath(){
-    var p=(location.pathname||"/").replace(/\/+$/,"")||"/";
-    var a=p.split("/").filter(Boolean); var l=a[0];
-    if(l && LANGS.indexOf(l)>-1 && l!=="en"){ return (("/"+a.slice(1).join("/"))||"/"); }
-    return p;
-  }
-  function urlWithParam(lang, base){
-    var q=base.indexOf("?")>-1; return (base==="/"?"/":base)+(q?"&":"?")+"lang="+lang;
-  }
-  function init(){
-    var sel=document.getElementById("language-select"); if(!sel) return;
-    sel.onchange=function(){ var t=norm(sel.value); location.href=urlWithParam(t, basePath()); };
-  }
-  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
-})();
+(function(){var L=["en","uk","es","fr","de","it","zh","ja"];
+function n(v){v=String(v||"").toLowerCase();if(v==="ua")return"uk";if(v==="us"||v==="en-us")return"en";return L.indexOf(v)>-1?v:"en";}
+function b(){var p=(location.pathname||"/").replace(/\/+$/,"")||"/";var a=p.split("/").filter(Boolean);var l=a[0];if(l&&L.indexOf(l)>-1&&l!=="en"){return (("/"+a.slice(1).join("/"))||"/");}return p;}
+function u(lang,base){var q=base.indexOf("?")>-1;return (base==="/"?"/":base)+(q?"&":"?")+"lang="+lang;}
+function init(){var s=document.getElementById("language-select");if(!s)return;s.onchange=function(){location.href=u(n(s.value), b());};}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();})();
 </script>
-    data-ga="G-XXXXXXXXXX"
-    data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
-    data-slot-top="0000000001"
-    data-slot-infeed="0000000002"
-    data-slot-side="0000000003"></script>
 
-  <!-- Language switcher: robust with fallback -->
-  <script>
-  (function(){
-    var LANGS = ["en","uk","es","fr","de","it","zh","ja"];
-    function normalize(v){ v=String(v||"").toLowerCase(); if(v==="ua")return"uk"; if(v==="us"||v==="en-us")return"en"; return LANGS.indexOf(v)>-1?v:"en"; }
-    function detect(){
-      var p=(location.pathname||"/").replace(/\/+$/,"")||"/";
-      var parts=p.split("/").filter(Boolean); var lang="en";
-      if(parts.length&&LANGS.indexOf(parts[0])>-1&&parts[0]!=="en") lang=parts[0];
-      var base=(lang!=="en")?(("/"+parts.slice(1).join("/"))||"/"):p;
-      return {lang:lang, basePath:base};
-    }
-    function prettyUrl(lang, base){ if(lang==="en")return base; return base==="/" ? ("/"+lang+"/") : ("/"+lang+base); }
-    function fallbackUrl(lang, base){ var q=base.indexOf("?")>-1; return (base==="/"?"/":base)+(q?"&":"?")+"lang="+lang; }
-    function init(){
-      var sel=document.getElementById("language-select"); if(!sel)return;
-      var d=detect(); sel.value=d.lang;
-      sel.onchange=function(){
-        var t=normalize(sel.value), base=detect().basePath, pretty=prettyUrl(t,base);
-        fetch(pretty,{method:"HEAD"}).then(function(r){ if(r&&r.ok){location.href=pretty;} else {location.href=fallbackUrl(t,base);} })
-        .catch(function(){ location.href=fallbackUrl(t,base); });
-      };
-    }
-    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init); else init();
-  })();
-  </script>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
