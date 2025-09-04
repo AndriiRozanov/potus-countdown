@@ -1,9 +1,9 @@
 const I18N = {
-  en: { home: "home", evergreen: "evergreen", digest: "digest", about: "about", privacy: "privacy", contact: "contact", title: "Time left in Donald Trump’s presidency", sub: "U.S. presidential terms end at 12:00 noon ET on January 20 (Twentieth Amendment).", seconds: "Seconds", selectSound: "Sound", tickSound: "Ticking", beepSound: "Digital beep", enable: "Enable sound", unmute: "Unmute", mute: "Mute", shareX: "Share on X", shareFB: "Share on Facebook", madeWith: "Made with", in: "in", kyiv: "Kyiv", termsNote: "Constitutional end of term: 12:00 ET, January 20, 2029." },
-  uk: { home: "головна", evergreen: "вічнозелений", digest: "дайджест", about: "про нас", privacy: "конфіденційність", contact: "зв'язок", title: "Скільки часу залишилося Дональду Трампу на посаді президента США", sub: "Президентський термін у США закінчується о 12:00 за Східним часом 20 січня (Двадцята поправка).", seconds: "Секунди", selectSound: "Звук", tickSound: "Тихий «тік-так»", beepSound: "Електронний біп", enable: "Увімкнути звук", unmute: "Увімкнути", mute: "Вимкнути", shareX: "Поділитися в X", shareFB: "Поділитися у Facebook", madeWith: "Зроблено з", in: "у", kyiv: "Києві", termsNote: "Кінець терміну: 12:00 ET, 20 січня 2029." },
-  es: { home: "inicio", evergreen: "evergreen", digest: "ai digest", about: "acerca de", privacy: "privacidad", contact: "contacto", title: "Tiempo restante del mandato de Donald Trump", sub: "El mandato presidencial termina a las 12:00 ET el 20 de enero.", seconds: "Segundos", selectSound: "Sonido", tickSound: "Tictac", beepSound: "Pitido digital", enable: "Activar sonido", unmute: "Activar", mute: "Silenciar", shareX: "Compartir en X", shareFB: "Compartir en Facebook", madeWith: "Hecho con", in: "en", kyiv: "Kyiv", termsNote: "Fin del mandato: 12:00 ET, 20 de enero de 2029." },
-  fr: { home: "accueil", evergreen: "evergreen", digest: "ai digest", about: "à propos", privacy: "confidentialité", contact: "contact", title: "Temps restant du mandat de Donald Trump", sub: "Le mandat se termine à 12 h (ET) le 20 janvier.", seconds: "Secondes", selectSound: "Son", tickSound: "Tic-tac", beepSound: "Bip numérique", enable: "Activer le son", unmute: "Activer", mute: "Couper", shareX: "Partager sur X", shareFB: "Partager sur Facebook", madeWith: "Fait avec", in: "à", kyiv: "Kyiv", termsNote: "Fin du mandat : 12:00 ET, 20 janvier 2029." },
-  de: { home: "start", evergreen: "evergreen", digest: "ai-digest", about: "über uns", privacy: "datenschutz", contact: "kontakt", title: "Verbleibende Amtszeit von Donald Trump", sub: "Die Amtszeit endet um 12:00 ET am 20. Januar.", seconds: "Sekunden", selectSound: "Sound", tickSound: "Ticken", beepSound: "Digitaler Piepton", enable: "Ton aktivieren", unmute: "Ein", mute: "Aus", shareX: "Auf X teilen", shareFB: "Auf Facebook teilen", madeWith: "Gemacht mit", in: "in", kyiv: "Kyiv", termsNote: "Amtsende: 12:00 ET, 20. Januar 2029." }
+  en: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds", home: "home", evergreen: "evergreen", digest: "digest", about: "about", privacy: "privacy", contact: "contact", title: "Time left in Donald Trump’s presidency", sub: "U.S. presidential terms end at 12:00 noon ET on January 20 (Twentieth Amendment).", selectSound: "Sound", tickSound: "Ticking", beepSound: "Digital beep", enable: "Enable sound", unmute: "Unmute", mute: "Mute", shareX: "Share on X", shareFB: "Share on Facebook", madeWith: "Made with", in: "in", kyiv: "Kyiv", termsNote: "Constitutional end of term: 12:00 ET, January 20, 2029." },
+  uk: { days: "Дні", hours: "Години", minutes: "Хвилини", seconds: "Секунди", home: "головна", evergreen: "вічнозелений", digest: "дайджест", about: "про нас", privacy: "конфіденційність", contact: "зв'язок", title: "Скільки часу залишилося Дональду Трампу на посаді президента США", sub: "Президентський термін у США закінчується о 12:00 за Східним часом 20 січня (Двадцята поправка).", selectSound: "Звук", tickSound: "Тихий «тік-так»", beepSound: "Електронний біп", enable: "Увімкнути звук", unmute: "Увімкнути", mute: "Вимкнути", shareX: "Поділитися в X", shareFB: "Поділитися у Facebook", madeWith: "Зроблено з", in: "у", kyiv: "Києві", termsNote: "Кінець терміну: 12:00 ET, 20 січня 2029." },
+  es: { days: "Días", hours: "Horas", minutes: "Minutos", seconds: "Segundos", home: "inicio", evergreen: "evergreen", digest: "ai digest", about: "acerca de", privacy: "privacidad", contact: "contacto", title: "Tiempo restante del mandato de Donald Trump", sub: "El mandato presidencial termina a las 12:00 ET el 20 de enero.", selectSound: "Sonido", tickSound: "Tictac", beepSound: "Pitido digital", enable: "Activar sonido", unmute: "Activar", mute: "Silenciar", shareX: "Compartir en X", shareFB: "Compartir en Facebook", madeWith: "Hecho con", in: "en", kyiv: "Kyiv", termsNote: "Fin del mandato: 12:00 ET, 20 de enero de 2029." },
+  fr: { days: "Jours", hours: "Heures", minutes: "Minutes", seconds: "Secondes", home: "accueil", evergreen: "evergreen", digest: "ai digest", about: "à propos", privacy: "confidentialité", contact: "contact", title: "Temps restant du mandat de Donald Trump", sub: "Le mandat se termine à 12 h (ET) le 20 janvier.", selectSound: "Son", tickSound: "Tic-tac", beepSound: "Bip numérique", enable: "Activer le son", unmute: "Activer", mute: "Couper", shareX: "Partager sur X", shareFB: "Partager sur Facebook", madeWith: "Fait avec", in: "à", kyiv: "Kyiv", termsNote: "Fin du mandat : 12:00 ET, 20 janvier 2029." },
+  de: { days: "Tage", hours: "Stunden", minutes: "Minuten", seconds: "Sekunden", home: "start", evergreen: "evergreen", digest: "ai-digest", about: "über uns", privacy: "datenschutz", contact: "kontakt", title: "Verbleibende Amtszeit von Donald Trump", sub: "Die Amtszeit endet um 12:00 ET am 20. Januar.", selectSound: "Sound", tickSound: "Ticken", beepSound: "Digitaler Piepton", enable: "Ton aktivieren", unmute: "Ein", mute: "Aus", shareX: "Auf X teilen", shareFB: "Auf Facebook teilen", madeWith: "Gemacht mit", in: "in", kyiv: "Kyiv", termsNote: "Amtsende: 12:00 ET, 20. Januar 2029." }
 };
 
 /* простий звуковий генератор (гучний tick/beep, дружній до iOS) */
@@ -82,11 +82,7 @@ function toggleMute() {
 }
 
 function render() {
-  let d = TARGET - Date.now();
-  if (d <= 0) {
-    d = 0; // Якщо дата минула, ставимо 0
-    clearInterval(interval); // Зупиняємо оновлення, щоб не рахувало далі
-  }
+  let d = Math.max(0, TARGET - Date.now());
   const s = Math.floor(d / 1000) % 60,
     m = Math.floor(d / 60000) % 60,
     h = Math.floor(d / 3600000) % 24,
@@ -126,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   $$('.sound-option').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
   $('#mute-btn').addEventListener('click', toggleMute);
-  $$('.lang-switch .btn').forEach(b => b.addEventListener('click', () => { lang = b.dataset.lang; localStorage.setItem('lang', lang); applyI18n(); }));
   // до кліку — кнопки звуку вимкнені
   enableUI(false);
 });
