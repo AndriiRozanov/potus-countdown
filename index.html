@@ -6,6 +6,17 @@
   <title>Presidency Clock</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
+  <div class="controls">
+  <select class="lang-switch" onchange="changeLang(this.value)">
+    <option value="en">English</option>
+    <option value="uk">Українська</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+  </select>
+  <button id="enable-sound" data-i18n="enable">Enable sound</button>
+  <button id="mute-btn" data-i18n="mute">Mute</button>
+</div>
 <body>
   <div class="container">
     <h1 data-i18n="title">Time left in Donald Trump’s presidency</h1>
