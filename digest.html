@@ -10,23 +10,25 @@
   <meta property="og:description" content="AI-updated headlines with 4–5 sentence summaries and sources." />
   <meta property="og:url" content="https://presidencyclock.com/digest.html" />
   <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="News Digest — Presidency Clock" />
-  <meta name="twitter:description" content="Digest updated several times a day." />
-  <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
 
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
   <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
-  <meta name="theme-color" content="#0b0f18">
-<!-- Google AdSense Auto ads -->
-<meta name="google-adsense-account" content="ca-pub-5023415479696725" />
-<script async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725"
-  crossorigin="anonymous"></script>
+
+  <!-- AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
+
+  <!-- lang-from-query -->
+  <script>
+  (function(){var u=new URLSearchParams(location.search),r=u.get('lang');if(!r)return;var l=r.toLowerCase();if(l==='ua')l='uk';if(l==='us'||l==='en-us')l='en';var A=['en','uk','es','fr','de','it','zh','ja'];if(A.indexOf(l)===-1)return;try{localStorage.setItem('pc_lang',l);}catch(e){};document.documentElement.setAttribute('lang',l);} )();
+  </script>
+
+  <!-- Theme init -->
+  <script>
+  (function(){var s=null;try{s=localStorage.getItem('pc_theme');}catch(e){};var t=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);} )();
+  </script>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -38,7 +40,7 @@
         <form id="lang-form" method="get" action="" style="display:inline">
           <label class="visually-hidden" for="language-select">Language</label>
           <select id="language-select" name="lang" aria-label="Language"
-            onchange="(function(sel){var v=String(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
+            onchange="(function(sel){var v=(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
             <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
             <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
             <option value="zh">中文</option><option value="ja">日本語</option>
@@ -61,24 +63,20 @@
         <a href="index.html" data-i18n="home">Home</a> ·
         <a href="about.html" data-i18n="about">About Us</a> ·
         <a href="privacy.html" data-i18n="privacy">Privacy Policy</a> ·
-        <a href="contact.html" data-i18n="contact">Contact</a> ·
-        <a href="#" onclick="pcOpenConsent();return false;">Manage cookies</a>
+        <a href="contact.html" data-i18n="contact">Contact</a>
       </p>
       <p class="muted small">© <span id="year"></span> Presidency Clock</p>
     </div>
   </footer>
 
-  <script src="script.js?v=3"></script>
-  <script src="seo.js?v=3"></script>
-    data-ga="G-XXXXXXXXXX"
-    data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
-    data-slot-top="0000000001" data-slot-infeed="0000000002" data-slot-side="0000000003"></script>
+  <script src="script.js?v=4"></script>
+  <script src="seo.js?v=4"></script>
+  <script>
+  (function(){function a(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('pc_theme',t);}catch(e){}}var b=document.getElementById('theme-toggle');if(!b)return;b.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||'light';a(c==='dark'?'light':'dark');});})();
+  </script>
+  <script>
+  (function(){var s=document.getElementById('language-select');if(!s)return;var l=(function(){var p=new URLSearchParams(location.search).get('lang');if(p){p=p.toLowerCase();if(p==='ua')p='uk';if(p==='us'||p==='en-us')p='en';return p;}try{var v=localStorage.getItem('pc_lang');if(v) return v;}catch(e){};return document.documentElement.getAttribute('lang')||'en';})();s.value=(['en','uk','es','fr','de','it','zh','ja'].indexOf(l)>-1)?l:'en';})();
+  </script>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-<!-- базові скрипти сайту -->
-<script src="script.js?v=4"></script>
-<script src="seo.js?v=4"></script>
-
-<!-- Рік у футері -->
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
