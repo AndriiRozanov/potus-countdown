@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Контакти — Presidency Clock</title>
+  <meta name="description" content="Зв'яжіться з командою Presidency Clock." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1>Контакти</h1>
+    </div>
+  </header>
+  <main class="container">
+    <section class="card stack">
+      <p>Найшвидший спосіб зв’язку: електронна пошта.</p>
+      <p><strong>Email:</strong> <a href="mailto:presidencyclock@gmail.com">presidencyclock@gmail.com</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-links">
+        <a href="index.html">Головна</a> ·
+        <a href="about.html">Про нас</a> ·
+        <a href="privacy.html">Політика конфіденційності</a>
+      </p>
+      <p class="muted small">© <span id="year"></span> Presidency Clock</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
