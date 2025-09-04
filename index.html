@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<header>
-  <h1 id="site-title">How much time does Donald Trump have left as president?</h1>
-  <div class="controls">
-    <button id="theme-toggle">🌓</button>
-    <select id="language-select">
-      <option value="en">EN</option>
-      <option value="uk">UA</option>
-      <option value="es">ES</option>
-      <option value="fr">FR</option>
-      <option value="de">DE</option>
-      <option value="it">IT</option>
-      <option value="zh">中文</option>
-      <option value="ja">日本語</option>
-    </select>
-  </div>
-</header>
-    <h1 id="site-title">Presidency Clock</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presidency Clock</title>
+  <meta name="description" content="Countdown timer showing how much time is left for Donald Trump in office. Includes news digest and presidential data.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Шапка -->
+  <header>
+    <h1 id="site-title" data-i18n="title">
+      How much time does Donald Trump have left as president?
+    </h1>
     <div class="controls">
       <button id="theme-toggle">🌓</button>
       <select id="language-select">
@@ -35,9 +31,9 @@
   <!-- Таймер -->
   <main>
     <section id="countdown-section">
-      <h2 id="timer-title">Time left in office</h2>
+      <h2 id="timer-title" data-i18n="timer">Time left in office</h2>
       <div id="countdown">00:00:00</div>
-      <button id="embed-button">Get Embed Code</button>
+      <button id="embed-button" data-i18n="embed">Get Embed Code</button>
     </section>
 
     <!-- Блоки у два стовпці -->
@@ -45,12 +41,12 @@
       <!-- Ліва колонка -->
       <div class="left-col">
         <section id="trump-today">
-          <h2>Main about Trump today</h2>
+          <h2 data-i18n="trump-today">Main about Trump today</h2>
           <div id="trump-news"></div>
         </section>
 
         <section id="news-digest">
-          <h2>News Digest</h2>
+          <h2 data-i18n="digest">News Digest</h2>
           <div id="news-container"></div>
         </section>
       </div>
@@ -58,13 +54,13 @@
       <!-- Права колонка -->
       <div class="right-col">
         <section id="presidents-table">
-          <h2>Presidents by Time in Office</h2>
+          <h2 data-i18n="presidents">Presidents by Time in Office</h2>
           <table>
             <thead>
               <tr>
-                <th>Country</th>
-                <th>President</th>
-                <th>Time in office</th>
+                <th data-i18n="country">Country</th>
+                <th data-i18n="president">President</th>
+                <th data-i18n="time">Time in office</th>
               </tr>
             </thead>
             <tbody id="presidents-data">
@@ -78,7 +74,11 @@
 
   <!-- Футер -->
   <footer>
-    <p><a href="about.html">About Us</a> | <a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact</a></p>
+    <p>
+      <a href="about.html" data-i18n="about">About Us</a> |
+      <a href="privacy.html" data-i18n="privacy">Privacy Policy</a> |
+      <a href="contact.html" data-i18n="contact">Contact</a>
+    </p>
   </footer>
 
   <script src="script.js"></script>
