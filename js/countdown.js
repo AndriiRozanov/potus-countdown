@@ -25,3 +25,17 @@ document.getElementById('enable-sound').addEventListener('click', () => {
   enableUI(true);
 });
 document.getElementById('mute-btn').addEventListener('click', toggleMute);
+function setTheme(theme) {
+  if (theme === 'auto') document.body.removeAttribute('class');
+  else document.body.className = theme;
+  localStorage.setItem('theme', theme);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme') || 'auto';
+  setTheme(savedTheme);
+  if (savedTheme === 'auto') {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      setTheme('light');
+    }
+  }
+});
