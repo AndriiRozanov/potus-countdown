@@ -1,86 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Presidency Clock</title>
-  <meta name="description" content="Countdown timer showing how much time is left for Donald Trump in office. Includes news digest and presidential data.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Presidency Clock — Trump Countdown</title>
+  <meta name="description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data. Multilingual and embeddable." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Шапка -->
-  <header>
-    <h1 id="site-title" data-i18n="title">
-      How much time does Donald Trump have left as president?
-    </h1>
-    <div class="controls">
-      <button id="theme-toggle">🌓</button>
-      <select id="language-select">
-        <option value="en">EN</option>
-        <option value="uk">UA</option>
-        <option value="es">ES</option>
-        <option value="fr">FR</option>
-        <option value="de">DE</option>
-        <option value="it">IT</option>
-        <option value="zh">中文</option>
-        <option value="ja">日本語</option>
-      </select>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 id="site-title" data-i18n="title">
+        How much time does Donald Trump have left as president?
+      </h1>
+
+      <div class="controls">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
+        <label class="visually-hidden" for="language-select">Language</label>
+        <select id="language-select" aria-label="Language select">
+          <option value="en">EN</option>
+          <option value="uk">UA</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+          <option value="it">IT</option>
+          <option value="zh">中文</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
     </div>
   </header>
 
-  <!-- Таймер -->
-  <main>
-    <section id="countdown-section">
+  <!-- Main -->
+  <main class="container">
+    <!-- Countdown -->
+    <section id="countdown-section" class="card center">
       <h2 id="timer-title" data-i18n="timer">Time left in office</h2>
-      <div id="countdown">00:00:00</div>
-      <button id="embed-button" data-i18n="embed">Get Embed Code</button>
+      <div id="countdown" class="counter">00:00:00</div>
+      <button id="embed-button" class="primary-btn" data-i18n="embed">Get Embed Code</button>
     </section>
 
-    <!-- Блоки у два стовпці -->
+    <!-- Embed modal -->
+    <div id="embed-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="embed-title">
+      <div class="modal-content card">
+        <button id="close-modal" class="icon-btn close" aria-label="Close">×</button>
+        <h3 id="embed-title">Embed Code</h3>
+        <p class="muted">Copy and paste this iframe into your site:</p>
+        <textarea id="embed-code" readonly></textarea>
+        <button id="copy-button" class="secondary-btn">Copy</button>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
     <div class="dashboard">
-      <!-- Ліва колонка -->
       <div class="left-col">
-        <section id="trump-today">
+        <section id="trump-today" class="card">
           <h2 data-i18n="trump-today">Main about Trump today</h2>
-          <div id="trump-news"></div>
+          <div id="trump-news" class="stack"></div>
         </section>
 
-        <section id="news-digest">
+        <section id="news-digest" class="card">
           <h2 data-i18n="digest">News Digest</h2>
-          <div id="news-container"></div>
+          <div id="news-container" class="stack"></div>
         </section>
       </div>
 
-      <!-- Права колонка -->
       <div class="right-col">
-        <section id="presidents-table">
+        <section id="presidents-table" class="card">
           <h2 data-i18n="presidents">Presidents by Time in Office</h2>
-          <table>
-            <thead>
-              <tr>
-                <th data-i18n="country">Country</th>
-                <th data-i18n="president">President</th>
-                <th data-i18n="time">Time in office</th>
-              </tr>
-            </thead>
-            <tbody id="presidents-data">
-              <!-- Дані будемо додавати скриптом -->
-            </tbody>
-          </table>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="country">Country</th>
+                  <th data-i18n="president">President</th>
+                  <th data-i18n="time">Time in office</th>
+                </tr>
+              </thead>
+              <tbody id="presidents-data">
+                <!-- Will be populated by script -->
+              </tbody>
+            </table>
+          </div>
         </section>
       </div>
     </div>
   </main>
 
-  <!-- Футер -->
-  <footer>
-    <p>
-      <a href="about.html" data-i18n="about">About Us</a> |
-      <a href="privacy.html" data-i18n="privacy">Privacy Policy</a> |
-      <a href="contact.html" data-i18n="contact">Contact</a>
-    </p>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-links">
+        <a href="about.html" data-i18n="about">About Us</a>
+        <span aria-hidden="true">·</span>
+        <a href="privacy.html" data-i18n="privacy">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="contact.html" data-i18n="contact">Contact</a>
+      </p>
+      <p class="muted small">© <span id="year"></span> Presidency Clock</p>
+    </div>
   </footer>
 
+  <noscript>
+    This site needs JavaScript to display the live countdown and translations.
+  </noscript>
+
   <script src="script.js"></script>
+  <script>
+    // set footer year without touching your main script
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
