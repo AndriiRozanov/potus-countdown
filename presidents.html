@@ -90,5 +90,42 @@
     data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
     data-slot-top="0000000001" data-slot-infeed="0000000002" data-slot-side="0000000003"></script>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <!-- Language switcher: inline & robust -->
+<script>
+(function(){
+  var LANGS = ["en","uk","es","fr","de","it","zh","ja"];
+  function normalize(v){
+    v = String(v||"").toLowerCase();
+    if (v==="ua") return "uk";
+    if (v==="us" || v==="en-us") return "en";
+    return LANGS.indexOf(v)>-1 ? v : "en";
+  }
+  function detect(){
+    var p = (location.pathname||"/").replace(/\/+$/,"") || "/";
+    var parts = p.split("/").filter(Boolean);
+    var lang = "en";
+    if (parts.length && LANGS.indexOf(parts[0])>-1 && parts[0]!=="en") lang = parts[0];
+    var basePath = (lang!=="en") ? (("/"+parts.slice(1).join("/")) || "/") : p;
+    return { lang: lang, basePath: basePath };
+  }
+  function urlFor(lang, basePath){
+    if (lang==="en") return basePath;                 // англ. — без префікса
+    return basePath==="/" ? ("/"+lang+"/") : ("/"+lang+basePath);
+  }
+  function init(){
+    var sel = document.getElementById("language-select");
+    if (!sel) return;
+    var d = detect();
+    sel.value = d.lang;                               // виставляємо поточну мову
+    sel.onchange = function(){
+      var l = normalize(sel.value);
+      var url = urlFor(l, detect().basePath);
+      if (location.pathname !== url) location.href = url;
+    };
+  }
+  if (document.readyState==="loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
 </body>
 </html>
