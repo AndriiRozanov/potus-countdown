@@ -73,3 +73,10 @@ body.light .clock div {
   color: #007aff;
   box-shadow: 0 0 10px rgba(0, 122, 255, 0.5);
 }
+.clock div {
+  transform: perspective(500px) rotateX(10deg);
+  transition: transform 0.3s;
+}
+.clock div:hover {
+  transform: perspective(500px) rotateX(0deg) scale(1.1);
+}
