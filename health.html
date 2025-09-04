@@ -5,50 +5,36 @@
   <title>Health — Presidency Clock</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
+
+  <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
+
+  <script>
+  (function(){var u=new URLSearchParams(location.search),r=u.get('lang');if(!r)return;var l=r.toLowerCase();if(l==='ua')l='uk';if(l==='us'||l==='en-us')l='en';var A=['en','uk','es','fr','de','it','zh','ja'];if(A.indexOf(l)===-1)return;try{localStorage.setItem('pc_lang',l);}catch(e){};document.documentElement.setAttribute('lang',l);} )();
+  </script>
+  <script>
+  (function(){var s=null;try{s=localStorage.getItem('pc_theme');}catch(e){};var t=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);} )();
+  </script>
+
   <style>
     :root{--bg:#0b0f18;--fg:#e6ecf2;--card:#141a24;--muted:#94a3b8;--border:#223049}
-    @media (prefers-color-scheme:light){
-      :root{--bg:#fff;--fg:#0b1220;--card:#f6f8fb;--muted:#4b5563;--border:#e5e7eb}
-    }
-    *{box-sizing:border-box}
+    :root[data-theme="light"]{--bg:#fff;--fg:#0b1220;--card:#f6f8fb;--muted:#4b5563;--border:#e5e7eb}
     body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    .container{max-width:920px;margin:0 auto;padding:24px}
+    .wrap{max-width:920px;margin:0 auto;padding:24px}
     .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:16px}
     code{background:rgba(148,163,184,.15);padding:2px 6px;border-radius:6px}
-    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-    .controls{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
-    #lang-form select{margin-left:.25rem}
-    .btn{display:inline-block;padding:.4rem .7rem;border:1px solid var(--border);border-radius:.5rem;text-decoration:none;color:inherit;margin-right:.5rem}
-    .muted{color:var(--muted)}
-    footer{margin-top:24px;font-size:.9rem}
+    .controls{display:flex;gap:.5rem;align-items:center;justify-content:space-between}
   </style>
-
-  <!-- пріоритет мови з ?lang= -->
-  <script>
-  (function () {
-    var usp = new URLSearchParams(location.search);
-    var raw = usp.get('lang');
-    if (!raw) return;
-    var lang = String(raw).toLowerCase();
-    if (lang === 'ua') lang = 'uk';
-    if (lang === 'us' || lang === 'en-us') lang = 'en';
-    var allowed = ['en','uk','es','fr','de','it','zh','ja'];
-    if (allowed.indexOf(lang) === -1) return;
-    try { localStorage.setItem('pc_lang', lang); } catch (e) {}
-    document.documentElement.setAttribute('lang', lang);
-  })();
-  </script>
 </head>
 <body>
-  <div class="container">
-    <div class="row">
+  <div class="wrap">
+    <div class="controls">
       <h1>Health Check</h1>
-
-      <!-- Чиста HTML-форма → додає ?lang= та відправляє сторінку -->
-      <div class="controls">
+      <div>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
         <form id="lang-form" method="get" action="" style="display:inline">
           <label class="visually-hidden" for="language-select">Language</label>
-          <select id="language-select" name="lang" aria-label="Language select"
+          <select id="language-select" name="lang" aria-label="Language"
             onchange="(function(sel){var v=(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
             <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
             <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
@@ -59,64 +45,17 @@
     </div>
 
     <div class="card">
-      <p><strong>Origin:</strong> <code id="origin"></code></p>
-      <p><strong>Pathname:</strong> <code id="path"></code></p>
-      <p><strong>Search:</strong> <code id="search"></code></p>
-      <p><strong>Detected language:</strong> <code id="lang"></code></p>
-
-      <p class="muted" id="hint"></p>
-      <p>
-        <a class="btn" href="/health.html">/health.html</a>
-        <a class="btn" href="/?lang=uk">/?lang=uk</a>
-        <a class="btn" href="/?lang=es">/?lang=es</a>
-        <a class="btn" href="/uk/health.html">/uk/health.html</a>
-        <a class="btn" href="/es/health.html">/es/health.html</a>
-      </p>
+      <p><strong>Path:</strong> <code id="p"></code></p>
+      <p><strong>Search:</strong> <code id="s"></code></p>
+      <p><strong>Lang:</strong> <code id="l"></code></p>
     </div>
-
-    <footer class="muted">© <span id="year"></span> Presidency Clock — test page (noindex)</footer>
   </div>
 
   <script>
-  (function(){
-    function detectLang(){
-      var usp = new URLSearchParams(location.search);
-      var q = (usp.get('lang') || '').toLowerCase();
-      if (q === 'ua') q = 'uk';
-      if (q === 'us' || q === 'en-us') q = 'en';
-      var L = ['en','uk','es','fr','de','it','zh','ja'];
-      if (L.indexOf(q) > -1) return q;
-      var parts = location.pathname.split('/').filter(Boolean);
-      var pref = parts[0] || '';
-      if (L.indexOf(pref) > -1 && pref !== 'en') return pref;
-      return 'en';
-    }
-    document.getElementById('origin').textContent = location.origin;
-    document.getElementById('path').textContent = location.pathname;
-    document.getElementById('search').textContent = location.search || '(none)';
-    var lang = detectLang();
-    document.getElementById('lang').textContent = lang;
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // виставляємо селект
-    var sel = document.getElementById('language-select'); if (sel) sel.value = lang;
-
-    // хінт
-    var hint = document.getElementById('hint');
-    if (location.pathname.startsWith('/uk/') || location.pathname.startsWith('/es/')) {
-      hint.textContent = 'URL із префіксом (rewrites). Якщо відкривається — rewrites працюють.';
-    } else if ((new URLSearchParams(location.search)).has('lang')) {
-      hint.textContent = 'Мова з параметра ?lang=. Це повністю ок для SEO/AdSense.';
-    } else {
-      hint.textContent = 'Мова не задана. Обери у селекті — зʼявиться ?lang= та перезавантажиться сторінка.';
-    }
-  })();
+  (function(){function a(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('pc_theme',t);}catch(e){}}var b=document.getElementById('theme-toggle');if(!b)return;b.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||'light';a(c==='dark'?'light':'dark');});})();
   </script>
-<!-- базові скрипти сайту -->
-<script src="script.js?v=4"></script>
-<script src="seo.js?v=4"></script>
-
-<!-- Рік у футері -->
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){var sel=document.getElementById('language-select');if(sel){var p=new URLSearchParams(location.search).get('lang');var l=p||(document.documentElement.getAttribute('lang')||'en');sel.value=l;}document.getElementById('p').textContent=location.pathname;document.getElementById('s').textContent=location.search||'(none)';document.getElementById('l').textContent=document.documentElement.getAttribute('lang')||'en';})();
+  </script>
 </body>
 </html>
