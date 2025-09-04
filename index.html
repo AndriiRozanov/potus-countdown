@@ -6,6 +6,18 @@
   <title>Presidency Clock — Trump Countdown</title>
   <meta name="description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data. Multilingual and embeddable." />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- SEO -->
+  <link rel="canonical" href="https://YOUR_DOMAIN/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Presidency Clock — Trump Countdown" />
+  <meta property="og:description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data." />
+  <meta property="og:url" content="https://YOUR_DOMAIN/" />
+  <meta property="og:image" content="https://YOUR_DOMAIN/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Presidency Clock — Trump Countdown" />
+  <meta name="twitter:description" content="Live countdown, news digest, presidents data." />
+  <meta name="twitter:image" content="https://YOUR_DOMAIN/og-image.jpg" />
 </head>
 <body>
   <!-- Header -->
@@ -59,7 +71,7 @@
     <!-- Dashboard -->
     <div class="dashboard">
       <div class="left-col">
-        <!-- Main about Trump today (short preview) -->
+        <!-- Main about Trump today -->
         <section id="trump-today" class="card">
           <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
             <h2 data-i18n="trump-today" style="margin:0;">Main about Trump today</h2>
@@ -68,10 +80,10 @@
           <div id="trump-news" class="stack"></div>
         </section>
 
-        <!-- AD: in-feed slot between blocks -->
+        <!-- AD: in-feed slot -->
         <div id="ad-infeed" class="ad-slot"></div>
 
-        <!-- News Digest (short list) -->
+        <!-- News Digest -->
         <section id="news-digest" class="card">
           <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
             <h2 data-i18n="digest" style="margin:0;">News Digest</h2>
@@ -82,7 +94,7 @@
       </div>
 
       <div class="right-col">
-        <!-- Presidents table (preview) -->
+        <!-- Presidents (preview) -->
         <section id="presidents-table" class="card">
           <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap;">
             <h2 data-i18n="presidents" style="margin:0;">Presidents by Time in Office</h2>
@@ -97,13 +109,11 @@
                   <th data-i18n="time">Time in office</th>
                 </tr>
               </thead>
-              <tbody id="presidents-data">
-                <!-- Populated by script -->
-              </tbody>
+              <tbody id="presidents-data"></tbody>
             </table>
           </div>
 
-          <!-- AD: side/rectangle inside card -->
+          <!-- AD: side slot -->
           <div id="ad-side" class="ad-slot"></div>
 
           <p class="muted small" style="margin-top:.5rem;">
@@ -123,29 +133,25 @@
         <a href="privacy.html" data-i18n="privacy">Privacy Policy</a>
         <span aria-hidden="true">·</span>
         <a href="contact.html" data-i18n="contact">Contact</a>
+        <span aria-hidden="true">·</span>
+        <a href="#" onclick="pcOpenConsent();return false;">Manage cookies</a>
       </p>
       <p class="muted small">© <span id="year"></span> Presidency Clock</p>
     </div>
   </footer>
 
-  <noscript>
-    This site needs JavaScript to display the live countdown and translations.
-  </noscript>
+  <noscript>This site needs JavaScript to display the live countdown and translations.</noscript>
 
   <script src="script.js"></script>
-
-  <!-- Monetization: set your IDs via data-attributes -->
+  <!-- Monetization / Consent / Analytics / AdSense -->
   <script
     src="monetization.js"
     data-ga="G-XXXXXXXXXX"
     data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
     data-slot-top="0000000001"
     data-slot-infeed="0000000002"
-    data-slot-side="0000000003">
-  </script>
+    data-slot-side="0000000003"></script>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
