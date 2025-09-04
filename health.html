@@ -1,61 +1,53 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
-  <meta charset="utf-8">
-  <title>Health — Presidency Clock</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">Health Check — PresidencyClock</title>
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://presidencyclock.com/health.html" />
 
-  <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
-  <script>
-  (function(){var u=new URLSearchParams(location.search),r=u.get('lang');if(!r)return;var l=r.toLowerCase();if(l==='ua')l='uk';if(l==='us'||l==='en-us')l='en';var A=['en','uk','es','fr','de','it','zh','ja'];if(A.indexOf(l)===-1)return;try{localStorage.setItem('pc_lang',l);}catch(e){};document.documentElement.setAttribute('lang',l);} )();
-  </script>
-  <script>
-  (function(){var s=null;try{s=localStorage.getItem('pc_theme');}catch(e){};var t=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);} )();
-  </script>
-
-  <style>
-    :root{--bg:#0b0f18;--fg:#e6ecf2;--card:#141a24;--muted:#94a3b8;--border:#223049}
-    :root[data-theme="light"]{--bg:#fff;--fg:#0b1220;--card:#f6f8fb;--muted:#4b5563;--border:#e5e7eb}
-    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    .wrap{max-width:920px;margin:0 auto;padding:24px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:16px}
-    code{background:rgba(148,163,184,.15);padding:2px 6px;border-radius:6px}
-    .controls{display:flex;gap:.5rem;align-items:center;justify-content:space-between}
-  </style>
+  <!-- No ads / no consent needed for health page -->
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div class="controls">
-      <h1>Health Check</h1>
-      <div>
-        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
-        <form id="lang-form" method="get" action="" style="display:inline">
-          <label class="visually-hidden" for="language-select">Language</label>
-          <select id="language-select" name="lang" aria-label="Language"
-            onchange="(function(sel){var v=(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
-            <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
-            <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
-            <option value="zh">中文</option><option value="ja">日本語</option>
-          </select>
-        </form>
-      </div>
-    </div>
+  <main class="container prose">
+    <h1 data-i18n="h1">Health Check</h1>
 
-    <div class="card">
-      <p><strong>Path:</strong> <code id="p"></code></p>
-      <p><strong>Search:</strong> <code id="s"></code></p>
-      <p><strong>Lang:</strong> <code id="l"></code></p>
-    </div>
-  </div>
+    <!-- EN -->
+    <section data-lang="en">
+      <p>Status: <strong>OK</strong></p>
+      <p>Server time: <span id="time"></span></p>
+    </section>
+
+    <!-- UK -->
+    <section data-lang="uk">
+      <p>Статус: <strong>OK</strong></p>
+      <p>Час сервера: <span id="time"></span></p>
+    </section>
+  </main>
 
   <script>
-  (function(){function a(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('pc_theme',t);}catch(e){}}var b=document.getElementById('theme-toggle');if(!b)return;b.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||'light';a(c==='dark'?'light':'dark');});})();
-  </script>
-  <script>
-  (function(){var sel=document.getElementById('language-select');if(sel){var p=new URLSearchParams(location.search).get('lang');var l=p||(document.documentElement.getAttribute('lang')||'en');sel.value=l;}document.getElementById('p').textContent=location.pathname;document.getElementById('s').textContent=location.search||'(none)';document.getElementById('l').textContent=document.documentElement.getAttribute('lang')||'en';})();
+    (function(){
+      var params=new URLSearchParams(location.search);
+      var supported=['en','uk'];
+      var lang=(params.get('lang')||'').toLowerCase();
+      if(!supported.includes(lang)){
+        lang=(navigator.language||'en').slice(0,2);
+        if(!supported.includes(lang)) lang='en';
+      }
+      document.documentElement.lang=lang;
+      document.querySelectorAll('section[data-lang]').forEach(s=>s.style.display=s.getAttribute('data-lang')===lang?'':'none');
+      var dict={en:{title:'Health Check — PresidencyClock',h1:'Health Check'},uk:{title:'Перевірка — PresidencyClock',h1:'Перевірка'}};
+      var t=dict[lang]||dict.en;
+      document.querySelector('[data-i18n="title"]')?.textContent=t.title;
+      document.querySelector('[data-i18n="h1"]')?.textContent=t.h1;
+      document.getElementById('time').textContent=new Date().toISOString();
+    })();
   </script>
 </body>
 </html>
