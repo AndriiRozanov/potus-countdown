@@ -51,69 +51,20 @@
   <script src="monetization.js?v=3"
     data-ga="G-XXXXXXXXXX" data-adsense="ca-pub-XXXXXXXXXXXXXXXX"
     data-slot-top="0000000001" data-slot-infeed="0000000002" data-slot-side="0000000003"></script>
+
+  <!-- Language switcher: robust with fallback -->
+  <script>
+  (function(){
+    var L=["en","uk","es","fr","de","it","zh","ja"];
+    function n(v){v=String(v||"").toLowerCase();if(v==="ua")return"uk";if(v==="us"||v==="en-us")return"en";return L.indexOf(v)>-1?v:"en";}
+    function d(){var p=(location.pathname||"/").replace(/\/+$/,"")||"/";var a=p.split("/").filter(Boolean),l="en";if(a.length&&L.indexOf(a[0])>-1&&a[0]!=="en")l=a[0];var b=(l!=="en")?(("/"+a.slice(1).join("/"))||"/"):p;return{lang:l,basePath:b};}
+    function pu(l,b){return l==="en"?b:(b==="/" ? ("/"+l+"/") : ("/"+l+b));}
+    function fu(l,b){var q=b.indexOf("?")>-1;return(b==="/"?"/":b)+(q?"&":"?")+"lang="+l;}
+    function init(){var s=document.getElementById("language-select");if(!s)return;var x=d();s.value=x.lang;s.onchange=function(){var t=n(s.value),b=d().basePath,p=pu(t,b);fetch(p,{method:"HEAD"}).then(function(r){if(r&&r.ok){location.href=p;}else{location.href=fu(t,b);}}).catch(function(){location.href=fu(t,b);});};}
+    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+  })();
+  </script>
+
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
-  <!-- Language switcher: inline & robust -->
-<!-- Language switcher: robust with fallback -->
-<script>
-(function(){
-  var LANGS = ["en","uk","es","fr","de","it","zh","ja"];
-
-  function normalize(v){
-    v = String(v||"").toLowerCase();
-    if (v==="ua") return "uk";
-    if (v==="us" || v==="en-us") return "en";
-    return LANGS.indexOf(v)>-1 ? v : "en";
-  }
-
-  // визначаємо поточну мову з URL та базовий шлях сторінки без префікса
-  function detect(){
-    var p = (location.pathname||"/").replace(/\/+$/,"") || "/";
-    var parts = p.split("/").filter(Boolean);
-    var lang = "en";
-    if (parts.length && LANGS.indexOf(parts[0])>-1 && parts[0]!=="en") lang = parts[0];
-    var basePath = (lang!=="en") ? (("/"+parts.slice(1).join("/")) || "/") : p;
-    return { lang: lang, basePath: basePath };
-  }
-
-  function prettyUrl(lang, basePath){
-    if (lang==="en") return basePath;                 // англ. — без префікса
-    return basePath==="/" ? ("/"+lang+"/") : ("/"+lang+basePath);
-  }
-
-  function fallbackUrl(lang, basePath){
-    // ?lang=uk як запасний варіант, якщо префікс /uk/ ще не працює
-    var hasQ = basePath.indexOf("?")>-1;
-    return (basePath==="/"?"/":basePath) + (hasQ?"&":"?") + "lang=" + lang;
-  }
-
-  function init(){
-    var sel = document.getElementById("language-select");
-    if (!sel) return;
-
-    // виставляємо вибір у селекті за поточним URL
-    var d = detect();
-    sel.value = d.lang;
-
-    sel.onchange = function(){
-      var target = normalize(sel.value);
-      var base   = detect().basePath;
-      var pretty = prettyUrl(target, base);
-
-      // спершу пробуємо красивий URL з префіксом
-      fetch(pretty, { method:"HEAD" })
-        .then(function(r){
-          if (r && r.ok) { location.href = pretty; }
-          else           { location.href = fallbackUrl(target, base); }
-        })
-        .catch(function(){
-          location.href = fallbackUrl(target, base);
-        });
-    };
-  }
-
-  if (document.readyState==="loading") document.addEventListener("DOMContentLoaded", init);
-  else init();
-})();
-</script>
 </body>
 </html>
