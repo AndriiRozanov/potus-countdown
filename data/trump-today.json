@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-04T20:42:07.904Z",
+  "updatedAt": "2025-09-05T20:43:08.570Z",
   "latest": {
-    "date": "2025-09-04",
-    "title": "Harvard Won Its Money Back, but Will It Actually Get It?",
-    "summary": "A judge ruled that the Trump administration broke the law in canceling billions in federal funds for Harvard. Whether the money is returned matters for the rest of higher education.",
-    "url": "https://www.nytimes.com/2025/09/04/us/harvard-federal-funds-court-victory-trump-administration.html"
+    "date": "2025-09-05",
+    "title": "Second Weak Jobs Report Undercuts Trump’s Claims of a Booming Economy",
+    "summary": "After a bad employment report in August, President Trump fired the official in charge of the numbers. This month’s data was just as disappointing.",
+    "url": "https://www.nytimes.com/2025/09/05/us/politics/trump-jobs-report-tariffs-deportations.html"
   },
   "archive": [
+    {
+      "date": "2025-09-04",
+      "title": "Harvard Won Its Money Back, but Will It Actually Get It?",
+      "summary": "A judge ruled that the Trump administration broke the law in canceling billions in federal funds for Harvard. Whether the money is returned matters for the rest of higher education.",
+      "url": "https://www.nytimes.com/2025/09/04/us/harvard-federal-funds-court-victory-trump-administration.html"
+    },
     {
       "date": "2025-09-04",
       "title": "Sample headline about Trump (demo)",
