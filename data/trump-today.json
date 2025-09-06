@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-05T20:43:08.570Z",
+  "updatedAt": "2025-09-06T20:36:04.014Z",
   "latest": {
-    "date": "2025-09-05",
-    "title": "Second Weak Jobs Report Undercuts Trump’s Claims of a Booming Economy",
-    "summary": "After a bad employment report in August, President Trump fired the official in charge of the numbers. This month’s data was just as disappointing.",
-    "url": "https://www.nytimes.com/2025/09/05/us/politics/trump-jobs-report-tariffs-deportations.html"
+    "date": "2025-09-06",
+    "title": "Grand Juries in D.C. Reject Wave of Charges Under Trump’s Crackdown",
+    "summary": "The persistent rejections suggest that the grand jurors may have had enough of prosecutors seeking harsh charges in a highly politicized environment.",
+    "url": "https://www.nytimes.com/2025/09/06/us/trump-dc-national-guard-grand-juries-crime.html"
   },
   "archive": [
+    {
+      "date": "2025-09-05",
+      "title": "Second Weak Jobs Report Undercuts Trump’s Claims of a Booming Economy",
+      "summary": "After a bad employment report in August, President Trump fired the official in charge of the numbers. This month’s data was just as disappointing.",
+      "url": "https://www.nytimes.com/2025/09/05/us/politics/trump-jobs-report-tariffs-deportations.html"
+    },
     {
       "date": "2025-09-04",
       "title": "Harvard Won Its Money Back, but Will It Actually Get It?",
