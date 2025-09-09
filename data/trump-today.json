@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-08T20:44:42.674Z",
+  "updatedAt": "2025-09-09T20:41:40.456Z",
   "latest": {
-    "date": "2025-09-08",
-    "title": "Trump Says Having ‘a Little Fight With the Wife’ Should Not Count as a Crime",
-    "summary": "President Trump said that offenses that happen at home should not undermine his record of crime reduction in Washington.",
-    "url": "https://www.nytimes.com/2025/09/08/us/politics/trump-domestic-violence-crime-statistics.html"
+    "date": "2025-09-09",
+    "title": "Michigan Judge Tosses Out Cases Against Fake Trump Electors",
+    "summary": "The judge, a Democrat, concluded that fake electors recruited to support Donald J. Trump’s candidacy in 2020 did not understand that they were being asked to do something illegal.",
+    "url": "https://www.nytimes.com/2025/09/09/us/politics/michigan-electors-ruling.html"
   },
   "archive": [
+    {
+      "date": "2025-09-08",
+      "title": "Trump Says Having ‘a Little Fight With the Wife’ Should Not Count as a Crime",
+      "summary": "President Trump said that offenses that happen at home should not undermine his record of crime reduction in Washington.",
+      "url": "https://www.nytimes.com/2025/09/08/us/politics/trump-domestic-violence-crime-statistics.html"
+    },
     {
       "date": "2025-09-07",
       "title": "Trump Is Met With Mostly Boos at U.S. Open as Security Delays a Match",
