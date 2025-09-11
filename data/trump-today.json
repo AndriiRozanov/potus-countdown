@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-10T20:42:48.225Z",
+  "updatedAt": "2025-09-11T20:36:57.993Z",
   "latest": {
-    "date": "2025-09-10",
-    "title": "Trump and Leaders Across Political Spectrum React to Charlie Kirk Shooting",
-    "summary": "Some politicians called for prayers, while some others immediately cast blame.",
-    "url": "https://www.nytimes.com/2025/09/10/us/charlie-kirk-reaction-trump.html"
+    "date": "2025-09-11",
+    "title": "Trump Asks Appeals Court to Allow Firing of Lisa Cook Ahead of Key Fed Meeting",
+    "summary": "The government filed an emergency request after a lower court prevented the president from firing Ms. Cook as the case proceeds.",
+    "url": "https://www.nytimes.com/live/2025/09/11/us/trump-news/trump-lisa-cook-appeal-fed"
   },
   "archive": [
+    {
+      "date": "2025-09-10",
+      "title": "Trump and Leaders Across Political Spectrum React to Charlie Kirk Shooting",
+      "summary": "Some politicians called for prayers, while some others immediately cast blame.",
+      "url": "https://www.nytimes.com/2025/09/10/us/charlie-kirk-reaction-trump.html"
+    },
     {
       "date": "2025-09-09",
       "title": "Michigan Judge Tosses Out Cases Against Fake Trump Electors",
