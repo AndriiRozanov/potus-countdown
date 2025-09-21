@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-20T20:33:57.904Z",
+  "updatedAt": "2025-09-21T20:40:00.233Z",
   "latest": {
-    "date": "2025-09-20",
-    "title": "Top Democratic Leaders Ask Trump for Meeting to Avert a Shutdown",
-    "summary": "After a Republican plan to keep funding flowing foundered in the Senate, Representative Hakeem Jeffries and Senator Chuck Schumer accused the president of standing in the way of a solution.",
-    "url": "https://www.nytimes.com/2025/09/20/us/politics/jeffries-schumer-trump.html"
+    "date": "2025-09-21",
+    "title": "In Assault on Free Speech, Trump Targets Speech He Hates",
+    "summary": "The president’s complaints about negative coverage undermine the rationales offered by his own officials.",
+    "url": "https://www.nytimes.com/2025/09/21/us/politics/trump-free-speech.html"
   },
   "archive": [
+    {
+      "date": "2025-09-20",
+      "title": "Top Democratic Leaders Ask Trump for Meeting to Avert a Shutdown",
+      "summary": "After a Republican plan to keep funding flowing foundered in the Senate, Representative Hakeem Jeffries and Senator Chuck Schumer accused the president of standing in the way of a solution.",
+      "url": "https://www.nytimes.com/2025/09/20/us/politics/jeffries-schumer-trump.html"
+    },
     {
       "date": "2025-09-19",
       "title": "Harvard’s Former President, Claudine Gay, Criticizes Its Approach to Trump",
