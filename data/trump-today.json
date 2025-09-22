@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-21T20:40:00.233Z",
+  "updatedAt": "2025-09-22T20:43:15.560Z",
   "latest": {
-    "date": "2025-09-21",
-    "title": "In Assault on Free Speech, Trump Targets Speech He Hates",
-    "summary": "The president’s complaints about negative coverage undermine the rationales offered by his own officials.",
-    "url": "https://www.nytimes.com/2025/09/21/us/politics/trump-free-speech.html"
+    "date": "2025-09-22",
+    "title": "White House Denies Homan Took Bag of Cash in F.B.I. Inquiry",
+    "summary": "People familiar with an undercover F.B.I. investigation say Trump’s border czar was recorded on audio tape accepting a Cava bag with $50,000 in it last year.",
+    "url": "https://www.nytimes.com/2025/09/22/us/politics/homan-cash.html"
   },
   "archive": [
+    {
+      "date": "2025-09-21",
+      "title": "In Assault on Free Speech, Trump Targets Speech He Hates",
+      "summary": "The president’s complaints about negative coverage undermine the rationales offered by his own officials.",
+      "url": "https://www.nytimes.com/2025/09/21/us/politics/trump-free-speech.html"
+    },
     {
       "date": "2025-09-20",
       "title": "Top Democratic Leaders Ask Trump for Meeting to Avert a Shutdown",
