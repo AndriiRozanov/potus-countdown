@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-22T20:43:15.560Z",
+  "updatedAt": "2025-09-23T20:43:11.322Z",
   "latest": {
-    "date": "2025-09-22",
-    "title": "White House Denies Homan Took Bag of Cash in F.B.I. Inquiry",
-    "summary": "People familiar with an undercover F.B.I. investigation say Trump’s border czar was recorded on audio tape accepting a Cava bag with $50,000 in it last year.",
-    "url": "https://www.nytimes.com/2025/09/22/us/politics/homan-cash.html"
+    "date": "2025-09-23",
+    "title": "Stuck in Traffic, Emmanuel Macron Calls Trump About His Motorcade",
+    "summary": "The French head of state experienced a frustration that many New Yorkers know all too well. He got stuck during the U.N. General Assembly.",
+    "url": "https://www.nytimes.com/2025/09/23/us/macron-trump-unga-motorcade.html"
   },
   "archive": [
+    {
+      "date": "2025-09-22",
+      "title": "White House Denies Homan Took Bag of Cash in F.B.I. Inquiry",
+      "summary": "People familiar with an undercover F.B.I. investigation say Trump’s border czar was recorded on audio tape accepting a Cava bag with $50,000 in it last year.",
+      "url": "https://www.nytimes.com/2025/09/22/us/politics/homan-cash.html"
+    },
     {
       "date": "2025-09-21",
       "title": "In Assault on Free Speech, Trump Targets Speech He Hates",
