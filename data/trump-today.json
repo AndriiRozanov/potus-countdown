@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-23T20:43:11.322Z",
+  "updatedAt": "2025-09-24T20:39:56.021Z",
   "latest": {
-    "date": "2025-09-23",
-    "title": "Stuck in Traffic, Emmanuel Macron Calls Trump About His Motorcade",
-    "summary": "The French head of state experienced a frustration that many New Yorkers know all too well. He got stuck during the U.N. General Assembly.",
-    "url": "https://www.nytimes.com/2025/09/23/us/macron-trump-unga-motorcade.html"
+    "date": "2025-09-24",
+    "title": "The D.C. Region Has Faced an Outsized Toll From Trump’s Policies",
+    "summary": "With the mass layoffs and cancellations of thousands of federal grants and contracts, the region has taken a disproportionate hit.",
+    "url": "https://www.nytimes.com/2025/09/24/us/politics/trump-cuts-washington-dc.html"
   },
   "archive": [
+    {
+      "date": "2025-09-23",
+      "title": "Stuck in Traffic, Emmanuel Macron Calls Trump About His Motorcade",
+      "summary": "The French head of state experienced a frustration that many New Yorkers know all too well. He got stuck during the U.N. General Assembly.",
+      "url": "https://www.nytimes.com/2025/09/23/us/macron-trump-unga-motorcade.html"
+    },
     {
       "date": "2025-09-22",
       "title": "White House Denies Homan Took Bag of Cash in F.B.I. Inquiry",
