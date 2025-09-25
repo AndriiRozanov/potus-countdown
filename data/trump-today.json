@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-24T20:39:56.021Z",
+  "updatedAt": "2025-09-25T20:40:41.263Z",
   "latest": {
-    "date": "2025-09-24",
-    "title": "The D.C. Region Has Faced an Outsized Toll From Trump’s Policies",
-    "summary": "With the mass layoffs and cancellations of thousands of federal grants and contracts, the region has taken a disproportionate hit.",
-    "url": "https://www.nytimes.com/2025/09/24/us/politics/trump-cuts-washington-dc.html"
+    "date": "2025-09-25",
+    "title": "Justice Department Sues Six States Seeking Private Voter Data",
+    "summary": "The Trump administration has been increasingly focused on an effort to bolster President Trump’s unsubstantiated claims of voter fraud. More than 30 states have received requests for information.",
+    "url": "https://www.nytimes.com/2025/09/25/us/politics/doj-lawsuit-voter-data-trump.html"
   },
   "archive": [
+    {
+      "date": "2025-09-24",
+      "title": "The D.C. Region Has Faced an Outsized Toll From Trump’s Policies",
+      "summary": "With the mass layoffs and cancellations of thousands of federal grants and contracts, the region has taken a disproportionate hit.",
+      "url": "https://www.nytimes.com/2025/09/24/us/politics/trump-cuts-washington-dc.html"
+    },
     {
       "date": "2025-09-23",
       "title": "Stuck in Traffic, Emmanuel Macron Calls Trump About His Motorcade",
