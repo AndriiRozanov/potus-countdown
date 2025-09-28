@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-27T20:33:40.064Z",
+  "updatedAt": "2025-09-28T20:33:40.890Z",
   "latest": {
-    "date": "2025-09-27",
-    "title": "Trump Says He Has Ordered Troops to Portland, Oregon, to Protect ICE Facilities",
-    "summary": "The president characterized Immigration and Customs Enforcement facilities as being under siege from domestic terrorists.",
-    "url": "https://www.nytimes.com/2025/09/27/us/politics/trump-portland-troops.html"
+    "date": "2025-09-28",
+    "title": "With Comey Indictment, Trump Sets Retribution Precedent That Could Haunt His Allies",
+    "summary": "President Trump’s retribution campaign risks ushering in a cycle of retaliation in which each new administration takes aim at the last one.",
+    "url": "https://www.nytimes.com/2025/09/28/us/politics/trump-comey-retribution-precedent.html"
   },
   "archive": [
+    {
+      "date": "2025-09-27",
+      "title": "Trump Says He Has Ordered Troops to Portland, Oregon, to Protect ICE Facilities",
+      "summary": "The president characterized Immigration and Customs Enforcement facilities as being under siege from domestic terrorists.",
+      "url": "https://www.nytimes.com/2025/09/27/us/politics/trump-portland-troops.html"
+    },
     {
       "date": "2025-09-26",
       "title": "Trump Expands Tariffs Beyond Supreme Court’s Reach",
