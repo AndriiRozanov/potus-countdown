@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-29T20:34:04.444Z",
+  "updatedAt": "2025-09-30T20:36:59.296Z",
   "latest": {
-    "date": "2025-09-29",
-    "title": "The Man Expanding Trump’s Presidential Powers",
-    "summary": "Coral Davenport, a New York Times reporter, explains how Russell Vought, the director of the Office of Management and Budget, plans to circumvent Congress’s budgetary powers to advance the Trump administration’s agenda.",
-    "url": "https://www.nytimes.com/video/us/politics/100000010422264/the-man-expanding-trumps-presidential-powers.html"
+    "date": "2025-09-30",
+    "title": "Trump Administration Defunds Federal Watchdog Office",
+    "summary": "Two senators called for “immediate action” to release money the White House blocked for the federal office that oversees dozens of inspectors general.",
+    "url": "https://www.nytimes.com/2025/09/30/us/politics/trump-federal-watchdog-funding.html"
   },
   "archive": [
+    {
+      "date": "2025-09-29",
+      "title": "The Man Expanding Trump’s Presidential Powers",
+      "summary": "Coral Davenport, a New York Times reporter, explains how Russell Vought, the director of the Office of Management and Budget, plans to circumvent Congress’s budgetary powers to advance the Trump administration’s agenda.",
+      "url": "https://www.nytimes.com/video/us/politics/100000010422264/the-man-expanding-trumps-presidential-powers.html"
+    },
     {
       "date": "2025-09-28",
       "title": "With Comey Indictment, Trump Sets Retribution Precedent That Could Haunt His Allies",
