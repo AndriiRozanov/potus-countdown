@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-09-30T20:36:59.296Z",
+  "updatedAt": "2025-10-01T20:36:57.373Z",
   "latest": {
-    "date": "2025-09-30",
-    "title": "Trump Administration Defunds Federal Watchdog Office",
-    "summary": "Two senators called for “immediate action” to release money the White House blocked for the federal office that oversees dozens of inspectors general.",
-    "url": "https://www.nytimes.com/2025/09/30/us/politics/trump-federal-watchdog-funding.html"
+    "date": "2025-10-01",
+    "title": "Environmental Protection Agency Employees Working Despite Furloughs Plan",
+    "summary": "E.P.A. employees said that they were working without pay, and that Trump administration officials had not told them how long the funding would last. Union officials said they were “highly confused.”",
+    "url": "https://www.nytimes.com/2025/10/01/us/politics/government-shutdown-epa-working.html"
   },
   "archive": [
+    {
+      "date": "2025-09-30",
+      "title": "Trump Administration Defunds Federal Watchdog Office",
+      "summary": "Two senators called for “immediate action” to release money the White House blocked for the federal office that oversees dozens of inspectors general.",
+      "url": "https://www.nytimes.com/2025/09/30/us/politics/trump-federal-watchdog-funding.html"
+    },
     {
       "date": "2025-09-29",
       "title": "The Man Expanding Trump’s Presidential Powers",
