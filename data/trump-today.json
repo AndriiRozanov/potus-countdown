@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-01T20:36:57.373Z",
+  "updatedAt": "2025-10-02T20:36:48.413Z",
   "latest": {
-    "date": "2025-10-01",
-    "title": "Environmental Protection Agency Employees Working Despite Furloughs Plan",
-    "summary": "E.P.A. employees said that they were working without pay, and that Trump administration officials had not told them how long the funding would last. Union officials said they were “highly confused.”",
-    "url": "https://www.nytimes.com/2025/10/01/us/politics/government-shutdown-epa-working.html"
+    "date": "2025-10-02",
+    "title": "Trump ‘Determined’ the U.S. Is Now in a War With Drug Cartels, Congress Is Told",
+    "summary": "A notice calls the people the U.S. military recently killed on suspicion of drug smuggling in the Caribbean Sea “unlawful combatants.”",
+    "url": "https://www.nytimes.com/2025/10/02/us/politics/trump-drug-cartels-war.html"
   },
   "archive": [
+    {
+      "date": "2025-10-01",
+      "title": "Environmental Protection Agency Employees Working Despite Furloughs Plan",
+      "summary": "E.P.A. employees said that they were working without pay, and that Trump administration officials had not told them how long the funding would last. Union officials said they were “highly confused.”",
+      "url": "https://www.nytimes.com/2025/10/01/us/politics/government-shutdown-epa-working.html"
+    },
     {
       "date": "2025-09-30",
       "title": "Trump Administration Defunds Federal Watchdog Office",
