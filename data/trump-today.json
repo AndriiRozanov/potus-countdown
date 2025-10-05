@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-04T20:33:20.690Z",
+  "updatedAt": "2025-10-05T20:33:39.763Z",
   "latest": {
-    "date": "2025-10-04",
-    "title": "Who Still Has Temporary Protected Status Under Trump?",
-    "summary": "Conflicting court rulings have plunged hundreds of thousands of people with temporary protection from deportation into uncertainty.",
-    "url": "https://www.nytimes.com/2025/10/04/us/politics/temporary-protected-status-scotus.html"
+    "date": "2025-10-05",
+    "title": "Trump Renews Layoff Threats as Shutdown Accusations Continue to Fly",
+    "summary": "Senator Chuck Schumer and Speaker Mike Johnson each accused the other of not being “serious” about talks to end the shutdown as the government was closed for a fifth day.",
+    "url": "https://www.nytimes.com/2025/10/05/us/politics/trump-democrats-shutdown.html"
   },
   "archive": [
+    {
+      "date": "2025-10-04",
+      "title": "Who Still Has Temporary Protected Status Under Trump?",
+      "summary": "Conflicting court rulings have plunged hundreds of thousands of people with temporary protection from deportation into uncertainty.",
+      "url": "https://www.nytimes.com/2025/10/04/us/politics/temporary-protected-status-scotus.html"
+    },
     {
       "date": "2025-10-03",
       "title": "Marc Rowan, a Billionaire Financier, Is Behind Trump’s Deal for Universities",
@@ -180,12 +186,6 @@
       "title": "Second Weak Jobs Report Undercuts Trump’s Claims of a Booming Economy",
       "summary": "After a bad employment report in August, President Trump fired the official in charge of the numbers. This month’s data was just as disappointing.",
       "url": "https://www.nytimes.com/2025/09/05/us/politics/trump-jobs-report-tariffs-deportations.html"
-    },
-    {
-      "date": "2025-09-04",
-      "title": "Harvard Won Its Money Back, but Will It Actually Get It?",
-      "summary": "A judge ruled that the Trump administration broke the law in canceling billions in federal funds for Harvard. Whether the money is returned matters for the rest of higher education.",
-      "url": "https://www.nytimes.com/2025/09/04/us/harvard-federal-funds-court-victory-trump-administration.html"
     }
   ]
 }
