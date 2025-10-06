@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-05T20:33:39.763Z",
+  "updatedAt": "2025-10-06T20:37:15.356Z",
   "latest": {
-    "date": "2025-10-05",
-    "title": "Trump Renews Layoff Threats as Shutdown Accusations Continue to Fly",
-    "summary": "Senator Chuck Schumer and Speaker Mike Johnson each accused the other of not being “serious” about talks to end the shutdown as the government was closed for a fifth day.",
-    "url": "https://www.nytimes.com/2025/10/05/us/politics/trump-democrats-shutdown.html"
+    "date": "2025-10-06",
+    "title": "Trump Gave Partisan Speech to Navy Troops, as He Deployed Troops to U.S. Cities",
+    "summary": "President Trump’s attempts to politicize the military have become more overt as he makes the case for having troops at his disposal in American cities.",
+    "url": "https://www.nytimes.com/2025/10/06/us/politics/trump-navy-portland-troops.html"
   },
   "archive": [
+    {
+      "date": "2025-10-05",
+      "title": "Trump Renews Layoff Threats as Shutdown Accusations Continue to Fly",
+      "summary": "Senator Chuck Schumer and Speaker Mike Johnson each accused the other of not being “serious” about talks to end the shutdown as the government was closed for a fifth day.",
+      "url": "https://www.nytimes.com/2025/10/05/us/politics/trump-democrats-shutdown.html"
+    },
     {
       "date": "2025-10-04",
       "title": "Who Still Has Temporary Protected Status Under Trump?",
@@ -180,12 +186,6 @@
       "title": "Grand Juries in D.C. Reject Wave of Charges Under Trump’s Crackdown",
       "summary": "The persistent rejections suggest that the grand jurors may have had enough of prosecutors seeking harsh charges in a highly politicized environment.",
       "url": "https://www.nytimes.com/2025/09/06/us/trump-dc-national-guard-grand-juries-crime.html"
-    },
-    {
-      "date": "2025-09-05",
-      "title": "Second Weak Jobs Report Undercuts Trump’s Claims of a Booming Economy",
-      "summary": "After a bad employment report in August, President Trump fired the official in charge of the numbers. This month’s data was just as disappointing.",
-      "url": "https://www.nytimes.com/2025/09/05/us/politics/trump-jobs-report-tariffs-deportations.html"
     }
   ]
 }
