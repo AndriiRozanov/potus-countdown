@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-07T20:36:57.895Z",
+  "updatedAt": "2025-10-08T20:37:08.703Z",
   "latest": {
-    "date": "2025-10-07",
-    "title": "Mass Layoffs Trump Is Threatening in Shutdown Fight May Be Illegal",
-    "summary": "Unions have sued to block any firings, which budget experts believe are not even needed to protect essential federal services.",
-    "url": "https://www.nytimes.com/2025/10/07/us/politics/trump-government-shutdown-layoffs.html"
+    "date": "2025-10-08",
+    "title": "A Chicago federal grand jury deals the latest setback to Trump’s immigration enforcement efforts.",
+    "summary": "",
+    "url": "https://www.nytimes.com/live/2025/10/08/us/trump-national-guard-chicago-illinois/a-chicago-federal-grand-jury-deals-the-latest-setback-to-trumps-immigration-enforcement-efforts"
   },
   "archive": [
+    {
+      "date": "2025-10-07",
+      "title": "Mass Layoffs Trump Is Threatening in Shutdown Fight May Be Illegal",
+      "summary": "Unions have sued to block any firings, which budget experts believe are not even needed to protect essential federal services.",
+      "url": "https://www.nytimes.com/2025/10/07/us/politics/trump-government-shutdown-layoffs.html"
+    },
     {
       "date": "2025-10-06",
       "title": "Trump Gave Partisan Speech to Navy Troops, as He Deployed Troops to U.S. Cities",
@@ -180,12 +186,6 @@
       "title": "Trump Says Having ‘a Little Fight With the Wife’ Should Not Count as a Crime",
       "summary": "President Trump said that offenses that happen at home should not undermine his record of crime reduction in Washington.",
       "url": "https://www.nytimes.com/2025/09/08/us/politics/trump-domestic-violence-crime-statistics.html"
-    },
-    {
-      "date": "2025-09-07",
-      "title": "Trump Is Met With Mostly Boos at U.S. Open as Security Delays a Match",
-      "summary": "With the president in attendance at Arthur Ashe Stadium, the men’s final began as hundreds of people were still waiting to go through security screening.",
-      "url": "https://www.nytimes.com/2025/09/07/us/politics/trump-us-open-tennis-boos-delays.html"
     }
   ]
 }
