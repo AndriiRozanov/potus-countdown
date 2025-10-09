@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-08T20:37:08.703Z",
+  "updatedAt": "2025-10-09T20:37:28.024Z",
   "latest": {
-    "date": "2025-10-08",
-    "title": "A Chicago federal grand jury deals the latest setback to Trump’s immigration enforcement efforts.",
-    "summary": "",
-    "url": "https://www.nytimes.com/live/2025/10/08/us/trump-national-guard-chicago-illinois/a-chicago-federal-grand-jury-deals-the-latest-setback-to-trumps-immigration-enforcement-efforts"
+    "date": "2025-10-09",
+    "title": "Appellate Judges Appear Open to Allowing National Guard Troops to Deploy to Portland",
+    "summary": "Three judges from the U.S. Court of Appeals for the Ninth Circuit are reviewing an order blocking President Trump from deploying National Guard soldiers in the city.",
+    "url": "https://www.nytimes.com/2025/10/09/us/national-guard-portland-appeals-court-hearing.html"
   },
   "archive": [
+    {
+      "date": "2025-10-08",
+      "title": "A Chicago federal grand jury deals the latest setback to Trump’s immigration enforcement efforts.",
+      "summary": "",
+      "url": "https://www.nytimes.com/live/2025/10/08/us/trump-national-guard-chicago-illinois/a-chicago-federal-grand-jury-deals-the-latest-setback-to-trumps-immigration-enforcement-efforts"
+    },
     {
       "date": "2025-10-07",
       "title": "Mass Layoffs Trump Is Threatening in Shutdown Fight May Be Illegal",
@@ -180,12 +186,6 @@
       "title": "Michigan Judge Tosses Out Cases Against Fake Trump Electors",
       "summary": "The judge, a Democrat, concluded that fake electors recruited to support Donald J. Trump’s candidacy in 2020 did not understand that they were being asked to do something illegal.",
       "url": "https://www.nytimes.com/2025/09/09/us/politics/michigan-electors-ruling.html"
-    },
-    {
-      "date": "2025-09-08",
-      "title": "Trump Says Having ‘a Little Fight With the Wife’ Should Not Count as a Crime",
-      "summary": "President Trump said that offenses that happen at home should not undermine his record of crime reduction in Washington.",
-      "url": "https://www.nytimes.com/2025/09/08/us/politics/trump-domestic-violence-crime-statistics.html"
     }
   ]
 }
