@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-10T20:36:47.396Z",
+  "updatedAt": "2025-10-11T20:32:18.709Z",
   "latest": {
-    "date": "2025-10-10",
-    "title": "Judge Orders ICE to Remove Fence Around Facility Near Chicago",
-    "summary": "The judge’s decision is the third in three days in Illinois against the Trump administration. It came after ICE said its Operation Midway Blitz would continue indefinitely.",
-    "url": "https://www.nytimes.com/2025/10/10/us/politics/ice-national-guard.html"
+    "date": "2025-10-11",
+    "title": "Among Portland Protests, It’s Frogs and Sharks and Bears, Oh My.",
+    "summary": "Images of anarchists clad in black gave the city a bad name in 2020. Now, demonstrators in Portland are poking fun at President Trump’s apocalyptic talk with colorful animal suits.",
+    "url": "https://www.nytimes.com/2025/10/11/us/politics/portland-protests.html"
   },
   "archive": [
+    {
+      "date": "2025-10-10",
+      "title": "Judge Orders ICE to Remove Fence Around Facility Near Chicago",
+      "summary": "The judge’s decision is the third in three days in Illinois against the Trump administration. It came after ICE said its Operation Midway Blitz would continue indefinitely.",
+      "url": "https://www.nytimes.com/2025/10/10/us/politics/ice-national-guard.html"
+    },
     {
       "date": "2025-10-09",
       "title": "Appellate Judges Appear Open to Allowing National Guard Troops to Deploy to Portland",
@@ -180,12 +186,6 @@
       "title": "Trump Asks Appeals Court to Allow Firing of Lisa Cook Ahead of Key Fed Meeting",
       "summary": "The government filed an emergency request after a lower court prevented the president from firing Ms. Cook as the case proceeds.",
       "url": "https://www.nytimes.com/live/2025/09/11/us/trump-news/trump-lisa-cook-appeal-fed"
-    },
-    {
-      "date": "2025-09-10",
-      "title": "Trump and Leaders Across Political Spectrum React to Charlie Kirk Shooting",
-      "summary": "Some politicians called for prayers, while some others immediately cast blame.",
-      "url": "https://www.nytimes.com/2025/09/10/us/charlie-kirk-reaction-trump.html"
     }
   ]
 }
