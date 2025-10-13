@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-12T20:34:24.082Z",
+  "updatedAt": "2025-10-13T20:37:14.119Z",
   "latest": {
-    "date": "2025-10-12",
-    "title": "Why Now? The Lost Chances to Reach a Hostage Deal, and a Cease-Fire, Months Ago",
-    "summary": "On Gaza, President Trump put few, if any, guardrails on Israel’s offensive, bucking international demands for a cease-fire. Then he changed course.",
-    "url": "https://www.nytimes.com/2025/10/12/us/politics/lost-chances-hostage-deal-gaza-israel.html"
+    "date": "2025-10-13",
+    "title": "Part Enabler, Part Buffer: The Bind of the Justice Dept.’s No. 2",
+    "summary": "Todd Blanche, the deputy attorney general, has helped usher in President Trump’s retribution campaign. But he faces anger on the right for resisting some of the most extreme measures.",
+    "url": "https://www.nytimes.com/2025/10/13/us/politics/todd-blanche-justice-department-trump.html"
   },
   "archive": [
+    {
+      "date": "2025-10-12",
+      "title": "Why Now? The Lost Chances to Reach a Hostage Deal, and a Cease-Fire, Months Ago",
+      "summary": "On Gaza, President Trump put few, if any, guardrails on Israel’s offensive, bucking international demands for a cease-fire. Then he changed course.",
+      "url": "https://www.nytimes.com/2025/10/12/us/politics/lost-chances-hostage-deal-gaza-israel.html"
+    },
     {
       "date": "2025-10-11",
       "title": "Among Portland Protests, It’s Frogs and Sharks and Bears, Oh My.",
@@ -180,12 +186,6 @@
       "title": "Trump Escalates Attacks on Political Opponents After Charlie Kirk’s Killing",
       "summary": "President Trump has promised to bring the killer to justice while using the moment to blame the left — and only the left — more broadly.",
       "url": "https://www.nytimes.com/2025/09/13/us/politics/trump-kirk-political-opponents.html"
-    },
-    {
-      "date": "2025-09-12",
-      "title": "As Trump Vows Vengeance, Utah’s Governor Calls to Lower the Temperature",
-      "summary": "“At some point, we have to find an off-ramp, or it’s going to get much, much worse,” Gov. Spencer Cox, a Republican, said of political violence after a suspect was caught in the assassination of Charlie Kirk.",
-      "url": "https://www.nytimes.com/2025/09/12/us/trump-tyler-robinson-utah-shooting.html"
     }
   ]
 }
