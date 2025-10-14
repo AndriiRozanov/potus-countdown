@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-13T20:37:14.119Z",
+  "updatedAt": "2025-10-14T20:37:30.804Z",
   "latest": {
-    "date": "2025-10-13",
-    "title": "Part Enabler, Part Buffer: The Bind of the Justice Dept.’s No. 2",
-    "summary": "Todd Blanche, the deputy attorney general, has helped usher in President Trump’s retribution campaign. But he faces anger on the right for resisting some of the most extreme measures.",
-    "url": "https://www.nytimes.com/2025/10/13/us/politics/todd-blanche-justice-department-trump.html"
+    "date": "2025-10-14",
+    "title": "U.S. Military Kills 6 People in Boat Attack Near Venezuela, Trump Says",
+    "summary": "In a social media post, the president said the people aboard a boat were suspected of smuggling drugs for an unspecified group his team had labeled terrorists.",
+    "url": "https://www.nytimes.com/2025/10/14/us/politics/trump-drugs-boat-attack.html"
   },
   "archive": [
+    {
+      "date": "2025-10-13",
+      "title": "Part Enabler, Part Buffer: The Bind of the Justice Dept.’s No. 2",
+      "summary": "Todd Blanche, the deputy attorney general, has helped usher in President Trump’s retribution campaign. But he faces anger on the right for resisting some of the most extreme measures.",
+      "url": "https://www.nytimes.com/2025/10/13/us/politics/todd-blanche-justice-department-trump.html"
+    },
     {
       "date": "2025-10-12",
       "title": "Why Now? The Lost Chances to Reach a Hostage Deal, and a Cease-Fire, Months Ago",
@@ -180,12 +186,6 @@
       "title": "Trump Administration Claims Vast Powers as It Races to Fire Fed Governor Before Meeting",
       "summary": "Trump has forged ahead with his attempts to fire Lisa Cook even as new documents call his claims of mortgage fraud into question.",
       "url": "https://www.nytimes.com/2025/09/14/us/politics/trump-lisa-cook-fed.html"
-    },
-    {
-      "date": "2025-09-13",
-      "title": "Trump Escalates Attacks on Political Opponents After Charlie Kirk’s Killing",
-      "summary": "President Trump has promised to bring the killer to justice while using the moment to blame the left — and only the left — more broadly.",
-      "url": "https://www.nytimes.com/2025/09/13/us/politics/trump-kirk-political-opponents.html"
     }
   ]
 }
