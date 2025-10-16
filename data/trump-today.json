@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-15T20:38:36.758Z",
+  "updatedAt": "2025-10-16T20:37:40.018Z",
   "latest": {
-    "date": "2025-10-15",
-    "title": "Trump Signs Memo Expanding His Authority to Spend Federal Money",
-    "summary": "The president gave Defense Secretary Pete Hegseth wide authority to repurpose funds to pay members of the military without approval from Congress, which has the sole constitutional authority to decide federal spending.",
-    "url": "https://www.nytimes.com/2025/10/15/us/politics/trump-federal-funds-government-shutdown.html"
+    "date": "2025-10-16",
+    "title": "Terrorism Charges Against Antifa ‘Cell’ Show Administration’s Focus on the Left",
+    "summary": "President Trump has spoken at times of antifa as though it were a clear-cut extremist organization, but the movement is a decentralized collection of loosely affiliated groups.",
+    "url": "https://www.nytimes.com/2025/10/16/us/politics/justice-department-terrorism-antifa.html"
   },
   "archive": [
+    {
+      "date": "2025-10-15",
+      "title": "Trump Signs Memo Expanding His Authority to Spend Federal Money",
+      "summary": "The president gave Defense Secretary Pete Hegseth wide authority to repurpose funds to pay members of the military without approval from Congress, which has the sole constitutional authority to decide federal spending.",
+      "url": "https://www.nytimes.com/2025/10/15/us/politics/trump-federal-funds-government-shutdown.html"
+    },
     {
       "date": "2025-10-14",
       "title": "U.S. Military Kills 6 People in Boat Attack Near Venezuela, Trump Says",
@@ -180,12 +186,6 @@
       "title": "G.O.P. Again Cedes Power on Tariffs to Avoid Crossing Trump",
       "summary": "House Republicans extended a maneuver they engineered earlier in the year that effectively strips Congress of the power to disapprove of President Trump’s tariffs.",
       "url": "https://www.nytimes.com/2025/09/16/us/politics/republicans-house-tariffs-emergency-trump.html"
-    },
-    {
-      "date": "2025-09-15",
-      "title": "In Giant Deals, U.A.E. Got Chips, and Trump Team Got Crypto Riches",
-      "summary": "A lucrative transaction involving the Trump family’s cryptocurrency firm and an agreement giving the Emiratis access to A.I. chips were connected in ways that have not been previously reported.",
-      "url": "https://www.nytimes.com/2025/09/15/us/politics/trump-uae-chips-witkoff-world-liberty.html"
     }
   ]
 }
