@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-16T20:37:40.018Z",
+  "updatedAt": "2025-10-17T20:37:04.050Z",
   "latest": {
-    "date": "2025-10-16",
-    "title": "Terrorism Charges Against Antifa ‘Cell’ Show Administration’s Focus on the Left",
-    "summary": "President Trump has spoken at times of antifa as though it were a clear-cut extremist organization, but the movement is a decentralized collection of loosely affiliated groups.",
-    "url": "https://www.nytimes.com/2025/10/16/us/politics/justice-department-terrorism-antifa.html"
+    "date": "2025-10-17",
+    "title": "Benioff Apologizes for Saying Trump Should Send Troops to San Francisco",
+    "summary": "Marc Benioff, the chief executive of Salesforce, said he no longer believed that National Guard troops were needed in the city.",
+    "url": "https://www.nytimes.com/2025/10/17/us/benioff-apologizes-san-francisco.html"
   },
   "archive": [
+    {
+      "date": "2025-10-16",
+      "title": "Terrorism Charges Against Antifa ‘Cell’ Show Administration’s Focus on the Left",
+      "summary": "President Trump has spoken at times of antifa as though it were a clear-cut extremist organization, but the movement is a decentralized collection of loosely affiliated groups.",
+      "url": "https://www.nytimes.com/2025/10/16/us/politics/justice-department-terrorism-antifa.html"
+    },
     {
       "date": "2025-10-15",
       "title": "Trump Signs Memo Expanding His Authority to Spend Federal Money",
@@ -180,12 +186,6 @@
       "title": "‘Pay Attention!’: Spirit Airlines Pilot Scolded for Flying Near Air Force One",
       "summary": "An air traffic controller sternly told the pilot to “pay attention,” “get off the iPad” and turn the plane to steer clear of a flight carrying President Trump.",
       "url": "https://www.nytimes.com/2025/09/17/us/airforce-one-spirit-air-traffic-control.html"
-    },
-    {
-      "date": "2025-09-16",
-      "title": "G.O.P. Again Cedes Power on Tariffs to Avoid Crossing Trump",
-      "summary": "House Republicans extended a maneuver they engineered earlier in the year that effectively strips Congress of the power to disapprove of President Trump’s tariffs.",
-      "url": "https://www.nytimes.com/2025/09/16/us/politics/republicans-house-tariffs-emergency-trump.html"
     }
   ]
 }
