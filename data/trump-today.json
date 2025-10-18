@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-17T20:37:04.050Z",
+  "updatedAt": "2025-10-18T20:33:58.683Z",
   "latest": {
-    "date": "2025-10-17",
-    "title": "Benioff Apologizes for Saying Trump Should Send Troops to San Francisco",
-    "summary": "Marc Benioff, the chief executive of Salesforce, said he no longer believed that National Guard troops were needed in the city.",
-    "url": "https://www.nytimes.com/2025/10/17/us/benioff-apologizes-san-francisco.html"
+    "date": "2025-10-18",
+    "title": "U.S. Is Repatriating Survivors of Its Strike on Suspected Drug Vessel",
+    "summary": "Two men rescued by the U.S. military after it attacked a boat in the Caribbean Sea were being sent to their home countries of Colombia and Ecuador, President Trump said.",
+    "url": "https://www.nytimes.com/2025/10/18/us/politics/boat-strike-survivors.html"
   },
   "archive": [
+    {
+      "date": "2025-10-17",
+      "title": "Benioff Apologizes for Saying Trump Should Send Troops to San Francisco",
+      "summary": "Marc Benioff, the chief executive of Salesforce, said he no longer believed that National Guard troops were needed in the city.",
+      "url": "https://www.nytimes.com/2025/10/17/us/benioff-apologizes-san-francisco.html"
+    },
     {
       "date": "2025-10-16",
       "title": "Terrorism Charges Against Antifa ‘Cell’ Show Administration’s Focus on the Left",
@@ -180,12 +186,6 @@
       "title": "In Their Own Words: Trump and Top Officials Change Tone on Free Speech",
       "summary": "In the wake of Charlie Kirk’s assassination, the president’s pledges to guarantee free speech have been replaced by efforts to suppress — and even criminalize — what their critics have to say.",
       "url": "https://www.nytimes.com/2025/09/18/us/politics/trump-free-speech.html"
-    },
-    {
-      "date": "2025-09-17",
-      "title": "‘Pay Attention!’: Spirit Airlines Pilot Scolded for Flying Near Air Force One",
-      "summary": "An air traffic controller sternly told the pilot to “pay attention,” “get off the iPad” and turn the plane to steer clear of a flight carrying President Trump.",
-      "url": "https://www.nytimes.com/2025/09/17/us/airforce-one-spirit-air-traffic-control.html"
     }
   ]
 }
