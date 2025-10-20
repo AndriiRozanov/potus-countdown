@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-19T20:35:25.983Z",
+  "updatedAt": "2025-10-20T20:39:24.577Z",
   "latest": {
-    "date": "2025-10-19",
-    "title": "U.S. Kills 3 on Boat Suspected of Smuggling Drugs for Colombian Rebels",
-    "summary": "It was the seventh known strike in President Trump’s military campaign of attacking, rather than arresting, those suspected of running drugs in the Caribbean.",
-    "url": "https://www.nytimes.com/2025/10/19/us/politics/trump-military-boat-strike-colombia.html"
+    "date": "2025-10-20",
+    "title": "Appeals Court Ruling Allows Trump to Deploy National Guard Troops to Portland",
+    "summary": "Deployment can move forward, for now, under a preliminary ruling by the U.S. Court of Appeals for the Ninth Circuit. But legal wrangling will likely continue.",
+    "url": "https://www.nytimes.com/2025/10/20/us/appeals-court-national-guard-troops-portland-trump.html"
   },
   "archive": [
+    {
+      "date": "2025-10-19",
+      "title": "U.S. Kills 3 on Boat Suspected of Smuggling Drugs for Colombian Rebels",
+      "summary": "It was the seventh known strike in President Trump’s military campaign of attacking, rather than arresting, those suspected of running drugs in the Caribbean.",
+      "url": "https://www.nytimes.com/2025/10/19/us/politics/trump-military-boat-strike-colombia.html"
+    },
     {
       "date": "2025-10-18",
       "title": "U.S. Is Repatriating Survivors of Its Strike on Suspected Drug Vessel",
@@ -180,12 +186,6 @@
       "title": "Top Democratic Leaders Ask Trump for Meeting to Avert a Shutdown",
       "summary": "After a Republican plan to keep funding flowing foundered in the Senate, Representative Hakeem Jeffries and Senator Chuck Schumer accused the president of standing in the way of a solution.",
       "url": "https://www.nytimes.com/2025/09/20/us/politics/jeffries-schumer-trump.html"
-    },
-    {
-      "date": "2025-09-19",
-      "title": "Harvard’s Former President, Claudine Gay, Criticizes Its Approach to Trump",
-      "summary": "Claudine Gay has rarely spoken out since she was forced to resign, but she recently said that Harvard should not cave to Trump administration demands, including a $500 million payment.",
-      "url": "https://www.nytimes.com/2025/09/19/us/harvard-claudine-gay-trump.html"
     }
   ]
 }
