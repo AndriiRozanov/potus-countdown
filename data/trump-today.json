@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-20T20:39:24.577Z",
+  "updatedAt": "2025-10-21T20:39:36.282Z",
   "latest": {
-    "date": "2025-10-20",
-    "title": "Appeals Court Ruling Allows Trump to Deploy National Guard Troops to Portland",
-    "summary": "Deployment can move forward, for now, under a preliminary ruling by the U.S. Court of Appeals for the Ninth Circuit. But legal wrangling will likely continue.",
-    "url": "https://www.nytimes.com/2025/10/20/us/appeals-court-national-guard-troops-portland-trump.html"
+    "date": "2025-10-21",
+    "title": "Jack Smith’s lawyers say he never wiretapped or surveilled lawmakers.",
+    "summary": "Lawyers for the special counsel, who investigated Donald J. Trump, denied accusations by Republican lawmakers that he had surveilled or spied on senators as part of his inquiry.",
+    "url": "https://www.nytimes.com/2025/10/21/us/politics/jack-smith-phone-records-republicans.html"
   },
   "archive": [
+    {
+      "date": "2025-10-20",
+      "title": "Appeals Court Ruling Allows Trump to Deploy National Guard Troops to Portland",
+      "summary": "Deployment can move forward, for now, under a preliminary ruling by the U.S. Court of Appeals for the Ninth Circuit. But legal wrangling will likely continue.",
+      "url": "https://www.nytimes.com/2025/10/20/us/appeals-court-national-guard-troops-portland-trump.html"
+    },
     {
       "date": "2025-10-19",
       "title": "U.S. Kills 3 on Boat Suspected of Smuggling Drugs for Colombian Rebels",
@@ -180,12 +186,6 @@
       "title": "In Assault on Free Speech, Trump Targets Speech He Hates",
       "summary": "The president’s complaints about negative coverage undermine the rationales offered by his own officials.",
       "url": "https://www.nytimes.com/2025/09/21/us/politics/trump-free-speech.html"
-    },
-    {
-      "date": "2025-09-20",
-      "title": "Top Democratic Leaders Ask Trump for Meeting to Avert a Shutdown",
-      "summary": "After a Republican plan to keep funding flowing foundered in the Senate, Representative Hakeem Jeffries and Senator Chuck Schumer accused the president of standing in the way of a solution.",
-      "url": "https://www.nytimes.com/2025/09/20/us/politics/jeffries-schumer-trump.html"
     }
   ]
 }
