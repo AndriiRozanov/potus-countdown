@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-21T20:39:36.282Z",
+  "updatedAt": "2025-10-22T20:37:49.277Z",
   "latest": {
-    "date": "2025-10-21",
-    "title": "Jack Smith’s lawyers say he never wiretapped or surveilled lawmakers.",
-    "summary": "Lawyers for the special counsel, who investigated Donald J. Trump, denied accusations by Republican lawmakers that he had surveilled or spied on senators as part of his inquiry.",
-    "url": "https://www.nytimes.com/2025/10/21/us/politics/jack-smith-phone-records-republicans.html"
+    "date": "2025-10-22",
+    "title": "Trump Is Demolishing the White House’s East Wing to Make Way for His Ballroom",
+    "summary": "President Trump initially said the construction would not touch the East Wing or “interfere with the current building.”",
+    "url": "https://www.nytimes.com/2025/10/22/us/politics/east-wing-white-house-demolition-trump.html"
   },
   "archive": [
+    {
+      "date": "2025-10-21",
+      "title": "Jack Smith’s lawyers say he never wiretapped or surveilled lawmakers.",
+      "summary": "Lawyers for the special counsel, who investigated Donald J. Trump, denied accusations by Republican lawmakers that he had surveilled or spied on senators as part of his inquiry.",
+      "url": "https://www.nytimes.com/2025/10/21/us/politics/jack-smith-phone-records-republicans.html"
+    },
     {
       "date": "2025-10-20",
       "title": "Appeals Court Ruling Allows Trump to Deploy National Guard Troops to Portland",
@@ -180,12 +186,6 @@
       "title": "White House Denies Homan Took Bag of Cash in F.B.I. Inquiry",
       "summary": "People familiar with an undercover F.B.I. investigation say Trump’s border czar was recorded on audio tape accepting a Cava bag with $50,000 in it last year.",
       "url": "https://www.nytimes.com/2025/09/22/us/politics/homan-cash.html"
-    },
-    {
-      "date": "2025-09-21",
-      "title": "In Assault on Free Speech, Trump Targets Speech He Hates",
-      "summary": "The president’s complaints about negative coverage undermine the rationales offered by his own officials.",
-      "url": "https://www.nytimes.com/2025/09/21/us/politics/trump-free-speech.html"
     }
   ]
 }
