@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-22T20:37:49.277Z",
+  "updatedAt": "2025-10-23T20:37:39.072Z",
   "latest": {
-    "date": "2025-10-22",
-    "title": "Trump Is Demolishing the White House’s East Wing to Make Way for His Ballroom",
-    "summary": "President Trump initially said the construction would not touch the East Wing or “interfere with the current building.”",
-    "url": "https://www.nytimes.com/2025/10/22/us/politics/east-wing-white-house-demolition-trump.html"
+    "date": "2025-10-23",
+    "title": "A Pile of Rubble: After 123 Years, the East Wing Is Gone",
+    "summary": "Mourners are outraged over President Trump’s demolition of the East Wing to make way for his $300 million ballroom. Others say it was time for change.",
+    "url": "https://www.nytimes.com/2025/10/23/us/politics/east-wing-obituary.html"
   },
   "archive": [
+    {
+      "date": "2025-10-22",
+      "title": "Trump Is Demolishing the White House’s East Wing to Make Way for His Ballroom",
+      "summary": "President Trump initially said the construction would not touch the East Wing or “interfere with the current building.”",
+      "url": "https://www.nytimes.com/2025/10/22/us/politics/east-wing-white-house-demolition-trump.html"
+    },
     {
       "date": "2025-10-21",
       "title": "Jack Smith’s lawyers say he never wiretapped or surveilled lawmakers.",
@@ -180,12 +186,6 @@
       "title": "Stuck in Traffic, Emmanuel Macron Calls Trump About His Motorcade",
       "summary": "The French head of state experienced a frustration that many New Yorkers know all too well. He got stuck during the U.N. General Assembly.",
       "url": "https://www.nytimes.com/2025/09/23/us/macron-trump-unga-motorcade.html"
-    },
-    {
-      "date": "2025-09-22",
-      "title": "White House Denies Homan Took Bag of Cash in F.B.I. Inquiry",
-      "summary": "People familiar with an undercover F.B.I. investigation say Trump’s border czar was recorded on audio tape accepting a Cava bag with $50,000 in it last year.",
-      "url": "https://www.nytimes.com/2025/09/22/us/politics/homan-cash.html"
     }
   ]
 }
