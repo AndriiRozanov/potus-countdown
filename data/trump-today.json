@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-23T20:37:39.072Z",
+  "updatedAt": "2025-10-24T20:38:18.336Z",
   "latest": {
-    "date": "2025-10-23",
-    "title": "A Pile of Rubble: After 123 Years, the East Wing Is Gone",
-    "summary": "Mourners are outraged over President Trump’s demolition of the East Wing to make way for his $300 million ballroom. Others say it was time for change.",
-    "url": "https://www.nytimes.com/2025/10/23/us/politics/east-wing-obituary.html"
+    "date": "2025-10-24",
+    "title": "Trump to Use $130 Million Donation to Help Pay Troops",
+    "summary": "It is not clear how far the gift will go toward covering the salaries of the nation’s 1.3 million troops.",
+    "url": "https://www.nytimes.com/2025/10/24/us/politics/trump-military-pay-donation.html"
   },
   "archive": [
+    {
+      "date": "2025-10-23",
+      "title": "A Pile of Rubble: After 123 Years, the East Wing Is Gone",
+      "summary": "Mourners are outraged over President Trump’s demolition of the East Wing to make way for his $300 million ballroom. Others say it was time for change.",
+      "url": "https://www.nytimes.com/2025/10/23/us/politics/east-wing-obituary.html"
+    },
     {
       "date": "2025-10-22",
       "title": "Trump Is Demolishing the White House’s East Wing to Make Way for His Ballroom",
@@ -180,12 +186,6 @@
       "title": "The D.C. Region Has Faced an Outsized Toll From Trump’s Policies",
       "summary": "With the mass layoffs and cancellations of thousands of federal grants and contracts, the region has taken a disproportionate hit.",
       "url": "https://www.nytimes.com/2025/09/24/us/politics/trump-cuts-washington-dc.html"
-    },
-    {
-      "date": "2025-09-23",
-      "title": "Stuck in Traffic, Emmanuel Macron Calls Trump About His Motorcade",
-      "summary": "The French head of state experienced a frustration that many New Yorkers know all too well. He got stuck during the U.N. General Assembly.",
-      "url": "https://www.nytimes.com/2025/09/23/us/macron-trump-unga-motorcade.html"
     }
   ]
 }
