@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-26T20:36:54.575Z",
+  "updatedAt": "2025-10-27T20:36:55.716Z",
   "latest": {
-    "date": "2025-10-26",
-    "title": "How Canada Is Dealing With Its Latest Tussle With President Trump",
-    "summary": "Prime Minister Mark Carney is focusing on what the country can control, including looking for economic partnerships abroad, especially in Asia.",
-    "url": "https://www.nytimes.com/2025/10/26/us/politics/canada-tariffs-trump-carney.html"
+    "date": "2025-10-27",
+    "title": "Trump Asks Supreme Court to Let Him Fire the Top Copyright Official",
+    "summary": "An appeals court sided with the director of the U.S. Copyright Office, saying her role is to work with Congress.",
+    "url": "https://www.nytimes.com/2025/10/27/us/politics/trump-supreme-court-copyright-official.html"
   },
   "archive": [
+    {
+      "date": "2025-10-26",
+      "title": "How Canada Is Dealing With Its Latest Tussle With President Trump",
+      "summary": "Prime Minister Mark Carney is focusing on what the country can control, including looking for economic partnerships abroad, especially in Asia.",
+      "url": "https://www.nytimes.com/2025/10/26/us/politics/canada-tariffs-trump-carney.html"
+    },
     {
       "date": "2025-10-25",
       "title": "Timothy Mellon Is Donor Who Gave $130 Million to Pay Troops During Shutdown",
@@ -180,12 +186,6 @@
       "title": "Trump Says He Has Ordered Troops to Portland, Oregon, to Protect ICE Facilities",
       "summary": "The president characterized Immigration and Customs Enforcement facilities as being under siege from domestic terrorists.",
       "url": "https://www.nytimes.com/2025/09/27/us/politics/trump-portland-troops.html"
-    },
-    {
-      "date": "2025-09-26",
-      "title": "Trump Expands Tariffs Beyond Supreme Court’s Reach",
-      "summary": "The president’s tariffs on foreign drugs and furniture rely on national security laws outside the scope of current lawsuits.",
-      "url": "https://www.nytimes.com/2025/09/26/us/politics/trump-tariffs-supreme-court.html"
     }
   ]
 }
