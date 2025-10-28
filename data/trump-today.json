@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-27T20:36:55.716Z",
+  "updatedAt": "2025-10-28T20:39:47.923Z",
   "latest": {
-    "date": "2025-10-27",
-    "title": "Trump Asks Supreme Court to Let Him Fire the Top Copyright Official",
-    "summary": "An appeals court sided with the director of the U.S. Copyright Office, saying her role is to work with Congress.",
-    "url": "https://www.nytimes.com/2025/10/27/us/politics/trump-supreme-court-copyright-official.html"
+    "date": "2025-10-28",
+    "title": "Mike Johnson Dismisses Trump Third Term Talk — But Applauds the ‘Trolling’",
+    "summary": "The speaker said he did not see a path to amending the Constitution to allow the president to seek a third term, but that it was fun to pretend he could to inflame Democrats.",
+    "url": "https://www.nytimes.com/2025/10/28/us/politics/johnson-trump-2028-constitution.html"
   },
   "archive": [
+    {
+      "date": "2025-10-27",
+      "title": "Trump Asks Supreme Court to Let Him Fire the Top Copyright Official",
+      "summary": "An appeals court sided with the director of the U.S. Copyright Office, saying her role is to work with Congress.",
+      "url": "https://www.nytimes.com/2025/10/27/us/politics/trump-supreme-court-copyright-official.html"
+    },
     {
       "date": "2025-10-26",
       "title": "How Canada Is Dealing With Its Latest Tussle With President Trump",
@@ -180,12 +186,6 @@
       "title": "With Comey Indictment, Trump Sets Retribution Precedent That Could Haunt His Allies",
       "summary": "President Trump’s retribution campaign risks ushering in a cycle of retaliation in which each new administration takes aim at the last one.",
       "url": "https://www.nytimes.com/2025/09/28/us/politics/trump-comey-retribution-precedent.html"
-    },
-    {
-      "date": "2025-09-27",
-      "title": "Trump Says He Has Ordered Troops to Portland, Oregon, to Protect ICE Facilities",
-      "summary": "The president characterized Immigration and Customs Enforcement facilities as being under siege from domestic terrorists.",
-      "url": "https://www.nytimes.com/2025/09/27/us/politics/trump-portland-troops.html"
     }
   ]
 }
