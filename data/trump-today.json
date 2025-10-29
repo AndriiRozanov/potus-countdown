@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-28T20:39:47.923Z",
+  "updatedAt": "2025-10-29T20:39:31.454Z",
   "latest": {
-    "date": "2025-10-28",
-    "title": "Mike Johnson Dismisses Trump Third Term Talk — But Applauds the ‘Trolling’",
-    "summary": "The speaker said he did not see a path to amending the Constitution to allow the president to seek a third term, but that it was fun to pretend he could to inflame Democrats.",
-    "url": "https://www.nytimes.com/2025/10/28/us/politics/johnson-trump-2028-constitution.html"
+    "date": "2025-10-29",
+    "title": "Sanctions Lifted on a Putin-Backed Autocrat After Lobbying by Trump Allies",
+    "summary": "The move benefits the Serbian politician Milorad Dodik, who had received support from Rudolph W. Giuliani, Michael T. Flynn, Laura Loomer and high-priced lobbyists.",
+    "url": "https://www.nytimes.com/2025/10/29/us/politics/milorad-dodik-sanctions-trump.html"
   },
   "archive": [
+    {
+      "date": "2025-10-28",
+      "title": "Mike Johnson Dismisses Trump Third Term Talk — But Applauds the ‘Trolling’",
+      "summary": "The speaker said he did not see a path to amending the Constitution to allow the president to seek a third term, but that it was fun to pretend he could to inflame Democrats.",
+      "url": "https://www.nytimes.com/2025/10/28/us/politics/johnson-trump-2028-constitution.html"
+    },
     {
       "date": "2025-10-27",
       "title": "Trump Asks Supreme Court to Let Him Fire the Top Copyright Official",
@@ -180,12 +186,6 @@
       "title": "The Man Expanding Trump’s Presidential Powers",
       "summary": "Coral Davenport, a New York Times reporter, explains how Russell Vought, the director of the Office of Management and Budget, plans to circumvent Congress’s budgetary powers to advance the Trump administration’s agenda.",
       "url": "https://www.nytimes.com/video/us/politics/100000010422264/the-man-expanding-trumps-presidential-powers.html"
-    },
-    {
-      "date": "2025-09-28",
-      "title": "With Comey Indictment, Trump Sets Retribution Precedent That Could Haunt His Allies",
-      "summary": "President Trump’s retribution campaign risks ushering in a cycle of retaliation in which each new administration takes aim at the last one.",
-      "url": "https://www.nytimes.com/2025/09/28/us/politics/trump-comey-retribution-precedent.html"
     }
   ]
 }
