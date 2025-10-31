@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-10-30T20:38:27.884Z",
+  "updatedAt": "2025-10-31T20:37:13.094Z",
   "latest": {
-    "date": "2025-10-30",
-    "title": "Democrats Condemn Trump Officials for Boat Strike Secrecy",
-    "summary": "Senator Mark Warner said the administration’s decision to hold a Republicans-only briefing on the campaign was “corrosive to our democracy.”",
-    "url": "https://www.nytimes.com/2025/10/30/us/politics/trump-democrats-boat-strikes.html"
+    "date": "2025-10-31",
+    "title": "Democrats Ride Anti-Trump Message in Final Days of California Campaign",
+    "summary": "Proponents say voters are motivated by stopping President Trump. Republicans have already begun pointing fingers over lackluster fund-raising and coordination.",
+    "url": "https://www.nytimes.com/2025/10/31/us/politics/california-redistricting-proposition-50-trump.html"
   },
   "archive": [
+    {
+      "date": "2025-10-30",
+      "title": "Democrats Condemn Trump Officials for Boat Strike Secrecy",
+      "summary": "Senator Mark Warner said the administration’s decision to hold a Republicans-only briefing on the campaign was “corrosive to our democracy.”",
+      "url": "https://www.nytimes.com/2025/10/30/us/politics/trump-democrats-boat-strikes.html"
+    },
     {
       "date": "2025-10-29",
       "title": "Sanctions Lifted on a Putin-Backed Autocrat After Lobbying by Trump Allies",
@@ -180,12 +186,6 @@
       "title": "Environmental Protection Agency Employees Working Despite Furloughs Plan",
       "summary": "E.P.A. employees said that they were working without pay, and that Trump administration officials had not told them how long the funding would last. Union officials said they were “highly confused.”",
       "url": "https://www.nytimes.com/2025/10/01/us/politics/government-shutdown-epa-working.html"
-    },
-    {
-      "date": "2025-09-30",
-      "title": "Trump Administration Defunds Federal Watchdog Office",
-      "summary": "Two senators called for “immediate action” to release money the White House blocked for the federal office that oversees dozens of inspectors general.",
-      "url": "https://www.nytimes.com/2025/09/30/us/politics/trump-federal-watchdog-funding.html"
     }
   ]
 }
