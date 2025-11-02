@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-01T20:33:27.177Z",
+  "updatedAt": "2025-11-02T20:34:20.208Z",
   "latest": {
-    "date": "2025-11-01",
-    "title": "Trump’s Team Offers to Keep Some Ballroom Donors Incognito",
-    "summary": "Many corporate interests that have donated to the president’s pet project have business before his administration.",
-    "url": "https://www.nytimes.com/2025/11/01/us/politics/trumps-team-offers-to-keep-some-ballroom-donors-incognito.html"
+    "date": "2025-11-02",
+    "title": "‘Keep Listening’: An Undecided Republican Lawmaker Weighs New Voting Maps",
+    "summary": "As redistricting efforts spread across the country, an Indiana state senator said he isn’t sure how he will vote on a plan that President Trump supports.",
+    "url": "https://www.nytimes.com/2025/11/02/us/indiana-redistricting-terre-haute.html"
   },
   "archive": [
+    {
+      "date": "2025-11-01",
+      "title": "Trump’s Team Offers to Keep Some Ballroom Donors Incognito",
+      "summary": "Many corporate interests that have donated to the president’s pet project have business before his administration.",
+      "url": "https://www.nytimes.com/2025/11/01/us/politics/trumps-team-offers-to-keep-some-ballroom-donors-incognito.html"
+    },
     {
       "date": "2025-10-31",
       "title": "Democrats Ride Anti-Trump Message in Final Days of California Campaign",
@@ -180,12 +186,6 @@
       "title": "Marc Rowan, a Billionaire Financier, Is Behind Trump’s Deal for Universities",
       "summary": "The conservative ideas behind the Trump administration’s “compact” for universities were developed in part by Marc Rowan, a wealthy financier who has sought to shape higher education.",
       "url": "https://www.nytimes.com/2025/10/03/us/billionaire-marc-rowan-trump-deal-universities.html"
-    },
-    {
-      "date": "2025-10-02",
-      "title": "Trump ‘Determined’ the U.S. Is Now in a War With Drug Cartels, Congress Is Told",
-      "summary": "A notice calls the people the U.S. military recently killed on suspicion of drug smuggling in the Caribbean Sea “unlawful combatants.”",
-      "url": "https://www.nytimes.com/2025/10/02/us/politics/trump-drug-cartels-war.html"
     }
   ]
 }
