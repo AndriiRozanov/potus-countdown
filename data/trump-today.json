@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-05T20:39:47.806Z",
+  "updatedAt": "2025-11-06T20:39:25.440Z",
   "latest": {
-    "date": "2025-11-05",
-    "title": "Trump Administration Ends Deportation Protections for South Sudanese",
-    "summary": "The program was first authorized for South Sudanese nationals in 2011. The Department of Homeland Security said that “renewed peace in South Sudan” and “improved diplomatic relations” justified the move.",
-    "url": "https://www.nytimes.com/2025/11/05/us/politics/trump-south-sudan-migrants.html"
+    "date": "2025-11-06",
+    "title": "Trump Team Now Claims Its Trillions in Tariff Revenue Are ‘Incidental’",
+    "summary": "In arguments before the Supreme Court, the White House backed away from its claims that President Trump’s tariffs were about raising revenue.",
+    "url": "https://www.nytimes.com/2025/11/06/us/politics/trump-tariffs-revenue-supreme-court.html"
   },
   "archive": [
+    {
+      "date": "2025-11-05",
+      "title": "Trump Administration Ends Deportation Protections for South Sudanese",
+      "summary": "The program was first authorized for South Sudanese nationals in 2011. The Department of Homeland Security said that “renewed peace in South Sudan” and “improved diplomatic relations” justified the move.",
+      "url": "https://www.nytimes.com/2025/11/05/us/politics/trump-south-sudan-migrants.html"
+    },
     {
       "date": "2025-11-04",
       "title": "Trump Aides Raise Recession Fears, and Point Fingers at the Fed",
@@ -180,12 +186,6 @@
       "title": "Mass Layoffs Trump Is Threatening in Shutdown Fight May Be Illegal",
       "summary": "Unions have sued to block any firings, which budget experts believe are not even needed to protect essential federal services.",
       "url": "https://www.nytimes.com/2025/10/07/us/politics/trump-government-shutdown-layoffs.html"
-    },
-    {
-      "date": "2025-10-06",
-      "title": "Trump Gave Partisan Speech to Navy Troops, as He Deployed Troops to U.S. Cities",
-      "summary": "President Trump’s attempts to politicize the military have become more overt as he makes the case for having troops at his disposal in American cities.",
-      "url": "https://www.nytimes.com/2025/10/06/us/politics/trump-navy-portland-troops.html"
     }
   ]
 }
