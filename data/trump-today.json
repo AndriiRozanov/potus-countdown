@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-06T20:39:25.440Z",
+  "updatedAt": "2025-11-07T20:35:41.155Z",
   "latest": {
-    "date": "2025-11-06",
-    "title": "Trump Team Now Claims Its Trillions in Tariff Revenue Are ‘Incidental’",
-    "summary": "In arguments before the Supreme Court, the White House backed away from its claims that President Trump’s tariffs were about raising revenue.",
-    "url": "https://www.nytimes.com/2025/11/06/us/politics/trump-tariffs-revenue-supreme-court.html"
+    "date": "2025-11-07",
+    "title": "Did Trump’s Supreme Court Tariffs Brief Include a Strategic Blunder?",
+    "summary": "The justices are generally reluctant to take account of a president’s public statements. But extensive quotes from Mr. Trump in a key filing may change the legal calculus.",
+    "url": "https://www.nytimes.com/2025/11/07/us/trump-statements-supreme-court-tariffs.html"
   },
   "archive": [
+    {
+      "date": "2025-11-06",
+      "title": "Trump Team Now Claims Its Trillions in Tariff Revenue Are ‘Incidental’",
+      "summary": "In arguments before the Supreme Court, the White House backed away from its claims that President Trump’s tariffs were about raising revenue.",
+      "url": "https://www.nytimes.com/2025/11/06/us/politics/trump-tariffs-revenue-supreme-court.html"
+    },
     {
       "date": "2025-11-05",
       "title": "Trump Administration Ends Deportation Protections for South Sudanese",
@@ -180,12 +186,6 @@
       "title": "A Chicago federal grand jury deals the latest setback to Trump’s immigration enforcement efforts.",
       "summary": "",
       "url": "https://www.nytimes.com/live/2025/10/08/us/trump-national-guard-chicago-illinois/a-chicago-federal-grand-jury-deals-the-latest-setback-to-trumps-immigration-enforcement-efforts"
-    },
-    {
-      "date": "2025-10-07",
-      "title": "Mass Layoffs Trump Is Threatening in Shutdown Fight May Be Illegal",
-      "summary": "Unions have sued to block any firings, which budget experts believe are not even needed to protect essential federal services.",
-      "url": "https://www.nytimes.com/2025/10/07/us/politics/trump-government-shutdown-layoffs.html"
     }
   ]
 }
