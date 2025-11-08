@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-07T20:35:41.155Z",
+  "updatedAt": "2025-11-08T20:33:49.492Z",
   "latest": {
-    "date": "2025-11-07",
-    "title": "Did Trump’s Supreme Court Tariffs Brief Include a Strategic Blunder?",
-    "summary": "The justices are generally reluctant to take account of a president’s public statements. But extensive quotes from Mr. Trump in a key filing may change the legal calculus.",
-    "url": "https://www.nytimes.com/2025/11/07/us/trump-statements-supreme-court-tariffs.html"
+    "date": "2025-11-08",
+    "title": "Biden Warns of a ‘Very, Very Dark Moment’ as He Hits Out at Trump",
+    "summary": "The former president, now a far less popular figure in his party, appeared in Nebraska for an overtly political speech that slammed his successor.",
+    "url": "https://www.nytimes.com/2025/11/07/us/politics/biden-trump-omaha-nebraska.html"
   },
   "archive": [
+    {
+      "date": "2025-11-07",
+      "title": "Did Trump’s Supreme Court Tariffs Brief Include a Strategic Blunder?",
+      "summary": "The justices are generally reluctant to take account of a president’s public statements. But extensive quotes from Mr. Trump in a key filing may change the legal calculus.",
+      "url": "https://www.nytimes.com/2025/11/07/us/trump-statements-supreme-court-tariffs.html"
+    },
     {
       "date": "2025-11-06",
       "title": "Trump Team Now Claims Its Trillions in Tariff Revenue Are ‘Incidental’",
@@ -180,12 +186,6 @@
       "title": "Appellate Judges Appear Open to Allowing National Guard Troops to Deploy to Portland",
       "summary": "Three judges from the U.S. Court of Appeals for the Ninth Circuit are reviewing an order blocking President Trump from deploying National Guard soldiers in the city.",
       "url": "https://www.nytimes.com/2025/10/09/us/national-guard-portland-appeals-court-hearing.html"
-    },
-    {
-      "date": "2025-10-08",
-      "title": "A Chicago federal grand jury deals the latest setback to Trump’s immigration enforcement efforts.",
-      "summary": "",
-      "url": "https://www.nytimes.com/live/2025/10/08/us/trump-national-guard-chicago-illinois/a-chicago-federal-grand-jury-deals-the-latest-setback-to-trumps-immigration-enforcement-efforts"
     }
   ]
 }
