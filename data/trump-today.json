@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-08T20:33:49.492Z",
+  "updatedAt": "2025-11-09T20:35:12.243Z",
   "latest": {
-    "date": "2025-11-08",
-    "title": "Biden Warns of a ‘Very, Very Dark Moment’ as He Hits Out at Trump",
-    "summary": "The former president, now a far less popular figure in his party, appeared in Nebraska for an overtly political speech that slammed his successor.",
-    "url": "https://www.nytimes.com/2025/11/07/us/politics/biden-trump-omaha-nebraska.html"
+    "date": "2025-11-09",
+    "title": "White House Discussed Naming New Washington Commanders Stadium After Trump",
+    "summary": "President Trump made the “rebuilding of the new stadium possible,” according to Karoline Leavitt, the White House press secretary. But it was unclear what role he has had in the project.",
+    "url": "https://www.nytimes.com/2025/11/09/us/politics/trump-washington-commanders.html"
   },
   "archive": [
+    {
+      "date": "2025-11-08",
+      "title": "Biden Warns of a ‘Very, Very Dark Moment’ as He Hits Out at Trump",
+      "summary": "The former president, now a far less popular figure in his party, appeared in Nebraska for an overtly political speech that slammed his successor.",
+      "url": "https://www.nytimes.com/2025/11/07/us/politics/biden-trump-omaha-nebraska.html"
+    },
     {
       "date": "2025-11-07",
       "title": "Did Trump’s Supreme Court Tariffs Brief Include a Strategic Blunder?",
@@ -180,12 +186,6 @@
       "title": "Judge Orders ICE to Remove Fence Around Facility Near Chicago",
       "summary": "The judge’s decision is the third in three days in Illinois against the Trump administration. It came after ICE said its Operation Midway Blitz would continue indefinitely.",
       "url": "https://www.nytimes.com/2025/10/10/us/politics/ice-national-guard.html"
-    },
-    {
-      "date": "2025-10-09",
-      "title": "Appellate Judges Appear Open to Allowing National Guard Troops to Deploy to Portland",
-      "summary": "Three judges from the U.S. Court of Appeals for the Ninth Circuit are reviewing an order blocking President Trump from deploying National Guard soldiers in the city.",
-      "url": "https://www.nytimes.com/2025/10/09/us/national-guard-portland-appeals-court-hearing.html"
     }
   ]
 }
