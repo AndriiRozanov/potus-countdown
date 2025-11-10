@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-09T20:35:12.243Z",
+  "updatedAt": "2025-11-10T20:40:38.930Z",
   "latest": {
-    "date": "2025-11-09",
-    "title": "White House Discussed Naming New Washington Commanders Stadium After Trump",
-    "summary": "President Trump made the “rebuilding of the new stadium possible,” according to Karoline Leavitt, the White House press secretary. But it was unclear what role he has had in the project.",
-    "url": "https://www.nytimes.com/2025/11/09/us/politics/trump-washington-commanders.html"
+    "date": "2025-11-10",
+    "title": "Appeals Court Blocks Trump’s Attempt to Withhold Full SNAP Funding",
+    "summary": "But the administration indicated it might not be necessary, as Congress inched toward a deal to fund the government.",
+    "url": "https://www.nytimes.com/2025/11/10/us/politics/appeals-court-trump-snap-funding-shutdown.html"
   },
   "archive": [
+    {
+      "date": "2025-11-09",
+      "title": "White House Discussed Naming New Washington Commanders Stadium After Trump",
+      "summary": "President Trump made the “rebuilding of the new stadium possible,” according to Karoline Leavitt, the White House press secretary. But it was unclear what role he has had in the project.",
+      "url": "https://www.nytimes.com/2025/11/09/us/politics/trump-washington-commanders.html"
+    },
     {
       "date": "2025-11-08",
       "title": "Biden Warns of a ‘Very, Very Dark Moment’ as He Hits Out at Trump",
@@ -180,12 +186,6 @@
       "title": "Among Portland Protests, It’s Frogs and Sharks and Bears, Oh My.",
       "summary": "Images of anarchists clad in black gave the city a bad name in 2020. Now, demonstrators in Portland are poking fun at President Trump’s apocalyptic talk with colorful animal suits.",
       "url": "https://www.nytimes.com/2025/10/11/us/politics/portland-protests.html"
-    },
-    {
-      "date": "2025-10-10",
-      "title": "Judge Orders ICE to Remove Fence Around Facility Near Chicago",
-      "summary": "The judge’s decision is the third in three days in Illinois against the Trump administration. It came after ICE said its Operation Midway Blitz would continue indefinitely.",
-      "url": "https://www.nytimes.com/2025/10/10/us/politics/ice-national-guard.html"
     }
   ]
 }
