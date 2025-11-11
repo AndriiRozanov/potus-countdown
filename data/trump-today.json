@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-10T20:40:38.930Z",
+  "updatedAt": "2025-11-11T20:38:44.442Z",
   "latest": {
-    "date": "2025-11-10",
-    "title": "Appeals Court Blocks Trump’s Attempt to Withhold Full SNAP Funding",
-    "summary": "But the administration indicated it might not be necessary, as Congress inched toward a deal to fund the government.",
-    "url": "https://www.nytimes.com/2025/11/10/us/politics/appeals-court-trump-snap-funding-shutdown.html"
+    "date": "2025-11-11",
+    "title": "As Shutdown Nears End, Trump Still Confronts Soaring Health Costs",
+    "summary": "The central issue of the government closure remains unresolved, leaving Republicans under political pressure ahead of the midterms.",
+    "url": "https://www.nytimes.com/2025/11/11/us/politics/trump-shutdown-health-care-costs-aca.html"
   },
   "archive": [
+    {
+      "date": "2025-11-10",
+      "title": "Appeals Court Blocks Trump’s Attempt to Withhold Full SNAP Funding",
+      "summary": "But the administration indicated it might not be necessary, as Congress inched toward a deal to fund the government.",
+      "url": "https://www.nytimes.com/2025/11/10/us/politics/appeals-court-trump-snap-funding-shutdown.html"
+    },
     {
       "date": "2025-11-09",
       "title": "White House Discussed Naming New Washington Commanders Stadium After Trump",
@@ -180,12 +186,6 @@
       "title": "Why Now? The Lost Chances to Reach a Hostage Deal, and a Cease-Fire, Months Ago",
       "summary": "On Gaza, President Trump put few, if any, guardrails on Israel’s offensive, bucking international demands for a cease-fire. Then he changed course.",
       "url": "https://www.nytimes.com/2025/10/12/us/politics/lost-chances-hostage-deal-gaza-israel.html"
-    },
-    {
-      "date": "2025-10-11",
-      "title": "Among Portland Protests, It’s Frogs and Sharks and Bears, Oh My.",
-      "summary": "Images of anarchists clad in black gave the city a bad name in 2020. Now, demonstrators in Portland are poking fun at President Trump’s apocalyptic talk with colorful animal suits.",
-      "url": "https://www.nytimes.com/2025/10/11/us/politics/portland-protests.html"
     }
   ]
 }
