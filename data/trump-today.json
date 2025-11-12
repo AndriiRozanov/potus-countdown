@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-11T20:38:44.442Z",
+  "updatedAt": "2025-11-12T20:39:54.898Z",
   "latest": {
-    "date": "2025-11-11",
-    "title": "As Shutdown Nears End, Trump Still Confronts Soaring Health Costs",
-    "summary": "The central issue of the government closure remains unresolved, leaving Republicans under political pressure ahead of the midterms.",
-    "url": "https://www.nytimes.com/2025/11/11/us/politics/trump-shutdown-health-care-costs-aca.html"
+    "date": "2025-11-12",
+    "title": "What Epstein’s Emails Allege About Trump’s Knowledge of His Conduct",
+    "summary": "Democrats on the House Oversight Committee released emails suggesting that President Trump knew more about Jeffrey Epstein’s activities than he has acknowledged.",
+    "url": "https://www.nytimes.com/2025/11/12/us/politics/epstein-emails-trump.html"
   },
   "archive": [
+    {
+      "date": "2025-11-11",
+      "title": "As Shutdown Nears End, Trump Still Confronts Soaring Health Costs",
+      "summary": "The central issue of the government closure remains unresolved, leaving Republicans under political pressure ahead of the midterms.",
+      "url": "https://www.nytimes.com/2025/11/11/us/politics/trump-shutdown-health-care-costs-aca.html"
+    },
     {
       "date": "2025-11-10",
       "title": "Appeals Court Blocks Trump’s Attempt to Withhold Full SNAP Funding",
@@ -180,12 +186,6 @@
       "title": "Part Enabler, Part Buffer: The Bind of the Justice Dept.’s No. 2",
       "summary": "Todd Blanche, the deputy attorney general, has helped usher in President Trump’s retribution campaign. But he faces anger on the right for resisting some of the most extreme measures.",
       "url": "https://www.nytimes.com/2025/10/13/us/politics/todd-blanche-justice-department-trump.html"
-    },
-    {
-      "date": "2025-10-12",
-      "title": "Why Now? The Lost Chances to Reach a Hostage Deal, and a Cease-Fire, Months Ago",
-      "summary": "On Gaza, President Trump put few, if any, guardrails on Israel’s offensive, bucking international demands for a cease-fire. Then he changed course.",
-      "url": "https://www.nytimes.com/2025/10/12/us/politics/lost-chances-hostage-deal-gaza-israel.html"
     }
   ]
 }
