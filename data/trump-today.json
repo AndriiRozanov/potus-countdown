@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-12T20:39:54.898Z",
+  "updatedAt": "2025-11-13T20:40:29.729Z",
   "latest": {
-    "date": "2025-11-12",
-    "title": "What Epstein’s Emails Allege About Trump’s Knowledge of His Conduct",
-    "summary": "Democrats on the House Oversight Committee released emails suggesting that President Trump knew more about Jeffrey Epstein’s activities than he has acknowledged.",
-    "url": "https://www.nytimes.com/2025/11/12/us/politics/epstein-emails-trump.html"
+    "date": "2025-11-13",
+    "title": "Epstein’s Emails About Trump",
+    "summary": "Our investigative reporter Steve Eder provides context about Jeffrey Epstein’s relationship with President Donald Trump based on information from over 20,000 pages of documents from Epstein’s estate released by the House Oversight Committee on Wednesday.",
+    "url": "https://www.nytimes.com/video/us/politics/100000010520312/epstein-trump-emails-explained.html"
   },
   "archive": [
+    {
+      "date": "2025-11-12",
+      "title": "What Epstein’s Emails Allege About Trump’s Knowledge of His Conduct",
+      "summary": "Democrats on the House Oversight Committee released emails suggesting that President Trump knew more about Jeffrey Epstein’s activities than he has acknowledged.",
+      "url": "https://www.nytimes.com/2025/11/12/us/politics/epstein-emails-trump.html"
+    },
     {
       "date": "2025-11-11",
       "title": "As Shutdown Nears End, Trump Still Confronts Soaring Health Costs",
@@ -180,12 +186,6 @@
       "title": "U.S. Military Kills 6 People in Boat Attack Near Venezuela, Trump Says",
       "summary": "In a social media post, the president said the people aboard a boat were suspected of smuggling drugs for an unspecified group his team had labeled terrorists.",
       "url": "https://www.nytimes.com/2025/10/14/us/politics/trump-drugs-boat-attack.html"
-    },
-    {
-      "date": "2025-10-13",
-      "title": "Part Enabler, Part Buffer: The Bind of the Justice Dept.’s No. 2",
-      "summary": "Todd Blanche, the deputy attorney general, has helped usher in President Trump’s retribution campaign. But he faces anger on the right for resisting some of the most extreme measures.",
-      "url": "https://www.nytimes.com/2025/10/13/us/politics/todd-blanche-justice-department-trump.html"
     }
   ]
 }
