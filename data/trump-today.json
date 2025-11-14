@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-13T20:40:29.729Z",
+  "updatedAt": "2025-11-14T20:38:50.956Z",
   "latest": {
-    "date": "2025-11-13",
-    "title": "Epstein’s Emails About Trump",
-    "summary": "Our investigative reporter Steve Eder provides context about Jeffrey Epstein’s relationship with President Donald Trump based on information from over 20,000 pages of documents from Epstein’s estate released by the House Oversight Committee on Wednesday.",
-    "url": "https://www.nytimes.com/video/us/politics/100000010520312/epstein-trump-emails-explained.html"
+    "date": "2025-11-14",
+    "title": "Trump Plan Could Limit Green Cards for Immigrants From Travel Ban Countries",
+    "summary": "The policy change is a major expansion of the administration’s push to crack down on immigration from countries that it says lack sufficient screening and vetting abilities.",
+    "url": "https://www.nytimes.com/2025/11/14/us/politics/trump-travel-ban-visas-green-card.html"
   },
   "archive": [
+    {
+      "date": "2025-11-13",
+      "title": "Epstein’s Emails About Trump",
+      "summary": "Our investigative reporter Steve Eder provides context about Jeffrey Epstein’s relationship with President Donald Trump based on information from over 20,000 pages of documents from Epstein’s estate released by the House Oversight Committee on Wednesday.",
+      "url": "https://www.nytimes.com/video/us/politics/100000010520312/epstein-trump-emails-explained.html"
+    },
     {
       "date": "2025-11-12",
       "title": "What Epstein’s Emails Allege About Trump’s Knowledge of His Conduct",
@@ -180,12 +186,6 @@
       "title": "Trump Signs Memo Expanding His Authority to Spend Federal Money",
       "summary": "The president gave Defense Secretary Pete Hegseth wide authority to repurpose funds to pay members of the military without approval from Congress, which has the sole constitutional authority to decide federal spending.",
       "url": "https://www.nytimes.com/2025/10/15/us/politics/trump-federal-funds-government-shutdown.html"
-    },
-    {
-      "date": "2025-10-14",
-      "title": "U.S. Military Kills 6 People in Boat Attack Near Venezuela, Trump Says",
-      "summary": "In a social media post, the president said the people aboard a boat were suspected of smuggling drugs for an unspecified group his team had labeled terrorists.",
-      "url": "https://www.nytimes.com/2025/10/14/us/politics/trump-drugs-boat-attack.html"
     }
   ]
 }
