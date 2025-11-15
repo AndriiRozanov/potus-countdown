@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-14T20:38:50.956Z",
+  "updatedAt": "2025-11-15T20:35:13.085Z",
   "latest": {
-    "date": "2025-11-14",
-    "title": "Trump Plan Could Limit Green Cards for Immigrants From Travel Ban Countries",
-    "summary": "The policy change is a major expansion of the administration’s push to crack down on immigration from countries that it says lack sufficient screening and vetting abilities.",
-    "url": "https://www.nytimes.com/2025/11/14/us/politics/trump-travel-ban-visas-green-card.html"
+    "date": "2025-11-15",
+    "title": "Trump Pardons Two for Crimes Related to Jan. 6",
+    "summary": "Daniel Edwin Wilson and Suzanne Kaye had been convicted of crimes indirectly connected to the 2021 attack on the Capitol.",
+    "url": "https://www.nytimes.com/2025/11/15/us/politics/trump-pardons-jan-6.html"
   },
   "archive": [
+    {
+      "date": "2025-11-14",
+      "title": "Trump Plan Could Limit Green Cards for Immigrants From Travel Ban Countries",
+      "summary": "The policy change is a major expansion of the administration’s push to crack down on immigration from countries that it says lack sufficient screening and vetting abilities.",
+      "url": "https://www.nytimes.com/2025/11/14/us/politics/trump-travel-ban-visas-green-card.html"
+    },
     {
       "date": "2025-11-13",
       "title": "Epstein’s Emails About Trump",
@@ -180,12 +186,6 @@
       "title": "Terrorism Charges Against Antifa ‘Cell’ Show Administration’s Focus on the Left",
       "summary": "President Trump has spoken at times of antifa as though it were a clear-cut extremist organization, but the movement is a decentralized collection of loosely affiliated groups.",
       "url": "https://www.nytimes.com/2025/10/16/us/politics/justice-department-terrorism-antifa.html"
-    },
-    {
-      "date": "2025-10-15",
-      "title": "Trump Signs Memo Expanding His Authority to Spend Federal Money",
-      "summary": "The president gave Defense Secretary Pete Hegseth wide authority to repurpose funds to pay members of the military without approval from Congress, which has the sole constitutional authority to decide federal spending.",
-      "url": "https://www.nytimes.com/2025/10/15/us/politics/trump-federal-funds-government-shutdown.html"
     }
   ]
 }
