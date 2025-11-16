@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-15T20:35:13.085Z",
+  "updatedAt": "2025-11-16T20:37:09.623Z",
   "latest": {
-    "date": "2025-11-15",
-    "title": "Trump Pardons Two for Crimes Related to Jan. 6",
-    "summary": "Daniel Edwin Wilson and Suzanne Kaye had been convicted of crimes indirectly connected to the 2021 attack on the Capitol.",
-    "url": "https://www.nytimes.com/2025/11/15/us/politics/trump-pardons-jan-6.html"
+    "date": "2025-11-16",
+    "title": "Marjorie Taylor Greene Backs Trump but Stands Firm on Epstein Files",
+    "summary": "The Georgia Republican, long a loyal Trump ally, had come under attack by the president after showing independence, notably on the government’s investigation of Jeffrey Epstein.",
+    "url": "https://www.nytimes.com/2025/11/16/us/politics/marjorie-taylor-greene-trump-epstein-files.html"
   },
   "archive": [
+    {
+      "date": "2025-11-15",
+      "title": "Trump Pardons Two for Crimes Related to Jan. 6",
+      "summary": "Daniel Edwin Wilson and Suzanne Kaye had been convicted of crimes indirectly connected to the 2021 attack on the Capitol.",
+      "url": "https://www.nytimes.com/2025/11/15/us/politics/trump-pardons-jan-6.html"
+    },
     {
       "date": "2025-11-14",
       "title": "Trump Plan Could Limit Green Cards for Immigrants From Travel Ban Countries",
@@ -180,12 +186,6 @@
       "title": "Benioff Apologizes for Saying Trump Should Send Troops to San Francisco",
       "summary": "Marc Benioff, the chief executive of Salesforce, said he no longer believed that National Guard troops were needed in the city.",
       "url": "https://www.nytimes.com/2025/10/17/us/benioff-apologizes-san-francisco.html"
-    },
-    {
-      "date": "2025-10-16",
-      "title": "Terrorism Charges Against Antifa ‘Cell’ Show Administration’s Focus on the Left",
-      "summary": "President Trump has spoken at times of antifa as though it were a clear-cut extremist organization, but the movement is a decentralized collection of loosely affiliated groups.",
-      "url": "https://www.nytimes.com/2025/10/16/us/politics/justice-department-terrorism-antifa.html"
     }
   ]
 }
