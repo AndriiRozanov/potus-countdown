@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-16T20:37:09.623Z",
+  "updatedAt": "2025-11-17T20:37:46.606Z",
   "latest": {
-    "date": "2025-11-16",
-    "title": "Marjorie Taylor Greene Backs Trump but Stands Firm on Epstein Files",
-    "summary": "The Georgia Republican, long a loyal Trump ally, had come under attack by the president after showing independence, notably on the government’s investigation of Jeffrey Epstein.",
-    "url": "https://www.nytimes.com/2025/11/16/us/politics/marjorie-taylor-greene-trump-epstein-files.html"
+    "date": "2025-11-17",
+    "title": "High Beef Prices? Trump Official Blames Biden and Migrants.",
+    "summary": "Treasury Secretary Scott Bessent said migrants were bringing sick cows across the border, snarling beef supply chains.",
+    "url": "https://www.nytimes.com/2025/11/17/us/politics/hamburger-beef-prices-trump.html"
   },
   "archive": [
+    {
+      "date": "2025-11-16",
+      "title": "Marjorie Taylor Greene Backs Trump but Stands Firm on Epstein Files",
+      "summary": "The Georgia Republican, long a loyal Trump ally, had come under attack by the president after showing independence, notably on the government’s investigation of Jeffrey Epstein.",
+      "url": "https://www.nytimes.com/2025/11/16/us/politics/marjorie-taylor-greene-trump-epstein-files.html"
+    },
     {
       "date": "2025-11-15",
       "title": "Trump Pardons Two for Crimes Related to Jan. 6",
@@ -180,12 +186,6 @@
       "title": "U.S. Is Repatriating Survivors of Its Strike on Suspected Drug Vessel",
       "summary": "Two men rescued by the U.S. military after it attacked a boat in the Caribbean Sea were being sent to their home countries of Colombia and Ecuador, President Trump said.",
       "url": "https://www.nytimes.com/2025/10/18/us/politics/boat-strike-survivors.html"
-    },
-    {
-      "date": "2025-10-17",
-      "title": "Benioff Apologizes for Saying Trump Should Send Troops to San Francisco",
-      "summary": "Marc Benioff, the chief executive of Salesforce, said he no longer believed that National Guard troops were needed in the city.",
-      "url": "https://www.nytimes.com/2025/10/17/us/benioff-apologizes-san-francisco.html"
     }
   ]
 }
