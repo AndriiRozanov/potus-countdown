@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-17T20:37:46.606Z",
+  "updatedAt": "2025-11-19T20:34:43.229Z",
   "latest": {
-    "date": "2025-11-17",
-    "title": "High Beef Prices? Trump Official Blames Biden and Migrants.",
-    "summary": "Treasury Secretary Scott Bessent said migrants were bringing sick cows across the border, snarling beef supply chains.",
-    "url": "https://www.nytimes.com/2025/11/17/us/politics/hamburger-beef-prices-trump.html"
+    "date": "2025-11-19",
+    "title": "George Conway, a Vocal Foe of Trump, Eyes Congressional Run",
+    "summary": "The former conservative lawyer built a social media following with his harsh criticism of President Trump, who was the boss of his wife at the time.",
+    "url": "https://www.nytimes.com/2025/11/19/us/politics/george-conway-congressional-run.html"
   },
   "archive": [
+    {
+      "date": "2025-11-17",
+      "title": "High Beef Prices? Trump Official Blames Biden and Migrants.",
+      "summary": "Treasury Secretary Scott Bessent said migrants were bringing sick cows across the border, snarling beef supply chains.",
+      "url": "https://www.nytimes.com/2025/11/17/us/politics/hamburger-beef-prices-trump.html"
+    },
     {
       "date": "2025-11-16",
       "title": "Marjorie Taylor Greene Backs Trump but Stands Firm on Epstein Files",
@@ -180,12 +186,6 @@
       "title": "U.S. Kills 3 on Boat Suspected of Smuggling Drugs for Colombian Rebels",
       "summary": "It was the seventh known strike in President Trump’s military campaign of attacking, rather than arresting, those suspected of running drugs in the Caribbean.",
       "url": "https://www.nytimes.com/2025/10/19/us/politics/trump-military-boat-strike-colombia.html"
-    },
-    {
-      "date": "2025-10-18",
-      "title": "U.S. Is Repatriating Survivors of Its Strike on Suspected Drug Vessel",
-      "summary": "Two men rescued by the U.S. military after it attacked a boat in the Caribbean Sea were being sent to their home countries of Colombia and Ecuador, President Trump said.",
-      "url": "https://www.nytimes.com/2025/10/18/us/politics/boat-strike-survivors.html"
     }
   ]
 }
