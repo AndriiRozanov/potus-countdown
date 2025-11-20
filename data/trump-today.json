@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-19T20:34:43.229Z",
+  "updatedAt": "2025-11-20T20:38:56.786Z",
   "latest": {
-    "date": "2025-11-19",
-    "title": "George Conway, a Vocal Foe of Trump, Eyes Congressional Run",
-    "summary": "The former conservative lawyer built a social media following with his harsh criticism of President Trump, who was the boss of his wife at the time.",
-    "url": "https://www.nytimes.com/2025/11/19/us/politics/george-conway-congressional-run.html"
+    "date": "2025-11-20",
+    "title": "Trump Accuses Democrats of ‘Sedition’ Over Message to the Military",
+    "summary": "President Trump was reacting to a video that reminded members of the military that they are not supposed to obey illegal orders.",
+    "url": "https://www.nytimes.com/2025/11/20/us/politics/trump-accuses-democratic-lawmakers-of-sedition-over-message-to-the-military.html"
   },
   "archive": [
+    {
+      "date": "2025-11-19",
+      "title": "George Conway, a Vocal Foe of Trump, Eyes Congressional Run",
+      "summary": "The former conservative lawyer built a social media following with his harsh criticism of President Trump, who was the boss of his wife at the time.",
+      "url": "https://www.nytimes.com/2025/11/19/us/politics/george-conway-congressional-run.html"
+    },
     {
       "date": "2025-11-17",
       "title": "High Beef Prices? Trump Official Blames Biden and Migrants.",
@@ -180,12 +186,6 @@
       "title": "Appeals Court Ruling Allows Trump to Deploy National Guard Troops to Portland",
       "summary": "Deployment can move forward, for now, under a preliminary ruling by the U.S. Court of Appeals for the Ninth Circuit. But legal wrangling will likely continue.",
       "url": "https://www.nytimes.com/2025/10/20/us/appeals-court-national-guard-troops-portland-trump.html"
-    },
-    {
-      "date": "2025-10-19",
-      "title": "U.S. Kills 3 on Boat Suspected of Smuggling Drugs for Colombian Rebels",
-      "summary": "It was the seventh known strike in President Trump’s military campaign of attacking, rather than arresting, those suspected of running drugs in the Caribbean.",
-      "url": "https://www.nytimes.com/2025/10/19/us/politics/trump-military-boat-strike-colombia.html"
     }
   ]
 }
