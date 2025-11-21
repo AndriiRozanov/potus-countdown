@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-20T20:38:56.786Z",
+  "updatedAt": "2025-11-21T20:38:37.260Z",
   "latest": {
-    "date": "2025-11-20",
-    "title": "Trump Accuses Democrats of ‘Sedition’ Over Message to the Military",
-    "summary": "President Trump was reacting to a video that reminded members of the military that they are not supposed to obey illegal orders.",
-    "url": "https://www.nytimes.com/2025/11/20/us/politics/trump-accuses-democratic-lawmakers-of-sedition-over-message-to-the-military.html"
+    "date": "2025-11-21",
+    "title": "Trump and Saudi Crown Prince Had ‘Disturbing’ Call After Khashoggi’s Murder, Lawmaker Says",
+    "summary": "Representative Eugene Vindman of Virginia said he reviewed a classified transcript of the 2019 conversation that would “shock” Americans.",
+    "url": "https://www.nytimes.com/2025/11/21/us/politics/trump-saudi-crown-prince-khashoggi.html"
   },
   "archive": [
+    {
+      "date": "2025-11-20",
+      "title": "Trump Accuses Democrats of ‘Sedition’ Over Message to the Military",
+      "summary": "President Trump was reacting to a video that reminded members of the military that they are not supposed to obey illegal orders.",
+      "url": "https://www.nytimes.com/2025/11/20/us/politics/trump-accuses-democratic-lawmakers-of-sedition-over-message-to-the-military.html"
+    },
     {
       "date": "2025-11-19",
       "title": "George Conway, a Vocal Foe of Trump, Eyes Congressional Run",
@@ -180,12 +186,6 @@
       "title": "Jack Smith’s lawyers say he never wiretapped or surveilled lawmakers.",
       "summary": "Lawyers for the special counsel, who investigated Donald J. Trump, denied accusations by Republican lawmakers that he had surveilled or spied on senators as part of his inquiry.",
       "url": "https://www.nytimes.com/2025/10/21/us/politics/jack-smith-phone-records-republicans.html"
-    },
-    {
-      "date": "2025-10-20",
-      "title": "Appeals Court Ruling Allows Trump to Deploy National Guard Troops to Portland",
-      "summary": "Deployment can move forward, for now, under a preliminary ruling by the U.S. Court of Appeals for the Ninth Circuit. But legal wrangling will likely continue.",
-      "url": "https://www.nytimes.com/2025/10/20/us/appeals-court-national-guard-troops-portland-trump.html"
     }
   ]
 }
