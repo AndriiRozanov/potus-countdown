@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-21T20:38:37.260Z",
+  "updatedAt": "2025-11-22T20:37:14.010Z",
   "latest": {
-    "date": "2025-11-21",
-    "title": "Trump and Saudi Crown Prince Had ‘Disturbing’ Call After Khashoggi’s Murder, Lawmaker Says",
-    "summary": "Representative Eugene Vindman of Virginia said he reviewed a classified transcript of the 2019 conversation that would “shock” Americans.",
-    "url": "https://www.nytimes.com/2025/11/21/us/politics/trump-saudi-crown-prince-khashoggi.html"
+    "date": "2025-11-22",
+    "title": "Marjorie Taylor Greene’s Resignation Hints at Divisions in Trump’s Movement",
+    "summary": "As the president forced a onetime loyalist from Congress, her defiant departure signaled a coming debate over Republican identity in a post-Trump era.",
+    "url": "https://www.nytimes.com/2025/11/22/us/politics/marjorie-taylor-greene-trump-republicans.html"
   },
   "archive": [
+    {
+      "date": "2025-11-21",
+      "title": "Trump and Saudi Crown Prince Had ‘Disturbing’ Call After Khashoggi’s Murder, Lawmaker Says",
+      "summary": "Representative Eugene Vindman of Virginia said he reviewed a classified transcript of the 2019 conversation that would “shock” Americans.",
+      "url": "https://www.nytimes.com/2025/11/21/us/politics/trump-saudi-crown-prince-khashoggi.html"
+    },
     {
       "date": "2025-11-20",
       "title": "Trump Accuses Democrats of ‘Sedition’ Over Message to the Military",
@@ -180,12 +186,6 @@
       "title": "Trump Is Demolishing the White House’s East Wing to Make Way for His Ballroom",
       "summary": "President Trump initially said the construction would not touch the East Wing or “interfere with the current building.”",
       "url": "https://www.nytimes.com/2025/10/22/us/politics/east-wing-white-house-demolition-trump.html"
-    },
-    {
-      "date": "2025-10-21",
-      "title": "Jack Smith’s lawyers say he never wiretapped or surveilled lawmakers.",
-      "summary": "Lawyers for the special counsel, who investigated Donald J. Trump, denied accusations by Republican lawmakers that he had surveilled or spied on senators as part of his inquiry.",
-      "url": "https://www.nytimes.com/2025/10/21/us/politics/jack-smith-phone-records-republicans.html"
     }
   ]
 }
