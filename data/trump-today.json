@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-22T20:37:14.010Z",
+  "updatedAt": "2025-11-23T20:38:07.939Z",
   "latest": {
-    "date": "2025-11-22",
-    "title": "Marjorie Taylor Greene’s Resignation Hints at Divisions in Trump’s Movement",
-    "summary": "As the president forced a onetime loyalist from Congress, her defiant departure signaled a coming debate over Republican identity in a post-Trump era.",
-    "url": "https://www.nytimes.com/2025/11/22/us/politics/marjorie-taylor-greene-trump-republicans.html"
+    "date": "2025-11-23",
+    "title": "Trump Calls Ukraine Ungrateful, Again, for U.S. Support in War With Russia",
+    "summary": "President Trump renewed his criticism of Ukraine’s government as emissaries from Kyiv and Washington met to discuss a plan to end the war.",
+    "url": "https://www.nytimes.com/2025/11/23/us/politics/trump-ukraine-criticism-russia.html"
   },
   "archive": [
+    {
+      "date": "2025-11-22",
+      "title": "Marjorie Taylor Greene’s Resignation Hints at Divisions in Trump’s Movement",
+      "summary": "As the president forced a onetime loyalist from Congress, her defiant departure signaled a coming debate over Republican identity in a post-Trump era.",
+      "url": "https://www.nytimes.com/2025/11/22/us/politics/marjorie-taylor-greene-trump-republicans.html"
+    },
     {
       "date": "2025-11-21",
       "title": "Trump and Saudi Crown Prince Had ‘Disturbing’ Call After Khashoggi’s Murder, Lawmaker Says",
@@ -180,12 +186,6 @@
       "title": "A Pile of Rubble: After 123 Years, the East Wing Is Gone",
       "summary": "Mourners are outraged over President Trump’s demolition of the East Wing to make way for his $300 million ballroom. Others say it was time for change.",
       "url": "https://www.nytimes.com/2025/10/23/us/politics/east-wing-obituary.html"
-    },
-    {
-      "date": "2025-10-22",
-      "title": "Trump Is Demolishing the White House’s East Wing to Make Way for His Ballroom",
-      "summary": "President Trump initially said the construction would not touch the East Wing or “interfere with the current building.”",
-      "url": "https://www.nytimes.com/2025/10/22/us/politics/east-wing-white-house-demolition-trump.html"
     }
   ]
 }
