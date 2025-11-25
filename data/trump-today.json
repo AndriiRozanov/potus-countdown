@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-24T20:38:28.473Z",
+  "updatedAt": "2025-11-25T20:40:25.413Z",
   "latest": {
-    "date": "2025-11-24",
-    "title": "Venezuelan Diaspora Divided on Trump’s Military Strategy",
-    "summary": "Differences of opinion, complicated by unease over President Trump’s immigration policies, are creating tense divisions among Venezuelans in South Florida.",
-    "url": "https://www.nytimes.com/2025/11/24/us/venezuelan-diaspora-critics-us-military-intervention.html"
+    "date": "2025-11-25",
+    "title": "D.C. Mayor Muriel Bowser Says She Won’t Run for a Fourth Term",
+    "summary": "She has led the heavily Democratic city through confrontations with President Trump, who earlier this year sought to impose federal control over the local Police Department.",
+    "url": "https://www.nytimes.com/2025/11/25/us/dc-mayor-muriel-bowser-reelection.html"
   },
   "archive": [
+    {
+      "date": "2025-11-24",
+      "title": "Venezuelan Diaspora Divided on Trump’s Military Strategy",
+      "summary": "Differences of opinion, complicated by unease over President Trump’s immigration policies, are creating tense divisions among Venezuelans in South Florida.",
+      "url": "https://www.nytimes.com/2025/11/24/us/venezuelan-diaspora-critics-us-military-intervention.html"
+    },
     {
       "date": "2025-11-23",
       "title": "Trump Calls Ukraine Ungrateful, Again, for U.S. Support in War With Russia",
@@ -180,12 +186,6 @@
       "title": "Timothy Mellon Is Donor Who Gave $130 Million to Pay Troops During Shutdown",
       "summary": "Timothy Mellon is a billionaire and a major financial backer of President Trump.",
       "url": "https://www.nytimes.com/2025/10/25/us/politics/timothy-mellon-donation-troops.html"
-    },
-    {
-      "date": "2025-10-24",
-      "title": "Trump to Use $130 Million Donation to Help Pay Troops",
-      "summary": "It is not clear how far the gift will go toward covering the salaries of the nation’s 1.3 million troops.",
-      "url": "https://www.nytimes.com/2025/10/24/us/politics/trump-military-pay-donation.html"
     }
   ]
 }
