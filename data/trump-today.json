@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-25T20:40:25.413Z",
+  "updatedAt": "2025-11-26T20:36:26.767Z",
   "latest": {
-    "date": "2025-11-25",
-    "title": "D.C. Mayor Muriel Bowser Says She Won’t Run for a Fourth Term",
-    "summary": "She has led the heavily Democratic city through confrontations with President Trump, who earlier this year sought to impose federal control over the local Police Department.",
-    "url": "https://www.nytimes.com/2025/11/25/us/dc-mayor-muriel-bowser-reelection.html"
+    "date": "2025-11-26",
+    "title": "Colorado Judge Tells Immigration Agents to Stop Arrests Without Warrants",
+    "summary": "The ruling that immigration agents are acting illegally is the latest to rebuke the Trump administration’s tactics, but earlier orders have been blocked on appeal.",
+    "url": "https://www.nytimes.com/2025/11/26/us/politics/colorado-immigration-ruling.html"
   },
   "archive": [
+    {
+      "date": "2025-11-25",
+      "title": "D.C. Mayor Muriel Bowser Says She Won’t Run for a Fourth Term",
+      "summary": "She has led the heavily Democratic city through confrontations with President Trump, who earlier this year sought to impose federal control over the local Police Department.",
+      "url": "https://www.nytimes.com/2025/11/25/us/dc-mayor-muriel-bowser-reelection.html"
+    },
     {
       "date": "2025-11-24",
       "title": "Venezuelan Diaspora Divided on Trump’s Military Strategy",
@@ -180,12 +186,6 @@
       "title": "How Canada Is Dealing With Its Latest Tussle With President Trump",
       "summary": "Prime Minister Mark Carney is focusing on what the country can control, including looking for economic partnerships abroad, especially in Asia.",
       "url": "https://www.nytimes.com/2025/10/26/us/politics/canada-tariffs-trump-carney.html"
-    },
-    {
-      "date": "2025-10-25",
-      "title": "Timothy Mellon Is Donor Who Gave $130 Million to Pay Troops During Shutdown",
-      "summary": "Timothy Mellon is a billionaire and a major financial backer of President Trump.",
-      "url": "https://www.nytimes.com/2025/10/25/us/politics/timothy-mellon-donation-troops.html"
     }
   ]
 }
