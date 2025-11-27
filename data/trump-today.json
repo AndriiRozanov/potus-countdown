@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-26T20:36:26.767Z",
+  "updatedAt": "2025-11-27T20:36:53.341Z",
   "latest": {
-    "date": "2025-11-26",
-    "title": "Colorado Judge Tells Immigration Agents to Stop Arrests Without Warrants",
-    "summary": "The ruling that immigration agents are acting illegally is the latest to rebuke the Trump administration’s tactics, but earlier orders have been blocked on appeal.",
-    "url": "https://www.nytimes.com/2025/11/26/us/politics/colorado-immigration-ruling.html"
+    "date": "2025-11-27",
+    "title": "Trump shuts the door to Afghans who face crises at home.",
+    "summary": "",
+    "url": "https://www.nytimes.com/live/2025/11/27/us/national-guard-shooting-dc/trump-shuts-the-door-to-afghans-who-face-crises-at-home"
   },
   "archive": [
+    {
+      "date": "2025-11-26",
+      "title": "Colorado Judge Tells Immigration Agents to Stop Arrests Without Warrants",
+      "summary": "The ruling that immigration agents are acting illegally is the latest to rebuke the Trump administration’s tactics, but earlier orders have been blocked on appeal.",
+      "url": "https://www.nytimes.com/2025/11/26/us/politics/colorado-immigration-ruling.html"
+    },
     {
       "date": "2025-11-25",
       "title": "D.C. Mayor Muriel Bowser Says She Won’t Run for a Fourth Term",
@@ -180,12 +186,6 @@
       "title": "Trump Asks Supreme Court to Let Him Fire the Top Copyright Official",
       "summary": "An appeals court sided with the director of the U.S. Copyright Office, saying her role is to work with Congress.",
       "url": "https://www.nytimes.com/2025/10/27/us/politics/trump-supreme-court-copyright-official.html"
-    },
-    {
-      "date": "2025-10-26",
-      "title": "How Canada Is Dealing With Its Latest Tussle With President Trump",
-      "summary": "Prime Minister Mark Carney is focusing on what the country can control, including looking for economic partnerships abroad, especially in Asia.",
-      "url": "https://www.nytimes.com/2025/10/26/us/politics/canada-tariffs-trump-carney.html"
     }
   ]
 }
