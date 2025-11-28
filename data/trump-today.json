@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-27T20:36:53.341Z",
+  "updatedAt": "2025-11-28T20:38:20.203Z",
   "latest": {
-    "date": "2025-11-27",
-    "title": "Trump shuts the door to Afghans who face crises at home.",
-    "summary": "",
-    "url": "https://www.nytimes.com/live/2025/11/27/us/national-guard-shooting-dc/trump-shuts-the-door-to-afghans-who-face-crises-at-home"
+    "date": "2025-11-28",
+    "title": "Trump Spoke by Phone Last Week With Maduro, Venezuela’s Leader",
+    "summary": "They discussed a possible meeting between the two of them, but nothing has been scheduled, and the administration continues to increase the military pressure on Venezuela.",
+    "url": "https://www.nytimes.com/2025/11/28/us/politics/trump-spoke-by-phone-last-week-with-maduro-venezuelas-leader.html"
   },
   "archive": [
+    {
+      "date": "2025-11-27",
+      "title": "Trump shuts the door to Afghans who face crises at home.",
+      "summary": "",
+      "url": "https://www.nytimes.com/live/2025/11/27/us/national-guard-shooting-dc/trump-shuts-the-door-to-afghans-who-face-crises-at-home"
+    },
     {
       "date": "2025-11-26",
       "title": "Colorado Judge Tells Immigration Agents to Stop Arrests Without Warrants",
@@ -180,12 +186,6 @@
       "title": "Mike Johnson Dismisses Trump Third Term Talk — But Applauds the ‘Trolling’",
       "summary": "The speaker said he did not see a path to amending the Constitution to allow the president to seek a third term, but that it was fun to pretend he could to inflame Democrats.",
       "url": "https://www.nytimes.com/2025/10/28/us/politics/johnson-trump-2028-constitution.html"
-    },
-    {
-      "date": "2025-10-27",
-      "title": "Trump Asks Supreme Court to Let Him Fire the Top Copyright Official",
-      "summary": "An appeals court sided with the director of the U.S. Copyright Office, saying her role is to work with Congress.",
-      "url": "https://www.nytimes.com/2025/10/27/us/politics/trump-supreme-court-copyright-official.html"
     }
   ]
 }
