@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-28T20:38:20.203Z",
+  "updatedAt": "2025-11-29T20:38:20.887Z",
   "latest": {
-    "date": "2025-11-28",
-    "title": "Trump Spoke by Phone Last Week With Maduro, Venezuela’s Leader",
-    "summary": "They discussed a possible meeting between the two of them, but nothing has been scheduled, and the administration continues to increase the military pressure on Venezuela.",
-    "url": "https://www.nytimes.com/2025/11/28/us/politics/trump-spoke-by-phone-last-week-with-maduro-venezuelas-leader.html"
+    "date": "2025-11-29",
+    "title": "Targeting Venezuela and Pardoning Honduran Ex-President, Trump Contradicts Himself",
+    "summary": "President Trump’s statements on social media less than 24 hours apart showed the dissonance in his campaign against drug trafficking.",
+    "url": "https://www.nytimes.com/2025/11/29/us/politics/trump-honduras-venezuela.html"
   },
   "archive": [
+    {
+      "date": "2025-11-28",
+      "title": "Trump Spoke by Phone Last Week With Maduro, Venezuela’s Leader",
+      "summary": "They discussed a possible meeting between the two of them, but nothing has been scheduled, and the administration continues to increase the military pressure on Venezuela.",
+      "url": "https://www.nytimes.com/2025/11/28/us/politics/trump-spoke-by-phone-last-week-with-maduro-venezuelas-leader.html"
+    },
     {
       "date": "2025-11-27",
       "title": "Trump shuts the door to Afghans who face crises at home.",
@@ -180,12 +186,6 @@
       "title": "Sanctions Lifted on a Putin-Backed Autocrat After Lobbying by Trump Allies",
       "summary": "The move benefits the Serbian politician Milorad Dodik, who had received support from Rudolph W. Giuliani, Michael T. Flynn, Laura Loomer and high-priced lobbyists.",
       "url": "https://www.nytimes.com/2025/10/29/us/politics/milorad-dodik-sanctions-trump.html"
-    },
-    {
-      "date": "2025-10-28",
-      "title": "Mike Johnson Dismisses Trump Third Term Talk — But Applauds the ‘Trolling’",
-      "summary": "The speaker said he did not see a path to amending the Constitution to allow the president to seek a third term, but that it was fun to pretend he could to inflame Democrats.",
-      "url": "https://www.nytimes.com/2025/10/28/us/politics/johnson-trump-2028-constitution.html"
     }
   ]
 }
