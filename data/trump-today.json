@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-11-29T20:38:20.887Z",
+  "updatedAt": "2025-11-30T20:38:22.212Z",
   "latest": {
-    "date": "2025-11-29",
-    "title": "Targeting Venezuela and Pardoning Honduran Ex-President, Trump Contradicts Himself",
-    "summary": "President Trump’s statements on social media less than 24 hours apart showed the dissonance in his campaign against drug trafficking.",
-    "url": "https://www.nytimes.com/2025/11/29/us/politics/trump-honduras-venezuela.html"
+    "date": "2025-11-30",
+    "title": "Lawmakers Suggest Follow-Up Boat Strike Could Be a War Crime",
+    "summary": "Top Republicans have joined Democrats in demanding answers about the escalating military campaign the Trump administration says is aimed at targeting drug traffickers.",
+    "url": "https://www.nytimes.com/2025/11/30/us/politics/trump-boat-strikes-war-crime.html"
   },
   "archive": [
+    {
+      "date": "2025-11-29",
+      "title": "Targeting Venezuela and Pardoning Honduran Ex-President, Trump Contradicts Himself",
+      "summary": "President Trump’s statements on social media less than 24 hours apart showed the dissonance in his campaign against drug trafficking.",
+      "url": "https://www.nytimes.com/2025/11/29/us/politics/trump-honduras-venezuela.html"
+    },
     {
       "date": "2025-11-28",
       "title": "Trump Spoke by Phone Last Week With Maduro, Venezuela’s Leader",
@@ -180,12 +186,6 @@
       "title": "Democrats Condemn Trump Officials for Boat Strike Secrecy",
       "summary": "Senator Mark Warner said the administration’s decision to hold a Republicans-only briefing on the campaign was “corrosive to our democracy.”",
       "url": "https://www.nytimes.com/2025/10/30/us/politics/trump-democrats-boat-strikes.html"
-    },
-    {
-      "date": "2025-10-29",
-      "title": "Sanctions Lifted on a Putin-Backed Autocrat After Lobbying by Trump Allies",
-      "summary": "The move benefits the Serbian politician Milorad Dodik, who had received support from Rudolph W. Giuliani, Michael T. Flynn, Laura Loomer and high-priced lobbyists.",
-      "url": "https://www.nytimes.com/2025/10/29/us/politics/milorad-dodik-sanctions-trump.html"
     }
   ]
 }
