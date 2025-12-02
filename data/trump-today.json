@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-12-01T20:36:48.396Z",
+  "updatedAt": "2025-12-02T20:42:03.307Z",
   "latest": {
-    "date": "2025-12-01",
-    "title": "Johnson and Trump Try to Avoid an Upset House Loss in Tennessee",
-    "summary": "Speaker Mike Johnson put the president on speakerphone during a Monday stop in the state, underscoring the unusual amount of national attention on a House special election.",
-    "url": "https://www.nytimes.com/2025/12/01/us/politics/trump-tennessee-election.html"
+    "date": "2025-12-02",
+    "title": "Trump Calls Somalis ‘Garbage’ He Doesn’t Want in the Country",
+    "summary": "The president delivered xenophobic comments during a publicly broadcast cabinet meeting.",
+    "url": "https://www.nytimes.com/2025/12/02/us/politics/trump-somalia.html"
   },
   "archive": [
+    {
+      "date": "2025-12-01",
+      "title": "Johnson and Trump Try to Avoid an Upset House Loss in Tennessee",
+      "summary": "Speaker Mike Johnson put the president on speakerphone during a Monday stop in the state, underscoring the unusual amount of national attention on a House special election.",
+      "url": "https://www.nytimes.com/2025/12/01/us/politics/trump-tennessee-election.html"
+    },
     {
       "date": "2025-11-30",
       "title": "Lawmakers Suggest Follow-Up Boat Strike Could Be a War Crime",
@@ -180,12 +186,6 @@
       "title": "Trump’s Team Offers to Keep Some Ballroom Donors Incognito",
       "summary": "Many corporate interests that have donated to the president’s pet project have business before his administration.",
       "url": "https://www.nytimes.com/2025/11/01/us/politics/trumps-team-offers-to-keep-some-ballroom-donors-incognito.html"
-    },
-    {
-      "date": "2025-10-31",
-      "title": "Democrats Ride Anti-Trump Message in Final Days of California Campaign",
-      "summary": "Proponents say voters are motivated by stopping President Trump. Republicans have already begun pointing fingers over lackluster fund-raising and coordination.",
-      "url": "https://www.nytimes.com/2025/10/31/us/politics/california-redistricting-proposition-50-trump.html"
     }
   ]
 }
