@@ -1,12 +1,18 @@
 {
-  "updatedAt": "2025-12-03T20:42:22.548Z",
+  "updatedAt": "2025-12-04T20:42:16.287Z",
   "latest": {
-    "date": "2025-12-03",
-    "title": "What Tennessee Revealed About the G.O.P.’s Trump Trap in the Midterms",
-    "summary": "Republican candidates face the problem that President Trump alone gets out the vote that they need. And he alone gets out the vote that Democrats need, too.",
-    "url": "https://www.nytimes.com/2025/12/03/us/politics/tennessee-special-election-trump-midterms.html"
+    "date": "2025-12-04",
+    "title": "Her Roof Was About to Be Fixed. Then Immigration Agents Showed Up.",
+    "summary": "The Trump administration’s deportation agenda is reverberating beyond immigrant communities as agents begin fanning out around New Orleans.",
+    "url": "https://www.nytimes.com/2025/12/04/us/new-orleans-border-patrol-immigration-home-repair.html"
   },
   "archive": [
+    {
+      "date": "2025-12-03",
+      "title": "What Tennessee Revealed About the G.O.P.’s Trump Trap in the Midterms",
+      "summary": "Republican candidates face the problem that President Trump alone gets out the vote that they need. And he alone gets out the vote that Democrats need, too.",
+      "url": "https://www.nytimes.com/2025/12/03/us/politics/tennessee-special-election-trump-midterms.html"
+    },
     {
       "date": "2025-12-02",
       "title": "Trump Calls Somalis ‘Garbage’ He Doesn’t Want in the Country",
@@ -180,12 +186,6 @@
       "title": "WIC Food Aid Program for Families Gets Funding Stopgap",
       "summary": "An injection of $450 million for WIC comes as the Trump administration announced it would only fund partial benefits for another food aid program, the Supplemental Nutrition Assistance Program, or SNAP, for November.",
       "url": "https://www.nytimes.com/2025/11/03/us/politics/wic-snap-food-aid.html"
-    },
-    {
-      "date": "2025-11-02",
-      "title": "‘Keep Listening’: An Undecided Republican Lawmaker Weighs New Voting Maps",
-      "summary": "As redistricting efforts spread across the country, an Indiana state senator said he isn’t sure how he will vote on a plan that President Trump supports.",
-      "url": "https://www.nytimes.com/2025/11/02/us/indiana-redistricting-terre-haute.html"
     }
   ]
 }
