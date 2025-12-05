@@ -1,0 +1,254 @@
+/* =========================================================
+   Базові налаштування та Змінні
+   ========================================================= */
+
+:root {
+    /* Змінні для світлої теми (Day Theme - Red/White) */
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --highlight-color: #C8102E; /* Яскраво-червоний */
+    --card-bg: #f7f7f7;
+    --border-color: #e0e0e0;
+}
+
+/* Стилі для нічної теми (Night Theme - Black/Gold) */
+body.dark-theme {
+    --bg-color: #000000;
+    --text-color: #f4f4f9;
+    --highlight-color: #FFD700; /* Золотистий */
+    --card-bg: #1a1a1a;
+    --border-color: #3e3e3e;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.5s, color 0.5s;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   HEADER та НАВІГАЦІЯ
+   ========================================================= */
+
+header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Для адаптивності */
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--highlight-color);
+    margin-right: 20px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--highlight-color);
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+#theme-toggle, #language-switcher {
+    background-color: var(--highlight-color);
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 0.9em;
+}
+
+#theme-toggle:hover, #language-switcher:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   ГОДИННИК
+   ========================================================= */
+
+h1 {
+    color: var(--highlight-color);
+    font-size: 2.5em;
+    margin: 40px 20px 20px;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.time-unit {
+    background-color: var(--card-bg);
+    border: 2px solid var(--highlight-color);
+    border-radius: 15px;
+    margin: 10px;
+    padding: 20px;
+    width: 140px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.time-value {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: var(--highlight-color);
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+/* =========================================================
+   КОНТЕНТ ТА КАРТКИ
+   ========================================================= */
+
+.content-section {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.content-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.content-card h2 {
+    color: var(--highlight-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+.ad-block {
+    text-align: center;
+    border: 2px dashed var(--highlight-color);
+    padding: 40px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+/* Соцмережі */
+.social-share a {
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--border-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 0 5px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.social-share a:hover {
+    background-color: var(--highlight-color);
+    color: var(--card-bg);
+}
+
+#widget-code {
+    width: 100%;
+    height: 100px;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    resize: none;
+    font-family: monospace;
+}
+
+/* =========================================================
+   FOOTER та АДАПТИВНІСТЬ
+   ========================================================= */
+
+footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9em;
+}
+.footer-links a:hover {
+    color: var(--highlight-color);
+}
+.copyright {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: gray;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    #navbar {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+    }
+    .controls {
+        width: 100%;
+        justify-content: center;
+    }
+    .time-unit {
+        width: 40%;
+    }
+    .content-section {
+        padding: 0 10px;
+    }
+}
