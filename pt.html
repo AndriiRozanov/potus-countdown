@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="title">Contagem Regressiva: Fim do Mandato de Donald Trump</title>
+    <meta name="description" data-translate="meta_description" content="Contagem regressiva exata para o fim do mandato de Donald Trump como o 47º Presidente dos Estados Unidos: 20 de janeiro de 2029.">
+    <meta property="og:title" data-translate="og_title" content="Quanto tempo falta? Cronômetro Trump 2029">
+    <meta property="og:url" content="YOUR_SITE_ADDRESS">
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <span class="logo" data-translate="logo_text">Cronômetro Trump 2029</span>
+            <div class="nav-links">
+                <a href="#info" data-translate="nav_info">Informações</a>
+                <a href="presidents.html" data-translate="nav_presidents">Presidentes</a>
+            </div>
+        </nav>
+        <div class="controls">
+            <select id="language-switcher">
+                <option value="uk">Українська</option>
+                <option value="en">English</option>
+                <option value="pt" selected>Português</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+            <button id="theme-toggle" data-translate="toggle_text">Mudar para Tema Noturno</button>
+        </div>
+    </header>
+    <main>
+        <h1 data-translate="main_headline">Contagem regressiva para o fim do mandato de Donald Trump</h1>
+        <div id="countdown">
+            <div class="time-unit"><div class="time-value" id="days">00</div><div class="time-label" data-translate="label_days">DIAS</div></div>
+            <div class="time-unit"><div class="time-value" id="hours">00</div><div class="time-label" data-translate="label_hours">HORAS</div></div>
+            <div class="time-unit"><div class="time-value" id="minutes">00</div><div class="time-label" data-translate="label_minutes">MINUTOS</div></div>
+            <div class="time-unit"><div class="time-value" id="seconds">00</div><div class="time-label" data-translate="label_seconds">SEGUNDOS</div></div>
+        </div>
+        <div class="content-section ad-block"><p data-translate="ad_placeholder">LOCAL DO BLOCO DE ANÚNCIOS 1</p></div>
+        <section id="info">
+            <div class="content-card"><h2 data-translate="info1_title">🗓️ Informação Útil: Data e 20ª Emenda</h2><p data-translate="info1_body">...</p></div>
+            <div class="content-card"><h2 data-translate="info2_title">🗳️ Sobre Eleições Presidenciais</h2><p data-translate="info2_body">...</p></div>
+        </section>
+        <div class="content-section tools-section">
+            <h2 data-translate="tools_title">Compartilhe e Incorpore</h2>
+            <h3 data-translate="social_title">Compartilhar nas Redes Sociais:</h3>
+            <div class="social-share">
+                <a href="#" class="share-btn twitter" target="_blank">Twitter</a><a href="#" class="share-btn facebook" target="_blank">Facebook</a><a href="#" class="share-btn email" target="_blank">Email</a>
+            </div>
+            <h3 data-translate="widget_title" style="margin-top: 30px;">Incorporar Widget no Seu Site:</h3>
+            <p data-translate="widget_instr">Copie este código para adicionar um relógio minimalista ao seu site (blog HTML):</p>
+            <textarea id="widget-code" readonly></textarea>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-links">
+            <a href="policy.html" data-translate="footer_policy">Política de Privacidade</a>
+            <a href="terms.html" data-translate="footer_terms">Termos de Uso</a>
+            <a href="contact.html" data-translate="footer_contact">Contato</a>
+            <span class="copyright" data-translate="footer_copyright">&copy; 2025 Cronômetro Trump. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            document.querySelector('.share-btn.twitter').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+            document.querySelector('.share-btn.facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            document.querySelector('.share-btn.email').href = `mailto:?subject=${title}&body=Confira%20esta%20contagem%20regressiva:%20${url}`;
+            const WIDGET_HTML = `<iframe src="${window.location.origin}/widget.html" width="300" height="100" style="border: none; overflow: hidden; margin: 0; padding: 0;" scrolling="no" frameborder="0" loading="lazy"></iframe>`;
+            document.getElementById('widget-code').value = WIDGET_HTML.trim();
+        });
+    </script>
+</body>
+</html>
