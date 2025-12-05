@@ -1,217 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Presidency Clock — Trump Countdown</title>
-  <meta name="description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data. Multilingual and embeddable." />
-
-  <!-- Consent Mode v2 (default denied) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied',
-      'functionality_storage': 'granted',
-      'security_storage': 'granted'
-    });
-  </script>
-
-  <!-- Google Funding Choices (CMP) -->
-  <script async src="https://fundingchoicesmessages.google.com/i/pub-5023415479696725?ers=1"></script>
-  <script>
-    (function () {
-      function signalGooglefcPresent() {
-        if (!window.frames['googlefcPresent']) {
-          if (document.body) {
-            const i = document.createElement('iframe');
-            i.style.cssText = 'width:0;height:0;border:0;display:none';
-            i.name = 'googlefcPresent';
-            document.body.appendChild(i);
-          } else { setTimeout(signalGooglefcPresent, 0); }
-        }
-      }
-      signalGooglefcPresent();
-    })();
-  </script>
-
-  <!-- AdSense Auto ads -->
-  <meta name="google-adsense-account" content="ca-pub-5023415479696725" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
-
-  <!-- lang-from-query: пріоритет ?lang= -->
-  <script>
-  (function () {
-    var usp = new URLSearchParams(location.search);
-    var raw = usp.get('lang'); if (!raw) return;
-    var lang = String(raw).toLowerCase();
-    if (lang === 'ua') lang = 'uk';
-    if (lang === 'us' || lang === 'en-us') lang = 'en';
-    var allowed = ['en','uk','es','fr','de','it','zh','ja'];
-    if (allowed.indexOf(lang) === -1) return;
-    try { localStorage.setItem('pc_lang', lang); } catch (e) {}
-    document.documentElement.setAttribute('lang', lang);
-  })();
-  </script>
-
-  <!-- Theme init (no flash) -->
-  <script>
-  (function () {
-    var saved = null;
-    try { saved = localStorage.getItem('pc_theme'); } catch (e) {}
-    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
-  </script>
-
-  <!-- Perf/meta -->
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
-  <meta name="theme-color" content="#0b0f18">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Presidency Clock — Trump Countdown" />
-  <meta property="og:description" content="How much time does Donald Trump have left as president? Live countdown with news digest and presidential data." />
-  <meta property="og:url" content="https://presidencyclock.com/" />
-  <meta property="og:image" content="https://presidencyclock.com/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Presidency Clock — Trump Countdown" />
-  <meta name="twitter:description" content="Live countdown, news digest, presidents data." />
-  <meta name="twitter:image" content="https://presidencyclock.com/og-image.jpg" />
-
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="title">Зворотний відлік: Завершення повноважень Дональда Трампа</title>
+    
+    <meta name="description" data-translate="meta_description" content="Точний зворотний відлік до кінця повноважень Дональда Трампа як 47-го Президента США: 20 січня 2029 року.">
+    <meta property="og:title" data-translate="og_title" content="Скільки часу залишилося? Таймер Трампа 2029">
+    <meta property="og:url" content="ВАШ_АДРЕСА_САЙТУ">
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <h1 id="site-title" data-i18n="title">How much time does Donald Trump have left as president?</h1>
 
-      <div class="controls">
-        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
-        <form id="lang-form" method="get" action="" style="display:inline">
-          <label class="visually-hidden" for="language-select">Language</label>
-          <select id="language-select" name="lang" aria-label="Language select"
-            onchange="(function(sel){var v=(sel.value||'').toLowerCase(); if(v==='ua')v='uk'; if(v==='us'||v==='en-us')v='en'; sel.value=v; sel.form.submit();})(this)">
-            <option value="en">EN</option><option value="uk">UA</option><option value="es">ES</option>
-            <option value="fr">FR</option><option value="de">DE</option><option value="it">IT</option>
-            <option value="zh">中文</option><option value="ja">日本語</option>
-          </select>
-        </form>
-      </div>
-    </div>
-  </header>
+    <header>
+        <nav id="navbar">
+            <span class="logo" data-translate="logo_text">Таймер Трампа 2029</span>
+            <div class="nav-links">
+                <a href="#info" data-translate="nav_info">Інформація</a>
+                <a href="presidents.html" data-translate="nav_presidents">Президенти</a>
+            </div>
+        </nav>
 
-  <main class="container">
-    <section id="countdown-section" class="card center">
-      <h2 id="timer-title" data-i18n="timer">Time left in office</h2>
-      <div id="countdown" class="counter">00:00:00</div>
-      <button id="embed-button" class="primary-btn" data-i18n="embed">Get Embed Code</button>
-    </section>
+        <div class="controls">
+            <select id="language-switcher">
+                <option value="uk" selected>Українська</option>
+                <option value="en">English</option>
+                <option value="pt">Português</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+            <button id="theme-toggle" data-translate="toggle_text">Включити Нічну Тему</button>
+        </div>
+    </header>
+    
+    <main>
+        <h1 data-translate="main_headline">Зворотний відлік до кінця повноважень Дональда Трампа</h1>
 
-    <!-- Embed modal -->
-    <div id="embed-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="embed-title">
-      <div class="modal-content card">
-        <button id="close-modal" class="icon-btn close" aria-label="Close">×</button>
-        <h3 id="embed-title">Embed Code</h3>
-        <p class="muted">Copy and paste this iframe into your site:</p>
-        <textarea id="embed-code" readonly></textarea>
-        <button id="copy-button" class="secondary-btn">Copy</button>
-      </div>
-    </div>
+        <div id="countdown">
+            <div class="time-unit">
+                <div class="time-value" id="days">00</div>
+                <div class="time-label" data-translate="label_days">ДНІВ</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="hours">00</div>
+                <div class="time-label" data-translate="label_hours">ГОДИН</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="minutes">00</div>
+                <div class="time-label" data-translate="label_minutes">ХВИЛИН</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="seconds">00</div>
+                <div class="time-label" data-translate="label_seconds">СЕКУНД</div>
+            </div>
+        </div>
+        
+        <div class="content-section ad-block">
+            <p data-translate="ad_placeholder">МІСЦЕ ДЛЯ РЕКЛАМНОГО БЛОКУ 1</p>
+        </div>
 
-    <div class="dashboard">
-      <div class="left-col">
-        <section id="trump-today" class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
-            <h2 data-i18n="trump-today" style="margin:0;">Main about Trump today</h2>
-            <a class="secondary-btn" href="trump-today.html" id="view-all-trump" data-i18n="view-all">View all</a>
-          </div>
-          <div id="trump-news" class="stack"></div>
+        <section id="info">
+            <div class="content-card">
+                <h2 data-translate="info1_title">🗓️ Корисна Інформація: Дата та 20-та Поправка</h2>
+                <p data-translate="info1_body">Згідно з **20-ю поправкою до Конституції США**, термін повноважень Президента завершується опівдні 20 січня, через чотири роки після його інавгурації. Якщо Дональд Трамп стане 47-м Президентом США, його термін закінчиться **20 січня 2029 року о 12:00:00 (EST)**. Саме цю дату використовує наш лічильник.</p>
+            </div>
+            
+            <div class="content-card">
+                <h2 data-translate="info2_title">🗳️ Про Президентські Вибори</h2>
+                <p data-translate="info2_body">Наш сайт присвячений історичній даті, незалежно від політичних уподобань. Наявність точної та перевіреної інформації є ключовою для будь-якого громадського ресурсу. Ми будемо регулярно оновлювати розділ FAQ з відповідями на найпопулярніші запитання, пов'язані з виборами та інавгурацією.</p>
+            </div>
         </section>
 
-        <section id="news-digest" class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
-            <h2 data-i18n="digest" style="margin:0;">News Digest</h2>
-            <a class="secondary-btn" href="digest.html" id="view-all-digest" data-i18n="view-all">View all</a>
-          </div>
-          <div id="news-container" class="stack"></div>
-        </section>
-      </div>
+        <div class="content-section tools-section">
+            <h2 data-translate="tools_title">Поділіться та Вбудуйте</h2>
 
-      <div class="right-col">
-        <section id="presidents-table" class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
-            <h2 data-i18n="presidents" style="margin:0;">Presidents by Time in Office</h2>
-            <a class="secondary-btn" href="presidents.html" id="view-all-presidents" data-i18n="view-all">View all</a>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th data-i18n="country">Country</th>
-                  <th data-i18n="president">President</th>
-                  <th data-i18n="time">Time in office</th>
-                </tr>
-              </thead>
-              <tbody id="presidents-data"></tbody>
-            </table>
-          </div>
-          <p class="muted small" style="margin-top:.5rem;">Preview shows shortest-serving leaders across countries. Click “View all” for filters and sorting.</p>
-        </section>
-      </div>
-    </div>
-  </main>
+            <h3 data-translate="social_title">Поділитися в Соцмережах:</h3>
+            <div class="social-share">
+                <a href="#" class="share-btn twitter" target="_blank">Twitter</a>
+                <a href="#" class="share-btn facebook" target="_blank">Facebook</a>
+                <a href="#" class="share-btn email" target="_blank">Email</a>
+            </div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p class="footer-links">
-        <a href="about.html" data-i18n="about">About Us</a> ·
-        <a href="privacy.html" data-i18n="privacy">Privacy Policy</a> ·
-        <a href="contact.html" data-i18n="contact">Contact</a>
-      </p>
-      <p class="muted small">© <span id="year"></span> Presidency Clock</p>
-    </div>
-  </footer>
+            <h3 data-translate="widget_title" style="margin-top: 30px;">Вставити Віджет на Ваш Сайт:</h3>
+            <p data-translate="widget_instr">Скопіюйте цей код, щоб додати мінімалістичний годинник на свій сайт (HTML-блог):</p>
+            <textarea id="widget-code" readonly></textarea>
+        </div>
+    </main>
 
-  <!-- Base scripts -->
-  <script src="script.js?v=4"></script>
-  <script src="seo.js?v=4"></script>
+    <footer>
+        <div class="footer-links">
+            <a href="policy.html" data-translate="footer_policy">Політика Конфіденційності</a>
+            <a href="terms.html" data-translate="footer_terms">Умови Використання</a>
+            <a href="contact.html" data-translate="footer_contact">Контакти</a>
+            <span class="copyright" data-translate="footer_copyright">&copy; 2025 Таймер Трампа. Усі права захищено.</span>
+        </div>
+    </footer>
 
-  <!-- Theme toggle (independent) -->
-  <script>
-  (function(){
-    function apply(theme){ document.documentElement.setAttribute('data-theme', theme); try{localStorage.setItem('pc_theme', theme);}catch(e){} }
-    var btn=document.getElementById('theme-toggle'); if(!btn) return;
-    btn.addEventListener('click', function(){
-      var curr=document.documentElement.getAttribute('data-theme')||'light';
-      apply(curr==='dark'?'light':'dark');
-    });
-  })();
-  </script>
+    <script src="script.js"></script>
+    <script>
+        // Ініціалізація перемикача мови та теми
+        document.addEventListener('DOMContentLoaded', () => {
+            // Оновлення посилань для шерингу
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            document.querySelector('.share-btn.twitter').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+            document.querySelector('.share-btn.facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            document.querySelector('.share-btn.email').href = `mailto:?subject=${title}&body=Подивіться%20на%20цей%20зворотний%20відлік:%20${url}`;
+            
+            // Генерація коду віджета (тепер використовує зовнішній script.js)
+            const WIDGET_HTML = `
+                <iframe src="${window.location.origin}/widget.html" 
+                    width="300" 
+                    height="100" 
+                    style="border: none; overflow: hidden; margin: 0; padding: 0;" 
+                    scrolling="no" 
+                    frameborder="0"
+                    loading="lazy">
+                </iframe>
+            `;
+            document.getElementById('widget-code').value = WIDGET_HTML.trim();
+        });
 
-  <!-- Sync language select -->
-  <script>
-  (function(){
-    var sel=document.getElementById('language-select'); if(!sel) return;
-    var lang=(function(){
-      var p=new URLSearchParams(location.search).get('lang');
-      if (p) { p=p.toLowerCase(); if(p==='ua')p='uk'; if(p==='us'||p==='en-us')p='en'; return p; }
-      try{ var s=localStorage.getItem('pc_lang'); if(s) return s; }catch(e){}
-      return document.documentElement.getAttribute('lang')||'en';
-    })();
-    sel.value = ['en','uk','es','fr','de','it','zh','ja'].indexOf(lang)>-1 ? lang : 'en';
-  })();
-  </script>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+        // ПІСЛЯ ЗАВАНТАЖЕННЯ НА ХОСТИНГ, НЕ ЗАБУДЬТЕ:
+        // 1. Замінити "ВАШ_АДРЕСА_САЙТУ" на реальну адресу у мета-тегах.
+        // 2. Створити та завантажити файли `styles.css` та `script.js`.
+    </script>
 </body>
 </html>
