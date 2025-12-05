@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Світові Лідери та Тривалість Терміну</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        /* Додаткові стилі для цієї сторінки */
+        .presidents-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .presidents-table th, .presidents-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+        }
+        .presidents-table th {
+            background-color: var(--highlight-color);
+            color: var(--card-bg);
+            cursor: pointer;
+        }
+        .presidents-table tr:nth-child(even) {
+            background-color: var(--card-bg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <span class="logo">Таймер Трампа 2029</span>
+            <div class="nav-links">
+                <a href="index.html">Головна</a>
+                <a href="#table">Президенти</a>
+            </div>
+        </nav>
+        <div class="controls">
+            <button id="theme-toggle">Включити Нічну Тему</button>
+        </div>
+    </header>
+    
+    <main class="content-section" style="max-width: 1000px; text-align: left;">
+        <h1 style="text-align: center;">Світові Лідери: Рейтинг Тривалості Повноважень</h1>
+
+        <p>Цей розділ містить інформацію про терміни повноважень лідерів деяких країн, демонструючи різноманітність конституційних норм щодо управління. Дані можна сортувати за будь-яким стовпцем.</p>
+        
+        <div class="ad-block" style="text-align: center; margin: 30px 0;">
+            МІСЦЕ ДЛЯ РЕКЛАМНОГО БЛОКУ 2 (СЮДИ ВСТАВИТИ ВАШ КОД ADSENSE)
+        </div>
+
+        <table id="presidents-table" class="presidents-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Країна</th>
+                    <th onclick="sortTable(1)">Посада</th>
+                    <th onclick="sortTable(2)">Лідер (приклад)</th>
+                    <th onclick="sortTable(3)">Тривалість Терміну (Роки)</th>
+                    <th onclick="sortTable(4)">Макс. Кількість Термінів</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Мексика</td><td>Президент</td><td>Андрес Мануель Лопес Обрадор</td><td>6</td><td>1</td></tr>
+                <tr><td>США</td><td>Президент</td><td>Джо Байден</td><td>4</td><td>2</td></tr>
+                <tr><td>Франція</td><td>Президент</td><td>Емманюель Макрон</td><td>5</td><td>2</td></tr>
+                <tr><td>Україна</td><td>Президент</td><td>Володимир Зеленський</td><td>5</td><td>2</td></tr>
+                <tr><td>Німеччина</td><td>Канцлер (термін не фікс.)</td><td>Олаф Шольц</td><td>(Не фікс.)</td><td>Необмежено</td></tr>
+                <tr><td>Канада</td><td>Прем'єр-міністр (термін не фікс.)</td><td>Джастін Трюдо</td><td>(Не фікс.)</td><td>Необмежено</td></tr>
+                <tr><td>Італія</td><td>Президент</td><td>Серджо Матарелла</td><td>7</td><td>Необмежено (рішення)</td></tr>
+                <tr><td>Португалія</td><td>Президент</td><td>Марселу Ребелу ді Соза</td><td>5</td><td>2</td></tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="policy.html">Політика Конфіденційності</a>
+            <a href="terms.html">Умови Використання</a>
+            <a href="contact.html">Контакти</a>
+            <span class="copyright">&copy; 2025 Таймер Трампа. Усі права захищено.</span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Додаткова функція для сортування таблиці на цій сторінці
+        function sortTable(n) {
+          const table = document.getElementById("presidents-table");
+          let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+          switching = true;
+          // Встановіть напрямок сортування за замовчуванням: за зростанням
+          dir = "asc"; 
+          
+          while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+              shouldSwitch = false;
+              x = rows[i].getElementsByTagName("TD")[n];
+              y = rows[i + 1].getElementsByTagName("TD")[n];
+              
+              let x_val = x.innerHTML.toLowerCase();
+              let y_val = y.innerHTML.toLowerCase();
+              
+              // Перетворення числових даних
+              if (n === 3) {
+                  x_val = isNaN(parseFloat(x_val)) ? 0 : parseFloat(x_val);
+                  y_val = isNaN(parseFloat(y_val)) ? 0 : parseFloat(y_val);
+              }
+
+              if (dir === "asc") {
+                if (x_val > y_val) {
+                  shouldSwitch = true;
+                  break;
+                }
+              } else if (dir === "desc") {
+                if (x_val < y_val) {
+                  shouldSwitch = true;
+                  break;
+                }
+              }
+            }
+            if (shouldSwitch) {
+              rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+              switching = true;
+              switchcount ++;      
+            } else {
+              if (switchcount === 0 && dir === "asc") {
+                dir = "desc";
+                switching = true;
+              }
+            }
+          }
+        }
+        
+        initializeTheme(); // Ініціалізуємо тему
+    </script>
+</body>
+</html>
