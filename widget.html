@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump 2029 Countdown Widget</title>
+    <style>
+        /* Мінімізовані стилі для віджета */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --highlight-color: #C8102E; 
+        }
+        body.dark-theme {
+            --bg-color: #000000;
+            --text-color: #f4f4f9;
+            --highlight-color: #FFD700;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.5s, color 0.5s;
+            text-align: center;
+            overflow: hidden; /* Важливо для iframe */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+        .time-unit {
+            margin: 0 5px;
+            padding: 5px;
+            text-align: center;
+        }
+        .time-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--highlight-color);
+            line-height: 1;
+        }
+        .time-label {
+            font-size: 0.7em;
+            margin-top: 3px;
+        }
+        /* Адаптивність для дуже маленьких розмірів */
+        @media (max-width: 300px) {
+            .time-value { font-size: 1.4em; }
+            .time-label { font-size: 0.6em; }
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">
+        <div class="time-unit">
+            <div class="time-value" id="days">00</div>
+            <div class="time-label">ДНІВ</div> 
+        </div>
+        <div class="time-unit">
+            <div class="time-value" id="hours">00</div>
+            <div class="time-label">ГОД</div>
+        </div>
+        <div class="time-unit">
+            <div class="time-value" id="minutes">00</div>
+            <div class="time-label">ХВИЛ</div>
+        </div>
+        <div class="time-unit">
+            <div class="time-value" id="seconds">00</div>
+            <div class="time-label">СЕК</div>
+        </div>
+    </div>
+
+    <script>
+        // Встановлюємо дату закінчення повноважень (20 січня 2029 року, 12:00:00 EST - UTC-5:00)
+        const END_DATE = new Date("2029-01-20T17:00:00Z").getTime(); 
+
+        function updateCountdown() {
+            const now = new Date().getTime(); 
+            const distance = END_DATE - now;
+
+            const elements = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+            
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                Object.values(elements).forEach(el => el.innerHTML = "00");
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            elements.days.innerHTML = String(days).padStart(2, '0');
+            elements.hours.innerHTML = String(hours).padStart(2, '0');
+            elements.minutes.innerHTML = String(minutes).padStart(2, '0');
+            elements.seconds.innerHTML = String(seconds).padStart(2, '0');
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); 
+
+        // Застосування теми для віджета, якщо вона збережена
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+        });
+    </script>
+</body>
+</html>
