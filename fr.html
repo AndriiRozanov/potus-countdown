@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="title">Compte à Rebours: Fin du Mandat de Donald Trump</title>
+    <meta name="description" data-translate="meta_description" content="Compte à rebours précis jusqu'à la fin du mandat de Donald Trump en tant que 47e président des États-Unis : 20 janvier 2029.">
+    <meta property="og:title" data-translate="og_title" content="Combien de temps reste-t-il ? Compteur Trump 2029">
+    <meta property="og:url" content="YOUR_SITE_ADDRESS">
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <span class="logo" data-translate="logo_text">Compteur Trump 2029</span>
+            <div class="nav-links">
+                <a href="#info" data-translate="nav_info">Information</a>
+                <a href="presidents.html" data-translate="nav_presidents">Présidents</a>
+            </div>
+        </nav>
+        <div class="controls">
+            <select id="language-switcher">
+                <option value="uk">Українська</option>
+                <option value="en">English</option>
+                <option value="pt">Português</option>
+                <option value="fr" selected>Français</option>
+                <option value="es">Español</option>
+            </select>
+            <button id="theme-toggle" data-translate="toggle_text">Passer au Thème Nuit</button>
+        </div>
+    </header>
+    <main>
+        <h1 data-translate="main_headline">Compte à rebours jusqu'à la fin du mandat de Donald Trump</h1>
+        <div id="countdown">
+            <div class="time-unit"><div class="time-value" id="days">00</div><div class="time-label" data-translate="label_days">JOURS</div></div>
+            <div class="time-unit"><div class="time-value" id="hours">00</div><div class="time-label" data-translate="label_hours">HEURES</div></div>
+            <div class="time-unit"><div class="time-value" id="minutes">00</div><div class="time-label" data-translate="label_minutes">MINUTES</div></div>
+            <div class="time-unit"><div class="time-value" id="seconds">00</div><div class="time-label" data-translate="label_seconds">SECONDES</div></div>
+        </div>
+        <div class="content-section ad-block"><p data-translate="ad_placeholder">EMPLACEMENT DU BLOC D'ANNONCES 1</p></div>
+        <section id="info">
+            <div class="content-card"><h2 data-translate="info1_title">🗓️ Information Utile: Date et 20e Amendement</h2><p data-translate="info1_body">...</p></div>
+            <div class="content-card"><h2 data-translate="info2_title">🗳️ À Propos des Élections Présidentielles</h2><p data-translate="info2_body">...</p></div>
+        </section>
+        <div class="content-section tools-section">
+            <h2 data-translate="tools_title">Partager et Intégrer</h2>
+            <h3 data-translate="social_title">Partager sur les Médias Sociaux :</h3>
+            <div class="social-share">
+                <a href="#" class="share-btn twitter" target="_blank">Twitter</a><a href="#" class="share-btn facebook" target="_blank">Facebook</a><a href="#" class="share-btn email" target="_blank">Email</a>
+            </div>
+            <h3 data-translate="widget_title" style="margin-top: 30px;">Intégrer le Widget sur Votre Site :</h3>
+            <p data-translate="widget_instr">Copiez ce code pour ajouter une horloge minimaliste à votre site Web (blog HTML) :</p>
+            <textarea id="widget-code" readonly></textarea>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-links">
+            <a href="policy.html" data-translate="footer_policy">Politique de Confidentialité</a>
+            <a href="terms.html" data-translate="footer_terms">Conditions d'Utilisation</a>
+            <a href="contact.html" data-translate="footer_contact">Contact</a>
+            <span class="copyright" data-translate="footer_copyright">&copy; 2025 Compteur Trump. Tous droits réservés.</span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            document.querySelector('.share-btn.twitter').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+            document.querySelector('.share-btn.facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            document.querySelector('.share-btn.email').href = `mailto:?subject=${title}&body=Consultez%20ce%20compte%20à%20rebours:%20${url}`;
+            const WIDGET_HTML = `<iframe src="${window.location.origin}/widget.html" width="300" height="100" style="border: none; overflow: hidden; margin: 0; padding: 0;" scrolling="no" frameborder="0" loading="lazy"></iframe>`;
+            document.getElementById('widget-code').value = WIDGET_HTML.trim();
+        });
+    </script>
+</body>
+</html>
