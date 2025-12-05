@@ -57,9 +57,87 @@ const translations = {
         footer_contact: "Contact",
         footer_copyright: "&copy; 2025 Trump Timer. All rights reserved."
     },
-    // ... (ТУТ БУДУТЬ ПЕРЕКЛАДИ ДЛЯ PORTUGUESE, FRANÇAIS, ESPAÑOL)
-    // Я можу надати їх пізніше, щоб не перевантажувати цей крок. 
-    // Наразі для порівняння є UK та EN.
+    'pt': {
+        title: "Contagem Regressiva: Fim do Mandato de Donald Trump",
+        meta_description: "Contagem regressiva exata para o fim do mandato de Donald Trump como o 47º Presidente dos Estados Unidos: 20 de janeiro de 2029.",
+        og_title: "Quanto tempo falta? Cronômetro Trump 2029",
+        logo_text: "Cronômetro Trump 2029",
+        toggle_text: "Mudar para Tema Noturno",
+        main_headline: "Contagem regressiva para o fim do mandato de Donald Trump",
+        nav_info: "Informações",
+        nav_presidents: "Presidentes",
+        label_days: "DIAS",
+        label_hours: "HORAS",
+        label_minutes: "MINUTOS",
+        label_seconds: "SEGUNDOS",
+        ad_placeholder: "LOCAL DO BLOCO DE ANÚNCIOS 1",
+        info1_title: "🗓️ Informação Útil: Data e 20ª Emenda",
+        info1_body: "De acordo com a **20ª Emenda da Constituição dos EUA**, o mandato do Presidente termina ao meio-dia de 20 de janeiro, quatro anos após sua posse. Se Donald Trump se tornar o 47º Presidente dos EUA, seu mandato terminará em **20 de janeiro de 2029, às 12:00:00 (EST)**. Esta é a data usada pelo nosso contador.",
+        info2_title: "🗳️ Sobre Eleições Presidenciais",
+        info2_body: "Nosso site é dedicado a esta data histórica, independentemente da preferência política. Ter informações precisas e verificadas é fundamental para qualquer recurso público. Atualizaremos regularmente a seção de FAQ com respostas às perguntas mais populares relacionadas às eleições e posse.",
+        tools_title: "Compartilhe e Incorpore",
+        social_title: "Compartilhar nas Redes Sociais:",
+        widget_title: "Incorporar Widget no Seu Site:",
+        widget_instr: "Copie este código para adicionar um relógio minimalista ao seu site (blog HTML):",
+        footer_policy: "Política de Privacidade",
+        footer_terms: "Termos de Uso",
+        footer_contact: "Contato",
+        footer_copyright: "&copy; 2025 Cronômetro Trump. Todos os direitos reservados."
+    },
+    'fr': {
+        title: "Compte à Rebours: Fin du Mandat de Donald Trump",
+        meta_description: "Compte à rebours précis jusqu'à la fin du mandat de Donald Trump en tant que 47e président des États-Unis : 20 janvier 2029.",
+        og_title: "Combien de temps reste-t-il ? Compteur Trump 2029",
+        logo_text: "Compteur Trump 2029",
+        toggle_text: "Passer au Thème Nuit",
+        main_headline: "Compte à rebours jusqu'à la fin du mandat de Donald Trump",
+        nav_info: "Information",
+        nav_presidents: "Présidents",
+        label_days: "JOURS",
+        label_hours: "HEURES",
+        label_minutes: "MINUTES",
+        label_seconds: "SECONDES",
+        ad_placeholder: "EMPLACEMENT DU BLOC D'ANNONCES 1",
+        info1_title: "🗓️ Information Utile: Date et 20e Amendement",
+        info1_body: "Selon le **20e Amendement de la Constitution américaine**, le mandat du président se termine à midi le 20 janvier, quatre ans après son investiture. Si Donald Trump devient le 47e président des États-Unis, son mandat prendra fin le **20 janvier 2029, à 12:00:00 (EST)**. C'est la date utilisée par notre compteur.",
+        info2_title: "🗳️ À Propos des Élections Présidentielles",
+        info2_body: "Notre site est dédié à cette date historique, quelle que soit la préférence politique. Disposer d'informations précises et vérifiées est essentiel pour toute ressource publique. Nous mettrons régulièrement à jour la section FAQ avec des réponses aux questions les plus populaires liées aux élections et à l'investiture.",
+        tools_title: "Partager et Intégrer",
+        social_title: "Partager sur les Médias Sociaux :",
+        widget_title: "Intégrer le Widget sur Votre Site :",
+        widget_instr: "Copiez ce code pour ajouter une horloge minimaliste à votre site Web (blog HTML) :",
+        footer_policy: "Politique de Confidentialité",
+        footer_terms: "Conditions d'Utilisation",
+        footer_contact: "Contact",
+        footer_copyright: "&copy; 2025 Compteur Trump. Tous droits réservés."
+    },
+    'es': {
+        title: "Cuenta Regresiva: Fin del Mandato de Donald Trump",
+        meta_description: "Cuenta regresiva precisa para el final del mandato de Donald Trump como el 47º Presidente de los Estados Unidos: 20 de enero de 2029.",
+        og_title: "¿Cuánto tiempo queda? Temporizador Trump 2029",
+        logo_text: "Temporizador Trump 2029",
+        toggle_text: "Cambiar a Tema Nocturno",
+        main_headline: "Cuenta regresiva para el fin del mandato de Donald Trump",
+        nav_info: "Información",
+        nav_presidents: "Presidentes",
+        label_days: "DÍAS",
+        label_hours: "HORAS",
+        label_minutes: "MINUTOS",
+        label_seconds: "SEGUNDOS",
+        ad_placeholder: "UBICACIÓN DEL BLOQUE DE ANUNCIOS 1",
+        info1_title: "🗓️ Información Útil: Fecha y 20ª Enmienda",
+        info1_body: "Según la **20ª Enmienda de la Constitución de los EE. UU.**, el mandato del Presidente finaliza al mediodía del 20 de enero, cuatro años después de su toma de posesión. Si Donald Trump se convierte en el 47º Presidente de los EE. UU., su mandato finalizará el **20 de enero de 2029, a las 12:00:00 (EST)**. Esta es la fecha utilizada por nuestro contador.",
+        info2_title: "🗳️ Sobre las Elecciones Presidenciales",
+        info2_body: "Nuestro sitio web está dedicado a esta fecha histórica, independientemente de la preferencia política. Contar con información precisa y verificada es clave para cualquier recurso público. Actualizaremos regularmente la sección de preguntas frecuentes (FAQ) con respuestas a las preguntas más populares relacionadas con las elecciones y la toma de posesión.",
+        tools_title: "Compartir e Incrustar",
+        social_title: "Compartir en Redes Sociales:",
+        widget_title: "Incrustar Widget en Su Sitio:",
+        widget_instr: "Copie este código para agregar un reloj minimalista a su sitio web (blog HTML):",
+        footer_policy: "Política de Privacidad",
+        footer_terms: "Términos de Uso",
+        footer_contact: "Contacto",
+        footer_copyright: "&copy; 2025 Temporizador Trump. Todos los derechos reservados."
+    }
 };
 
 // Функція для зміни мови
@@ -71,7 +149,7 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate]').forEach(element => {
         const key = element.getAttribute('data-translate');
         if (t[key]) {
-            // Оновлення вмісту елемента
+            // Оновлення вмісту елемента (використовуємо innerHTML для підтримки тегів, наприклад, <strong>)
             element.innerHTML = t[key]; 
             
             // Оновлення атрибутів (для title та мета-тегів)
@@ -87,11 +165,6 @@ function setLanguage(lang) {
     
     // Зберігаємо обрану мову
     localStorage.setItem('language', lang);
-
-    // Додатково: зміна URL для навігації
-    // Ми будемо просто перенаправляти на відповідний HTML-файл
-    // window.location.href = `${lang}.html`; 
-    // Зауваження: Для GitHub Pages найпростіше мати файл index.html та окремі файли en.html, fr.html, тощо.
 }
 
 // =========================================================
@@ -138,43 +211,64 @@ updateCountdown();
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-function initializeTheme() {
+window.initializeTheme = function() {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-theme');
-        themeToggle.textContent = translations[localStorage.getItem('language') || 'uk'].toggle_text.replace('Нічну', 'Денну');
-    }
-}
-
-themeToggle.addEventListener('click', () => {
     const currentLang = localStorage.getItem('language') || 'uk';
     const t = translations[currentLang];
     
-    if (body.classList.contains('dark-theme')) {
-        body.classList.remove('dark-theme');
-        themeToggle.textContent = t.toggle_text.replace('Денну', 'Нічну');
-        localStorage.setItem('theme', 'light');
-    } else {
+    if (savedTheme === 'dark') {
         body.classList.add('dark-theme');
-        themeToggle.textContent = t.toggle_text.replace('Нічну', 'Денну');
-        localStorage.setItem('theme', 'dark');
+        // Оновлюємо текст кнопки, враховуючи мову
+        if (themeToggle) themeToggle.textContent = t.toggle_text.replace('Нічну', 'Денну').replace('Night', 'Day').replace('Noturno', 'Diurno').replace('Nuit', 'Jour').replace('Nocturno', 'Diurno');
     }
-});
+}
 
-// Ініціалізація мови при завантаженні сторінки
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentLang = localStorage.getItem('language') || 'uk';
+        const t = translations[currentLang];
+        
+        // Функція для коректної заміни тексту кнопки на всіх мовах
+        const getToggleText = (isDark) => {
+            let text = t.toggle_text;
+            if (currentLang === 'uk' && isDark) return text.replace('Нічну', 'Денну');
+            if (currentLang === 'en' && isDark) return text.replace('Night', 'Day');
+            if (currentLang === 'pt' && isDark) return text.replace('Noturno', 'Diurno');
+            if (currentLang === 'fr' && isDark) return text.replace('Nuit', 'Jour');
+            if (currentLang === 'es' && isDark) return text.replace('Nocturno', 'Diurno');
+            return text; // Якщо світла, повертаємо початковий текст
+        }
+
+        if (body.classList.contains('dark-theme')) {
+            body.classList.remove('dark-theme');
+            themeToggle.textContent = t.toggle_text; // Включити Нічну
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.classList.add('dark-theme');
+            themeToggle.textContent = getToggleText(true); // Включити Денну
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+}
+
+// Ініціалізація мови та перенаправлення
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('language') || 'uk';
     const langSwitcher = document.getElementById('language-switcher');
     
     // Завантажуємо текст
-    setLanguage(savedLang); 
+    // Викликаємо setLanguage тільки на головних сторінках, де є data-translate
+    if (document.querySelectorAll('[data-translate]').length > 0) {
+        setLanguage(savedLang); 
+    }
+    
     if (langSwitcher) {
         langSwitcher.value = savedLang;
         
         // Додаємо обробник події для зміни мови
         langSwitcher.addEventListener('change', (event) => {
             const newLang = event.target.value;
-            // Перенаправляємо на відповідний файл (для спрощення на GitHub Pages)
+            // Перенаправляємо на відповідний файл
             if (newLang === 'uk') {
                 window.location.href = 'index.html';
             } else {
