@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="title">Countdown: End of Donald Trump's Term</title>
+    
+    <meta name="description" data-translate="meta_description" content="Accurate countdown to the end of Donald Trump's term as the 47th President of the United States: January 20, 2029.">
+    <meta property="og:title" data-translate="og_title" content="How Much Time is Left? Trump Timer 2029">
+    <meta property="og:url" content="YOUR_SITE_ADDRESS">
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <header>
+        <nav id="navbar">
+            <span class="logo" data-translate="logo_text">Trump Timer 2029</span>
+            <div class="nav-links">
+                <a href="#info" data-translate="nav_info">Information</a>
+                <a href="presidents.html" data-translate="nav_presidents">Presidents</a>
+            </div>
+        </nav>
+
+        <div class="controls">
+            <select id="language-switcher">
+                <option value="uk">Українська</option>
+                <option value="en" selected>English</option>
+                <option value="pt">Português</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+            <button id="theme-toggle" data-translate="toggle_text">Switch to Night Theme</button>
+        </div>
+    </header>
+    
+    <main>
+        <h1 data-translate="main_headline">Countdown to the end of Donald Trump's term</h1>
+
+        <div id="countdown">
+            <div class="time-unit">
+                <div class="time-value" id="days">00</div>
+                <div class="time-label" data-translate="label_days">DAYS</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="hours">00</div>
+                <div class="time-label" data-translate="label_hours">HOURS</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="minutes">00</div>
+                <div class="time-label" data-translate="label_minutes">MINUTES</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" id="seconds">00</div>
+                <div class="time-label" data-translate="label_seconds">SECONDS</div>
+            </div>
+        </div>
+        
+        <div class="content-section ad-block">
+            <p data-translate="ad_placeholder">AD SENSE BLOCK 1 LOCATION</p>
+        </div>
+
+        <section id="info">
+            <div class="content-card">
+                <h2 data-translate="info1_title">🗓️ Useful Information: Date and 20th Amendment</h2>
+                <p data-translate="info1_body">According to the **20th Amendment to the US Constitution**, the President's term ends at noon on January 20th, four years after their inauguration. If Donald Trump becomes the 47th US President, his term will end on **January 20, 2029, at 12:00:00 (EST)**. This is the date used by our counter.</p>
+            </div>
+            
+            <div class="content-card">
+                <h2 data-translate="info2_title">🗳️ About Presidential Elections</h2>
+                <p data-translate="info2_body">Our website is dedicated to this historical date, regardless of political preference. Having accurate and verified information is key for any public resource. We will regularly update the FAQ section with answers to the most popular questions related to the elections and inauguration.</p>
+            </div>
+        </section>
+
+        <div class="content-section tools-section">
+            <h2 data-translate="tools_title">Share and Embed</h2>
+
+            <h3 data-translate="social_title">Share on Social Media:</h3>
+            <div class="social-share">
+                <a href="#" class="share-btn twitter" target="_blank">Twitter</a>
+                <a href="#" class="share-btn facebook" target="_blank">Facebook</a>
+                <a href="#" class="share-btn email" target="_blank">Email</a>
+            </div>
+
+            <h3 data-translate="widget_title" style="margin-top: 30px;">Embed Widget on Your Site:</h3>
+            <p data-translate="widget_instr">Copy this code to add a minimalist clock to your website (HTML blog):</p>
+            <textarea id="widget-code" readonly></textarea>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="policy.html" data-translate="footer_policy">Privacy Policy</a>
+            <a href="terms.html" data-translate="footer_terms">Terms of Use</a>
+            <a href="contact.html" data-translate="footer_contact">Contact</a>
+            <span class="copyright" data-translate="footer_copyright">&copy; 2025 Trump Timer. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Ініціалізація, яка виконується тільки на цій сторінці. 
+        // Логіка відліку та перемикання теми знаходиться в script.js.
+        document.addEventListener('DOMContentLoaded', () => {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            document.querySelector('.share-btn.twitter').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+            document.querySelector('.share-btn.facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            document.querySelector('.share-btn.email').href = `mailto:?subject=${title}&body=Check%20out%20this%20countdown:%20${url}`;
+            
+            const WIDGET_HTML = `
+                <iframe src="${window.location.origin}/widget.html" 
+                    width="300" 
+                    height="100" 
+                    style="border: none; overflow: hidden; margin: 0; padding: 0;" 
+                    scrolling="no" 
+                    frameborder="0"
+                    loading="lazy">
+                </iframe>
+            `;
+            document.getElementById('widget-code').value = WIDGET_HTML.trim();
+        });
+    </script>
+</body>
+</html>
