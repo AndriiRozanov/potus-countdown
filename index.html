@@ -11,14 +11,14 @@
   <meta property="og:url" content="https://presidencyclock.com/" />
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://presidencyclock.com/" />
- 
+
   <!-- Google AdSense — вставте свій код тут після отримання -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
- 
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
- 
+
   <style>
     :root {
       --bg: #080808;
@@ -40,7 +40,7 @@
       flex-direction: column;
       align-items: center;
     }
- 
+
     /* ── ШАПКА / НАВ ── */
     nav {
       width: 100%;
@@ -74,7 +74,7 @@
       transition: color 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); }
- 
+
     /* ── LANG BAR ── */
     #lang-bar {
       display: flex;
@@ -100,7 +100,7 @@
       border-color: var(--accent);
       color: var(--accent);
     }
- 
+
     /* ── AD TOP ── */
     .ad-slot {
       width: 100%;
@@ -132,7 +132,7 @@
       letter-spacing: 0.15em;
       margin: 0 auto 40px;
     }
- 
+
     /* ── HERO ── */
     .hero {
       text-align: center;
@@ -162,7 +162,7 @@
       color: var(--muted2);
       margin-top: 18px;
     }
- 
+
     /* ── COUNTDOWN ── */
     #countdown {
       display: grid;
@@ -213,7 +213,7 @@
       color: var(--muted);
       text-transform: uppercase;
     }
- 
+
     /* ── PROGRESS ── */
     .progress-wrap {
       width: 100%;
@@ -250,7 +250,7 @@
       border-radius: 50%;
       box-shadow: 0 0 10px var(--accent);
     }
- 
+
     /* ── INFO SECTION ── */
     .info-section {
       width: 100%;
@@ -270,7 +270,7 @@
       gap: 14px;
     }
     .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
- 
+
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -296,7 +296,7 @@
       color: var(--muted2);
     }
     .info-card p strong { color: var(--text); }
- 
+
     .info-text {
       font-size: 15px;
       line-height: 1.8;
@@ -304,7 +304,7 @@
       margin-bottom: 16px;
     }
     .info-text strong { color: var(--text); }
- 
+
     /* ── FAQ ── */
     .faq-item {
       border-top: 1px solid var(--border);
@@ -322,7 +322,7 @@
       line-height: 1.7;
       color: var(--muted2);
     }
- 
+
     /* ── SHARE / WIDGET ── */
     .share-row {
       display: flex;
@@ -347,7 +347,7 @@
       transition: all 0.2s;
     }
     .share-btn:hover { border-color: var(--accent); color: var(--text); }
- 
+
     .widget-sizes { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
     .size-btn {
       background: none;
@@ -362,7 +362,7 @@
       transition: all 0.2s;
     }
     .size-btn.active, .size-btn:hover { border-color: var(--accent); color: var(--text); }
- 
+
     .code-block {
       background: #070707;
       border: 1px solid var(--border);
@@ -391,7 +391,7 @@
       transition: all 0.2s;
     }
     .copy-btn:hover { background: var(--accent); color: white; }
- 
+
     /* ── FOOTER ── */
     footer {
       width: 100%;
@@ -421,7 +421,7 @@
     }
     footer a:hover { color: var(--accent); }
     .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
- 
+
     /* ── DONE ── */
     #done-overlay {
       display: none;
@@ -445,12 +445,12 @@
       pointer-events: none;
       z-index: 1000;
     }
- 
+
     @keyframes flash {
       0%   { transform: translateY(-5px); color: var(--accent); }
       100% { transform: translateY(0);    color: var(--text); }
     }
- 
+
     @media (max-width: 540px) {
       #countdown { grid-template-columns: repeat(2, 1fr); }
       .info-grid { grid-template-columns: 1fr; }
@@ -459,7 +459,7 @@
   </style>
 </head>
 <body>
- 
+
 <!-- НАВІГАЦІЯ -->
 <nav>
   <a href="/" class="nav-logo">PRESIDENCY<span>CLOCK</span>.COM</a>
@@ -468,7 +468,7 @@
     <a href="/presidents.html" id="nav-presidents">World Leaders</a>
   </div>
 </nav>
- 
+
 <!-- ВИБІР МОВИ -->
 <div id="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -478,7 +478,7 @@
   <button class="lang-btn" onclick="setLang('fr')">FR</button>
   <button class="lang-btn" onclick="setLang('es')">ES</button>
 </div>
- 
+
 <!-- РЕКЛАМА ВГОРІ (728×90) -->
 <div class="ad-slot" id="ad-top">
   <!-- Сюди вставте AdSense код після підтвердження акаунту -->
@@ -486,14 +486,14 @@
        data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX"></ins> -->
   РЕКЛАМА · 728×90
 </div>
- 
+
 <!-- HERO -->
 <section class="hero">
   <p class="eyebrow" id="txt-eyebrow">Presidential Term Countdown</p>
   <h1 id="txt-headline">TIME LEFT<br>FOR <em>TRUMP</em></h1>
   <p class="hero-sub" id="txt-sub">January 20, 2029 · 12:00:00 EST</p>
 </section>
- 
+
 <!-- ЛІЧИЛЬНИК -->
 <div id="countdown">
   <div class="unit">
@@ -513,7 +513,7 @@
     <span class="unit-label" id="l-secs">seconds</span>
   </div>
 </div>
- 
+
 <!-- ПРОГРЕС-БАР -->
 <div class="progress-wrap">
   <div class="progress-meta">
@@ -525,7 +525,7 @@
     <div class="progress-fill" id="prog-fill" style="width:0%"></div>
   </div>
 </div>
- 
+
 <!-- РЕКЛАМА ПОСЕРЕДИНІ (300×250) -->
 <div class="ad-slot-rect" id="ad-mid">
   <!-- Сюди вставте AdSense код -->
@@ -533,16 +533,16 @@
        data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX"></ins> -->
   РЕКЛАМА · 300×250
 </div>
- 
+
 <!-- ІНФОРМАЦІЙНИЙ БЛОК -->
 <section class="info-section" id="info">
- 
+
   <p class="section-label" id="txt-info-label">About the term</p>
- 
+
   <p class="info-text" id="txt-info-main">
     Under the <strong>20th Amendment to the U.S. Constitution</strong>, a presidential term ends at noon on January 20th, four years after inauguration. Donald Trump was inaugurated as the <strong>47th President of the United States</strong> on January 20, 2025. His term is set to expire on <strong>January 20, 2029, at 12:00:00 EST</strong> — the exact moment this clock counts down to.
   </p>
- 
+
   <div class="info-grid">
     <div class="info-card">
       <h3 id="txt-card1-title">The 20th Amendment</h3>
@@ -561,10 +561,10 @@
       <p id="txt-card4-body">Inauguration Day is held on <strong>January 20</strong> every four years. The incoming president takes the oath of office at the U.S. Capitol. The ceremony marks the peaceful transfer of power — a cornerstone of American democracy.</p>
     </div>
   </div>
- 
+
   <!-- FAQ -->
   <p class="section-label" id="txt-faq-label">FAQ</p>
- 
+
   <div class="faq-item">
     <p class="faq-q" id="faq-q1">When exactly does Trump's term end?</p>
     <p class="faq-a" id="faq-a1">Donald Trump's presidential term ends on <strong>January 20, 2029, at 12:00:00 noon Eastern Standard Time (EST)</strong>, which is 17:00:00 UTC. This is the moment the next president is sworn in and Trump's authority as president ceases.</p>
@@ -581,7 +581,7 @@
     <p class="faq-q" id="faq-q4">Who will be the next U.S. president after Trump?</p>
     <p class="faq-a" id="faq-a4">The next U.S. presidential election is scheduled for <strong>November 4, 2028</strong>. The winner will be inaugurated on January 20, 2029. Candidates and campaigns will emerge throughout 2027–2028.</p>
   </div>
- 
+
   <!-- SHARE -->
   <p class="section-label" id="txt-share-label">Share</p>
   <div class="share-row">
@@ -595,7 +595,7 @@
       Email
     </a>
   </div>
- 
+
   <!-- WIDGET -->
   <p class="section-label" id="txt-widget-label">Embed widget</p>
   <div class="widget-sizes">
@@ -607,9 +607,9 @@
     <button class="copy-btn" onclick="copyWidget()">COPY</button>
     <span id="widget-code-pre"></span>
   </div>
- 
+
 </section>
- 
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -622,14 +622,14 @@
     </div>
   </div>
 </footer>
- 
+
 <!-- DONE OVERLAY -->
 <div id="done-overlay">
   <h2 id="done-h">TIME'S UP!</h2>
   <p style="font-family:'DM Mono',monospace;color:#444;margin-top:16px;letter-spacing:0.2em;font-size:13px;" id="done-p">January 20, 2029</p>
 </div>
 <canvas id="confetti-canvas"></canvas>
- 
+
 <script>
 // ─── ПЕРЕКЛАДИ ───────────────────────────────────────────────────
 const LANG = {
@@ -772,18 +772,18 @@ const LANG = {
     twitterText:'¿Cuánto le queda a Trump? Cuenta regresiva en vivo → https://presidencyclock.com',
   }
 };
- 
+
 // ─── СТАН ──────────────────────────────────────────────────────
 let currentLang = 'en';
 let currentWidget = 'compact';
- 
+
 // ─── ПЕРЕМИКАЧ МОВИ ─────────────────────────────────────────────
 function setLang(lang) {
   currentLang = lang;
   const t = LANG[lang];
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
- 
+
   document.getElementById('txt-eyebrow').textContent = t.eyebrow;
   document.getElementById('txt-headline').innerHTML = t.headline;
   document.getElementById('txt-sub').textContent = t.sub;
@@ -822,38 +822,38 @@ function setLang(lang) {
   document.getElementById('txt-world').textContent = t.world;
   document.getElementById('nav-home').textContent = t.navHome;
   document.getElementById('nav-presidents').textContent = t.navPresidents;
- 
+
   // Соцмережі
   const url = 'https://presidencyclock.com';
   document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(t.twitterText)}`;
   document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
   document.getElementById('share-email').href = `mailto:?subject=${encodeURIComponent('Trump Countdown')}&body=${encodeURIComponent(t.twitterText)}`;
- 
+
   updateWidgetCode();
 }
- 
+
 // ─── ЛІЧИЛЬНИК ─────────────────────────────────────────────────
 const END = new Date('2029-01-20T17:00:00Z');
 const START = new Date('2025-01-20T17:00:00Z');
 const TOTAL = END - START;
 let prevSec = -1;
- 
+
 function pad(n, w=2){ return String(Math.max(0,n)).padStart(w,'0'); }
- 
+
 function tick(){
   const now = new Date();
   const diff = END - now;
   if(diff <= 0){ showDone(); return; }
- 
+
   const days  = Math.floor(diff / 86400000);
   const hours = Math.floor((diff % 86400000) / 3600000);
   const mins  = Math.floor((diff % 3600000) / 60000);
   const secs  = Math.floor((diff % 60000) / 1000);
- 
+
   document.getElementById('d-days').textContent  = pad(days,3);
   document.getElementById('d-hours').textContent = pad(hours);
   document.getElementById('d-mins').textContent  = pad(mins);
- 
+
   const secEl = document.getElementById('d-secs');
   if(secs !== prevSec){
     secEl.textContent = pad(secs);
@@ -862,33 +862,33 @@ function tick(){
     secEl.classList.add('flash');
     prevSec = secs;
   }
- 
+
   const pct = Math.min(100, ((now - START) / TOTAL) * 100);
   document.getElementById('prog-fill').style.width = pct + '%';
   document.getElementById('prog-pct').textContent = pct.toFixed(4) + '%';
 }
- 
+
 setInterval(tick, 250);
 tick();
- 
+
 // ─── WIDGET ─────────────────────────────────────────────────────
 const WIDGET = {
   compact: `<iframe\n  src="https://presidencyclock.com/?widget=1&size=compact"\n  width="340" height="110"\n  frameborder="0"\n  style="border:none;"\n  title="Trump Countdown"\n></iframe>`,
   medium:  `<iframe\n  src="https://presidencyclock.com/?widget=1&size=medium"\n  width="420" height="220"\n  frameborder="0"\n  style="border:none;"\n  title="Trump Countdown"\n></iframe>`,
   full:    `<iframe\n  src="https://presidencyclock.com/?widget=1&size=full"\n  width="100%" height="420"\n  frameborder="0"\n  style="border:none;width:100%;"\n  title="Trump Countdown"\n></iframe>`,
 };
- 
+
 function showWidget(size){
   currentWidget = size;
   document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('wb-'+size).classList.add('active');
   updateWidgetCode();
 }
- 
+
 function updateWidgetCode(){
   document.getElementById('widget-code-pre').textContent = WIDGET[currentWidget];
 }
- 
+
 function copyWidget(){
   navigator.clipboard.writeText(WIDGET[currentWidget]).then(()=>{
     const btn = document.querySelector('.copy-btn');
@@ -896,9 +896,9 @@ function copyWidget(){
     setTimeout(()=> btn.textContent = 'COPY', 2000);
   });
 }
- 
+
 updateWidgetCode();
- 
+
 // ─── DONE + КОНФЕТІ ─────────────────────────────────────────────
 function showDone(){
   document.getElementById('done-overlay').style.display = 'flex';
@@ -923,7 +923,7 @@ function showDone(){
     requestAnimationFrame(loop);
   })();
 }
- 
+
 // ─── WIDGET MODE (iframe) ────────────────────────────────────────
 const qs = new URLSearchParams(location.search);
 if(qs.get('widget')){
@@ -949,4 +949,3 @@ if(qs.get('widget')){
 </script>
 </body>
 </html>
- 
