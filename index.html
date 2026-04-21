@@ -1,129 +1,952 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translate="title">Зворотний відлік: Завершення повноважень Дональда Трампа</title>
-    
-    <meta name="description" data-translate="meta_description" content="Точний зворотний відлік до кінця повноважень Дональда Трампа як 47-го Президента США: 20 січня 2029 року.">
-    <meta property="og:title" data-translate="og_title" content="Скільки часу залишилося? Таймер Трампа 2029">
-    <meta property="og:url" content="https://potus-countdown.vercel.app/">
-    <link rel="stylesheet" href="styles.css"> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trump Countdown Timer 2029 — PresidencyClock.com</title>
+  <meta name="description" content="Real-time countdown to the end of Donald Trump's presidential term on January 20, 2029. Live clock, widget embed, world leaders info." />
+  <meta name="keywords" content="trump countdown, trump timer 2029, presidential term countdown, trump presidency end date" />
+  <meta property="og:title" content="Trump Countdown Timer 2029" />
+  <meta property="og:description" content="How many days, hours and seconds are left in Trump's presidency? Live countdown to January 20, 2029." />
+  <meta property="og:url" content="https://presidencyclock.com/" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://presidencyclock.com/" />
+ 
+  <!-- Google AdSense — вставте свій код тут після отримання -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+ 
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: #101010;
+      --border: #1e1e1e;
+      --accent: #e63232;
+      --text: #ede9e0;
+      --muted: #444;
+      --muted2: #666;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+ 
+    /* ── ШАПКА / НАВ ── */
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(8,8,8,0.96);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--muted2);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--muted2);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+ 
+    /* ── LANG BAR ── */
+    #lang-bar {
+      display: flex;
+      gap: 4px;
+      padding: 14px 24px;
+      width: 100%;
+      justify-content: flex-end;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding: 3px 9px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .lang-btn:hover, .lang-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+ 
+    /* ── AD TOP ── */
+    .ad-slot {
+      width: 100%;
+      max-width: 728px;
+      min-height: 90px;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      margin: 20px auto;
+    }
+    .ad-slot-rect {
+      width: 100%;
+      max-width: 360px;
+      min-height: 300px;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      margin: 0 auto 40px;
+    }
+ 
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 60px 24px 20px;
+      width: 100%;
+    }
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(44px, 11vw, 108px);
+      letter-spacing: 0.03em;
+      line-height: 0.88;
+      color: var(--text);
+    }
+    h1 em { color: var(--accent); font-style: normal; }
+    .hero-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--muted2);
+      margin-top: 18px;
+    }
+ 
+    /* ── COUNTDOWN ── */
+    #countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(8px, 2vw, 18px);
+      padding: 40px 24px;
+      width: 100%;
+      max-width: 900px;
+    }
+    .unit { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .digit-box {
+      width: 100%;
+      aspect-ratio: 1 / 1.05;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .digit-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(230,50,50,0.08), transparent 60%);
+    }
+    .digit-box::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 50%;
+      height: 1px;
+      background: var(--border);
+    }
+    .digit {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 9vw, 96px);
+      color: var(--text);
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 1;
+    }
+    .digit.flash { animation: flash 0.18s ease; }
+    .unit-label {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(9px, 1.5vw, 11px);
+      letter-spacing: 0.28em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+ 
+    /* ── PROGRESS ── */
+    .progress-wrap {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px 40px;
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .progress-track {
+      width: 100%;
+      height: 2px;
+      background: var(--border);
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 1s linear;
+      position: relative;
+    }
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      right: -3px; top: -3px;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+    }
+ 
+    /* ── INFO SECTION ── */
+    .info-section {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px 20px;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+      padding: 28px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+ 
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+    }
+    .info-card h3 {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .info-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted2);
+    }
+    .info-card p strong { color: var(--text); }
+ 
+    .info-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted2);
+      margin-bottom: 16px;
+    }
+    .info-text strong { color: var(--text); }
+ 
+    /* ── FAQ ── */
+    .faq-item {
+      border-top: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    .faq-q {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .faq-a {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted2);
+    }
+ 
+    /* ── SHARE / WIDGET ── */
+    .share-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted2);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+    .share-btn:hover { border-color: var(--accent); color: var(--text); }
+ 
+    .widget-sizes { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+    .size-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding: 5px 12px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .size-btn.active, .size-btn:hover { border-color: var(--accent); color: var(--text); }
+ 
+    .code-block {
+      background: #070707;
+      border: 1px solid var(--border);
+      padding: 16px 50px 16px 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: #7aaa88;
+      line-height: 1.65;
+      overflow-x: auto;
+      border-radius: 3px;
+      position: relative;
+      white-space: pre;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: var(--border);
+      border: none;
+      color: var(--muted2);
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover { background: var(--accent); color: white; }
+ 
+    /* ── FOOTER ── */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      margin-top: auto;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--accent); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+ 
+    /* ── DONE ── */
+    #done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.97);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #done-overlay h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 14vw, 130px);
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    canvas#confetti-canvas {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+    }
+ 
+    @keyframes flash {
+      0%   { transform: translateY(-5px); color: var(--accent); }
+      100% { transform: translateY(0);    color: var(--text); }
+    }
+ 
+    @media (max-width: 540px) {
+      #countdown { grid-template-columns: repeat(2, 1fr); }
+      .info-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-
-    <header>
-        <nav id="navbar">
-            <span class="logo" data-translate="logo_text">Таймер Трампа 2029</span>
-            <div class="nav-links">
-                <a href="#info" data-translate="nav_info">Інформація</a>
-                <a href="presidents.html" data-translate="nav_presidents">Президенти</a>
-            </div>
-        </nav>
-
-        <div class="controls">
-            <select id="language-switcher">
-                <option value="uk" selected>Українська</option>
-                <option value="en">English</option>
-                <option value="pt">Português</option>
-                <option value="fr">Français</option>
-                <option value="es">Español</option>
-            </select>
-            <button id="theme-toggle" data-translate="toggle_text">Включити Нічну Тему</button>
-        </div>
-    </header>
-    
-    <main>
-        <h1 data-translate="main_headline">Зворотний відлік до кінця повноважень Дональда Трампа</h1>
-
-        <div id="countdown">
-            <div class="time-unit">
-                <div class="time-value" id="days">00</div>
-                <div class="time-label" data-translate="label_days">ДНІВ</div>
-            </div>
-            <div class="time-unit">
-                <div class="time-value" id="hours">00</div>
-                <div class="time-label" data-translate="label_hours">ГОДИН</div>
-            </div>
-            <div class="time-unit">
-                <div class="time-value" id="minutes">00</div>
-                <div class="time-label" data-translate="label_minutes">ХВИЛИН</div>
-            </div>
-            <div class="time-unit">
-                <div class="time-value" id="seconds">00</div>
-                <div class="time-label" data-translate="label_seconds">СЕКУНД</div>
-            </div>
-        </div>
-        
-        <div class="content-section ad-block">
-            <p data-translate="ad_placeholder">МІСЦЕ ДЛЯ РЕКЛАМНОГО БЛОКУ 1</p>
-        </div>
-
-        <section id="info">
-            <div class="content-card">
-                <h2 data-translate="info1_title">🗓️ Корисна Інформація: Дата та 20-та Поправка</h2>
-                <p data-translate="info1_body">Згідно з **20-ю поправкою до Конституції США**, термін повноважень Президента завершується опівдні 20 січня, через чотири роки після його інавгурації. Якщо Дональд Трамп стане 47-м Президентом США, його термін закінчиться **20 січня 2029 року о 12:00:00 (EST)**. Саме цю дату використовує наш лічильник.</p>
-            </div>
-            
-            <div class="content-card">
-                <h2 data-translate="info2_title">🗳️ Про Президентські Вибори</h2>
-                <p data-translate="info2_body">Наш сайт присвячений історичній даті, незалежно від політичних уподобань. Наявність точної та перевіреної інформації є ключовою для будь-якого громадського ресурсу. Ми будемо регулярно оновлювати розділ FAQ з відповідями на найпопулярніші запитання, пов'язані з виборами та інавгурацією.</p>
-            </div>
-        </section>
-
-        <div class="content-section tools-section">
-            <h2 data-translate="tools_title">Поділіться та Вбудуйте</h2>
-
-            <h3 data-translate="social_title">Поділитися в Соцмережах:</h3>
-            <div class="social-share">
-                <a href="#" class="share-btn twitter" target="_blank">Twitter</a>
-                <a href="#" class="share-btn facebook" target="_blank">Facebook</a>
-                <a href="#" class="share-btn email" target="_blank">Email</a>
-            </div>
-
-            <h3 data-translate="widget_title" style="margin-top: 30px;">Вставити Віджет на Ваш Сайт:</h3>
-            <p data-translate="widget_instr">Скопіюйте цей код, щоб додати мінімалістичний годинник на свій сайт (HTML-блог):</p>
-            <textarea id="widget-code" readonly></textarea>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="policy.html" data-translate="footer_policy">Політика Конфіденційності</a>
-            <a href="terms.html" data-translate="footer_terms">Умови Використання</a>
-            <a href="contact.html" data-translate="footer_contact">Контакти</a>
-            <span class="copyright" data-translate="footer_copyright">&copy; 2025 Таймер Трампа. Усі права захищено.</span>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-    <script>
-        // Ініціалізація перемикача мови та теми
-        document.addEventListener('DOMContentLoaded', () => {
-            // Оновлення посилань для шерингу
-            const url = encodeURIComponent(window.location.href);
-            const title = encodeURIComponent(document.title);
-            document.querySelector('.share-btn.twitter').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
-            document.querySelector('.share-btn.facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-            document.querySelector('.share-btn.email').href = `mailto:?subject=${title}&body=Подивіться%20на%20цей%20зворотний%20відлік:%20${url}`;
-            
-            // Генерація коду віджета (тепер використовує зовнішній script.js)
-            const WIDGET_HTML = `
-                <iframe src="${window.location.origin}/widget.html" 
-                    width="300" 
-                    height="100" 
-                    style="border: none; overflow: hidden; margin: 0; padding: 0;" 
-                    scrolling="no" 
-                    frameborder="0"
-                    loading="lazy">
-                </iframe>
-            `;
-            document.getElementById('widget-code').value = WIDGET_HTML.trim();
-        });
-
-        // ПІСЛЯ ЗАВАНТАЖЕННЯ НА ХОСТИНГ, НЕ ЗАБУДЬТЕ:
-        // 1. Замінити "https://potus-countdown.vercel.app/" на реальну адресу у мета-тегах.
-        // 2. Створити та завантажити файли `styles.css` та `script.js`.
-    </script>
+ 
+<!-- НАВІГАЦІЯ -->
+<nav>
+  <a href="/" class="nav-logo">PRESIDENCY<span>CLOCK</span>.COM</a>
+  <div class="nav-links">
+    <a href="/" class="active" id="nav-home">Home</a>
+    <a href="/presidents.html" id="nav-presidents">World Leaders</a>
+  </div>
+</nav>
+ 
+<!-- ВИБІР МОВИ -->
+<div id="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('ua')">UA</button>
+  <button class="lang-btn" onclick="setLang('pl')">PL</button>
+  <button class="lang-btn" onclick="setLang('de')">DE</button>
+  <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" onclick="setLang('es')">ES</button>
+</div>
+ 
+<!-- РЕКЛАМА ВГОРІ (728×90) -->
+<div class="ad-slot" id="ad-top">
+  <!-- Сюди вставте AdSense код після підтвердження акаунту -->
+  <!-- <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX"></ins> -->
+  РЕКЛАМА · 728×90
+</div>
+ 
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow" id="txt-eyebrow">Presidential Term Countdown</p>
+  <h1 id="txt-headline">TIME LEFT<br>FOR <em>TRUMP</em></h1>
+  <p class="hero-sub" id="txt-sub">January 20, 2029 · 12:00:00 EST</p>
+</section>
+ 
+<!-- ЛІЧИЛЬНИК -->
+<div id="countdown">
+  <div class="unit">
+    <div class="digit-box"><span class="digit" id="d-days">000</span></div>
+    <span class="unit-label" id="l-days">days</span>
+  </div>
+  <div class="unit">
+    <div class="digit-box"><span class="digit" id="d-hours">00</span></div>
+    <span class="unit-label" id="l-hours">hours</span>
+  </div>
+  <div class="unit">
+    <div class="digit-box"><span class="digit" id="d-mins">00</span></div>
+    <span class="unit-label" id="l-mins">minutes</span>
+  </div>
+  <div class="unit">
+    <div class="digit-box"><span class="digit" id="d-secs">00</span></div>
+    <span class="unit-label" id="l-secs">seconds</span>
+  </div>
+</div>
+ 
+<!-- ПРОГРЕС-БАР -->
+<div class="progress-wrap">
+  <div class="progress-meta">
+    <span id="prog-start">Jan 20, 2025</span>
+    <span id="prog-pct">0.0000%</span>
+    <span id="prog-end">Jan 20, 2029</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+  </div>
+</div>
+ 
+<!-- РЕКЛАМА ПОСЕРЕДИНІ (300×250) -->
+<div class="ad-slot-rect" id="ad-mid">
+  <!-- Сюди вставте AdSense код -->
+  <!-- <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+       data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX"></ins> -->
+  РЕКЛАМА · 300×250
+</div>
+ 
+<!-- ІНФОРМАЦІЙНИЙ БЛОК -->
+<section class="info-section" id="info">
+ 
+  <p class="section-label" id="txt-info-label">About the term</p>
+ 
+  <p class="info-text" id="txt-info-main">
+    Under the <strong>20th Amendment to the U.S. Constitution</strong>, a presidential term ends at noon on January 20th, four years after inauguration. Donald Trump was inaugurated as the <strong>47th President of the United States</strong> on January 20, 2025. His term is set to expire on <strong>January 20, 2029, at 12:00:00 EST</strong> — the exact moment this clock counts down to.
+  </p>
+ 
+  <div class="info-grid">
+    <div class="info-card">
+      <h3 id="txt-card1-title">The 20th Amendment</h3>
+      <p id="txt-card1-body">Ratified in 1933, the 20th Amendment moved the presidential inauguration from March 4 to January 20, reducing the "lame duck" period. It also establishes the exact noon deadline for the transfer of presidential power.</p>
+    </div>
+    <div class="info-card">
+      <h3 id="txt-card2-title">Can Trump run again?</h3>
+      <p id="txt-card2-body">The <strong>22nd Amendment</strong> limits presidents to two terms. Trump served one term (2017–2021) and is currently in his second. This means he is <strong>constitutionally barred</strong> from seeking a third term in 2028.</p>
+    </div>
+    <div class="info-card">
+      <h3 id="txt-card3-title">Electoral College</h3>
+      <p id="txt-card3-body">The U.S. President is not elected by a direct popular vote. Instead, 538 electors — distributed by state population — cast the deciding votes. A candidate needs <strong>270 electoral votes</strong> to win the presidency.</p>
+    </div>
+    <div class="info-card">
+      <h3 id="txt-card4-title">Inauguration Day</h3>
+      <p id="txt-card4-body">Inauguration Day is held on <strong>January 20</strong> every four years. The incoming president takes the oath of office at the U.S. Capitol. The ceremony marks the peaceful transfer of power — a cornerstone of American democracy.</p>
+    </div>
+  </div>
+ 
+  <!-- FAQ -->
+  <p class="section-label" id="txt-faq-label">FAQ</p>
+ 
+  <div class="faq-item">
+    <p class="faq-q" id="faq-q1">When exactly does Trump's term end?</p>
+    <p class="faq-a" id="faq-a1">Donald Trump's presidential term ends on <strong>January 20, 2029, at 12:00:00 noon Eastern Standard Time (EST)</strong>, which is 17:00:00 UTC. This is the moment the next president is sworn in and Trump's authority as president ceases.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q" id="faq-q2">Is this clock accurate?</p>
+    <p class="faq-a" id="faq-a2">Yes. The countdown uses your device's local clock synchronized to UTC, counting down to the fixed target of January 20, 2029, 17:00:00 UTC. The accuracy depends on your device's system clock.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q" id="faq-q3">How long is a U.S. presidential term?</p>
+    <p class="faq-a" id="faq-a3">A U.S. presidential term is exactly <strong>4 years</strong>. Presidents can serve a maximum of two terms (8 years total), as established by the 22nd Amendment ratified in 1951.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q" id="faq-q4">Who will be the next U.S. president after Trump?</p>
+    <p class="faq-a" id="faq-a4">The next U.S. presidential election is scheduled for <strong>November 4, 2028</strong>. The winner will be inaugurated on January 20, 2029. Candidates and campaigns will emerge throughout 2027–2028.</p>
+  </div>
+ 
+  <!-- SHARE -->
+  <p class="section-label" id="txt-share-label">Share</p>
+  <div class="share-row">
+    <a id="share-twitter" class="share-btn" href="#" target="_blank" rel="noopener">
+      𝕏 Twitter / X
+    </a>
+    <a id="share-facebook" class="share-btn" href="#" target="_blank" rel="noopener">
+      Facebook
+    </a>
+    <a id="share-email" class="share-btn" href="#" target="_blank" rel="noopener">
+      Email
+    </a>
+  </div>
+ 
+  <!-- WIDGET -->
+  <p class="section-label" id="txt-widget-label">Embed widget</p>
+  <div class="widget-sizes">
+    <button class="size-btn active" onclick="showWidget('compact')" id="wb-compact">Compact</button>
+    <button class="size-btn" onclick="showWidget('medium')" id="wb-medium">Medium</button>
+    <button class="size-btn" onclick="showWidget('full')" id="wb-full">Full page</button>
+  </div>
+  <div class="code-block" style="position:relative;">
+    <button class="copy-btn" onclick="copyWidget()">COPY</button>
+    <span id="widget-code-pre"></span>
+  </div>
+ 
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 PresidencyClock.com · <span id="txt-footer-note">Not affiliated with any political party</span></p>
+    <div class="footer-links">
+      <a href="/policy.html" id="txt-privacy">Privacy Policy</a>
+      <a href="/terms.html" id="txt-terms">Terms of Use</a>
+      <a href="/contact.html" id="txt-contact">Contact</a>
+      <a href="/presidents.html" id="txt-world">World Leaders</a>
+    </div>
+  </div>
+</footer>
+ 
+<!-- DONE OVERLAY -->
+<div id="done-overlay">
+  <h2 id="done-h">TIME'S UP!</h2>
+  <p style="font-family:'DM Mono',monospace;color:#444;margin-top:16px;letter-spacing:0.2em;font-size:13px;" id="done-p">January 20, 2029</p>
+</div>
+<canvas id="confetti-canvas"></canvas>
+ 
+<script>
+// ─── ПЕРЕКЛАДИ ───────────────────────────────────────────────────
+const LANG = {
+  en: {
+    eyebrow: 'Presidential Term Countdown',
+    headline: 'TIME LEFT<br>FOR <em>TRUMP</em>',
+    sub: 'January 20, 2029 · 12:00:00 EST',
+    days:'days', hours:'hours', mins:'minutes', secs:'seconds',
+    progStart:'Jan 20, 2025', progEnd:'Jan 20, 2029',
+    infoLabel:'About the term',
+    infoMain:'Under the <strong>20th Amendment to the U.S. Constitution</strong>, a presidential term ends at noon on January 20th. Donald Trump was inaugurated as the <strong>47th President</strong> on January 20, 2025. His term expires on <strong>January 20, 2029, at 12:00:00 EST</strong>.',
+    card1t:'The 20th Amendment', card1b:'Ratified in 1933, the 20th Amendment moved inauguration to January 20, reducing the "lame duck" period and establishing the exact noon deadline for the transfer of presidential power.',
+    card2t:'Can Trump run again?', card2b:'The <strong>22nd Amendment</strong> limits presidents to two terms. Trump served 2017–2021 and is now in his second term. He is <strong>constitutionally barred</strong> from running again in 2028.',
+    card3t:'Electoral College', card3b:'The U.S. President is elected by 538 electors distributed by state population. A candidate needs <strong>270 electoral votes</strong> to win the presidency.',
+    card4t:'Inauguration Day', card4b:'Inauguration Day is held every four years on <strong>January 20</strong>. The president takes the oath of office at the U.S. Capitol, marking the peaceful transfer of power.',
+    faqLabel:'FAQ',
+    faqQ:['When exactly does Trump\'s term end?','Is this clock accurate?','How long is a U.S. presidential term?','Who will be the next U.S. president?'],
+    faqA:['Donald Trump\'s term ends on <strong>January 20, 2029 at 12:00:00 EST</strong> (17:00 UTC). At that moment, the next president is sworn in.','Yes. The countdown uses your device clock counting to January 20, 2029, 17:00:00 UTC.','Exactly <strong>4 years</strong>. Maximum two terms (8 years) per the 22nd Amendment (1951).','The next election is <strong>November 4, 2028</strong>. The winner is inaugurated January 20, 2029.'],
+    shareLabel:'Share', widgetLabel:'Embed widget',
+    compact:'Compact', medium:'Medium', full:'Full page',
+    done:"TIME'S UP!", doneP:'January 20, 2029',
+    footerNote:'Not affiliated with any political party',
+    privacy:'Privacy Policy', terms:'Terms of Use', contact:'Contact', world:'World Leaders',
+    navHome:'Home', navPresidents:'World Leaders',
+    twitterText:'How much time is left for Trump? Live countdown → https://presidencyclock.com',
+  },
+  ua: {
+    eyebrow: 'Зворотний відлік президентського терміну',
+    headline: 'СКІЛЬКИ ЗАЛИШИЛОСЬ<br><em>ТРАМПУ</em>',
+    sub: '20 січня 2029 · 12:00:00 EST',
+    days:'днів', hours:'годин', mins:'хвилин', secs:'секунд',
+    progStart:'20 Січ 2025', progEnd:'20 Січ 2029',
+    infoLabel:'Про термін',
+    infoMain:'Згідно з <strong>20-ю поправкою до Конституції США</strong>, президентський термін закінчується опівдні 20 січня. Дональд Трамп вступив на посаду <strong>47-го президента США</strong> 20 січня 2025 року. Його термін закінчується <strong>20 січня 2029 року о 12:00:00 EST</strong>.',
+    card1t:'20-та Поправка', card1b:'Ратифікована у 1933 році, 20-та поправка перенесла інавгурацію на 20 січня, скоротивши перехідний період. Вона встановлює точний момент передачі президентських повноважень.',
+    card2t:'Чи може Трамп балотуватись знову?', card2b:'<strong>22-га поправка</strong> обмежує президентів двома термінами. Трамп вже відслужив один термін (2017–2021) і зараз у другому. Тому він <strong>конституційно позбавлений</strong> права балотуватись у 2028 році.',
+    card3t:'Колегія виборщиків', card3b:'Президента США обирають 538 виборщиків, розподілених між штатами. Кандидату потрібно <strong>270 голосів виборщиків</strong> для перемоги.',
+    card4t:'День інавгурації', card4b:'Інавгурація відбувається кожні чотири роки <strong>20 січня</strong> в Капітолії США. Президент складає присягу — символ мирної передачі влади.',
+    faqLabel:'Часті запитання',
+    faqQ:['Коли точно закінчується термін Трампа?','Чи точний цей годинник?','Скільки триває президентський термін у США?','Хто буде наступним президентом США?'],
+    faqA:['Термін Дональда Трампа закінчується <strong>20 січня 2029 о 12:00:00 EST</strong> (17:00 UTC).','Так. Відлік використовує системний годинник вашого пристрою до 20 січня 2029, 17:00 UTC.','Рівно <strong>4 роки</strong>. Максимум два терміни (8 років) згідно з 22-ю поправкою (1951).','Наступні вибори — <strong>4 листопада 2028 року</strong>. Переможець вступає на посаду 20 січня 2029.'],
+    shareLabel:'Поділитись', widgetLabel:'Вставити віджет',
+    compact:'Компакт', medium:'Середній', full:'Повний',
+    done:'ЧАС ВИЙШОВ!', doneP:'20 січня 2029',
+    footerNote:'Без жодних партійних зв\'язків',
+    privacy:'Політика конфіденційності', terms:'Умови використання', contact:'Контакти', world:'Лідери світу',
+    navHome:'Головна', navPresidents:'Лідери світу',
+    twitterText:'Скільки залишилось Трампу? Живий лічильник → https://presidencyclock.com',
+  },
+  pl: {
+    eyebrow: 'Odliczanie kadencji prezydenckiej',
+    headline: 'ILE ZOSTAŁO<br><em>TRUMPOWI</em>',
+    sub: '20 stycznia 2029 · 12:00:00 EST',
+    days:'dni', hours:'godzin', mins:'minut', secs:'sekund',
+    progStart:'20 Sty 2025', progEnd:'20 Sty 2029',
+    infoLabel:'O kadencji',
+    infoMain:'Zgodnie z <strong>XX poprawką do Konstytucji USA</strong>, kadencja prezydenta kończy się w południe 20 stycznia. Donald Trump objął urząd <strong>47. prezydenta USA</strong> 20 stycznia 2025. Jego kadencja wygasa <strong>20 stycznia 2029 o 12:00:00 EST</strong>.',
+    card1t:'XX Poprawka', card1b:'Ratyfikowana w 1933 r., XX poprawka przeniosła inaugurację na 20 stycznia, skracając okres przejściowy i ustalając dokładny moment przekazania władzy prezydenckiej.',
+    card2t:'Czy Trump może kandydować ponownie?', card2b:'<strong>XXII Poprawka</strong> ogranicza prezydentów do dwóch kadencji. Trump pełnił urząd w latach 2017–2021 i jest teraz w drugiej kadencji. Konstytucja <strong>zabrania</strong> mu kandydowania w 2028 r.',
+    card3t:'Kolegium Elektorów', card3b:'Prezydent USA jest wybierany przez 538 elektorów rozdzielonych między stany. Kandydat potrzebuje <strong>270 głosów elektorskich</strong>, aby wygrać.',
+    card4t:'Dzień Inauguracji', card4b:'Inauguracja odbywa się co cztery lata <strong>20 stycznia</strong> w Kapitolu USA. Prezydent składa przysięgę — symbol pokojowego przekazania władzy.',
+    faqLabel:'FAQ',
+    faqQ:['Kiedy dokładnie kończy się kadencja Trumpa?','Czy ten zegar jest dokładny?','Jak długo trwa kadencja prezydencka w USA?','Kto będzie następnym prezydentem USA?'],
+    faqA:['Kadencja Donalda Trumpa kończy się <strong>20 stycznia 2029 o 12:00:00 EST</strong> (17:00 UTC).','Tak. Odliczanie używa zegara systemowego Twojego urządzenia do 20 stycznia 2029, 17:00 UTC.','Dokładnie <strong>4 lata</strong>. Maksymalnie dwie kadencje (8 lat) zgodnie z XXII Poprawką (1951).','Kolejne wybory odbędą się <strong>4 listopada 2028 r.</strong> Zwycięzca obejmie urząd 20 stycznia 2029.'],
+    shareLabel:'Udostępnij', widgetLabel:'Osadź widget',
+    compact:'Kompakt', medium:'Średni', full:'Pełny',
+    done:'CZAS MINĄŁ!', doneP:'20 stycznia 2029',
+    footerNote:'Niezwiązany z żadną partią polityczną',
+    privacy:'Polityka prywatności', terms:'Warunki użytkowania', contact:'Kontakt', world:'Przywódcy światowi',
+    navHome:'Strona główna', navPresidents:'Przywódcy światowi',
+    twitterText:'Ile zostało Trumpowi? Licznik na żywo → https://presidencyclock.com',
+  },
+  de: {
+    eyebrow: 'Countdown zur Amtszeit',
+    headline: 'VERBLEIBENDE ZEIT<br>FÜR <em>TRUMP</em>',
+    sub: '20. Januar 2029 · 12:00:00 Uhr EST',
+    days:'Tage', hours:'Stunden', mins:'Minuten', secs:'Sekunden',
+    progStart:'20. Jan 2025', progEnd:'20. Jan 2029',
+    infoLabel:'Über die Amtszeit',
+    infoMain:'Gemäß dem <strong>20. Zusatzartikel zur US-Verfassung</strong> endet die Amtszeit des Präsidenten am 20. Januar um 12:00 Uhr mittags. Donald Trump wurde am 20. Januar 2025 als <strong>47. Präsident der USA</strong> vereidigt. Seine Amtszeit endet am <strong>20. Januar 2029 um 12:00:00 EST</strong>.',
+    card1t:'Der 20. Zusatzartikel', card1b:'Der 1933 ratifizierte 20. Zusatzartikel verlegte den Inaugurationstag auf den 20. Januar und legt den genauen Zeitpunkt der Machtübergabe fest.',
+    card2t:'Kann Trump erneut kandidieren?', card2b:'Der <strong>22. Zusatzartikel</strong> begrenzt Präsidenten auf zwei Amtszeiten. Trump regierte 2017–2021 und befindet sich nun in seiner zweiten Amtszeit. Er darf <strong>verfassungsrechtlich nicht</strong> 2028 kandidieren.',
+    card3t:'Wahlmännerkollegium', card3b:'Der US-Präsident wird von 538 Wahlmännern gewählt, die nach Bevölkerungszahl auf die Bundesstaaten verteilt sind. Ein Kandidat benötigt <strong>270 Wahlmännerstimmen</strong>.',
+    card4t:'Amtseinführungstag', card4b:'Die Amtseinführung findet alle vier Jahre am <strong>20. Januar</strong> im US-Kapitol statt. Der Präsident leistet den Amtseid — Symbol der friedlichen Machtübergabe.',
+    faqLabel:'Häufige Fragen',
+    faqQ:['Wann genau endet Trumps Amtszeit?','Ist diese Uhr genau?','Wie lange dauert eine US-Präsidentschaft?','Wer wird der nächste US-Präsident?'],
+    faqA:['Trumps Amtszeit endet am <strong>20. Januar 2029 um 12:00:00 EST</strong> (17:00 UTC).','Ja. Der Countdown nutzt Ihre Systemuhr bis zum 20. Januar 2029, 17:00 UTC.','Genau <strong>4 Jahre</strong>. Maximal zwei Amtszeiten (8 Jahre) gemäß dem 22. Zusatzartikel (1951).','Die nächste Wahl findet am <strong>4. November 2028</strong> statt. Der Gewinner wird am 20. Januar 2029 vereidigt.'],
+    shareLabel:'Teilen', widgetLabel:'Widget einbetten',
+    compact:'Kompakt', medium:'Mittel', full:'Vollständig',
+    done:'ZEIT ABGELAUFEN!', doneP:'20. Januar 2029',
+    footerNote:'Nicht mit einer Partei verbunden',
+    privacy:'Datenschutzerklärung', terms:'Nutzungsbedingungen', contact:'Kontakt', world:'Weltführer',
+    navHome:'Startseite', navPresidents:'Weltführer',
+    twitterText:'Wie lange bleibt Trump noch? Live-Countdown → https://presidencyclock.com',
+  },
+  fr: {
+    eyebrow: 'Compte à rebours du mandat présidentiel',
+    headline: 'TEMPS RESTANT<br>POUR <em>TRUMP</em>',
+    sub: '20 janvier 2029 · 12:00:00 EST',
+    days:'jours', hours:'heures', mins:'minutes', secs:'secondes',
+    progStart:'20 Jan 2025', progEnd:'20 Jan 2029',
+    infoLabel:'À propos du mandat',
+    infoMain:'En vertu du <strong>20e amendement de la Constitution américaine</strong>, le mandat présidentiel se termine à midi le 20 janvier. Donald Trump a été inauguré comme <strong>47e président des États-Unis</strong> le 20 janvier 2025. Son mandat expire le <strong>20 janvier 2029 à 12:00:00 EST</strong>.',
+    card1t:'Le 20e Amendement', card1b:'Ratifié en 1933, le 20e amendement a déplacé l\'inauguration au 20 janvier, réduisant la période de transition et fixant le moment exact du transfert du pouvoir.',
+    card2t:'Trump peut-il se représenter?', card2b:'Le <strong>22e amendement</strong> limite les présidents à deux mandats. Trump a servi 2017–2021 et est dans son second mandat. Il est <strong>constitutionnellement interdit</strong> de se présenter en 2028.',
+    card3t:'Collège électoral', card3b:'Le président américain est élu par 538 grands électeurs répartis entre les États. Un candidat a besoin de <strong>270 voix électorales</strong> pour gagner.',
+    card4t:'Jour d\'inauguration', card4b:'L\'inauguration a lieu tous les quatre ans le <strong>20 janvier</strong> au Capitole américain. Le président prête serment — symbole du transfert pacifique du pouvoir.',
+    faqLabel:'FAQ',
+    faqQ:['Quand exactement se termine le mandat de Trump?','Cette horloge est-elle précise?','Combien de temps dure un mandat présidentiel américain?','Qui sera le prochain président américain?'],
+    faqA:['Le mandat de Trump se termine le <strong>20 janvier 2029 à 12:00:00 EST</strong> (17:00 UTC).','Oui. Le compte à rebours utilise l\'horloge de votre appareil jusqu\'au 20 janvier 2029, 17:00 UTC.','Exactement <strong>4 ans</strong>. Maximum deux mandats (8 ans) selon le 22e amendement (1951).','La prochaine élection est prévue le <strong>4 novembre 2028</strong>. Le vainqueur prêtera serment le 20 janvier 2029.'],
+    shareLabel:'Partager', widgetLabel:'Intégrer le widget',
+    compact:'Compact', medium:'Moyen', full:'Complet',
+    done:'TEMPS ÉCOULÉ!', doneP:'20 janvier 2029',
+    footerNote:'Non affilié à un parti politique',
+    privacy:'Politique de confidentialité', terms:'Conditions d\'utilisation', contact:'Contact', world:'Dirigeants mondiaux',
+    navHome:'Accueil', navPresidents:'Dirigeants mondiaux',
+    twitterText:'Combien de temps reste-t-il à Trump? Compte à rebours en direct → https://presidencyclock.com',
+  },
+  es: {
+    eyebrow: 'Cuenta regresiva del mandato presidencial',
+    headline: 'TIEMPO RESTANTE<br>PARA <em>TRUMP</em>',
+    sub: '20 de enero de 2029 · 12:00:00 EST',
+    days:'días', hours:'horas', mins:'minutos', secs:'segundos',
+    progStart:'20 Ene 2025', progEnd:'20 Ene 2029',
+    infoLabel:'Sobre el mandato',
+    infoMain:'Según la <strong>20ª Enmienda de la Constitución de EE.UU.</strong>, el mandato presidencial termina al mediodía del 20 de enero. Donald Trump fue inaugurado como <strong>47º Presidente de EE.UU.</strong> el 20 de enero de 2025. Su mandato vence el <strong>20 de enero de 2029 a las 12:00:00 EST</strong>.',
+    card1t:'La 20ª Enmienda', card1b:'Ratificada en 1933, la 20ª Enmienda trasladó la inauguración al 20 de enero, reduciendo el período de transición y estableciendo el momento exacto de la transferencia del poder.',
+    card2t:'¿Puede Trump volver a postularse?', card2b:'La <strong>22ª Enmienda</strong> limita a los presidentes a dos mandatos. Trump sirvió 2017–2021 y está ahora en su segundo mandato. Está <strong>constitucionalmente impedido</strong> de postularse en 2028.',
+    card3t:'Colegio Electoral', card3b:'El presidente de EE.UU. es elegido por 538 electores distribuidos entre los estados. Un candidato necesita <strong>270 votos electorales</strong> para ganar.',
+    card4t:'Día de la Inauguración', card4b:'La inauguración se celebra cada cuatro años el <strong>20 de enero</strong> en el Capitolio de EE.UU. El presidente presta juramento — símbolo de la transferencia pacífica del poder.',
+    faqLabel:'Preguntas frecuentes',
+    faqQ:['¿Cuándo termina exactamente el mandato de Trump?','¿Es preciso este reloj?','¿Cuánto dura un mandato presidencial en EE.UU.?','¿Quién será el próximo presidente de EE.UU.?'],
+    faqA:['El mandato de Trump termina el <strong>20 de enero de 2029 a las 12:00:00 EST</strong> (17:00 UTC).','Sí. La cuenta regresiva usa el reloj de tu dispositivo hasta el 20 de enero de 2029, 17:00 UTC.','Exactamente <strong>4 años</strong>. Máximo dos mandatos (8 años) según la 22ª Enmienda (1951).','Las próximas elecciones son el <strong>4 de noviembre de 2028</strong>. El ganador tomará posesión el 20 de enero de 2029.'],
+    shareLabel:'Compartir', widgetLabel:'Insertar widget',
+    compact:'Compacto', medium:'Mediano', full:'Completo',
+    done:'¡TIEMPO AGOTADO!', doneP:'20 de enero de 2029',
+    footerNote:'No afiliado a ningún partido político',
+    privacy:'Política de privacidad', terms:'Términos de uso', contact:'Contacto', world:'Líderes mundiales',
+    navHome:'Inicio', navPresidents:'Líderes mundiales',
+    twitterText:'¿Cuánto le queda a Trump? Cuenta regresiva en vivo → https://presidencyclock.com',
+  }
+};
+ 
+// ─── СТАН ──────────────────────────────────────────────────────
+let currentLang = 'en';
+let currentWidget = 'compact';
+ 
+// ─── ПЕРЕМИКАЧ МОВИ ─────────────────────────────────────────────
+function setLang(lang) {
+  currentLang = lang;
+  const t = LANG[lang];
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+ 
+  document.getElementById('txt-eyebrow').textContent = t.eyebrow;
+  document.getElementById('txt-headline').innerHTML = t.headline;
+  document.getElementById('txt-sub').textContent = t.sub;
+  document.getElementById('l-days').textContent = t.days;
+  document.getElementById('l-hours').textContent = t.hours;
+  document.getElementById('l-mins').textContent = t.mins;
+  document.getElementById('l-secs').textContent = t.secs;
+  document.getElementById('prog-start').textContent = t.progStart;
+  document.getElementById('prog-end').textContent = t.progEnd;
+  document.getElementById('txt-info-label').childNodes[0].textContent = t.infoLabel;
+  document.getElementById('txt-info-main').innerHTML = t.infoMain;
+  document.getElementById('txt-card1-title').textContent = t.card1t;
+  document.getElementById('txt-card1-body').innerHTML = t.card1b;
+  document.getElementById('txt-card2-title').textContent = t.card2t;
+  document.getElementById('txt-card2-body').innerHTML = t.card2b;
+  document.getElementById('txt-card3-title').textContent = t.card3t;
+  document.getElementById('txt-card3-body').innerHTML = t.card3b;
+  document.getElementById('txt-card4-title').textContent = t.card4t;
+  document.getElementById('txt-card4-body').innerHTML = t.card4b;
+  document.getElementById('txt-faq-label').childNodes[0].textContent = t.faqLabel;
+  const faqQs = document.querySelectorAll('.faq-q');
+  const faqAs = document.querySelectorAll('.faq-a');
+  t.faqQ.forEach((q,i) => { if(faqQs[i]) faqQs[i].textContent = q; });
+  t.faqA.forEach((a,i) => { if(faqAs[i]) faqAs[i].innerHTML = a; });
+  document.getElementById('txt-share-label').childNodes[0].textContent = t.shareLabel;
+  document.getElementById('txt-widget-label').childNodes[0].textContent = t.widgetLabel;
+  document.getElementById('wb-compact').textContent = t.compact;
+  document.getElementById('wb-medium').textContent = t.medium;
+  document.getElementById('wb-full').textContent = t.full;
+  document.getElementById('done-h').textContent = t.done;
+  document.getElementById('done-p').textContent = t.doneP;
+  document.getElementById('txt-footer-note').textContent = t.footerNote;
+  document.getElementById('txt-privacy').textContent = t.privacy;
+  document.getElementById('txt-terms').textContent = t.terms;
+  document.getElementById('txt-contact').textContent = t.contact;
+  document.getElementById('txt-world').textContent = t.world;
+  document.getElementById('nav-home').textContent = t.navHome;
+  document.getElementById('nav-presidents').textContent = t.navPresidents;
+ 
+  // Соцмережі
+  const url = 'https://presidencyclock.com';
+  document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(t.twitterText)}`;
+  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  document.getElementById('share-email').href = `mailto:?subject=${encodeURIComponent('Trump Countdown')}&body=${encodeURIComponent(t.twitterText)}`;
+ 
+  updateWidgetCode();
+}
+ 
+// ─── ЛІЧИЛЬНИК ─────────────────────────────────────────────────
+const END = new Date('2029-01-20T17:00:00Z');
+const START = new Date('2025-01-20T17:00:00Z');
+const TOTAL = END - START;
+let prevSec = -1;
+ 
+function pad(n, w=2){ return String(Math.max(0,n)).padStart(w,'0'); }
+ 
+function tick(){
+  const now = new Date();
+  const diff = END - now;
+  if(diff <= 0){ showDone(); return; }
+ 
+  const days  = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins  = Math.floor((diff % 3600000) / 60000);
+  const secs  = Math.floor((diff % 60000) / 1000);
+ 
+  document.getElementById('d-days').textContent  = pad(days,3);
+  document.getElementById('d-hours').textContent = pad(hours);
+  document.getElementById('d-mins').textContent  = pad(mins);
+ 
+  const secEl = document.getElementById('d-secs');
+  if(secs !== prevSec){
+    secEl.textContent = pad(secs);
+    secEl.classList.remove('flash');
+    void secEl.offsetWidth;
+    secEl.classList.add('flash');
+    prevSec = secs;
+  }
+ 
+  const pct = Math.min(100, ((now - START) / TOTAL) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct.toFixed(4) + '%';
+}
+ 
+setInterval(tick, 250);
+tick();
+ 
+// ─── WIDGET ─────────────────────────────────────────────────────
+const WIDGET = {
+  compact: `<iframe\n  src="https://presidencyclock.com/?widget=1&size=compact"\n  width="340" height="110"\n  frameborder="0"\n  style="border:none;"\n  title="Trump Countdown"\n></iframe>`,
+  medium:  `<iframe\n  src="https://presidencyclock.com/?widget=1&size=medium"\n  width="420" height="220"\n  frameborder="0"\n  style="border:none;"\n  title="Trump Countdown"\n></iframe>`,
+  full:    `<iframe\n  src="https://presidencyclock.com/?widget=1&size=full"\n  width="100%" height="420"\n  frameborder="0"\n  style="border:none;width:100%;"\n  title="Trump Countdown"\n></iframe>`,
+};
+ 
+function showWidget(size){
+  currentWidget = size;
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('wb-'+size).classList.add('active');
+  updateWidgetCode();
+}
+ 
+function updateWidgetCode(){
+  document.getElementById('widget-code-pre').textContent = WIDGET[currentWidget];
+}
+ 
+function copyWidget(){
+  navigator.clipboard.writeText(WIDGET[currentWidget]).then(()=>{
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ COPIED';
+    setTimeout(()=> btn.textContent = 'COPY', 2000);
+  });
+}
+ 
+updateWidgetCode();
+ 
+// ─── DONE + КОНФЕТІ ─────────────────────────────────────────────
+function showDone(){
+  document.getElementById('done-overlay').style.display = 'flex';
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = innerWidth; canvas.height = innerHeight;
+  const pieces = Array.from({length:200},()=>({
+    x: Math.random()*canvas.width, y: Math.random()*-canvas.height,
+    w: Math.random()*10+4, h: Math.random()*14+5,
+    r: Math.random()*Math.PI*2, dr:(Math.random()-.5)*.1,
+    dy:Math.random()*3+1.5, dx:(Math.random()-.5)*1.5,
+    color:['#e63232','#f5c518','#50fa7b','#8be9fd','#ffb86c','#fff'][Math.floor(Math.random()*6)]
+  }));
+  (function loop(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r);
+      ctx.fillStyle=p.color; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); ctx.restore();
+      p.x+=p.dx; p.y+=p.dy; p.r+=p.dr;
+      if(p.y>canvas.height){p.y=-20;p.x=Math.random()*canvas.width;}
+    });
+    requestAnimationFrame(loop);
+  })();
+}
+ 
+// ─── WIDGET MODE (iframe) ────────────────────────────────────────
+const qs = new URLSearchParams(location.search);
+if(qs.get('widget')){
+  document.querySelector('nav').style.display='none';
+  document.getElementById('lang-bar').style.display='none';
+  document.getElementById('ad-top').style.display='none';
+  document.getElementById('ad-mid').style.display='none';
+  document.getElementById('info').style.display='none';
+  document.querySelector('footer').style.display='none';
+  document.querySelector('.hero').style.paddingTop='8px';
+  const size = qs.get('size');
+  if(size==='compact'){
+    document.querySelector('.hero').style.display='none';
+    document.querySelector('.progress-wrap').style.display='none';
+    document.getElementById('countdown').style.padding='8px 16px';
+  }
+  if(size==='medium'){
+    document.querySelector('.hero').style.padding='10px 16px 0';
+    document.querySelector('h1').style.fontSize='32px';
+    document.querySelector('.progress-wrap').style.display='none';
+  }
+}
+</script>
 </body>
 </html>
+ 
