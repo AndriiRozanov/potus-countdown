@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trump Presidency Calculator — How Long Have You Lived Under Trump?</title>
+  <meta name="description" content="Enter your birthday and find out exactly how many days, hours, and seconds of your life have been spent under Donald Trump's presidency. Share your result!" />
+  <meta name="keywords" content="trump presidency calculator, how long trump president, trump days in office calculator, presidential term calculator" />
+  <meta property="og:title" content="Trump Presidency Calculator — PresidencyClock.com" />
+  <meta property="og:description" content="How many days of YOUR life have you spent under Trump's presidency? Find out now." />
+  <link rel="canonical" href="https://presidencyclock.com/calculator.html" />
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#080808;--surface:#101010;--border:#1e1e1e;--accent:#e63232;--text:#ede9e0;--muted:#444;--muted2:#666;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
+
+    nav{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--border);background:rgba(8,8,8,0.96);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;color:var(--muted2);text-decoration:none;}
+    .nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:24px;}
+    .nav-links a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--muted2);text-decoration:none;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent);}
+
+    #lang-bar{display:flex;gap:4px;padding:14px 24px;width:100%;justify-content:flex-end;border-bottom:1px solid var(--border);}
+    .lang-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;padding:3px 9px;cursor:pointer;border-radius:2px;transition:all 0.2s;}
+    .lang-btn:hover,.lang-btn.active{border-color:var(--accent);color:var(--accent);}
+
+    .ad-slot{width:100%;max-width:728px;min-height:90px;background:var(--surface);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;margin:20px auto;}
+
+    .hero{text-align:center;padding:60px 24px 30px;width:100%;}
+    .eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.35em;color:var(--accent);text-transform:uppercase;margin-bottom:18px;}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,9vw,88px);letter-spacing:0.03em;line-height:0.9;}
+    h1 em{color:var(--accent);font-style:normal;}
+    .hero-sub{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;color:var(--muted2);margin-top:16px;}
+
+    .content{width:100%;max-width:860px;padding:0 24px 80px;}
+    .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;padding:28px 0 20px;display:flex;align-items:center;gap:14px;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+    /* ── КАЛЬКУЛЯТОР ── */
+    .calc-box{background:var(--surface);border:1px solid var(--border);padding:32px;margin-bottom:32px;}
+    .input-row{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:24px;}
+    .input-group{display:flex;flex-direction:column;gap:8px;flex:1;min-width:200px;}
+    .input-group label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;}
+    .input-group input{background:#0a0a0a;border:1px solid var(--border);color:var(--text);font-family:'DM Mono',monospace;font-size:16px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;}
+    .input-group input:focus{border-color:var(--accent);}
+    .calc-btn{background:var(--accent);border:none;color:white;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.08em;padding:13px 32px;cursor:pointer;transition:opacity 0.2s;white-space:nowrap;}
+    .calc-btn:hover{opacity:0.85;}
+
+    /* ── РЕЗУЛЬТАТ ── */
+    #result{display:none;}
+    .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px;}
+    .result-card{background:#0a0a0a;border:1px solid var(--border);padding:20px;text-align:center;position:relative;overflow:hidden;}
+    .result-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(230,50,50,0.06),transparent 65%);}
+    .result-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,7vw,64px);color:var(--accent);line-height:1;position:relative;z-index:1;}
+    .result-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--muted2);text-transform:uppercase;margin-top:6px;position:relative;z-index:1;}
+    .result-big{background:#0a0a0a;border:1px solid var(--accent);padding:24px;text-align:center;margin-bottom:20px;}
+    .result-big .big-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,10vw,96px);color:var(--text);line-height:1;}
+    .result-big .big-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.25em;color:var(--muted2);text-transform:uppercase;margin-top:8px;}
+    .result-context{font-size:15px;line-height:1.8;color:var(--muted2);margin-bottom:20px;padding:20px;background:var(--surface);border-left:3px solid var(--accent);}
+    .result-context strong{color:var(--text);}
+
+    /* ── SHARE ── */
+    .share-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+    .share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--border);background:none;color:var(--muted2);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;cursor:pointer;text-decoration:none;border-radius:3px;transition:all 0.2s;}
+    .share-btn:hover{border-color:var(--accent);color:var(--text);}
+
+    /* ── INFO ── */
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;}
+    .info-card{background:var(--surface);border:1px solid var(--border);padding:20px;}
+    .info-card h3{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
+    .info-card p{font-size:14px;line-height:1.75;color:var(--muted2);}
+    .info-card p strong{color:var(--text);}
+    .info-text{font-size:15px;line-height:1.8;color:var(--muted2);margin-bottom:16px;}
+    .info-text strong{color:var(--text);}
+
+    .ad-slot-rect{width:100%;max-width:360px;min-height:300px;background:var(--surface);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;margin:0 auto 40px;}
+
+    footer{width:100%;border-top:1px solid var(--border);padding:24px;margin-top:auto;}
+    .footer-inner{max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;}
+    footer p{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+    .footer-links a{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:0.1em;}
+    .footer-links a:hover{color:var(--accent);}
+
+    @media(max-width:540px){
+      .result-grid{grid-template-columns:1fr 1fr;}
+      .info-grid{grid-template-columns:1fr;}
+      .input-row{flex-direction:column;}
+      .calc-btn{width:100%;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">PRESIDENCY<span>CLOCK</span>.COM</a>
+  <div class="nav-links">
+    <a href="/" id="nav-home">Home</a>
+    <a href="/presidents.html" id="nav-world">World Leaders</a>
+    <a href="/calculator.html" class="active" id="nav-calc">Calculator</a>
+    <a href="/quiz.html" id="nav-quiz">Quiz</a>
+  </div>
+</nav>
+
+<div id="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('ua')">UA</button>
+  <button class="lang-btn" onclick="setLang('pl')">PL</button>
+  <button class="lang-btn" onclick="setLang('de')">DE</button>
+  <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" onclick="setLang('es')">ES</button>
+</div>
+
+<div class="ad-slot">РЕКЛАМА · 728×90</div>
+
+<section class="hero">
+  <p class="eyebrow" id="txt-eyebrow">Personal Presidential Calculator</p>
+  <h1 id="txt-h1">HOW MUCH OF YOUR LIFE<br>DID <em>TRUMP</em> SPEND IN OFFICE?</h1>
+  <p class="hero-sub" id="txt-sub">Enter your birthday — we'll calculate your personal share of history</p>
+</section>
+
+<div class="content">
+
+  <p class="section-label" id="lbl-calc">Your calculation</p>
+
+  <div class="calc-box">
+    <div class="input-row">
+      <div class="input-group">
+        <label id="lbl-dob">Your date of birth</label>
+        <input type="date" id="dob-input" max="2024-12-31" />
+      </div>
+      <button class="calc-btn" onclick="calculate()" id="btn-calc">CALCULATE →</button>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.1em;" id="txt-note">
+      * Counts both Trump terms: Jan 20 2017 – Jan 20 2021, and Jan 20 2025 – present
+    </p>
+  </div>
+
+  <!-- РЕЗУЛЬТАТ -->
+  <div id="result">
+    <div class="result-big">
+      <div class="big-num" id="res-pct">0%</div>
+      <div class="big-label" id="res-pct-label">of your life spent under Trump's presidency</div>
+    </div>
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="result-num" id="res-days">0</div>
+        <div class="result-label" id="lbl-days">days</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num" id="res-hours">0</div>
+        <div class="result-label" id="lbl-hours">hours</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num" id="res-weeks">0</div>
+        <div class="result-label" id="lbl-weeks">weeks</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num" id="res-months">0</div>
+        <div class="result-label" id="lbl-months">months</div>
+      </div>
+    </div>
+    <div class="result-context" id="res-context"></div>
+
+    <div class="share-row">
+      <a id="share-twitter" class="share-btn" href="#" target="_blank" rel="noopener">𝕏 Share on X</a>
+      <a id="share-facebook" class="share-btn" href="#" target="_blank" rel="noopener">Share on Facebook</a>
+    </div>
+  </div>
+
+  <!-- AD MID -->
+  <div class="ad-slot-rect">РЕКЛАМА · 300×250</div>
+
+  <!-- INFO -->
+  <p class="section-label" id="lbl-info">Context & facts</p>
+  <p class="info-text" id="txt-info1">
+    Donald Trump is the <strong>only U.S. president to serve two non-consecutive terms</strong>. His first term ran from January 20, 2017 to January 20, 2021. After losing the 2020 election to Joe Biden, Trump ran again in 2024 — and won. His second term began on January 20, 2025. This calculator counts the total time Trump has been in office, including both terms.
+  </p>
+  <p class="info-text" id="txt-info2">
+    If Trump completes his current term, he will have served a total of <strong>8 years as president</strong> — the constitutional maximum. The only other president to serve two non-consecutive terms was <strong>Grover Cleveland</strong>, the 22nd and 24th president, who served in 1885–1889 and 1893–1897.
+  </p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h3 id="ic1-t">Trump's 1st term</h3>
+      <p id="ic1-b"><strong>Jan 20, 2017 – Jan 20, 2021.</strong> 4 years, 1461 days. Key events: Tax Cuts and Jobs Act (2017), COVID-19 pandemic (2020), first impeachment (2019), second impeachment (2021). Lost 2020 election to Joe Biden.</p>
+    </div>
+    <div class="info-card">
+      <h3 id="ic2-t">Trump's 2nd term</h3>
+      <p id="ic2-b"><strong>Jan 20, 2025 – Jan 20, 2029.</strong> Currently ongoing. Trump became the first president since Grover Cleveland to win the presidency after previously losing a re-election bid. His 2024 campaign focused on immigration and economic policy.</p>
+    </div>
+    <div class="info-card">
+      <h3 id="ic3-t">The 22nd Amendment</h3>
+      <p id="ic3-b">Ratified in <strong>1951</strong>, the 22nd Amendment limits presidents to two terms total. Since Trump is now in his second term, he is constitutionally barred from running for president again in 2028 or any future election.</p>
+    </div>
+    <div class="info-card">
+      <h3 id="ic4-t">Historical comparison</h3>
+      <p id="ic4-b">FDR served <strong>12 years and 39 days</strong> — the longest of any U.S. president. He died in office in 1945. This prompted the 22nd Amendment. Conversely, William Henry Harrison served only <strong>31 days</strong> before dying of pneumonia.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 PresidencyClock.com · Not affiliated with any political party</p>
+    <div class="footer-links">
+      <a href="/">Countdown</a>
+      <a href="/presidents.html">World Leaders</a>
+      <a href="/quiz.html">Quiz</a>
+      <a href="/usa-presidents.html">All US Presidents</a>
+      <a href="/policy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── ПЕРЕКЛАДИ ──────────────────────────────────────────────────
+const T = {
+  en:{
+    eyebrow:'Personal Presidential Calculator',
+    h1:'HOW MUCH OF YOUR LIFE<br>DID <em>TRUMP</em> SPEND IN OFFICE?',
+    sub:'Enter your birthday — we\'ll calculate your personal share of history',
+    lblCalc:'Your calculation', lblDob:'Your date of birth',
+    btnCalc:'CALCULATE →',
+    note:'* Counts both Trump terms: Jan 20 2017 – Jan 20 2021, and Jan 20 2025 – present',
+    pctLabel:'of your life spent under Trump\'s presidency',
+    lblDays:'days', lblHours:'hours', lblWeeks:'weeks', lblMonths:'months',
+    lblInfo:'Context & facts',
+    navHome:'Home', navWorld:'World Leaders', navCalc:'Calculator', navQuiz:'Quiz',
+    shareText:(pct,days)=>`I've spent ${pct}% of my life (${days} days) under Trump's presidency. Calculate yours → https://presidencyclock.com/calculator.html`,
+    context:(age,days,pct,born)=>`You were born in <strong>${born}</strong>, making you <strong>${age} years old</strong>. Out of your entire life, Trump has been president for <strong>${days} days</strong> — that's <strong>${pct}%</strong> of your time on Earth. ${pct > 20 ? 'That\'s a significant chunk of your life.' : pct > 10 ? 'That\'s a notable portion of your life.' : 'That\'s a relatively small fraction of your life.'}`,
+    notBorn:'You were born after Trump\'s first term started — your entire life has been during either Trump or Biden years.',
+    tooYoung:'Please enter a valid birth date.',
+  },
+  ua:{
+    eyebrow:'Персональний президентський калькулятор',
+    h1:'СКІЛЬКИ ТВОГО ЖИТТЯ<br>ПРОЙШЛО ПРИ <em>ТРАМПІ</em>?',
+    sub:'Введи свою дату народження — ми порахуємо твою особисту частку історії',
+    lblCalc:'Твій розрахунок', lblDob:'Дата народження',
+    btnCalc:'РОЗРАХУВАТИ →',
+    note:'* Враховуються обидва терміни Трампа: 20 Січ 2017 – 20 Січ 2021 та 20 Січ 2025 – зараз',
+    pctLabel:'твого життя пройшло при президентстві Трампа',
+    lblDays:'днів', lblHours:'годин', lblWeeks:'тижнів', lblMonths:'місяців',
+    lblInfo:'Контекст та факти',
+    navHome:'Головна', navWorld:'Лідери світу', navCalc:'Калькулятор', navQuiz:'Квіз',
+    shareText:(pct,days)=>`${pct}% мого життя (${days} днів) пройшло при Трампі. Порахуй своє → https://presidencyclock.com/calculator.html`,
+    context:(age,days,pct,born)=>`Ти народився у <strong>${born}</strong> році, тобі <strong>${age} років</strong>. З усього твого життя Трамп був президентом <strong>${days} днів</strong> — це <strong>${pct}%</strong> твого часу на Землі.`,
+    notBorn:'Ти народився після початку першого терміну Трампа.',
+    tooYoung:'Будь ласка, введи правильну дату народження.',
+  },
+  pl:{
+    eyebrow:'Osobisty kalkulator prezydencki',
+    h1:'ILE TWOJEGO ŻYCIA<br>MINĘŁO ZA <em>TRUMPA</em>?',
+    sub:'Podaj datę urodzenia — obliczymy Twój osobisty udział w historii',
+    lblCalc:'Twoje obliczenie', lblDob:'Data urodzenia',
+    btnCalc:'OBLICZ →',
+    note:'* Uwzględnia obie kadencje Trumpa: 20 Sty 2017 – 20 Sty 2021 i 20 Sty 2025 – teraz',
+    pctLabel:'Twojego życia minęło za prezydentury Trumpa',
+    lblDays:'dni', lblHours:'godzin', lblWeeks:'tygodni', lblMonths:'miesięcy',
+    lblInfo:'Kontekst i fakty',
+    navHome:'Strona główna', navWorld:'Przywódcy', navCalc:'Kalkulator', navQuiz:'Quiz',
+    shareText:(pct,days)=>`${pct}% mojego życia (${days} dni) minęło za Trumpa. Oblicz swoje → https://presidencyclock.com/calculator.html`,
+    context:(age,days,pct,born)=>`Urodziłeś się w <strong>${born}</strong> roku, masz <strong>${age} lat</strong>. Trump był prezydentem przez <strong>${days} dni</strong> Twojego życia — to <strong>${pct}%</strong> Twojego czasu na Ziemi.`,
+    notBorn:'Urodziłeś się po rozpoczęciu pierwszej kadencji Trumpa.',
+    tooYoung:'Proszę podać prawidłową datę urodzenia.',
+  },
+  de:{
+    eyebrow:'Persönlicher Präsidentschaftsrechner',
+    h1:'WIE VIEL DEINES LEBENS<br>WAR TRUMP IM AMT?',
+    sub:'Gib dein Geburtsdatum ein — wir berechnen deinen persönlichen Anteil an der Geschichte',
+    lblCalc:'Deine Berechnung', lblDob:'Geburtsdatum',
+    btnCalc:'BERECHNEN →',
+    note:'* Beide Amtszeiten Trumps: 20. Jan 2017 – 20. Jan 2021 und 20. Jan 2025 – heute',
+    pctLabel:'deines Lebens verbrachte Trump im Amt',
+    lblDays:'Tage', lblHours:'Stunden', lblWeeks:'Wochen', lblMonths:'Monate',
+    lblInfo:'Kontext und Fakten',
+    navHome:'Startseite', navWorld:'Weltführer', navCalc:'Rechner', navQuiz:'Quiz',
+    shareText:(pct,days)=>`${pct}% meines Lebens (${days} Tage) war Trump Präsident. Berechne deins → https://presidencyclock.com/calculator.html`,
+    context:(age,days,pct,born)=>`Du wurdest <strong>${born}</strong> geboren und bist <strong>${age} Jahre alt</strong>. Trump war <strong>${days} Tage</strong> lang Präsident deines Lebens — das sind <strong>${pct}%</strong> deiner Zeit auf der Erde.`,
+    notBorn:'Du wurdest nach Beginn von Trumps erster Amtszeit geboren.',
+    tooYoung:'Bitte ein gültiges Geburtsdatum eingeben.',
+  },
+  fr:{
+    eyebrow:'Calculateur présidentiel personnel',
+    h1:'QUELLE PART DE TA VIE<br>TRUMP A PASSÉ AU POUVOIR?',
+    sub:'Entre ta date de naissance — nous calculerons ta part personnelle de l\'histoire',
+    lblCalc:'Ton calcul', lblDob:'Date de naissance',
+    btnCalc:'CALCULER →',
+    note:'* Inclut les deux mandats de Trump: 20 Jan 2017 – 20 Jan 2021 et 20 Jan 2025 – aujourd\'hui',
+    pctLabel:'de ta vie passée sous la présidence de Trump',
+    lblDays:'jours', lblHours:'heures', lblWeeks:'semaines', lblMonths:'mois',
+    lblInfo:'Contexte et faits',
+    navHome:'Accueil', navWorld:'Dirigeants', navCalc:'Calculateur', navQuiz:'Quiz',
+    shareText:(pct,days)=>`${pct}% de ma vie (${days} jours) s'est passée sous Trump. Calcule le tien → https://presidencyclock.com/calculator.html`,
+    context:(age,days,pct,born)=>`Tu es né(e) en <strong>${born}</strong>, tu as <strong>${age} ans</strong>. Trump a été président pendant <strong>${days} jours</strong> de ta vie — soit <strong>${pct}%</strong> de ton temps sur Terre.`,
+    notBorn:'Tu es né(e) après le début du premier mandat de Trump.',
+    tooYoung:'Veuillez entrer une date de naissance valide.',
+  },
+  es:{
+    eyebrow:'Calculadora presidencial personal',
+    h1:'¿CUÁNTO DE TU VIDA<br>PASÓ CON <em>TRUMP</em> EN EL PODER?',
+    sub:'Introduce tu fecha de nacimiento — calcularemos tu parte personal de la historia',
+    lblCalc:'Tu cálculo', lblDob:'Fecha de nacimiento',
+    btnCalc:'CALCULAR →',
+    note:'* Cuenta ambos mandatos de Trump: 20 Ene 2017 – 20 Ene 2021 y 20 Ene 2025 – hoy',
+    pctLabel:'de tu vida ha transcurrido bajo la presidencia de Trump',
+    lblDays:'días', lblHours:'horas', lblWeeks:'semanas', lblMonths:'meses',
+    lblInfo:'Contexto y hechos',
+    navHome:'Inicio', navWorld:'Líderes', navCalc:'Calculadora', navQuiz:'Quiz',
+    shareText:(pct,days)=>`${pct}% de mi vida (${days} días) ha sido con Trump de presidente. Calcula el tuyo → https://presidencyclock.com/calculator.html`,
+    context:(age,days,pct,born)=>`Naciste en <strong>${born}</strong>, tienes <strong>${age} años</strong>. Trump ha sido presidente durante <strong>${days} días</strong> de tu vida — el <strong>${pct}%</strong> de tu tiempo en la Tierra.`,
+    notBorn:'Naciste después del inicio del primer mandato de Trump.',
+    tooYoung:'Por favor ingresa una fecha de nacimiento válida.',
+  }
+};
+
+let lang = 'en';
+function setLang(l){
+  lang = l;
+  const t = T[l];
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
+  document.getElementById('txt-eyebrow').textContent = t.eyebrow;
+  document.getElementById('txt-h1').innerHTML = t.h1;
+  document.getElementById('txt-sub').textContent = t.sub;
+  document.getElementById('lbl-calc').childNodes[0].textContent = t.lblCalc;
+  document.getElementById('lbl-dob').textContent = t.lblDob;
+  document.getElementById('btn-calc').textContent = t.btnCalc;
+  document.getElementById('txt-note').textContent = t.note;
+  document.getElementById('lbl-info').childNodes[0].textContent = t.lblInfo;
+  document.getElementById('nav-home').textContent = t.navHome;
+  document.getElementById('nav-world').textContent = t.navWorld;
+  document.getElementById('nav-calc').textContent = t.navCalc;
+  document.getElementById('nav-quiz').textContent = t.navQuiz;
+  if(document.getElementById('result').style.display !== 'none') calculate();
+}
+
+// ── ЛОГІКА КАЛЬКУЛЯТОРА ────────────────────────────────────────
+// Обидва терміни Трампа
+const TERM1_START = new Date('2017-01-20T17:00:00Z');
+const TERM1_END   = new Date('2021-01-20T17:00:00Z');
+const TERM2_START = new Date('2025-01-20T17:00:00Z');
+const TERM2_END   = new Date('2029-01-20T17:00:00Z');
+
+function trumpDaysInRange(from, to){
+  let ms = 0;
+  // Перший термін
+  const t1s = Math.max(from, TERM1_START);
+  const t1e = Math.min(to, TERM1_END);
+  if(t1e > t1s) ms += t1e - t1s;
+  // Другий термін
+  const t2s = Math.max(from, TERM2_START);
+  const t2e = Math.min(to, Math.min(TERM2_END, new Date()));
+  if(t2e > t2s) ms += t2e - t2s;
+  return ms;
+}
+
+function calculate(){
+  const t = T[lang];
+  const dobVal = document.getElementById('dob-input').value;
+  if(!dobVal){ alert(t.tooYoung); return; }
+
+  const dob = new Date(dobVal + 'T00:00:00Z');
+  const now = new Date();
+  if(dob >= now){ alert(t.tooYoung); return; }
+
+  const lifeMs = now - dob;
+  const trumpMs = trumpDaysInRange(dob, now);
+
+  const days    = Math.floor(trumpMs / 86400000);
+  const hours   = Math.floor(trumpMs / 3600000);
+  const weeks   = Math.floor(days / 7);
+  const months  = Math.floor(days / 30.44);
+  const pct     = ((trumpMs / lifeMs) * 100).toFixed(1);
+  const age     = Math.floor(lifeMs / (365.25 * 86400000));
+  const bornYear = dob.getUTCFullYear();
+
+  document.getElementById('res-pct').textContent = pct + '%';
+  document.getElementById('res-pct-label').textContent = t.pctLabel;
+  document.getElementById('res-days').textContent = days.toLocaleString();
+  document.getElementById('res-hours').textContent = hours.toLocaleString();
+  document.getElementById('res-weeks').textContent = weeks.toLocaleString();
+  document.getElementById('res-months').textContent = months.toLocaleString();
+  document.getElementById('lbl-days').textContent = t.lblDays;
+  document.getElementById('lbl-hours').textContent = t.lblHours;
+  document.getElementById('lbl-weeks').textContent = t.lblWeeks;
+  document.getElementById('lbl-months').textContent = t.lblMonths;
+  document.getElementById('res-context').innerHTML = t.context(age, days.toLocaleString(), pct, bornYear);
+
+  // Share links
+  const shareText = t.shareText(pct, days.toLocaleString());
+  document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://presidencyclock.com/calculator.html')}`;
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// Enter key
+document.getElementById('dob-input').addEventListener('keydown', e => { if(e.key==='Enter') calculate(); });
+</script>
+</body>
+</html>
