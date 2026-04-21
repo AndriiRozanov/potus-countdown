@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>U.S. Presidents Quiz — How Well Do You Know American History?</title>
+  <meta name="description" content="Test your knowledge of U.S. presidents! 10 questions about American presidential history. Share your score and challenge your friends." />
+  <meta name="keywords" content="us presidents quiz, american presidents trivia, presidential history quiz, trump quiz" />
+  <meta property="og:title" content="U.S. Presidents Quiz — PresidencyClock.com" />
+  <meta property="og:description" content="How well do you know U.S. presidents? Take the 10-question quiz and share your score!" />
+  <link rel="canonical" href="https://presidencyclock.com/quiz.html" />
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#080808;--surface:#101010;--border:#1e1e1e;--accent:#e63232;--text:#ede9e0;--muted:#444;--muted2:#666;--green:#50fa7b;--yellow:#f5c518;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
+
+    nav{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--border);background:rgba(8,8,8,0.96);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;color:var(--muted2);text-decoration:none;}
+    .nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:24px;}
+    .nav-links a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--muted2);text-decoration:none;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent);}
+
+    .ad-slot{width:100%;max-width:728px;min-height:90px;background:var(--surface);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;margin:20px auto;}
+
+    .hero{text-align:center;padding:60px 24px 30px;width:100%;}
+    .eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.35em;color:var(--accent);text-transform:uppercase;margin-bottom:18px;}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,9vw,88px);letter-spacing:0.03em;line-height:0.9;}
+    h1 em{color:var(--accent);font-style:normal;}
+    .hero-sub{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;color:var(--muted2);margin-top:16px;}
+
+    .content{width:100%;max-width:720px;padding:0 24px 80px;}
+    .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;padding:28px 0 20px;display:flex;align-items:center;gap:14px;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+    /* QUIZ PROGRESS */
+    .quiz-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+    .q-counter{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.15em;}
+    .q-score{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;}
+    .quiz-progress{width:100%;height:2px;background:var(--border);margin-bottom:28px;}
+    .quiz-progress-fill{height:100%;background:var(--accent);transition:width 0.4s ease;}
+
+    /* QUESTION */
+    .question-box{background:var(--surface);border:1px solid var(--border);padding:28px;margin-bottom:20px;}
+    .q-text{font-size:18px;font-weight:500;line-height:1.5;color:var(--text);margin-bottom:6px;}
+    .q-hint{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;margin-top:8px;}
+
+    /* OPTIONS */
+    .options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+    .opt-btn{background:#0a0a0a;border:1px solid var(--border);color:var(--muted2);font-family:'DM Sans',sans-serif;font-size:14px;padding:14px 16px;cursor:pointer;text-align:left;transition:all 0.2s;line-height:1.4;}
+    .opt-btn:hover:not(.disabled){border-color:var(--accent);color:var(--text);}
+    .opt-btn.correct{border-color:var(--green);color:var(--green);background:rgba(80,250,123,0.07);}
+    .opt-btn.wrong{border-color:var(--accent);color:var(--accent);background:rgba(230,50,50,0.07);}
+    .opt-btn.disabled{cursor:default;}
+
+    /* EXPLANATION */
+    .explanation{display:none;background:var(--surface);border-left:3px solid var(--accent);padding:16px 20px;font-size:14px;line-height:1.75;color:var(--muted2);margin-bottom:20px;}
+    .explanation strong{color:var(--text);}
+    .explanation.correct-exp{border-color:var(--green);}
+
+    .next-btn{width:100%;background:var(--accent);border:none;color:white;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.08em;padding:14px;cursor:pointer;transition:opacity 0.2s;display:none;}
+    .next-btn:hover{opacity:0.85;}
+
+    /* RESULT */
+    #quiz-result{display:none;text-align:center;}
+    .score-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,15vw,140px);color:var(--accent);line-height:1;}
+    .score-label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.25em;color:var(--muted2);text-transform:uppercase;margin-bottom:20px;}
+    .score-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,6vw,52px);color:var(--text);margin-bottom:12px;}
+    .score-desc{font-size:15px;line-height:1.8;color:var(--muted2);max-width:500px;margin:0 auto 28px;}
+    .share-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;}
+    .share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--border);background:none;color:var(--muted2);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;cursor:pointer;text-decoration:none;border-radius:3px;transition:all 0.2s;}
+    .share-btn:hover{border-color:var(--accent);color:var(--text);}
+    .restart-btn{background:none;border:1px solid var(--border);color:var(--muted2);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;padding:10px 24px;cursor:pointer;transition:all 0.2s;margin-bottom:40px;}
+    .restart-btn:hover{border-color:var(--accent);color:var(--text);}
+
+    /* ANSWER REVIEW */
+    .review-item{border-bottom:1px solid var(--border);padding:16px 0;}
+    .review-q{font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;}
+    .review-a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;}
+    .review-a.ok{color:var(--green);}
+    .review-a.bad{color:var(--accent);}
+
+    .ad-slot-rect{width:100%;max-width:360px;min-height:300px;background:var(--surface);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;margin:0 auto 40px;}
+
+    footer{width:100%;border-top:1px solid var(--border);padding:24px;margin-top:auto;}
+    .footer-inner{max-width:720px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;}
+    footer p{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+    .footer-links a{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:0.1em;}
+    .footer-links a:hover{color:var(--accent);}
+
+    @media(max-width:480px){.options{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">PRESIDENCY<span>CLOCK</span>.COM</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/presidents.html">World Leaders</a>
+    <a href="/calculator.html">Calculator</a>
+    <a href="/quiz.html" class="active">Quiz</a>
+  </div>
+</nav>
+
+<div class="ad-slot">РЕКЛАМА · 728×90</div>
+
+<section class="hero">
+  <p class="eyebrow">Presidential Knowledge Test</p>
+  <h1>U.S. PRESIDENTS<br><em>QUIZ</em></h1>
+  <p class="hero-sub">10 questions · Test your knowledge of American history</p>
+</section>
+
+<div class="content">
+  <p class="section-label" id="lbl-quiz">The quiz</p>
+
+  <!-- QUIZ -->
+  <div id="quiz-box">
+    <div class="quiz-meta">
+      <span class="q-counter" id="q-counter">Question 1 of 10</span>
+      <span class="q-score" id="q-score">Score: 0</span>
+    </div>
+    <div class="quiz-progress"><div class="quiz-progress-fill" id="q-progress" style="width:0%"></div></div>
+
+    <div class="question-box">
+      <p class="q-text" id="q-text"></p>
+      <p class="q-hint" id="q-hint"></p>
+    </div>
+    <div class="options" id="options"></div>
+    <div class="explanation" id="explanation"></div>
+    <button class="next-btn" id="next-btn" onclick="nextQuestion()">NEXT QUESTION →</button>
+  </div>
+
+  <!-- РЕЗУЛЬТАТ -->
+  <div id="quiz-result">
+    <div class="score-big" id="final-score"></div>
+    <div class="score-label">out of 10 correct</div>
+    <div class="score-title" id="score-title"></div>
+    <p class="score-desc" id="score-desc"></p>
+    <div class="share-row">
+      <a id="share-twitter" class="share-btn" href="#" target="_blank" rel="noopener">𝕏 Share on X</a>
+      <a id="share-facebook" class="share-btn" href="#" target="_blank" rel="noopener">Share on Facebook</a>
+    </div>
+    <button class="restart-btn" onclick="restartQuiz()">↺ TRY AGAIN</button>
+
+    <p class="section-label" style="padding-top:0">Your answers</p>
+    <div id="review-list"></div>
+  </div>
+
+  <div class="ad-slot-rect" style="margin-top:40px;">РЕКЛАМА · 300×250</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 PresidencyClock.com · Not affiliated with any political party</p>
+    <div class="footer-links">
+      <a href="/">Countdown</a>
+      <a href="/calculator.html">Calculator</a>
+      <a href="/usa-presidents.html">All US Presidents</a>
+      <a href="/presidents.html">World Leaders</a>
+      <a href="/policy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const QUESTIONS = [
+  {
+    q: "Who was the FIRST President of the United States?",
+    hint: "He served two terms from 1789 to 1797.",
+    options: ["John Adams","George Washington","Thomas Jefferson","Benjamin Franklin"],
+    answer: 1,
+    explanation: "<strong>George Washington</strong> was unanimously elected as the first U.S. president in 1789. He is the only president to have received 100% of Electoral College votes — twice. He also set the precedent of serving only two terms, which was later enshrined in the 22nd Amendment."
+  },
+  {
+    q: "Which president served the LONGEST time in office?",
+    hint: "He was elected four times and died in his 4th term.",
+    options: ["Abraham Lincoln","Woodrow Wilson","Franklin D. Roosevelt","Harry Truman"],
+    answer: 2,
+    explanation: "<strong>Franklin D. Roosevelt</strong> served 12 years and 39 days — longer than any other U.S. president. He was elected in 1932, 1936, 1940, and 1944. His death in April 1945 directly led to the 22nd Amendment, which limits presidents to two terms."
+  },
+  {
+    q: "What number president is Donald Trump (his 2nd term)?",
+    hint: "He was also the 45th president during his first term.",
+    options: ["45th","46th","47th","48th"],
+    answer: 2,
+    explanation: "Donald Trump is the <strong>47th President</strong> of the United States. He was also the 45th president (2017–2021). Joe Biden was the 46th. Trump is the first person since Grover Cleveland to win a non-consecutive second term."
+  },
+  {
+    q: "Which president issued the Emancipation Proclamation in 1863?",
+    hint: "He was assassinated at Ford's Theatre in 1865.",
+    options: ["Ulysses S. Grant","Andrew Johnson","Abraham Lincoln","James Buchanan"],
+    answer: 2,
+    explanation: "<strong>Abraham Lincoln</strong> issued the Emancipation Proclamation on January 1, 1863, declaring enslaved people in Confederate states to be free. Lincoln served as the 16th president and was assassinated by John Wilkes Booth on April 14, 1865, just days after the Civil War ended."
+  },
+  {
+    q: "Which amendment limits U.S. presidents to two terms?",
+    hint: "It was ratified in 1951, after FDR's four terms.",
+    options: ["19th Amendment","20th Amendment","21st Amendment","22nd Amendment"],
+    answer: 3,
+    explanation: "The <strong>22nd Amendment</strong>, ratified on February 27, 1951, limits presidents to two terms in office (or a maximum of 10 years if they completed more than half of another president's term). It was a direct response to FDR's unprecedented four terms."
+  },
+  {
+    q: "Which president was the YOUNGEST to take office?",
+    hint: "He took office after the assassination of William McKinley.",
+    options: ["John F. Kennedy","Theodore Roosevelt","Bill Clinton","Barack Obama"],
+    answer: 1,
+    explanation: "<strong>Theodore Roosevelt</strong> became president at age 42 after McKinley's assassination in 1901 — making him the youngest person to hold the office. JFK (often mistaken for this record) was the youngest <em>elected</em> president at 43. Roosevelt later won re-election in his own right in 1904."
+  },
+  {
+    q: "How many electoral votes are needed to win the U.S. presidency?",
+    hint: "There are 538 total electors.",
+    options: ["260","269","270","300"],
+    answer: 2,
+    explanation: "A candidate needs <strong>270 electoral votes</strong> — a majority of 538 — to win the presidency. The 538 electors are distributed among states based on congressional representation (House seats + 2 senators). The District of Columbia gets 3 electoral votes under the 23rd Amendment."
+  },
+  {
+    q: "Which president survived being shot in an assassination attempt in 1981?",
+    hint: "He was known as 'The Great Communicator.'",
+    options: ["Jimmy Carter","Gerald Ford","Ronald Reagan","George H.W. Bush"],
+    answer: 2,
+    explanation: "<strong>Ronald Reagan</strong> was shot on March 30, 1981, just 69 days into his presidency. The bullet came within an inch of his heart. He survived and went on to serve two full terms (1981–1989). He is often credited with ending the Cold War and remains one of the most popular presidents in Republican history."
+  },
+  {
+    q: "Which U.S. president was NEVER elected — neither as president nor vice president?",
+    hint: "He became VP after Spiro Agnew resigned, then president after Nixon resigned.",
+    options: ["Gerald Ford","Chester Arthur","John Tyler","Millard Fillmore"],
+    answer: 0,
+    explanation: "<strong>Gerald Ford</strong> is the only person to serve as U.S. president without being elected to either the presidency or the vice presidency. He was appointed VP under the 25th Amendment after Spiro Agnew's resignation, then became president when Richard Nixon resigned in August 1974 over the Watergate scandal."
+  },
+  {
+    q: "What does the 20th Amendment determine?",
+    hint: "It's sometimes called the 'Lame Duck Amendment.'",
+    options: ["Term limits for presidents","The date presidential terms begin and end","The order of presidential succession","Voting rights for women"],
+    answer: 1,
+    explanation: "The <strong>20th Amendment</strong> (1933) establishes that presidential terms begin and end on <strong>January 20 at noon</strong>. Before this, inauguration was on March 4, leaving a long 'lame duck' period after elections. It also specifies what happens if a president-elect dies before taking office."
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+let userAnswers = [];
+
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  document.getElementById('q-counter').textContent = `Question ${current+1} of ${QUESTIONS.length}`;
+  document.getElementById('q-score').textContent = `Score: ${score}`;
+  document.getElementById('q-progress').style.width = `${(current/QUESTIONS.length)*100}%`;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('q-hint').textContent = q.hint;
+  document.getElementById('explanation').style.display = 'none';
+  document.getElementById('explanation').className = 'explanation';
+  document.getElementById('next-btn').style.display = 'none';
+  answered = false;
+
+  const opts = document.getElementById('options');
+  opts.innerHTML = q.options.map((o,i)=>`
+    <button class="opt-btn" onclick="selectAnswer(${i})">${o}</button>
+  `).join('');
+}
+
+function selectAnswer(idx){
+  if(answered) return;
+  answered = true;
+  const q = QUESTIONS[current];
+  const isCorrect = idx === q.answer;
+  if(isCorrect) score++;
+
+  userAnswers.push({q:q.q, chosen:q.options[idx], correct:q.options[q.answer], ok:isCorrect});
+
+  const btns = document.querySelectorAll('.opt-btn');
+  btns.forEach((b,i)=>{
+    b.classList.add('disabled');
+    if(i === q.answer) b.classList.add('correct');
+    if(i === idx && !isCorrect) b.classList.add('wrong');
+  });
+
+  const expEl = document.getElementById('explanation');
+  expEl.innerHTML = (isCorrect ? '✓ Correct! ' : '✗ Wrong. ') + q.explanation;
+  expEl.className = 'explanation ' + (isCorrect ? 'correct-exp' : '');
+  expEl.style.display = 'block';
+
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.style.display = 'block';
+  nextBtn.textContent = current === QUESTIONS.length-1 ? 'SEE RESULTS →' : 'NEXT QUESTION →';
+}
+
+function nextQuestion(){
+  current++;
+  if(current >= QUESTIONS.length){ showResult(); return; }
+  renderQuestion();
+}
+
+function showResult(){
+  document.getElementById('quiz-box').style.display = 'none';
+  const res = document.getElementById('quiz-result');
+  res.style.display = 'block';
+
+  document.getElementById('final-score').textContent = score;
+
+  let title, desc;
+  if(score === 10){ title="Perfect Score! 🏆"; desc="You're a true presidential history expert. Impressive knowledge of American democracy and constitutional history!"; }
+  else if(score >= 8){ title="Excellent! 🌟"; desc="You know your presidential history very well. Just a couple of details slipped by."; }
+  else if(score >= 6){ title="Good Job! 👍"; desc="Solid knowledge of U.S. presidents. Review the questions you missed to fill in the gaps."; }
+  else if(score >= 4){ title="Not Bad 📚"; desc="You have some basic knowledge, but there's room to learn more about American presidential history."; }
+  else{ title="Keep Learning 🔍"; desc="Presidential history can be complex. Check out our All U.S. Presidents page to brush up!"; }
+
+  document.getElementById('score-title').textContent = title;
+  document.getElementById('score-desc').textContent = desc;
+
+  const shareText = `I scored ${score}/10 on the U.S. Presidents Quiz! Can you beat me? → https://presidencyclock.com/quiz.html`;
+  document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://presidencyclock.com/quiz.html')}`;
+
+  const review = document.getElementById('review-list');
+  review.innerHTML = userAnswers.map((a,i)=>`
+    <div class="review-item">
+      <p class="review-q">${i+1}. ${a.q}</p>
+      <p class="review-a ${a.ok?'ok':'bad'}">${a.ok?'✓':'✗'} Your answer: ${a.chosen}${a.ok?'':` — Correct: ${a.correct}`}</p>
+    </div>
+  `).join('');
+
+  res.scrollIntoView({behavior:'smooth'});
+}
+
+function restartQuiz(){
+  current = 0; score = 0; answered = false; userAnswers = [];
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('quiz-box').style.display = 'block';
+  renderQuestion();
+}
+
+renderQuestion();
+</script>
+</body>
+</html>
