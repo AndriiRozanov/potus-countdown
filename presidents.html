@@ -7,14 +7,14 @@
   <meta name="description" content="Compare presidential and prime ministerial terms around the world. Who served the longest? Who the shortest? Data on US, Ukraine, Germany, France, Poland and more." />
   <meta name="keywords" content="presidential terms world, longest serving presidents, world leaders 2025, presidential term length comparison" />
   <link rel="canonical" href="https://presidencyclock.com/presidents.html" />
- 
+
   <!-- Google AdSense -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
- 
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
- 
+
   <style>
     :root {
       --bg: #080808; --surface: #101010; --border: #1e1e1e;
@@ -27,7 +27,7 @@
       font-family: 'DM Sans', sans-serif;
       min-height: 100vh; display: flex; flex-direction: column; align-items: center;
     }
- 
+
     nav {
       width: 100%; display: flex; justify-content: space-between; align-items: center;
       padding: 16px 24px; border-bottom: 1px solid var(--border);
@@ -39,28 +39,28 @@
     .nav-links { display:flex; gap:24px; align-items:center; }
     .nav-links a { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; color:var(--muted2); text-decoration:none; text-transform:uppercase; transition:color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color:var(--accent); }
- 
+
     #lang-bar { display:flex; gap:4px; padding:14px 24px; width:100%; justify-content:flex-end; border-bottom:1px solid var(--border); }
     .lang-btn { background:none; border:1px solid var(--border); color:var(--muted); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; padding:3px 9px; cursor:pointer; border-radius:2px; transition:all 0.2s; }
     .lang-btn:hover, .lang-btn.active { border-color:var(--accent); color:var(--accent); }
- 
+
     .ad-slot { width:100%; max-width:728px; min-height:90px; background:var(--surface); border:1px dashed var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; margin:20px auto; }
     .ad-slot-rect { width:100%; max-width:360px; min-height:300px; background:var(--surface); border:1px dashed var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; margin:0 auto 40px; }
- 
+
     .page-header { text-align:center; padding:60px 24px 30px; width:100%; }
     .eyebrow { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.35em; color:var(--accent); text-transform:uppercase; margin-bottom:18px; }
     h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,9vw,90px); letter-spacing:0.03em; line-height:0.9; }
     h1 em { color:var(--accent); font-style:normal; }
     .page-sub { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.2em; color:var(--muted2); margin-top:16px; }
- 
+
     .content { width:100%; max-width:940px; padding:0 24px; }
- 
+
     .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.3em; color:var(--muted); text-transform:uppercase; padding:28px 0 20px; display:flex; align-items:center; gap:14px; }
     .section-label::after { content:''; flex:1; height:1px; background:var(--border); }
- 
+
     .intro-text { font-size:15px; line-height:1.8; color:var(--muted2); margin-bottom:20px; }
     .intro-text strong { color:var(--text); }
- 
+
     /* ── ТАБЛИЦЯ ── */
     .table-wrap { overflow-x:auto; margin-bottom:40px; }
     table { width:100%; border-collapse:collapse; }
@@ -78,7 +78,7 @@
     .badge-red { background:rgba(230,50,50,0.15); color:var(--accent); border:1px solid rgba(230,50,50,0.3); }
     .badge-green { background:rgba(80,250,123,0.1); color:#50fa7b; border:1px solid rgba(80,250,123,0.25); }
     .badge-yellow { background:rgba(245,197,24,0.1); color:#f5c518; border:1px solid rgba(245,197,24,0.25); }
- 
+
     /* ── КАРТОЧКИ РЕКОРДІВ ── */
     .records-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:40px; }
     .record-card { background:var(--surface); border:1px solid var(--border); padding:20px; }
@@ -86,14 +86,14 @@
     .record-card .rec-name { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--text); letter-spacing:0.03em; line-height:1; margin-bottom:4px; }
     .record-card .rec-detail { font-size:13px; color:var(--muted2); line-height:1.5; }
     .record-card .rec-flag { font-size:24px; margin-bottom:10px; }
- 
+
     /* ── ПОРІВНЯЛЬНИЙ БЛОК ── */
     .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px; }
     .compare-card { background:var(--surface); border:1px solid var(--border); padding:20px; }
     .compare-card h3 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.18em; color:var(--accent); text-transform:uppercase; margin-bottom:12px; }
     .compare-card p { font-size:14px; line-height:1.75; color:var(--muted2); }
     .compare-card p strong { color:var(--text); }
- 
+
     /* BAR CHART */
     .bar-section { margin-bottom:40px; }
     .bar-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
@@ -101,14 +101,14 @@
     .bar-track { flex:1; height:24px; background:var(--surface); border:1px solid var(--border); position:relative; overflow:hidden; }
     .bar-fill { height:100%; background:var(--accent); opacity:0.7; transition:width 1s ease; }
     .bar-val { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted2); width:60px; text-align:right; flex-shrink:0; }
- 
+
     footer { width:100%; border-top:1px solid var(--border); padding:24px; margin-top:auto; }
     .footer-inner { max-width:940px; margin:0 auto; display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center; }
     footer p { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:0.1em; }
     footer a { color:var(--muted); text-decoration:none; transition:color 0.2s; }
     footer a:hover { color:var(--accent); }
     .footer-links { display:flex; gap:20px; flex-wrap:wrap; }
- 
+
     @media(max-width:640px){
       .records-grid { grid-template-columns:1fr 1fr; }
       .compare-grid { grid-template-columns:1fr; }
@@ -120,15 +120,18 @@
   </style>
 </head>
 <body>
- 
+
 <nav>
   <a href="/" class="nav-logo">PRESIDENCY<span>CLOCK</span>.COM</a>
   <div class="nav-links">
     <a href="/" id="nav-home">Home</a>
     <a href="/presidents.html" class="active" id="nav-presidents">World Leaders</a>
+    <a href="/calculator.html" id="nav-calc">Calculator</a>
+    <a href="/quiz.html" id="nav-quiz">Quiz</a>
+    <a href="/usa-presidents.html" id="nav-usa">All Presidents</a>
   </div>
 </nav>
- 
+
 <div id="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">EN</button>
   <button class="lang-btn" onclick="setLang('ua')">UA</button>
@@ -137,21 +140,21 @@
   <button class="lang-btn" onclick="setLang('fr')">FR</button>
   <button class="lang-btn" onclick="setLang('es')">ES</button>
 </div>
- 
+
 <!-- AD TOP -->
 <div class="ad-slot">
   <!-- AdSense код сюди -->
   РЕКЛАМА · 728×90
 </div>
- 
+
 <header class="page-header">
   <p class="eyebrow" id="txt-eyebrow">Global comparison</p>
   <h1 id="txt-h1">WORLD LEADERS<br>& <em>THEIR TERMS</em></h1>
   <p class="page-sub" id="txt-sub">Presidential and prime ministerial terms compared · Updated 2025</p>
 </header>
- 
+
 <div class="content">
- 
+
   <!-- ВСТУПНИЙ ТЕКСТ -->
   <p class="section-label" id="lbl-intro">Overview</p>
   <p class="intro-text" id="txt-intro1">
@@ -160,7 +163,7 @@
   <p class="intro-text" id="txt-intro2">
     The <strong>length of a term</strong> directly affects how leaders govern: shorter terms create urgency for reform, while longer terms allow for broader strategic planning. Countries like <strong>France (5 years)</strong> and <strong>Ukraine (5 years)</strong> strike a middle ground, while <strong>Mexico's single 6-year term</strong> (sexenio) prevents re-election entirely, aiming to curb corruption and concentration of power.
   </p>
- 
+
   <!-- РЕКОРДИ -->
   <p class="section-label" id="lbl-records">Records</p>
   <div class="records-grid">
@@ -183,19 +186,19 @@
       <div class="rec-detail" id="rec3-detail">Ronald Reagan in 1984 won 525 out of 538 electoral votes — the largest electoral college margin in modern U.S. history.</div>
     </div>
   </div>
- 
+
   <!-- AD MIDDLE -->
   <div class="ad-slot-rect">
     <!-- AdSense код сюди -->
     РЕКЛАМА · 300×250
   </div>
- 
+
   <!-- ГРАФІК -->
   <p class="section-label" id="lbl-chart">Term length in years</p>
   <div class="bar-section" id="bar-section">
     <!-- Буде згенеровано JS -->
   </div>
- 
+
   <!-- ТАБЛИЦЯ -->
   <p class="section-label" id="lbl-table">Full comparison table</p>
   <div class="table-wrap">
@@ -214,7 +217,7 @@
       <tbody id="table-body"></tbody>
     </table>
   </div>
- 
+
   <!-- ПОРІВНЯЛЬНІ БЛОКИ -->
   <p class="section-label" id="lbl-compare">How systems differ</p>
   <div class="compare-grid">
@@ -235,7 +238,7 @@
       <p id="cmp4-b">Ukraine's president serves a <strong>5-year term</strong> and is limited to two terms total. The president is directly elected by a two-round majority vote. Since 2019, Volodymyr Zelensky has served as Ukraine's president — initially as a political newcomer who won with <strong>73% of the vote</strong> in the second round.</p>
     </div>
   </div>
- 
+
   <!-- ДОДАТКОВИЙ ТЕКСТ ДЛЯ SEO -->
   <p class="section-label" id="lbl-more">Further reading</p>
   <p class="intro-text" id="txt-more1">
@@ -250,9 +253,9 @@
   <p class="intro-text" id="txt-more4">
     Across all these systems, one pattern holds: <strong>peaceful transfers of power</strong> are the defining feature of healthy democracies. Whether it's a 4-year American presidential term ending with an inauguration ceremony, or a German chancellor stepping down after a vote of no confidence, the institutional mechanisms for transferring authority without violence are what distinguish democracies from authoritarian regimes.
   </p>
- 
+
 </div><!-- /content -->
- 
+
 <footer>
   <div class="footer-inner">
     <p>© 2025 PresidencyClock.com · <span id="txt-footer-note">Not affiliated with any political party</span></p>
@@ -264,7 +267,7 @@
     </div>
   </div>
 </footer>
- 
+
 <script>
 // ─── ДАНІ ЛІДЕРІВ ───────────────────────────────────────────────
 const LEADERS = [
@@ -283,7 +286,7 @@ const LEADERS = [
   { flag:'🇵🇹', country:'Portugal',      leader:'Marcelo Rebelo',    role:'President',        term:5, maxTerms:'2',         since:2016, reelection:'No (2nd term)' },
   { flag:'🇯🇵', country:'Japan',         leader:'Shigeru Ishiba',    role:'Prime Minister',   term:0, maxTerms:'Unlimited', since:2024, reelection:'Parliament vote' },
 ];
- 
+
 // ─── ГРАФ ──────────────────────────────────────────────────────
 function buildBars() {
   const barData = LEADERS.filter(l => l.term > 0).sort((a,b)=>b.term-a.term);
@@ -299,7 +302,7 @@ function buildBars() {
     </div>
   `).join('');
 }
- 
+
 // ─── ТАБЛИЦЯ ───────────────────────────────────────────────────
 let sortDir = {};
 function buildTable(data) {
@@ -320,7 +323,7 @@ function buildTable(data) {
     </tr>`;
   }).join('');
 }
- 
+
 function sortTable(col) {
   sortDir[col] = !sortDir[col];
   document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
@@ -334,10 +337,10 @@ function sortTable(col) {
   });
   buildTable(sorted);
 }
- 
+
 buildBars();
 buildTable(LEADERS);
- 
+
 // ─── LANG (спрощена версія для цієї сторінки) ──────────────────
 const PAGE_LANG = {
   en: {
@@ -371,7 +374,7 @@ const PAGE_LANG = {
     navHome:'Inicio', navPresidents:'Líderes mundiales',
   },
 };
- 
+
 function setLang(lang) {
   const t = PAGE_LANG[lang] || PAGE_LANG.en;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
@@ -385,4 +388,3 @@ function setLang(lang) {
 </script>
 </body>
 </html>
- 
