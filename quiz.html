@@ -10,6 +10,15 @@
   <meta property="og:description" content="How well do you know U.S. presidents? Take the 10-question quiz and share your score!" />
   <link rel="canonical" href="https://presidencyclock.com/quiz.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
+    <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Open Graph -->
+  <meta property="og:image" content="https://presidencyclock.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:image" content="https://presidencyclock.com/og-image.svg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -309,6 +318,14 @@ function nextQuestion(){
   current++;
   if(current >= QUESTIONS.length){ showResult(); return; }
   renderQuestion();
+
+// Завантажуємо збережену мову (quiz не має перекладів, але зберігаємо для інших сторінок)
+const savedLang = localStorage.getItem("pcLang");
+if(savedLang) {
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
+  const btn = document.querySelector(`.lang-btn[onclick="setLang('${savedLang}')"]`);
+  if(btn) btn.classList.add("active");
+}
 }
 
 function showResult(){
@@ -348,9 +365,25 @@ function restartQuiz(){
   document.getElementById('quiz-result').style.display = 'none';
   document.getElementById('quiz-box').style.display = 'block';
   renderQuestion();
+
+// Завантажуємо збережену мову (quiz не має перекладів, але зберігаємо для інших сторінок)
+const savedLang = localStorage.getItem("pcLang");
+if(savedLang) {
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
+  const btn = document.querySelector(`.lang-btn[onclick="setLang('${savedLang}')"]`);
+  if(btn) btn.classList.add("active");
+}
 }
 
 renderQuestion();
+
+// Завантажуємо збережену мову (quiz не має перекладів, але зберігаємо для інших сторінок)
+const savedLang = localStorage.getItem("pcLang");
+if(savedLang) {
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
+  const btn = document.querySelector(`.lang-btn[onclick="setLang('${savedLang}')"]`);
+  if(btn) btn.classList.add("active");
+}
 </script>
 <script>
 function toggleMenu(btn){
