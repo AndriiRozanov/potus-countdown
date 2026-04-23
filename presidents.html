@@ -310,9 +310,6 @@ const LEADERS = [
 ];
 
 // ─── ГРАФ ──────────────────────────────────────────────────────
-// Завантажуємо збережену мову
-const savedLang = localStorage.getItem("pcLang");
-if(savedLang && savedLang !== "en") setLang(savedLang);
 
 function buildBars() {
   const barData = LEADERS.filter(l => l.term > 0).sort((a,b)=>b.term-a.term);
@@ -367,6 +364,13 @@ function sortTable(col) {
 buildBars();
 buildTable(LEADERS);
 
+// ── ЗБЕРЕЖЕННЯ МОВИ ──────────────────────────────────────────
+const _pcSaved = localStorage.getItem('pcLang');
+if(_pcSaved && _pcSaved !== 'en' && typeof setLang === 'function') {
+  setLang(_pcSaved);
+}
+
+
 // ─── LANG (спрощена версія для цієї сторінки) ──────────────────
 const PAGE_LANG = {
   en: {
@@ -402,7 +406,7 @@ const PAGE_LANG = {
 };
 
 function setLang(lang) {
-  localStorage.setItem("pcLang", lang);
+  localStorage.setItem('pcLang', lang);
   const t = PAGE_LANG[lang] || PAGE_LANG.en;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
