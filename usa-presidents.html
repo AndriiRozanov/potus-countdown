@@ -262,6 +262,21 @@ function filterCards(){
 
 buildCards(PRESIDENTS);
 
+// Підсвічуємо збережену мову
+const _ul = localStorage.getItem('pcLang');
+if(_ul){
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  const ab = document.querySelector(`.lang-btn[onclick="setLang('${_ul}')"]`);
+  if(ab) ab.classList.add('active');
+}
+document.querySelectorAll('.lang-btn').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const m = b.getAttribute('onclick').match(/'([^']+)'/);
+    if(m) localStorage.setItem('pcLang', m[1]);
+  });
+});
+
+
 // Мова
 const _sl = localStorage.getItem("pcLang");
 document.querySelectorAll(".lang-btn").forEach(b=>{
