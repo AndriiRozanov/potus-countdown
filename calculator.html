@@ -347,7 +347,7 @@ const T = {
 
 let lang = 'en';
 function setLang(l){
-  localStorage.setItem("pcLang", l);
+  localStorage.setItem('pcLang', lang);
   lang = l;
   const t = T[l];
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
@@ -367,9 +367,13 @@ function setLang(l){
   if(document.getElementById('result').style.display !== 'none') calculate();
 }
 
-// Завантажуємо збережену мову
-const savedLang = localStorage.getItem("pcLang");
-if(savedLang && savedLang !== "en") setLang(savedLang);
+
+
+// ── ЗБЕРЕЖЕННЯ МОВИ ──────────────────────────────────────────
+const _pcSaved = localStorage.getItem('pcLang');
+if(_pcSaved && _pcSaved !== 'en' && typeof setLang === 'function') {
+  setLang(_pcSaved);
+}
 
 // ── ЛОГІКА КАЛЬКУЛЯТОРА ────────────────────────────────────────
 // Обидва терміни Трампа
