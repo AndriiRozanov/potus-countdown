@@ -10,6 +10,15 @@
   <meta property="og:description" content="How many days of YOUR life have you spent under Trump's presidency? Find out now." />
   <link rel="canonical" href="https://presidencyclock.com/calculator.html" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
+    <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Open Graph -->
+  <meta property="og:image" content="https://presidencyclock.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:image" content="https://presidencyclock.com/og-image.svg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -338,6 +347,7 @@ const T = {
 
 let lang = 'en';
 function setLang(l){
+  localStorage.setItem("pcLang", l);
   lang = l;
   const t = T[l];
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
@@ -356,6 +366,10 @@ function setLang(l){
   document.getElementById('nav-quiz').textContent = t.navQuiz;
   if(document.getElementById('result').style.display !== 'none') calculate();
 }
+
+// Завантажуємо збережену мову
+const savedLang = localStorage.getItem("pcLang");
+if(savedLang && savedLang !== "en") setLang(savedLang);
 
 // ── ЛОГІКА КАЛЬКУЛЯТОРА ────────────────────────────────────────
 // Обидва терміни Трампа
