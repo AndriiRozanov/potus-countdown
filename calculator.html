@@ -364,7 +364,8 @@ function setLang(l){
   document.getElementById('nav-world').textContent = t.navWorld;
   document.getElementById('nav-calc').textContent = t.navCalc;
   document.getElementById('nav-quiz').textContent = t.navQuiz;
-  if(document.getElementById('result').style.display !== 'none') calculate();
+  const dobVal = document.getElementById('dob-input').value;
+  if(dobVal && document.getElementById('result').style.display !== 'none') calculate();
 }
 
 
