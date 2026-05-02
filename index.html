@@ -560,6 +560,30 @@
 </div>
 
 <!-- ІНФОРМАЦІЙНИЙ БЛОК -->
+<!-- SEO ANSWER BLOCK -->
+<section class="info-section" id="seo-answers" style="border-top:none; padding-bottom:0;">
+  <p class="section-label">Quick answers</p>
+
+  <div class="info-grid" style="margin-bottom:16px;">
+    <div class="info-card">
+      <h3>How many years does Trump have left?</h3>
+      <p>Trump's second term ends on <strong>January 20, 2029</strong>. From today, that is approximately <strong><span id="seo-years"></span> years, <span id="seo-months"></span> months</strong> remaining. The exact second-by-second countdown is displayed above.</p>
+    </div>
+    <div class="info-card">
+      <h3>When does Trump's presidency end?</h3>
+      <p>Donald Trump's presidency ends on <strong>January 20, 2029 at 12:00 noon EST</strong> (17:00 UTC). This date is set by the <strong>20th Amendment</strong> to the U.S. Constitution, which fixes the end of every presidential term.</p>
+    </div>
+    <div class="info-card">
+      <h3>How long is Trump's countdown clock?</h3>
+      <p>Trump's second term runs <strong>4 years total</strong> — from January 20, 2025 to January 20, 2029. The live countdown clock above shows the remaining time to the exact second, updated in real time.</p>
+    </div>
+    <div class="info-card">
+      <h3>What happens on Inauguration Day 2029?</h3>
+      <p>On <strong>January 20, 2029</strong>, the newly elected president will be sworn in at the U.S. Capitol. At that exact moment — noon EST — Trump's authority as president ends and power transfers to the next president.</p>
+    </div>
+  </div>
+</section>
+
 <section class="info-section" id="info">
 
   <p class="section-label" id="txt-info-label">About the term</p>
@@ -961,6 +985,22 @@ const _pcSaved = localStorage.getItem('pcLang');
 if(_pcSaved && _pcSaved !== 'en' && typeof setLang === 'function') {
   setLang(_pcSaved);
 }
+
+// ─── SEO DYNAMIC DATES ──────────────────────────────────────────
+(function(){
+  const end = new Date('2029-01-20T17:00:00Z');
+  const now = new Date();
+  const diff = end - now;
+  if(diff > 0){
+    const totalDays = Math.floor(diff / 86400000);
+    const years = Math.floor(totalDays / 365);
+    const months = Math.floor((totalDays % 365) / 30);
+    const el1 = document.getElementById('seo-years');
+    const el2 = document.getElementById('seo-months');
+    if(el1) el1.textContent = years;
+    if(el2) el2.textContent = months;
+  }
+})();
 
 // ─── WIDGET MODE (iframe) ────────────────────────────────────────
 const qs = new URLSearchParams(location.search);
