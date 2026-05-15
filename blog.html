@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Presidential News & Analysis — PresidencyClock.com</title>
+  <meta name="description" content="Articles and analysis about U.S. presidential terms, Trump's presidency, Inauguration Day 2029, and the 2028 election." />
+  <link rel="canonical" href="https://presidencyclock.com/blog.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5023415479696725" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#080808;--surface:#101010;--border:#1e1e1e;--accent:#e63232;--text:#ede9e0;--muted:#444;--muted2:#666;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
+    nav{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--border);background:rgba(8,8,8,0.96);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;color:var(--muted2);text-decoration:none;}
+    .nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:20px;flex-wrap:wrap;}
+    .nav-links a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--muted2);text-decoration:none;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text);transition:all 0.3s;}
+    @media(max-width:700px){.hamburger{display:flex;}.nav-links{display:none;position:fixed;top:53px;left:0;right:0;background:rgba(8,8,8,0.98);flex-direction:column;align-items:flex-start;padding:20px 24px;gap:20px;border-bottom:1px solid var(--border);z-index:99;}.nav-links.open{display:flex;}}
+    .ad-slot{width:100%;max-width:728px;min-height:90px;background:var(--surface);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;margin:20px auto;}
+    .hero{text-align:center;padding:60px 24px 30px;width:100%;}
+    .eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.35em;color:var(--accent);text-transform:uppercase;margin-bottom:18px;}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,9vw,80px);letter-spacing:0.03em;line-height:0.9;}
+    .hero-sub{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;color:var(--muted2);margin-top:16px;}
+    .content{width:100%;max-width:900px;padding:0 24px 80px;}
+    .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;padding:28px 0 20px;display:flex;align-items:center;gap:14px;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    .articles-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;}
+    .article-card{background:var(--surface);border:1px solid var(--border);padding:24px;text-decoration:none;transition:border-color 0.2s;display:block;}
+    .article-card:hover{border-color:var(--accent);}
+    .article-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
+    .article-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.03em;color:var(--text);line-height:1.1;margin-bottom:10px;}
+    .article-excerpt{font-size:13px;line-height:1.65;color:var(--muted2);}
+    .article-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:14px;letter-spacing:0.1em;}
+    footer{width:100%;border-top:1px solid var(--border);padding:24px;margin-top:auto;}
+    .footer-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;}
+    footer p{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+    .footer-links a{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:0.1em;}
+    .footer-links a:hover{color:var(--accent);}
+    @media(max-width:600px){.articles-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">PRESIDENCY<span>CLOCK</span>.COM</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/presidents.html">World Leaders</a>
+    <a href="/calculator.html">Calculator</a>
+    <a href="/quiz.html">Quiz</a>
+    <a href="/usa-presidents.html">All Presidents</a>
+    <a href="/blog.html" class="active">Blog</a>
+  </div>
+  <button class="hamburger" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open');" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="ad-slot"><!-- AdSense --></div>
+
+<section class="hero">
+  <p class="eyebrow">Analysis & Explainers</p>
+  <h1>PRESIDENTIAL<br>BLOG</h1>
+  <p class="hero-sub">Facts, history, and analysis about U.S. presidential terms</p>
+</section>
+
+<div class="content">
+  <p class="section-label">Latest articles</p>
+  <div class="articles-grid">
+
+    <a class="article-card" href="/trump-second-term.html">
+      <p class="article-tag">Trump Presidency</p>
+      <h2 class="article-title">Trump's Second Term: What Happens Until 2029</h2>
+      <p class="article-excerpt">A detailed look at what the second Trump administration means for the United States — policy priorities, constitutional limits, and what January 20, 2029 will look like.</p>
+      <p class="article-meta">May 2025 · 6 min read</p>
+    </a>
+
+    <a class="article-card" href="/inauguration-day-2029.html">
+      <p class="article-tag">Inauguration</p>
+      <h2 class="article-title">Inauguration Day 2029: Everything You Need to Know</h2>
+      <p class="article-excerpt">What happens on January 20, 2029? A complete guide to Inauguration Day — the ceremony, the oath, the history, and why noon matters.</p>
+      <p class="article-meta">May 2025 · 5 min read</p>
+    </a>
+
+    <a class="article-card" href="/us-presidential-terms.html">
+      <p class="article-tag">U.S. Constitution</p>
+      <h2 class="article-title">How Long Is a U.S. Presidential Term — And Why?</h2>
+      <p class="article-excerpt">Four years. Two terms maximum. But why? The history behind presidential term lengths, from the Founders' debates to the 22nd Amendment.</p>
+      <p class="article-meta">May 2025 · 7 min read</p>
+    </a>
+
+    <a class="article-card" href="/trump-vs-presidents.html">
+      <p class="article-tag">History</p>
+      <h2 class="article-title">Trump Compared to Other U.S. Presidents</h2>
+      <p class="article-excerpt">How does Donald Trump's presidency stack up against history? Age, approval ratings, legislative record, and historical firsts — by the numbers.</p>
+      <p class="article-meta">May 2025 · 8 min read</p>
+    </a>
+
+    <a class="article-card" href="/election-2028.html">
+      <p class="article-tag">2028 Election</p>
+      <h2 class="article-title">U.S. Presidential Election 2028: What We Know So Far</h2>
+      <p class="article-excerpt">The 2028 presidential race is already taking shape. Who can run, who can't, and what the post-Trump political landscape might look like.</p>
+      <p class="article-meta">May 2025 · 6 min read</p>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 PresidencyClock.com · Not affiliated with any political party</p>
+    <div class="footer-links">
+      <a href="/">Countdown</a>
+      <a href="/calculator.html">Calculator</a>
+      <a href="/quiz.html">Quiz</a>
+      <a href="/usa-presidents.html">All Presidents</a>
+      <a href="/policy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
