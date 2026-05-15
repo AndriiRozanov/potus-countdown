@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://presidencyclock.com/</loc><changefreq>hourly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://presidencyclock.com/presidents.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://presidencyclock.com/calculator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://presidencyclock.com/quiz.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://presidencyclock.com/usa-presidents.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://presidencyclock.com/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://presidencyclock.com/trump-second-term.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://presidencyclock.com/inauguration-day-2029.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://presidencyclock.com/us-presidential-terms.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://presidencyclock.com/trump-vs-presidents.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://presidencyclock.com/election-2028.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://presidencyclock.com/policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://presidencyclock.com/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>
