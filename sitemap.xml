@@ -14,4 +14,5 @@
   <url><loc>https://presidencyclock.com/election-2028.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://presidencyclock.com/policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://presidencyclock.com/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://presidencyclock.com/trump-approval-rating.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
