@@ -35,8 +35,10 @@
     .articles-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;}
     .article-card{background:var(--surface);border:1px solid var(--border);padding:24px;text-decoration:none;transition:border-color 0.2s;display:block;}
     .article-card:hover{border-color:var(--accent);}
+    .article-card.featured{border-color:var(--accent);grid-column:1/-1;}
     .article-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
     .article-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.03em;color:var(--text);line-height:1.1;margin-bottom:10px;}
+    .article-card.featured .article-title{font-size:32px;}
     .article-excerpt{font-size:13px;line-height:1.65;color:var(--muted2);}
     .article-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:14px;letter-spacing:0.1em;}
     footer{width:100%;border-top:1px solid var(--border);padding:24px;margin-top:auto;}
@@ -45,7 +47,7 @@
     .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
     .footer-links a{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:0.1em;}
     .footer-links a:hover{color:var(--accent);}
-    @media(max-width:600px){.articles-grid{grid-template-columns:1fr;}}
+    @media(max-width:600px){.articles-grid{grid-template-columns:1fr;}.article-card.featured{grid-column:auto;}}
   </style>
 </head>
 <body>
@@ -73,6 +75,13 @@
 <div class="content">
   <p class="section-label">Latest articles</p>
   <div class="articles-grid">
+
+    <a class="article-card featured" href="/when-does-trump-term-end.html">
+      <p class="article-tag">Quick Answer · Most Popular</p>
+      <h2 class="article-title">When Does Trump's Term End? Exact Date, Time & What Happens Next</h2>
+      <p class="article-excerpt">Trump's second term ends on January 20, 2029 at 12:00 noon EST. Here is the exact date, time, what happens in different time zones, and what changes the moment his presidency ends.</p>
+      <p class="article-meta">June 2025 · 4 min read</p>
+    </a>
 
     <a class="article-card" href="/trump-second-term.html">
       <p class="article-tag">Trump Presidency</p>
