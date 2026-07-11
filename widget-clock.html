@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trump Countdown Clock Widget</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:#080808;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'DM Mono',monospace;}
+    .widget{width:100%;max-width:480px;padding:24px 20px;text-align:center;}
+    .label{font-size:10px;letter-spacing:0.3em;color:#444;text-transform:uppercase;margin-bottom:16px;}
+    .clock{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;}
+    .unit{background:#101010;border:1px solid #1e1e1e;padding:12px 4px;}
+    .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,52px);color:#ede9e0;line-height:1;}
+    .unit-label{font-size:9px;letter-spacing:0.2em;color:#444;text-transform:uppercase;margin-top:4px;}
+    .source{font-size:9px;letter-spacing:0.15em;color:#333;text-transform:uppercase;}
+    .source a{color:#e63232;text-decoration:none;}
+    .source a:hover{text-decoration:underline;}
+  </style>
+</head>
+<body>
+<div class="widget">
+  <p class="label">Time left in Trump's presidency</p>
+  <div class="clock">
+    <div class="unit"><div class="num" id="d">000</div><div class="unit-label">Days</div></div>
+    <div class="unit"><div class="num" id="h">00</div><div class="unit-label">Hours</div></div>
+    <div class="unit"><div class="num" id="m">00</div><div class="unit-label">Mins</div></div>
+    <div class="unit"><div class="num" id="s">00</div><div class="unit-label">Secs</div></div>
+  </div>
+  <p class="source">Live clock · <a href="https://presidencyclock.com" target="_blank">PresidencyClock.com</a></p>
+</div>
+<script>
+  const end = new Date('2029-01-20T17:00:00Z');
+  function tick() {
+    const diff = end - Date.now();
+    if (diff <= 0) { document.querySelector('.label').textContent = "Trump's term has ended"; return; }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('d').textContent = String(d).padStart(3,'0');
+    document.getElementById('h').textContent = String(h).padStart(2,'0');
+    document.getElementById('m').textContent = String(m).padStart(2,'0');
+    document.getElementById('s').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
