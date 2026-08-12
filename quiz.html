@@ -319,27 +319,6 @@ function nextQuestion(){
   current++;
   if(current >= QUESTIONS.length){ showResult(); return; }
   renderQuestion();
-
-// Підсвічуємо збережену мову
-const _ql = localStorage.getItem('pcLang');
-if(_ql){
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  const ab = document.querySelector(`.lang-btn[onclick="setLang('${_ql}')"]`);
-  if(ab) ab.classList.add('active');
-}
-document.querySelectorAll('.lang-btn').forEach(b=>{
-  b.addEventListener('click', ()=>{
-    const m = b.getAttribute('onclick').match(/'([^']+)'/);
-    if(m) localStorage.setItem('pcLang', m[1]);
-  });
-});
-
-
-// Завантажуємо збережену мову (quiz не має перекладів, але зберігаємо для інших сторінок)
-  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
-  const btn = document.querySelector(`.lang-btn[onclick="setLang('${savedLang}')"]`);
-  if(btn) btn.classList.add("active");
-}
 }
 
 function showResult(){
@@ -379,32 +358,11 @@ function restartQuiz(){
   document.getElementById('quiz-result').style.display = 'none';
   document.getElementById('quiz-box').style.display = 'block';
   renderQuestion();
-
-// Підсвічуємо збережену мову
-const _ql = localStorage.getItem('pcLang');
-if(_ql){
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  const ab = document.querySelector(`.lang-btn[onclick="setLang('${_ql}')"]`);
-  if(ab) ab.classList.add('active');
-}
-document.querySelectorAll('.lang-btn').forEach(b=>{
-  b.addEventListener('click', ()=>{
-    const m = b.getAttribute('onclick').match(/'([^']+)'/);
-    if(m) localStorage.setItem('pcLang', m[1]);
-  });
-});
-
-
-// Завантажуємо збережену мову (quiz не має перекладів, але зберігаємо для інших сторінок)
-  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
-  const btn = document.querySelector(`.lang-btn[onclick="setLang('${savedLang}')"]`);
-  if(btn) btn.classList.add("active");
-}
 }
 
 renderQuestion();
 
-// Підсвічуємо збережену мову
+// Persist the visitor's language choice for other pages (the quiz itself isn't translated)
 const _ql = localStorage.getItem('pcLang');
 if(_ql){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
@@ -417,13 +375,6 @@ document.querySelectorAll('.lang-btn').forEach(b=>{
     if(m) localStorage.setItem('pcLang', m[1]);
   });
 });
-
-
-// Завантажуємо збережену мову (quiz не має перекладів, але зберігаємо для інших сторінок)
-  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
-  const btn = document.querySelector(`.lang-btn[onclick="setLang('${savedLang}')"]`);
-  if(btn) btn.classList.add("active");
-}
 </script>
 <script>
 function toggleMenu(btn){
