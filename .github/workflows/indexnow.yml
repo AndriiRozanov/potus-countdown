@@ -1,0 +1,64 @@
+name: IndexNow ping
+
+# Notifies Bing/IndexNow instantly about changed pages on every push to main.
+# Runs on GitHub's servers, so no local setup is needed.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Collect changed URLs and submit to IndexNow
+        env:
+          KEY: f4c4682c196ef308cc1a3f5f31c2a0a5
+          HOST: presidencyclock.com
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          set -e
+          # Added/modified HTML files in this push (exclude deletions)
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            FILES=$(git diff --name-only --diff-filter=d HEAD~1 HEAD -- '*.html' || git ls-files '*.html')
+          else
+            FILES=$(git diff --name-only --diff-filter=d "$BEFORE" "$AFTER" -- '*.html')
+          fi
+          echo "Changed HTML files:"; echo "$FILES"
+
+          URLS=""
+          for f in $FILES; do
+            case "$f" in
+              widget-clock.html|google*.html) continue ;;  # embed-only & verification file
+            esac
+            if [ "$f" = "index.html" ]; then
+              u="https://$HOST/"
+            else
+              u="https://$HOST/$f"
+            fi
+            URLS="$URLS\"$u\","
+          done
+          URLS=${URLS%,}
+
+          if [ -z "$URLS" ]; then echo "No URLs to submit."; exit 0; fi
+
+          BODY="{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"https://$HOST/$KEY.txt\",\"urlList\":[$URLS]}"
+          echo "Payload: $BODY"
+
+          code=$(curl -s -o /tmp/resp -w "%{http_code}" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$BODY")
+          echo "HTTP $code"; cat /tmp/resp || true
+
+          # 200 = accepted, 202 = received/validating
+          if [ "$code" != "200" ] && [ "$code" != "202" ]; then
+            echo "IndexNow returned $code"; exit 1
+          fi
